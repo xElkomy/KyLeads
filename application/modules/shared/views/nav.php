@@ -1,4 +1,4 @@
-<nav class="mainnav navbar navbar-inverse navbar-embossed navbar-fixed-top" role="navigation" id="mainNav">
+<nav class="mainnav navbar navbar-inverse navbar-inverse-p-c navbar-embossed navbar-fixed-top " role="navigation" id="mainNav">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
 			<span class="sr-only"><?php echo $this->lang->line('nav_toggle_navigation'); ?></span>
@@ -8,19 +8,19 @@
 		</a>
 	</div>
 	<div class="collapse navbar-collapse" id="navbar-collapse-01">
-		<ul class="nav navbar-nav">
+		<ul class="nav navbar-nav navbar-nav-c">
 
 			<?php if (isset($siteData) || (isset($page) && $page == 'newPage')) : ?>
 
 				<?php if (isset($siteData)) : ?>
-					<li class="active">
-						<a><span class="fui-home"></span> <span id="siteTitle"><?php echo $siteData['site']->sites_name; ?></span></a>
+					<li class="active active-c">
+						<a class="a-c"><span class="fui-home"></span> <span id="siteTitle"><?php echo $siteData['site']->sites_name; ?></span></a>
 					</li>
 				<?php endif; ?>
 
 				<?php if (isset($page) && $page == 'newPage') : ?>
-					<li class="active">
-						<a><span class="fui-home"></span> <span id="siteTitle"><?php echo $this->lang->line('newsite_default_title'); ?></span> </a>
+					<li class="active active-c">
+						<a class="a-c"><span class="fui-home"></span> <span id="siteTitle"><?php echo $this->lang->line('newsite_default_title'); ?></span> </a>
 					</li>
 				<?php endif; ?>
 
@@ -41,11 +41,11 @@
 					}
 					?>
 
-					<li><a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" id="backButton"><span class="fui-arrow-left"></span> <?php echo $this->lang->line($t); ?></a></li>
+					<li><a class="a-c" href="<?php echo $_SERVER['HTTP_REFERER']; ?>" id="backButton"><span class="fui-arrow-left"></span> <?php echo $this->lang->line($t); ?></a></li>
 
 				<?php else: ?>
 
-					<li><a href="sites" id="backButton"><span class="fui-arrow-left"></span> <?php echo $this->lang->line('nav_goback_users'); ?></a></li>
+					<li><a class="a-c" href="sites" id="backButton"><span class="fui-arrow-left"></span> <?php echo $this->lang->line('nav_goback_users'); ?></a></li>
 
 				<?php endif; ?>
 
