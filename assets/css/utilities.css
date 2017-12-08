@@ -1,6 +1,6 @@
 .navbar-inverse-p-c{
     background-color:#365397 !important; /**color signature**/
 }
-.navbar-inverse-c .navbar-nav-c>.active-c>.a-c{
-    background-color: red !important;
+.active-c{
+    background-color: #22345f !important;
 }
