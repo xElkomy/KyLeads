@@ -78,7 +78,8 @@
 	<link href="<?php echo base_url('assets/css/ie-masonry.css'); ?>" rel="stylesheet">
 	<script src="<?php echo base_url('assets/js/masonry.pkgd.min.js'); ?>"></script>
 	<![endif]-->
-
+	<!--CSS-->
+	<link href="<?php echo base_url(); ?>assets/css/utilities.css" rel="stylesheet">
 	<script>
 		var baseUrl = '<?php echo base_url('/'); ?>';
 		var siteUrl = '<?php echo site_url('/'); ?>';
