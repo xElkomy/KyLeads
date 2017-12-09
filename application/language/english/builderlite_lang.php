@@ -456,7 +456,7 @@ $lang['sitedata_hosting_published_message'] = "Your site is currently published 
 /**** Sites Module Start ****/
 
 // sites/controllers/sites.php
-$lang['sites_index_title'] = "SBPro Dashboard.";
+$lang['sites_index_title'] = "KyLeads Pages";
 $lang['sites_index_reach_site_number'] = "<a href=\"#accountModal\" data-toggle=\"modal\" data-open-tab=\"2\">Click here</a> to upgrade your plan.";
 $lang['sites_index_almost_reach_site_number'] = "You have almost reach the allowed number of sites. <a href=\"#accountModal\" data-toggle=\"modal\" data-open-tab=\"2\">Click here</a> to upgrade your plan.";
 

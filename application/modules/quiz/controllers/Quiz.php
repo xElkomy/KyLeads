@@ -17,8 +17,7 @@ class Quiz extends MY_Controller {
 		'user/Users_model' => 'MUsers',
 		'sites/Sites_model' => 'MSites',
 		'sites/Pages_model' => 'MPages',
-		// 'quiz/New_quiz_model' => 'NQuiz',
-		'quiz/Quiz_model' => 'MQuiz'
+		'quiz/Quiz_model' => 'MQuiz',
 		];
 		$this->load->model($model_list);
 
