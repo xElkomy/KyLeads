@@ -56,7 +56,7 @@
 		<?php elseif (ENVIRONMENT == 'development') : ?>
 		<link href="<?php echo $this->config->item('webpack_dev_url'); ?>build/settings.css" rel="stylesheet">
 		<?php endif; ?>
-
+		
 	<?php else : ?>
 
 		<?php if (ENVIRONMENT == 'production') : ?>

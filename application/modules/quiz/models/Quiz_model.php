@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class New_quiz_model extends CI_Model {
+class Quiz_model extends CI_Model {
 
     function __construct()
     {
@@ -115,23 +115,32 @@ class New_quiz_model extends CI_Model {
 
     }
     
-    public function create_new_quiz(){
+    public function create_new_quiz($title, $description){
         
+        $data = array(
+            'title' => 'title',
+            'description' => 'description',
+        );
+    
+        $this->db->insert('quiz', $data);
     }
     
-    public function get_all_quizzes(){
-        //return all quizzes
-    }
-    
-    public function save_quiz($title,$description,$date,$userID){
+    public function create_category($title,$description){
         
+        $data = array(
+            'title' => 'title',
+            'description' => 'description',
+        );
+    
+        $this->db->insert('quiz_category', $data);
+    }
+
+    public function get_category(){
+
+        // return all categories
     }
     
-    public function save_category($title,$quizID){
-        
-    }
-    
-    public function save_question($title,$choiceID,$catID,$type_ID,$answerID){
+    public function create_question($title,$type_ID,$answerID){
         
     }
     
