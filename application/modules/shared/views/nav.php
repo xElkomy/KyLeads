@@ -50,15 +50,21 @@
 			<?php endif; ?>
 
 		<?php else: ?>
-
-			<li <?php if (isset($page) && $page == "site") : ?>class=" active-c"<?php endif; ?>><a href="sites"><span class="fui-windows"></span> <?php echo $this->lang->line('nav_sites'); ?></a></li>
-			<li <?php if (isset($page) && $page == "asset") : ?>class=" active-c"<?php endif; ?>><a href="asset/images"><span class="fui-image"></span> <?php echo $this->lang->line('nav_imagelibrary'); ?></a></li>
+			<li <?php if (isset($page) && $page == "dashboard") : ?>class="active-c"<?php endif; ?>><a class="c-n-t" href="dashboard"><span class="fa fa-tachometer"></span> <?php echo $this->lang->line('nav_dashboard'); ?></a></li>
+			
+			<!--<li <?php if (isset($page) && $page == "site") : ?>class="active"<?php endif; ?>><a href="sites"><span class="fui-windows"></span> <?php echo $this->lang->line('nav_sites'); ?></a></li>-->
+			<!--<li <?php if (isset($page) && $page == "asset") : ?>class="active"<?php endif; ?>><a href="asset/images"><span class="fui-image"></span> <?php echo $this->lang->line('nav_imagelibrary'); ?></a></li>-->
+			
 			<?php if ($this->session->userdata('user_type') == 'Admin') : ?>
-				<li <?php if (isset($page) && $page == "user") : ?>class=" active-c"<?php endif; ?>><a href="user"><span class="fui-user"></span> <?php echo $this->lang->line('nav_users'); ?></a></li>
-				<li <?php if (isset($page) && $page == "package") : ?>class=" active-c"<?php endif; ?>><a href="package"><span class="fui-list-bulleted"></span> <?php echo $this->lang->line('nav_packages'); ?></a></li>
-				<li <?php if (isset($page) && $page == "settings") : ?>class=" active-c"<?php endif; ?>><a href="settings"><span class="fui-gear"></span> <?php echo $this->lang->line('nav_settings'); ?></a></li>
+				<!--<li <?php if (isset($page) && $page == "user") : ?>class="active"<?php endif; ?>><a href="user"><span class="fui-user"></span> <?php echo $this->lang->line('nav_users'); ?></a></li>-->
+				<!--<li <?php if (isset($page) && $page == "package") : ?>class="active"<?php endif; ?>><a href="package"><span class="fui-list-bulleted"></span> <?php echo $this->lang->line('nav_packages'); ?></a></li>-->
+				<!--<li <?php if (isset($page) && $page == "settings") : ?>class="active"<?php endif; ?>><a href="settings"><span class="fui-gear"></span> <?php echo $this->lang->line('nav_settings'); ?></a></li>-->
+				
+				<li <?php if (isset($page) && $page == "forms") : ?>class="active-c"<?php endif; ?>><a class="c-n-t" href="forms"><span class="fa fa-yelp"></span> <?php echo $this->lang->line('nav_forms'); ?></a></li>
+				<li <?php if (isset($page) && $page == "quiz") : ?>class="active-c"<?php endif; ?>><a class="c-n-t" href="quiz"><span class="fa fa-question-circle"></span> <?php echo $this->lang->line('nav_quiz'); ?></a></li>
+				<li <?php if (isset($page) && $page == "sites") : ?>class="active-c"<?php endif; ?>><a class="c-n-t" href="sites"><span class="fui-windows"></span> <?php echo $this->lang->line('nav_sites'); ?></a></li>
 			<?php endif; ?>
-
+			
 		<?php endif; ?>
 	</ul>
 	<ul class="nav navbar-nav navbar-right" style="margin-right: 20px;">

@@ -99,6 +99,15 @@ if ($req_host == $app_host)
 	// SentAPI controller's method route
 	$route['subscription'] = 'subscription';
 	$route['subscription/(.+)'] = 'subscription/$1';
+	
+	//dashboard
+    $route['dashboard'] = 'dashboard';
+
+	//quiz
+	$route['quiz'] = 'quiz';
+	$route['quiz/(.+)'] = 'quiz/$1';
+	//forms
+	$route['forms'] = 'forms';
 
 	// Migrate controller's method route
 	$route['migrate'] = 'migrate';

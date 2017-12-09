@@ -406,11 +406,15 @@ $lang['myimages_newimage_label'] = "<b>+</b><strong>Add Image</strong><br>max si
 
 // shared/views/nav.php
 $lang['nav_toggle_navigation'] = "Toggle Navigation";
-$lang['nav_name'] = "<b class='text-primary'>SB</b>PRO";
-$lang['nav_sites'] = "Sites";
+$lang['nav_name'] = "<b class='text-primary'>KY</b>LEADS"; //$lang['nav_name'] = "<b class='text-primary'>KY</b>LEADS";
+// $lang['nav_sites'] = "Sites";
+$lang['nav_sites'] = "KyPages";
 $lang['nav_imagelibrary'] = "Image Library";
 $lang['nav_membership'] = "My Membership";
 $lang['nav_users'] = "Users";
+$lang['nav_dashboard'] = "Dashboard";
+$lang['nav_forms'] = "KyForms";
+$lang['nav_quiz'] = "KyQuizzes";
 $lang['nav_settings'] = "Settings";
 $lang['nav_packages'] = "Packages";
 $lang['nav_greeting'] = "Hi,";
@@ -418,6 +422,8 @@ $lang['nav_myaccount'] = "My Account";
 $lang['nav_logout'] = "Logout";
 $lang['nav_goback_sites'] = "Return to Sites";
 $lang['nav_goback_users'] = "Back to Users";
+
+
 
 // shared/views/pagedata.php
 $lang['modal_pagesettings_pagetitle'] = "Page Title";
@@ -450,7 +456,7 @@ $lang['sitedata_hosting_published_message'] = "Your site is currently published 
 /**** Sites Module Start ****/
 
 // sites/controllers/sites.php
-$lang['sites_index_title'] = "SBPro Dashboard.";
+$lang['sites_index_title'] = "KyLeads Pages";
 $lang['sites_index_reach_site_number'] = "<a href=\"#accountModal\" data-toggle=\"modal\" data-open-tab=\"2\">Click here</a> to upgrade your plan.";
 $lang['sites_index_almost_reach_site_number'] = "You have almost reach the allowed number of sites. <a href=\"#accountModal\" data-toggle=\"modal\" data-open-tab=\"2\">Click here</a> to upgrade your plan.";
 

@@ -1,6 +1,23 @@
+.container-fluid-custom{
+    padding: 0px !important;
+    position:absolute;
+    top: 65px !important;
+}
+.j-c-t{
+    text-align: center;
+}
 .navbar-inverse-p-c{
-    background-color:#365397; /**color signature**/
+    background-color:#365397 !important; /**color signature**/
 }
 .active-c{
     background-color: #22345f;
 }
+a.c-n-t:hover, a.c-n-t:active,a.c-n-t:visited {
+    background:#22345f !important;
+}
+.navbar-fixed-left {
+    width: 140px;
+    position: fixed;
+    border-radius: 0;
+    height: 100%;
+  }
