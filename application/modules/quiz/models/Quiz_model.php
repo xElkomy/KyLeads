@@ -116,7 +116,8 @@ class Quiz_model extends CI_Model {
     }
     
     public function create_new_quiz($title, $description){
-        
+        $title = "Quiz";
+        $description = "Another Quiz";
         $data = array(
             'title' => 'title',
             'description' => 'description',
@@ -131,7 +132,7 @@ class Quiz_model extends CI_Model {
             'title' => 'title',
             'description' => 'description',
         );
-    
+        
         $this->db->insert('quiz_category', $data);
     }
 
