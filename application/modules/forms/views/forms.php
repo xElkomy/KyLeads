@@ -58,6 +58,35 @@
                               <tr class="table-borderless">
                                 <td class="f-d-td"><button type="button" class="btn btn-primary square">Icon/Image</button></td>
                                 <td class="f-d-td"><h6 class="f-d-c">Here you have date create, <br>Views, and conversion rate </h6</td>
+                                <td class="f-d-td"><a class="c-c-i f-e-r fa fa-cogs fa-2" aria-hidden="true"></a> <i class="f-e-r fa fa-bar-chart" aria-hidden="true"></i></i></td>
+                              </tr>
+                              <tr class="table-borderless">
+                                <td class="f-d-td"><button type="button" class="btn btn-primary square">Icon/Image</button></td>
+                                <td class="f-d-td"><h6 class="f-d-c">Here you have date create, <br>Views, and conversion rate </h6</td>
+                                <td class="f-d-td"><a class="c-c-i f-e-r fa fa-cogs fa-2" aria-hidden="true"></a> <i class="f-e-r fa fa-bar-chart" aria-hidden="true"></i></i></td>
+                              </tr>
+                            <tr class="table-borderless">
+                                <td class="f-d-td"><button type="button" class="btn btn-primary square">Icon/Image</button></td>
+                                <td class="f-d-td"><h6 class="f-d-c">Here you have date create, <br>Views, and conversion rate </h6</td>
+                                <td class="f-d-td"><a onclick="openCity(event, 'new-form')" class="c-c-i f-e-r fa fa-cogs fa-2" aria-hidden="true"></a> <i class="f-e-r fa fa-bar-chart" aria-hidden="true"></i></i></td>
+                              </tr>
+                             </tbody>
+                          </table>
+                        </div> 
+                      </div>
+                    </div>
+                  </div>
+                  <div id="new-form" class="tabcontent">
+                    <h4>Dashboard/here you can see all forms and stats</h4>
+                      <hr>
+                    <div class="container">
+                      <div class="row row-custom-c-d">
+                        <div class="col-md-12">
+                          <table class="table j-c-t table-borderless">
+                            <tbody>
+                              <tr class="table-borderless">
+                                <td class="f-d-td"><button type="button" class="btn btn-primary square">Icon/Image</button></td>
+                                <td class="f-d-td"><h6 class="f-d-c">Here you have date create, <br>Views, and conversion rate </h6</td>
                                 <td class="f-d-td"><a data-toggle="modal" data-target="#myModal" class="c-c-i f-e-r fa fa-cogs fa-2" aria-hidden="true"></a> <i class="f-e-r fa fa-bar-chart" aria-hidden="true"></i></i></td>
                               </tr>
                               <tr class="table-borderless">
@@ -65,7 +94,7 @@
                                 <td class="f-d-td"><h6 class="f-d-c">Here you have date create, <br>Views, and conversion rate </h6</td>
                                 <td class="f-d-td"><a data-toggle="modal" data-target="#myModal" class="c-c-i f-e-r fa fa-cogs fa-2" aria-hidden="true"></a> <i class="f-e-r fa fa-bar-chart" aria-hidden="true"></i></i></td>
                               </tr>
-                              <tr class="table-borderless">
+                            <tr class="table-borderless">
                                 <td class="f-d-td"><button type="button" class="btn btn-primary square">Icon/Image</button></td>
                                 <td class="f-d-td"><h6 class="f-d-c">Here you have date create, <br>Views, and conversion rate </h6</td>
                                 <td class="f-d-td"><a data-toggle="modal" data-target="#myModal" class="c-c-i f-e-r fa fa-cogs fa-2" aria-hidden="true"></a> <i class="f-e-r fa fa-bar-chart" aria-hidden="true"></i></i></td>
@@ -75,7 +104,7 @@
                         </div> 
                       </div>
                     </div>
-                  </div>                  s
+                  </div>                   
                   <div id="Contacts" class="tabcontent">
                     <h3>Contacts</h3>
                     <hr>                    
@@ -107,29 +136,7 @@
             </div>
         </div>
       </div>
-            <!-- The Modal -->
-      <div class="modal fade" id="myModal">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-          
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title"> Currently Editing: Campaign name</h4>
-              
-              
-            </div>
-            
-            <!-- Modal body -->
-            <div class="modal-body">
-              Modal body..
-            </div>
-            
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-            
-          </div>
+ 
         </div>
       </div>
     </div>

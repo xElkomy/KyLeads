@@ -80,7 +80,7 @@
                 <button type="button" class="btn btn-success" value="Show Div" onclick="showDiv()">Add Question!</button>
                 <input  style="display:none;" class="form-control answer_list" id="welcomeDiv" aria-describedby="emailHelp" placeholder="Enter email">
                 <div class="form-group">
-                        <label for="exampleSelect1">Choose Type</label>
+                        <label for="exampl  eSelect1">Choose Type</label>
                         <select class="form-control" id="Ultra" onchange="run()">
                             <option value="1">T/F</option>
                         </select>
