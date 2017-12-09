@@ -6,7 +6,6 @@
     
 </script>
 <body>
-  
     <nav class="navbar navbar-inverse sidenav">
           <ul class="nav navbar-nav">
             <li></li>

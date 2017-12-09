@@ -6,10 +6,16 @@
 <body>
     <?php $this->load->view("shared/nav.php"); ?>
   
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-            <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js"></script>
+    <div class="container-fluid">
+     	    <div class="col-sm-2">
+     	        <div>
+     	             <?php $this->load->view("quiznav.php"); ?>
+     	        </div>
+     	           
+     	    </div>
+     	    <!---->
+     	    <div class="col-sm-9">
+             <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script type="text/javascript">
 
@@ -58,17 +64,19 @@
                     <div class="example-2"> 
                 <div class="row">
                     <div class="col-md-3">
-                        <h4>Quiz1</h4>
-                        <h6>Description</h6>
+                        <h4 id="quiztitle">Quiz1</h4>
+                        <h6 id="quizdescription">new Quiz</h6>
                     </div>
                     <div class="col-md-2">                          
                     <div class="form-group">
                         <label for="exampleSelect1">Choose</label>
                         <select class="form-control" id="Ultra" onchange="run()">
                             <option>Category</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                                <!-- an id category is the id found in the table -->
+                            <!-- fetch category from table -->
+                            <option value="1">Travel</option>
+                            <option value="2">School</option>
+                            <option value="3">Entreprenuer</option>
                             <option value="4">4</option>
                         </select>
                     </div>
@@ -98,12 +106,8 @@
                     </div>
                     <button type="button" class="btn btn-success">Submit!</button>
                     </div>
-                    
-                </div>  
-
-            </body>
-            </div>
-        </div>
+                   
+     	    </div>
     </div>
     
     <!-- End of Content-->

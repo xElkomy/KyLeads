@@ -56,7 +56,7 @@
 		<?php elseif (ENVIRONMENT == 'development') : ?>
 		<link href="<?php echo $this->config->item('webpack_dev_url'); ?>build/settings.css" rel="stylesheet">
 		<?php endif; ?>
-
+		
 	<?php else : ?>
 
 		<?php if (ENVIRONMENT == 'production') : ?>
@@ -78,7 +78,10 @@
 	<link href="<?php echo base_url('assets/css/ie-masonry.css'); ?>" rel="stylesheet">
 	<script src="<?php echo base_url('assets/js/masonry.pkgd.min.js'); ?>"></script>
 	<![endif]-->
+<<<<<<< HEAD
+=======
 
+>>>>>>> 0d93e8325b896720920da9f739540324ee80385d
 	<link href="<?php echo base_url(); ?>assets/css/utilities.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/css/nav.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/css/sidenav.css" rel="stylesheet">
