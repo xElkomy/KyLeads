@@ -1,169 +1,67 @@
-.nav-c{
-    background-color:#365397; /**color signature**/
-    height: 100%;
+.table-borderless .f-d-td, .table-borderless .f-d-th {
+    border: none;
+}
+.f-d-th{
+    padding:0px;
+}
+.f-d-td{
+    margin: 0px auto;
+}
+.form-group-u{
+    width:800px;
+    margin:0px auto;
+}
+.btn-u{
+    margin:30px auto;
+    padding:20px;
     width: 200px;
-    border-radius: 0px 20px 0px 10px;
-}
-.btn-c{
-    margin:30px 30px 30px 20px;
-    font-size: 23px;
     border-radius: 20px;
-    background-color:#49CEA4 !important; /**color signature**/
+    font-size: 15px;
+    background-color:#49CEA4;
+}   
+.n-f{
+    width: 160px;
+    height: 160px;
+    background-color:rgb(179, 179, 179);
+    margin:15px auto ;
+    border-radius: 20px;
 }
-.nav-pills-c > .li-c > .a-c{
+
+.f-c-c{
+    border-radius: 20px;
     text-align: center;
-    font-size: 20px;
+    height: 50px;
 }
-/* make sidebar nav vertical NOT WORKING! */ 
-@media (min-width: 768px) {
-    .sidebar-nav-f .navbar-f .navbar-collapse-f {
-      padding: 0;
-      max-height: none;
-    }
-    .sidebar-nav-f .navbar-f .ul-f {
-      float: none;
-      display: block;
-    }
-    .sidebar-nav-f .navbar-f .li-f {
-      float: none;
-      display: block;
-    }
-    .sidebar-nav-f .navbar-f .li-f .a-f {
-      padding-top: 12px;
-      padding-bottom: 12px;
-    }
+.f-c-c[type="text"]{
+    font-size: 24px;
+    background-color:rgb(194, 194, 194);
+}
+.f-c-c::placeholder {
+    color: black;;
   }
-  /****************************************/
-  /* Style the tab */
-  div.tab {
-      overflow: hidden;
-      border: 1px solid #ccc;
-      background-color: #f1f1f1;
-  }
-  
-  /* Style the buttons inside the tab */
-  div.tab button {
-      background-color: inherit;
-      float: left;
-      border: none;
-      outline: none;
-      cursor: pointer;
-      padding: 14px 16px;
-      transition: 0.3s;
-      font-size: 17px;
-  }
-  
-  /* Change background color of buttons on hover */
-  div.tab button:hover {
-      background-color: #ddd;
-  }
-  
-  /* Create an active/current tablink class */
-  div.tab button.active {
-      background-color: #ccc;
-  }
-  
-  /* Style the tab content */
-  .tabcontent {
-      display: none;
-      padding: 6px 12px;
-      -webkit-animation: fadeEffect 1s;
-      animation: fadeEffect 1s;
-  }
-  
-  /* Fade in tabs */
-  @-webkit-keyframes fadeEffect {
-      from {opacity: 0;}
-      to {opacity: 1;}
-  }
-  
-  @keyframes fadeEffect {
-      from {opacity: 0;}
-      to {opacity: 1;}
-  }
-  
-  .btn-custom{
-      margin-top: 30px;
-      margin-bottom: 30px;
-      padding: 20px;
-      border-radius: 20px;
-      font-size: 25px;
-      background-color: #49CEA4;
-  }
-  .navbar-default-custom{
-      background-color:#365397; /**color signature**/
-      border-radius:1px 10px 10px 1px;
-      text-align:center;
-  }
-  .form-control-custom{
-    border-radius: 10px;
-  }
-  .col-md-4-c{
-    text-align: center;
-  }
-  .square{
-      width: 160px;
-      height: 160px;
-      background-color:#49CEA4; /**color signature**/
-      color:white;
-      margin:15px auto ;
-  }
-  .square-d{
-      width: 160px;
-      height: 160px;
-      background-color:#365397; /**color signature**/
-      color:white;
-      margin:15px auto ;
-  }
-  .f-d{
-        margin:120px auto ;  
-  }
-  .f-e-r{
-        margin:40px auto ;
-        font-size: 40px;
-        color:black;
-  }
-  .sidebar-nav-custom{
-      height: 100%;
-  }
-  .navbar-collapse-custom{
-      padding:0px;
-      margin:0px;
-  }
-  .list-group-item-custom{
-      color:white !important;
-      border: none;
-      font-size: 22px;
-      background-color:#365397;/**color signature**/
-  }
-  .list-group-item-custom:hover { 
-    background-color:#365397; /**color signature**/    
-  }
-  .list-group-item-custom:hover { 
-      background-color:#22345f !important; 
-   }
-  .row-custom-c{
-      margin: auto; max-width:700px;
-  }
-  .row-custom-c-d{
-      margin: auto; max-width:800px;
-  }
-  .table-borderless .f-d-td, .table-borderless .f-d-th {
-      border: none !important;
-  }
-  .f-d-c{
-      margin: 60px auto;
-  }
-  .c-c-i{
-      margin-right:10px;
-  }
-  .modal-dialog {
-    width: 100%;
-    height: 100%;
-    padding: 0;
-  }
-  
-  .modal-content {
-    height: 100%;
-    border-radius: 0;
-  }
+.table-f{
+    width: 0px;
+    margin: 0px auto;
+}
+.c-d-f-d{
+    margin: 60px auto;
+}
+.fa-s{
+    padding-right:10px;
+}
+/*fade for tabs*/
+.tabcontent {
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+/*end for tabs*/

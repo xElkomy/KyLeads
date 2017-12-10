@@ -1,14 +1,15 @@
-<nav class="mainnav navbar navbar-inverse navbar-inverse-p-c navbar-embossed navbar-fixed-top" role="navigation" id="mainNav">
+<nav class="mainnav navbar navbar-inverse navbar-inverse-u navbar-embossed navbar-fixed-top" role="navigation" id="mainNav">
 <div class="navbar-header">
 	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
 		<span class="sr-only"><?php echo $this->lang->line('nav_toggle_navigation'); ?></span>
 	</button>
-	<a class="navbar-brand" href="sites">
-		<?php echo $this->lang->line('nav_name'); ?>
+	<a class="navbar-brand navbar-brand-u" href="dashboard">
+		<img src="../images/kyleads/kyleads-logo.jpg" alt="" width="200px" height="65px">
+		<?php //echo $this->lang->line('nav_name'); ?> 
 	</a>
 </div>
 <div class="collapse navbar-collapse" id="navbar-collapse-01">
-	<ul class="nav navbar-nav">
+	<ul class="nav nav-u navbar-nav">
 
 		<?php if (isset($siteData) || (isset($page) && $page == 'newPage')) : ?>
 
@@ -50,7 +51,7 @@
 			<?php endif; ?>
 
 		<?php else: ?>
-			<li <?php if (isset($page) && $page == "dashboard") : ?>class="active-c"<?php endif; ?>><a class="c-n-t" href="dashboard"><span class="fa fa-tachometer"></span> <?php echo $this->lang->line('nav_dashboard'); ?></a></li>
+			<li class="h-u" <?php if (isset($page) && $page == "dashboard") : ?>class="active"<?php endif; ?>><a href="dashboard"><span class="fa fa-tachometer"></span> <?php echo $this->lang->line('nav_dashboard'); ?></a></li>
 			
 			<!--<li <?php if (isset($page) && $page == "site") : ?>class="active"<?php endif; ?>><a href="sites"><span class="fui-windows"></span> <?php echo $this->lang->line('nav_sites'); ?></a></li>-->
 			<!--<li <?php if (isset($page) && $page == "asset") : ?>class="active"<?php endif; ?>><a href="asset/images"><span class="fui-image"></span> <?php echo $this->lang->line('nav_imagelibrary'); ?></a></li>-->
@@ -60,9 +61,9 @@
 				<!--<li <?php if (isset($page) && $page == "package") : ?>class="active"<?php endif; ?>><a href="package"><span class="fui-list-bulleted"></span> <?php echo $this->lang->line('nav_packages'); ?></a></li>-->
 				<!--<li <?php if (isset($page) && $page == "settings") : ?>class="active"<?php endif; ?>><a href="settings"><span class="fui-gear"></span> <?php echo $this->lang->line('nav_settings'); ?></a></li>-->
 				
-				<li <?php if (isset($page) && $page == "forms") : ?>class="active-c"<?php endif; ?>><a class="c-n-t" href="forms"><span class="fa fa-yelp"></span> <?php echo $this->lang->line('nav_forms'); ?></a></li>
-				<li <?php if (isset($page) && $page == "quiz") : ?>class="active-c"<?php endif; ?>><a class="c-n-t" href="quiz"><span class="fa fa-question-circle"></span> <?php echo $this->lang->line('nav_quiz'); ?></a></li>
-				<li <?php if (isset($page) && $page == "sites") : ?>class="active-c"<?php endif; ?>><a class="c-n-t" href="sites"><span class="fui-windows"></span> <?php echo $this->lang->line('nav_sites'); ?></a></li>
+				<li class="h-u" <?php if (isset($page) && $page == "forms") : ?>class="active"<?php endif; ?>><a href="forms"><span class="fa fa-yelp"></span> <?php echo $this->lang->line('nav_forms'); ?></a></li>
+				<li class="h-u" <?php if (isset($page) && $page == "quiz") : ?>class="active"<?php endif; ?>><a href="quiz"><span class="fa fa-question-circle"></span> <?php echo $this->lang->line('nav_quiz'); ?></a></li>
+				<li class="h-u" <?php if (isset($page) && $page == "sites") : ?>class="active"<?php endif; ?>><a href="sites"><span class="fui-windows"></span> <?php echo $this->lang->line('nav_sites'); ?></a></li>
 			<?php endif; ?>
 			
 		<?php endif; ?>
