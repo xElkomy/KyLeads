@@ -4,17 +4,9 @@
     
 </script>
 <body>
-    <?php $this->load->view("shared/nav.php"); ?>
-  
     <div class="container-fluid">
-     	    <div class="col-sm-2">
-     	        <div>
-     	             <?php $this->load->view("quiznav.php"); ?>
-     	        </div>
-     	           
-     	    </div>
      	    <!---->
-     	    <div class="col-sm-9">
+     	    <div class="container-fluid">
              <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <script type="text/javascript">
@@ -60,6 +52,12 @@
             <body>
             
             <div id="container">
+                <div class="text-center"><h3>Create New Quiz</h3> <hr></div>
+                <div>
+                    <label>Title :<input id="quiztitle" class="form-control" style = "width: 200px;" required></input> 
+                    <label>Description :<input id="quizdescrip" class="form-control" style = "width: 500px;" required></input> 
+                    <a href="quiz/newquiz" class="btn btn-lg btn-primary btn-wide margin-top-40">Save</a>
+                </div>     
             <div class="example-1">
                     <div class="example-2"> 
                 <div class="row">
@@ -105,9 +103,12 @@
                         </div>
                     </div>
                     <button type="button" class="btn btn-success">Submit!</button>
-                    </div>
-                   
+                    </div>    
      	    </div>
+            <div>
+                <a href="quiz/newquiz" class="btn btn-lg btn-primary btn-wide margin-top-40">Add New Quiz</a>
+                <a href="quiz/viewquizzes" class="btn btn-lg btn-primary btn-wide margin-top-40">View Quizzes</a>
+            </div>
     </div>
     
     <!-- End of Content-->

@@ -115,31 +115,39 @@ class Quiz_model extends CI_Model {
 
     }
     
-    public function create_new_quiz($title, $description){
-        $title = "Quiz";
-        $description = "Another Quiz";
+    public function createquiz(){
+        // $title = "Quiz";
+        // $description = "Another Quiz";
+        
         $data = array(
-            'title' => 'title',
-            'description' => 'description',
+            'title' => 'Quiz1',
+            'description' => 'Description one',
         );
-    
-        $this->db->insert('quiz', $data);
+        $this->db->insert('quizzes', $data);
+        
+        $new_quiz_id = $this->db->insert_id();
+
+        return $new_quiz_id;
     }
     
-    public function create_category($title,$description){
-        
+    public function save_question($title,$description,$quizID,$typeID){
+
         $data = array(
             'title' => 'title',
             'description' => 'description',
+            'quiz_id' => 'quizID',
+            'category_id' => 'categoryID',
+            'type_id' => 'typeID',
         );
-        
-        $this->db->insert('quiz_category', $data);
+
+        $this->db->insert('questions', $data);
     }
 
     public function get_category(){
 
         // return all categories
     }
+    
     
     public function create_question($title,$type_ID,$answerID){
         

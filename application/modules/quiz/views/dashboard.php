@@ -4,17 +4,9 @@
     
 </script>
 <body>
-    <?php $this->load->view("shared/nav.php"); ?>
-  
     <div class="container-fluid">
-     	    <div class="col-sm-2">
-     	        <div>
-     	             <?php $this->load->view("quiznav.php"); ?>
-     	        </div>
-     	           
-     	    </div>
      	    <!---->
-     	    <div class="col-sm-9">
+     	    <div class="ontainer-fluid">
      	        <h3 class="text-center">List of Quizzes</h3>
                     <div>
                         <!--Get quiz Data from Controller-->

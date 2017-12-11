@@ -43,7 +43,7 @@ class Quiz extends MY_Controller {
          error_reporting(-1);
 
         $this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'dashboard';
+        $this->data['content'] = 'quiz';
         $this->data['page'] = 'site';
         
 
@@ -78,8 +78,13 @@ class Quiz extends MY_Controller {
         $this->data['content'] = 'create';
         $this->data['page'] = 'site';
         
-
         $this->load->view('layout', $this->data);
+	}
+
+	public function newquiz(){
+		
+			$this->MQuiz->createquiz();	
+		   redirect('quiz', 'refresh');
 	}
 	
 	public function integrations(){

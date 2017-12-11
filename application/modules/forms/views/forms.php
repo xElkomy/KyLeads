@@ -75,7 +75,7 @@
                         </div> 
                       </div>
                     </div>
-                  </div>                  s
+                  </div>
                   <div id="Contacts" class="tabcontent">
                     <h3>Contacts</h3>
                     <hr>                    
