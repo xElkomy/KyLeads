@@ -1,0 +1,67 @@
+.table-borderless .f-d-td, .table-borderless .f-d-th {
+    border: none;
+}
+.f-d-th{
+    padding:0px;
+}
+.f-d-td{
+    margin: 0px auto;
+}
+.form-group-u{
+    width:800px;
+    margin:0px auto;
+}
+.btn-u{
+    margin:30px auto;
+    padding:20px;
+    width: 200px;
+    border-radius: 20px;
+    font-size: 15px;
+    background-color:#49CEA4;
+}   
+.n-f{
+    width: 160px;
+    height: 160px;
+    background-color:rgb(179, 179, 179);
+    margin:15px auto ;
+    border-radius: 20px;
+}
+
+.f-c-c{
+    border-radius: 20px;
+    text-align: center;
+    height: 50px;
+}
+.f-c-c[type="text"]{
+    font-size: 24px;
+    background-color:rgb(194, 194, 194);
+}
+.f-c-c::placeholder {
+    color: black;;
+  }
+.table-f{
+    width: 0px;
+    margin: 0px auto;
+}
+.c-d-f-d{
+    margin: 60px auto;
+}
+.fa-s{
+    padding-right:10px;
+}
+/*fade for tabs*/
+.tabcontent {
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+}
+
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+/*end for tabs*/
