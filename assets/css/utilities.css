@@ -38,6 +38,10 @@
     z-index: 1000;
     transition: all 0.4s ease 0s;
     text-align: center;
+<<<<<<< HEAD
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.50);
+=======
+>>>>>>> ca45c140b5d1473530e685414c84e9634bf8ff2f
   }
   
   #wrapper.active {
@@ -132,6 +136,24 @@
 .t-b-u{
     color:black;
 }
+<<<<<<< HEAD
+.t-w-u{
+  color:white;
+}
 .row-c-u{
     margin: auto; max-width:800px;
+}
+.j-c-e{
+  display: table;
+  margin-right: auto;
+  margin-left: auto;
+}
+.row-c-u-f{
+  margin: auto; max-width:800px;
+  height: 1000px;
+  width:800px;
+=======
+.row-c-u{
+    margin: auto; max-width:800px;
+>>>>>>> ca45c140b5d1473530e685414c84e9634bf8ff2f
 }

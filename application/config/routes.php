@@ -108,6 +108,7 @@ if ($req_host == $app_host)
 	$route['quiz/(.+)'] = 'quiz/$1';
 	//forms
 	$route['forms'] = 'forms';
+	$route['forms/(.+)'] = 'forms/$1';
 
 	// Migrate controller's method route
 	$route['migrate'] = 'migrate';
