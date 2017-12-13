@@ -9,36 +9,34 @@
           <nav id="spy">
               <ul class="nav sidebar-nav-u nav-u menu-sample">
 
-              <a href="forms/create" class="t-w-u"><button type="button" class="btn btn-u btn-success tablinks" 
-                onclick="openCity(event, 'new-optin')"> Create new <br> opt-in form</button></a>
-                  
-                  <li class="active">
-                      <a  href="forms/dashboard" class="tablinks" onclick="openCity(event, 'dashboard')">
-                          Dashboard
-                      </a>
-                  </li>
-                  <li>
-                      <a href="forms/contacts">
-                          Contacts
-                      </a>
-                  </li>
-                  <li>
-                      <a href="forms/integrations">
-                          Integrations
-                      </a>
-                  </li>
+              <button type="button" class="btn btn-u btn-success tablinks" id="defaultOpen" 
+                onclick="openCity(event, 'new-optin')"><a href="forms/create" class="t-w-u"> Create new <br> opt-in form</a></button>
+                    <li>
+                        <a href="forms/dashboard" class="tablinks" onclick="openCity(event, 'dashboard')">
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="forms/contacts" class="tablinks" onclick="openCity(event, 'contacts')">
+                            Contacts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="forms/integrations" class="tablinks" onclick="openCity(event, 'integrations')">
+                            Integrations
+                        </a>
+                    </li>
               </ul>
           </nav>
       </div>
       <!-- Page content -->
       <div id="page-content-wrapper">
           <div class="page-content">
-              <div class="container row-c-u-f">
-                  <div class="row">
-
-                    <a href="forms/create" class="t-w-u j-c-e"><button type="button" class="btn btn-u btn-success tablinks" 
-                    onclick="openCity(event, 'new-optin')"> Create new <br> opt-in form</button></a>
-
+              <div class="container">
+                  <div class="row row-c-u">
+                        <div id="contacts" class="tabcontent">
+                        <h1>Integrations</h1>
+                        </div>
                   </div>
               </div>
           </div>
@@ -57,7 +55,7 @@
           document.getElementById(name).style.display = "block";
           evt.currentTarget.className += " active";
           }
-        // document.getElementById("defaultOpen").click();
+
     </script>
   </div>
 <!--/.fluid-container-->

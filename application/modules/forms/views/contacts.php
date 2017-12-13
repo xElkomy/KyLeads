@@ -9,21 +9,21 @@
           <nav id="spy">
               <ul class="nav sidebar-nav-u nav-u menu-sample">
 
-              <a href="forms/create" class="t-w-u"><button type="button" class="btn btn-u btn-success tablinks" 
-                onclick="openCity(event, 'new-optin')"> Create new <br> opt-in form</button></a>
-                  
-                  <li class="active">
+              <button type="button" class="btn btn-u btn-success tablinks" 
+                onclick="openCity(event, 'new-optin')"><a href="forms/create" class="t-w-u"> Create new <br> opt-in form</a></button>
+                
+                  <li>
                       <a  href="forms/dashboard" class="tablinks" onclick="openCity(event, 'dashboard')">
                           Dashboard
                       </a>
                   </li>
                   <li>
-                      <a href="forms/contacts">
+                      <a href="forms/contacts" class="tablinks" onclick="openCity(event, 'contacts')">
                           Contacts
                       </a>
                   </li>
                   <li>
-                      <a href="forms/integrations">
+                      <a href="forms/integrations" class="tablinks" onclick="openCity(event, 'integrations')">
                           Integrations
                       </a>
                   </li>
@@ -33,12 +33,11 @@
       <!-- Page content -->
       <div id="page-content-wrapper">
           <div class="page-content">
-              <div class="container row-c-u-f">
-                  <div class="row">
-
-                    <a href="forms/create" class="t-w-u j-c-e"><button type="button" class="btn btn-u btn-success tablinks" 
-                    onclick="openCity(event, 'new-optin')"> Create new <br> opt-in form</button></a>
-
+              <div class="container">
+                  <div class="row row-c-u">
+                        <div id="contacts" class="tabcontent">
+                        <h1>Contacts</h1>
+                        </div>
                   </div>
               </div>
           </div>

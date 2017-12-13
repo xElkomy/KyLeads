@@ -249,6 +249,39 @@ class Forms extends MY_Controller {
     {
         /** Hook point */
         $this->hooks->call_hook('settings_destruct');
-    }
+	}
+	
+	public function create(){
+		$this->data['title'] = 'KyLeads Forms';
+        $this->data['content'] = 'create';
+        $this->data['page'] = 'site';
+        
 
+        $this->load->view('layout', $this->data);
+	}
+
+	public function dashboard(){
+		$this->data['title'] = 'KyLeads Forms';
+        $this->data['content'] = 'dashboard';
+        $this->data['page'] = 'site';
+        
+
+        $this->load->view('layout', $this->data);
+	}
+	public function contacts(){
+		$this->data['title'] = 'KyLeads Forms';
+        $this->data['content'] = 'contacts';
+        $this->data['page'] = 'site';
+        
+
+        $this->load->view('layout', $this->data);
+	}
+	public function integrations(){
+		$this->data['title'] = 'KyLeads Forms';
+        $this->data['content'] = 'integrations';
+        $this->data['page'] = 'site';
+        
+
+        $this->load->view('layout', $this->data);
+	}
 }
