@@ -4,13 +4,26 @@
     
 </script>
 <body>
+    <?php $this->load->view("shared/nav.php"); ?>
+  
     <div class="container-fluid">
-     	    <div class="col-sm-2" >
-
+     	    <div class="col-sm-2">
+                <div>
+     	            <?php $this->load->view("quiznav.php"); ?>
+     	        </div>
+     	           
      	    </div>
      	    <!---->
      	    <div class="col-sm-10">
-                <?php $this->load->view("quiz/analytics"); ?>
+                 <div class="text-center"><h3>Edit Quiz</h3> <hr></div>
+                    <div>
+                        <form action="<?php echo base_url('quiz/update_quiz_info'); ?>" method="post">
+                            <input type="hidden" name="quizid" value="<?php echo $quizinfo->id;?>"></input>
+                            <label>Title :<input name="quiztitle" class="form-control" style = "width: 200px;" value = "<?php echo $quizinfo->title;?>" required></input> 
+                            <label>Description :<input name="quizdescrip" class="form-control" style = "width: 500px;" value = "<?php echo $quizinfo->description;?>" required></input> 
+                            <button type ="submit" class="btn btn-lg btn-primary btn-wide margin-top-40">Save Changes</button>
+                        </form>     
+                    </div>  
      	    </div>
             
     </div>

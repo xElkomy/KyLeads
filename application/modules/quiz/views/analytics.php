@@ -14,7 +14,7 @@
      	           
      	    </div>
      	    <!---->
-     	    <div class="col-sm-9 text-center">
+     	    <div class="col-sm-10 text-center">
      	        <h4>Analytics/View metrics for your Quiz</h4>
                 <div class="row">
                         <div class="col-sm-2 text-center">

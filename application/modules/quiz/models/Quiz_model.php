@@ -115,13 +115,13 @@ class Quiz_model extends CI_Model {
 
     }
     
-    public function createquiz(){
+    public function createquiz($title,$description){
         // $title = "Quiz";
         // $description = "Another Quiz";
         
         $data = array(
-            'title' => 'Quiz1',
-            'description' => 'Description one',
+            'title' => $title,
+            'description' => $description,
         );
         $this->db->insert('quizzes', $data);
         
@@ -129,18 +129,106 @@ class Quiz_model extends CI_Model {
 
         return $new_quiz_id;
     }
+
+    public function view_quizzes(){
+
+        $query  = $this->db->get('quizzes');
+            
+        return $query->result();
+
+    }
+
+    public function view_questions($quizID){
+        
+        $query = $this->db->get_where('questions',array('quiz_id'=>$quizID));
+                    
+        return $query->result();
+        
+    }
+
+    public function view_choices($questionID){
+        
+        $query = $this->db->get_where('choices',array('question_id'=>$questionID));
+                    
+        return $query->result();
+        
+    }
     
+    public function get_quiz_info($id){
+
+        $query = $this->db->get_where('quizzes',array('id'=>$id));
+
+        return $query->first_row();
+        
+    }
+
+    public function get_question_info($id){
+        
+        $query = $this->db->get_where('questions',array('id'=>$id));
+        
+        return $query->first_row();
+                
+    }
+    public function get_choice_info($id){
+        
+        $query = $this->db->get_where('choices',array('id'=>$id));
+        
+        return $query->first_row();
+                
+    }
+
+    public function get_question_answers($id){
+        
+        $query = $this->db->get_where('questions',array('quiz_id'=>$quizID));
+                    
+        return $query->result();
+        
+    }
+    
+    public function delete_quiz($id){
+        $this->db->delete('quizzes', array('id' => $id));
+        // delete all questions of the quiz
+        $this->db->where('quiz_id', $id);
+        $this->db->delete('questions');  
+
+    }
+
+    public function delete_question($id){
+        $this->db->delete('questions', array('id' => $id));
+        $this->db->where('question_id', $id);
+        $this->db->delete('choices');  
+    }
+
+    public function delete_choice($id){
+        $this->db->delete('choices', array('id' => $id)); 
+    }
+    public function update_quiz($id,$title,$description){
+        $data = array(
+            'title' => $title,
+            'description' => $description,
+        );
+        $this->db->where('id', $id);
+        $this->db->update('quizzes', $data);
+    }
     public function save_question($title,$description,$quizID,$typeID){
 
         $data = array(
-            'title' => 'title',
-            'description' => 'description',
-            'quiz_id' => 'quizID',
-            'category_id' => 'categoryID',
-            'type_id' => 'typeID',
+            'title' => $title." ?",
+            'description' => $description,
+            'quiz_id' => $quizID,
+            'type_id' => $typeID,
         );
 
         $this->db->insert('questions', $data);
+    }
+
+    public function save_answer($val,$questionID){
+
+        $data = array(
+            'value' => $val,
+            'question_id' => $questionID,
+        );
+        $this->db->insert('choices', $data);
     }
 
     public function get_category(){
@@ -148,11 +236,4 @@ class Quiz_model extends CI_Model {
         // return all categories
     }
     
-    
-    public function create_question($title,$type_ID,$answerID){
-        
-    }
-    
-    
-
 }

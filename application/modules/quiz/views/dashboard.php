@@ -4,35 +4,49 @@
     
 </script>
 <body>
+    <?php $this->load->view("shared/nav.php"); ?>
+  
     <div class="container-fluid">
      	    <!---->
-     	    <div class="ontainer-fluid">
+             <div class="col-sm-2">
+                <div>
+                    <?php $this->load->view("quiznav.php"); ?>
+                </div>
+             </div>
+     	    <div class="col-sm-10">
      	        <h3 class="text-center">List of Quizzes</h3>
                     <div>
-                        <!--Get quiz Data from Controller-->
-                        <!--Display-->
-                         <!--Loop to display llist of Quizzes-->
-                        <?php
-                            for($i=0;$i<5;$i++){
+                        <table style="width:100%">
+                            <tr>
+                                <th>Tite</th>
+                                <th>Description</th> 
+                            </tr>
+                                <?php 
+                                    foreach ($quizzes as $quiz) 
+                                    {  
+                                        ?>
+                                        <tr>
+                                            <td><?php echo $quiz->title;?></td>
+                                            <td><?php echo $quiz->description;?></td>
+                                            <td>
+                                                <a  type ="submit" class="btn btn-default">Preview</a>
+                                                <a href="<?php echo base_url('quiz/view_quiz/'. $quiz->id); ?>" type ="submit" class="btn btn-info">Open</a>
+                                                <a href="<?php echo base_url('quiz/editquiz/'. $quiz->id); ?>" type ="submit" class="btn btn-primary">Edit</a>                                                
+                                                <a href="<?php echo base_url('quiz/delete_quiz/'. $quiz->id); ?>" type ="submit" class="btn btn-danger">Delete</a>    
+                                            </td> 
+                                        </tr>
+                                        <tr>
+                                            <td><hr></td>
+                                            <td><hr></td>
+                                            <td><hr></td>
+                                        </tr>
+                                       
+                                        <?php
+                                    }
                                 ?>
-                                <div class="row">
-                                     <div class="col-sm-4">
-                                         <div class="box"></div>
-                                     </div>
-                                     <div class="col-sm-4">
-                                         <p>Put Description here</p>
-                                     </div>
-                                     <div class="col-sm-3">
-                                         <a href="quiz">Edit |</a>
-                                         <a href="quiz">Reports |</a>
-                                         <a href="quiz">Contacts</a>
-                                     </div>
-                                     
-                                </div>
-                                <?php
-                            }
-                        ?>
+                        </table>
                     </div>
+                    
      	       
      	    </div>
     </div>

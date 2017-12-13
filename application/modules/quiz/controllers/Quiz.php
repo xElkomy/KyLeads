@@ -43,10 +43,10 @@ class Quiz extends MY_Controller {
          error_reporting(-1);
 
         $this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'quiz';
+        $this->data['content'] = 'dashboard';
         $this->data['page'] = 'site';
-        
-
+		$this->data['quizzes'] = $this->MQuiz->view_quizzes();
+		
         $this->load->view('layout', $this->data);
 
 		// $this->load->view('quiz/Quiz_view');
@@ -56,9 +56,9 @@ class Quiz extends MY_Controller {
 		
 		$this->data['title'] = 'KyLeads Quizzes';
         $this->data['content'] = 'dashboard';
-        $this->data['page'] = 'site';
-        
-
+		$this->data['page'] = 'site';
+		$this->data['quizzes'] = $this->MQuiz->view_quizzes();
+		
         $this->load->view('layout', $this->data);
 	
 	}
@@ -76,17 +76,85 @@ class Quiz extends MY_Controller {
 		
 		$this->data['title'] = 'KyLeads Quizzes';
         $this->data['content'] = 'create';
-        $this->data['page'] = 'site';
-        
+		$this->data['page'] = 'site';
+		
+		
         $this->load->view('layout', $this->data);
 	}
 
 	public function newquiz(){
-		
-			$this->MQuiz->createquiz();	
-		   redirect('quiz', 'refresh');
+		// header('Content-Type: application/json');
+
+			$title =$this->input->post('quiztitle');
+			$description = $this->input->post('quizdescrip');
+			// echo $test;
+			$this->MQuiz->createquiz($title,$description);	
+			// echo json_encode($test);
+			// view_quizzes();	
+			redirect('quiz/dashboard', 'refresh');
 	}
+
+	public function newquestion(){
 	
+			$quizid = $this->input->post('quizid');
+			$title = $this->input->post('questiontitle');
+			$description = 'Newly Added Question';
+			$typeID = '1';
+			
+			$this->MQuiz->save_question($title,$description,$quizid	,$typeID);	
+			
+			redirect('quiz/view_quiz/'. $quizid, 'refresh');
+	}
+
+	public function newanswer(){
+		
+			$quizid = $this->input->post('quizid');
+			$questionid = $this->input->post('questionid');
+			$answerval = $this->input->post('answerval');
+			$this->MQuiz->save_answer($answerval,$questionid);	
+				
+			redirect('quiz/update_answers/'. $questionid, 'refresh');
+		}
+
+	// public function view_quizzes(){
+	// 	$quizzes = $this->MQuiz->view_quizzes();
+		
+	// 	$this->load->view('layout',$quizzes);
+		
+	// }
+
+	public function view_quiz($id = ''){
+		$this->data['quiz'] = $this->MQuiz->get_quiz_info($id);
+		$this->data['questions'] = $this->MQuiz->view_questions($id);
+		$this->data['title'] = 'KyLeads Quizzes';
+        $this->data['content'] = 'viewquiz';
+        $this->data['page'] = 'site';
+        
+        $this->load->view('layout', $this->data);
+
+	}
+
+
+	public function delete_quiz($id = ''){
+		$this->MQuiz->delete_quiz($id);
+		redirect('quiz/dashboard', 'refresh');
+	}
+
+	public function delete_question($id = ''){
+		
+		$question = $this->MQuiz->get_question_info($id);
+		$title = $this->input->post('questiontitle');
+		
+		$this->MQuiz->delete_question($id);
+		redirect('quiz/view_quiz/'. $question->quiz_id, 'refresh');
+	}
+	public function delete_choice($id = ''){
+		
+		$choice = $this->MQuiz->get_choice_info($id);
+		
+		$this->MQuiz->delete_choice($id);
+		redirect('quiz/update_answers/'. $choice->question_id, 'refresh');
+	}
 	public function integrations(){
 		
 		$this->data['title'] = 'KyLeads Quizzes';
@@ -106,7 +174,42 @@ class Quiz extends MY_Controller {
 
         $this->load->view('layout', $this->data);
 	}
+
+	public function editquiz($id = ''){
+
+		$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($id);
+		
+		$this->data['title'] = 'KyLeads Quizzes';
+        $this->data['content'] = 'editquiz';
+        $this->data['page'] = 'site';
+        
+        $this->load->view('layout', $this->data);
+	}
 	
+	public function update_quiz_info(){
+		$id = $_POST['quizid'];
+		$title =$this->input->post('quiztitle');
+		$description = $this->input->post('quizdescrip');
+		$this->MQuiz->update_quiz($id,$title,$description);	
+
+		redirect('quiz/dashboard', 'refresh');
+	}
+
+	
+
+	public function update_answers($id = ''){
+
+		$this->data['question'] = $this->MQuiz->get_question_info($id);
+		$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($this->data['question']->quiz_id);
+		$this->data['choices'] = $this->MQuiz->view_choices($id);
+		$this->data['title'] = 'KyLeads Quizzes';
+        $this->data['content'] = 'quizanswer';
+        $this->data['page'] = 'site';
+        
+        $this->load->view('layout', $this->data);
+
+	}
+
 	public function analytics(){
 		
 		$this->data['title'] = 'KyLeads Quizzes';
