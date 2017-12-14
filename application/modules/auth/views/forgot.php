@@ -7,7 +7,7 @@
     		<div class="col-md-4 col-md-offset-4">
 
     			<div class="logo">
-                    <img src="<?php echo base_url('img/logo.svg'); ?>" alt="<?php echo $this->lang->line('logo_alt_text'); ?>">
+                    <img src="../images/kyleads/kyleads-logo-login.jpg" alt="" width="350px" height="200px">
                 </div>
 
     			<p><?php echo $this->lang->line('forgot_password_subheading'); ?></p>

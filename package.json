@@ -6,8 +6,8 @@
     "node": "6.11.2"
   },
   "scripts": {
-    "build": "NODE_ENV=production ./node_modules/webpack/bin/webpack.js --optimize-minimize",
-    "start": "NODE_ENV=development ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --hot"
+    "build": "NODE_ENV=production node_modules\\webpack\\bin\\webpack.js --optimize-minimize",
+    "start": "NODE_ENV=development node_modules\\webpack-dev-server\\bin\\webpack-dev-server.js --hot"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

@@ -4,69 +4,76 @@
 
 		<div class="row">
 
-			<div class="col-md-4 col-md-offset-4">
+			<div class="col-block col-md-6">
 
 				<div class="logo">
-					<img src="<?php echo base_url('img/logo.svg'); ?>" alt="<?php echo $this->lang->line('logo_alt_text'); ?>">
+					<img src="../images/kyleads/kyleads-logo-login.jpg" alt="" width="300px" height="200px">
 				</div>
 
-				<?php if ($this->session->flashdata('success')) : ?>
-                    <div class="alert alert-success">
-                        <button data-dismiss="alert" class="close fui-cross" type="button"></button>
-                        <strong><?php echo $this->lang->line('flashdata_success'); ?></strong> <?php echo $this->session->flashdata('success'); ?>
-                    </div>
-                <?php endif; ?>
-
-                <?php if ($this->session->flashdata('error')) : ?>
-                    <div class="alert alert-danger">
-                        <button data-dismiss="alert" class="close fui-cross" type="button"></button>
-                        <strong><?php echo $this->lang->line('flashdata_error'); ?></strong> <?php echo $this->session->flashdata('error'); ?>
-                    </div>
-                <?php endif; ?>
-
-				<form role="form" action="auth" method="post">
-
-					<div class="input-group">
-						<span class="input-group-btn">
-							<button class="btn"><span class="fui-user"></span></button>
-						</span>
-						<input type="email" class="form-control" id="email" name="email" tabindex="1" autofocus placeholder="<?php echo $this->lang->line('login_input_email_placeholder'); ?>">
-					</div>
-
-					<div class="input-group">
-						<span class="input-group-btn">
-							<button class="btn"><span class="fui-lock"></span></button>
-						</span>
-						<input type="password" class="form-control" id="password" name="password" tabindex="2" placeholder="<?php echo $this->lang->line('login_input_password_placeholder'); ?>">
-					</div>
-
-					<label class="checkbox margin-bottom-20" for="checkbox1">
-						<input type="checkbox" value="1" id="remember" name="remember" tabindex="3" data-toggle="checkbox">
-						<?php echo $this->lang->line('login_remember_me'); ?>
-					</label>
-
-					<button type="submit" class="btn btn-primary btn-block btn-embossed" tabindex="4"><?php echo $this->lang->line('login_button_login'); ?><span class="fui-arrow-right"></span></button>
-
-					<div class="row">
-						<div class="col-md-12 text-center">
-							<a href="auth/forgot"><?php echo $this->lang->line('login_lost_password'); ?></a>
+				<div class="center-l-f">
+					<?php if ($this->session->flashdata('success')) : ?>
+						<div class="alert alert-success">
+							<button data-dismiss="alert" class="close fui-cross" type="button"></button>
+							<strong><?php echo $this->lang->line('flashdata_success'); ?></strong> <?php echo $this->session->flashdata('success'); ?>
 						</div>
-					</div><!-- /.row -->
+					<?php endif; ?>
 
-				</form>
+					<?php if ($this->session->flashdata('error')) : ?>
+						<div class="alert alert-danger">
+							<button data-dismiss="alert" class="close fui-cross" type="button"></button>
+							<strong><?php echo $this->lang->line('flashdata_error'); ?></strong> <?php echo $this->session->flashdata('error'); ?>
+						</div>
+					<?php endif; ?>
 
-				<div class="divider">
-					<span><?php echo $this->lang->line('OR'); ?></span>
+					<form role="form" action="auth" method="post">
+
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button class="btn"><span class="fui-user"></span></button>
+							</span>
+							<input type="email" class="form-control" id="email" name="email" tabindex="1" autofocus placeholder="<?php echo $this->lang->line('login_input_email_placeholder'); ?>">
+						</div>
+
+						<div class="input-group">
+							<span class="input-group-btn">
+								<button class="btn"><span class="fui-lock"></span></button>
+							</span>
+							<input type="password" class="form-control" id="password" name="password" tabindex="2" placeholder="<?php echo $this->lang->line('login_input_password_placeholder'); ?>">
+						</div>
+
+						<label class="checkbox margin-bottom-20" for="checkbox1">
+							<input type="checkbox" value="1" id="remember" name="remember" tabindex="3" data-toggle="checkbox">
+							<?php echo $this->lang->line('login_remember_me'); ?>
+						</label>
+
+						<button type="submit" class="btn btn-primary btn-block btn-embossed" tabindex="4"><?php echo $this->lang->line('login_button_login'); ?><span class="fui-arrow-right"></span></button>
+
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<a href="auth/forgot"><?php echo $this->lang->line('login_lost_password'); ?></a>
+							</div>
+						</div><!-- /.row -->
+
+					</form>
+
+					<div class="divider">
+						<span><?php echo $this->lang->line('OR'); ?></span>
+					</div>
+
+					<h2 class="text-center margin-bottom-25">
+						<?php echo $this->lang->line('login_signup_heading'); ?>
+					</h2>
+
+					<a href="auth/register" class="btn btn-l-c btn-block btn-inverse btn-embossed"><?php echo $this->lang->line('login_button_signup'); ?> <span class="fui-new"></span></a>
 				</div>
-
-				<h2 class="text-center margin-bottom-25">
-					<?php echo $this->lang->line('login_signup_heading'); ?>
-				</h2>
-
-				<a href="auth/register" class="btn btn-block btn-inverse btn-embossed"><?php echo $this->lang->line('login_button_signup'); ?> <span class="fui-new"></span></a>
-
 			</div><!-- /.col -->
-
+				<div class="col-block col-md-6 col-md-offset-6-c">
+					<div class="center-info">
+						<p class="t-w-u f-t-s">"It's not what we do once a in while that</p>
+						<p class="t-w-u f-t-s">shape our lives. It's what we do consistently."</p>
+						<p class="t-w-u f-t-s">-Tony Robins</p>
+					</div>
+				</div>
 		</div><!-- /.row -->
 
 	</div><!-- /.container -->

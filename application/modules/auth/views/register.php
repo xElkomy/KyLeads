@@ -7,7 +7,7 @@
     		<div class="col-md-4 col-md-offset-4">
 
     			<h2 class="text-center">
-                    <?php echo $this->lang->line('register_heading'); ?>
+                    <b>KY</b>LEADS
                 </h2>
 
                 <?php if ($this->session->flashdata('success')) : ?>

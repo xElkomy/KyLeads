@@ -1,4 +1,4 @@
-<body>
+<body class="body-custom">
 
     <?php $this->load->view("shared/nav.php"); ?>
 

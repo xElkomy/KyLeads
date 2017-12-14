@@ -124,7 +124,8 @@ module.exports = {
             jQuery: false
         }
     },
-    devtool: 'source-map',
+    
+    devtool: 'source-map', //!comment if production or push on github
     plugins: [
         new WriteFilePlugin(),
         new ExtractTextPlugin("[name].css"),

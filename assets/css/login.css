@@ -1,16 +1,11 @@
-body.login {
-	background-color: #3A5168;
-	color: #C9CED1;
-	padding-top: 70px;
-}
-
 body.login .logo {
 	text-align: center;
-	margin-bottom: 70px;
+	margin-bottom: 50px;
+	margin-top: 50px
 }
 
 body.login .logo img {
-	width: 80px;
+	width: 320px;
 }
 
 body.login form a {
@@ -36,7 +31,7 @@ body.login .btn > span {
 body.login form .input-group .input-group-btn button.btn {
 	border: 0px;
 	line-height: 22px;
-	background-color: #2C3E50;
+	background-color: #365397;
 }
 
 body.login form input[type="email"], body.login form input[type="password"], body.login form input[type="text"] {
@@ -50,7 +45,7 @@ body.login h2 {
 	font-weight: 200;
 	font-size: 22px;
 	text-transform: uppercase;
-	color: #eee;
+	color: black;
 	letter-spacing: 4px;
 }
 
@@ -83,10 +78,55 @@ body.login .divider {
 }
 
 body.login .divider > span {
-	background: #3A5168;
+	background-color: #365397;
 	padding: 0px 15px;
 }
 
 .modal {
 	color: #34495e;
+}
+
+body,row,.col-md-offset-6{
+	padding:0px;
+	margin:0px;
+}
+body.login {
+	background-color:white;
+	color: #C9CED1;
+}
+.container{
+	padding:0px;
+	margin:0px;
+	width: 100%;
+}
+.col-md-offset-6-c{
+	text-align: center;	
+	background-color: #365397;
+	margin: auto;
+}
+.row{
+	height: 100%;
+	height:80%; display: block;
+	margin:0px;
+}
+.col-block{
+	width: 50%;
+    height: 100vh;
+    float: left;
+    position: relative;
+    z-index: 1;
+}
+.center-info{
+	padding-top:50%;
+}
+.btn-l-c{
+	background-color: #365397 !important;
+}
+.center-l-f{
+	margin: auto; max-width: 300px;
+}
+.f-t-s{
+	font-size: 25px;
+	white-space: nowrap;
+	font-family: arial;
 }
