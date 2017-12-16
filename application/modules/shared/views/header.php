@@ -80,7 +80,6 @@
 	<![endif]-->
 	<link href="<?php echo base_url(); ?>assets/css/utilities.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/css/nav.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/css/sidenav.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/css/dashboard.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/css/forms.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/css/quiz.css" rel="stylesheet">

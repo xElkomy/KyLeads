@@ -5,18 +5,21 @@
 <script type="text/javascript">
     
 </script>
-<body>
-    <nav class="navbar navbar-inverse sidenav">
-          <ul class="nav navbar-nav">
-            <li></li>
-            <li><a href="quiz/create">Create New</a></li>
-            <li><a href="quiz/dashboard">Dashboard</a></li>
-            <li><a href="quiz/forms">Quiz Optin-in form</a></li>
-            <li><a href="quiz/contacts">Contacts</a></li>
-            <li><a href="quiz/integrations">Integrations</a></li>
+<body class="body-custom">
+  <div id="wrapper">
+    <div id="sidebar-wrapper">
+      <nav id="spy">
+          <ul class="nav sidebar-nav-u nav-u">
+                <a href="quiz/create" class="t-w-u"><button type="button" class="btn btn-u btn-success tablinks" 
+                onclick="openCity(event, 'new-optin')"> Create New <br> Quiz</button></a>
+                <li class="active"><a href="quiz/dashboard">Dashboard</a></li>
+                <li><a href="quiz/forms">Quiz Optin-in form</a></li>
+                <li><a href="quiz/contacts">Contacts</a></li>
+                <li><a href="quiz/integrations">Integrations</a></li>
           </ul>
-    </nav>
-    
+      </nav>
+    </div>
+  </div>
     <!-- Load JS here for greater good =============================-->
     <?php if (ENVIRONMENT == 'production') : ?>
     <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>

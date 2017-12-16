@@ -124,6 +124,7 @@
   }
   /*Ended for nav left*/
   /*New Implemented for page wapper*/
+  
 .row-custom-u{
     margin: auto; max-width:50px;
 }
@@ -146,6 +147,5 @@
 }
 .row-c-u-f{
   margin: auto; max-width:800px;
-  height: 1000px;
   width:800px;
 }

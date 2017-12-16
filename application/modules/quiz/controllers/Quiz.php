@@ -55,7 +55,7 @@ class Quiz extends MY_Controller {
 	public function dashboard(){
 		
 		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'dashboard';
+        $this->data['content'] = 'dashboard'; //dashboard
 		$this->data['page'] = 'site';
 		$this->data['quizzes'] = $this->MQuiz->view_quizzes();
 		
@@ -116,15 +116,24 @@ class Quiz extends MY_Controller {
 	}
 
 	public function newquestion(){
-	
-		$quizid = $this->input->post('quizid');
-		$title = $this->input->post('questiontitle');
-		$description = 'Newly Added Question';
-		$typeID = '1';
+		// changes by mel
+		// $quizid = $this->input->post('quizid');
+		// $title = $this->input->post('questiontitle');
+		// $description = 'Newly Added Question';
+		// $typeID = '1';
 			
-		$questionid = $this->MQuiz->save_question($title,$description,$quizid	,$typeID);	
+		// $questionid = $this->MQuiz->save_question($title,$description,$quizid	,$typeID);	
 			
 		// redirect('quiz/view_quiz/'. $quizid, 'refresh');
+			$quizid = $this->input->post('quizid');
+			$title = $this->input->post('questiontitle');
+			$description = 'Newly Added Question';
+			$typeID = '1';
+			//var_dump($quizid);
+			$this->MQuiz->save_question($title,$description,$quizid	,$typeID);	
+			
+			//redirect('quiz/view_quiz/'. $quizid, 'refresh');
+			$this->editquiz($quizid);
 	}
 
 	public function newanswer(){
@@ -177,7 +186,7 @@ class Quiz extends MY_Controller {
 		$title = $this->input->post('questiontitle');
 		
 		$this->MQuiz->delete_question($id);
-		redirect('quiz/view_quiz/'. $question->quiz_id, 'refresh');
+		redirect('quiz/editquiz/'. $question->quiz_id, 'refresh');
 	}
 	public function delete_choice($id = ''){
 		
@@ -209,12 +218,14 @@ class Quiz extends MY_Controller {
 	public function editquiz($id = ''){
 
 		$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($id);
-		
+		$this->data['questions'] = $this->MQuiz->view_questions($id);
+		//var_dump($this->data['questions']);
 		$this->data['title'] = 'KyLeads Quizzes';
         $this->data['content'] = 'editquiz';
-        $this->data['page'] = 'site';
+		$this->data['page'] = 'site';
+		
         
-        $this->load->view('layout', $this->data);
+    	$this->load->view('layout', $this->data);
 	}
 	
 	public function update_quiz_info(){
