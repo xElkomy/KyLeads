@@ -31,18 +31,6 @@
           </nav>
       </div>
       <!-- Page content -->
-      <div id="page-content-wrapper">
-          <div class="page-content">
-              <div class="container row-c-u-f">
-                  <div class="row">
-
-                    <a href="forms/create" class="t-w-u j-c-e"><button type="button" class="btn btn-u btn-success tablinks" 
-                    onclick="openCity(event, 'new-optin')"> Create new <br> opt-in form</button></a>
-
-                  </div>
-              </div>
-          </div>
-      </div>
       <script>
         function openCity(evt, name) {
           var i, tabcontent, tablinks;

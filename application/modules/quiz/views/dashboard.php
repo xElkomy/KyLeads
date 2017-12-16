@@ -14,7 +14,13 @@
                 </div>
              </div>
      	    <div class="col-sm-10">
-     	        <h3 class="text-center">List of Quizzes</h3>
+                <?php 
+                    if(count($quizzes)>0){
+                        ?><h3 class="text-center">List of Quizzes</h3><?php
+                    }else{
+                        ?><h3 class="text-center">No Quiz Yet</h3><?php
+                    }
+                ?>        
                     <div>
                         <table style="width:100%">
                             <tr>
@@ -29,7 +35,7 @@
                                             <td><?php echo $quiz->title;?></td>
                                             <td><?php echo $quiz->description;?></td>
                                             <td>
-                                                <a  type ="submit" class="btn btn-default">Preview</a>
+                                                <a  href="<?php echo base_url('quiz/preview_quiz/'. $quiz->id); ?>" type ="submit" class="btn btn-default">Preview</a>
                                                 <a href="<?php echo base_url('quiz/view_quiz/'. $quiz->id); ?>" type ="submit" class="btn btn-info">Open</a>
                                                 <a href="<?php echo base_url('quiz/editquiz/'. $quiz->id); ?>" type ="submit" class="btn btn-primary">Edit</a>                                                
                                                 <a href="<?php echo base_url('quiz/delete_quiz/'. $quiz->id); ?>" type ="submit" class="btn btn-danger">Delete</a>    
@@ -45,9 +51,7 @@
                                     }
                                 ?>
                         </table>
-                    </div>
-                    
-     	       
+                    </div> 
      	    </div>
     </div>
     

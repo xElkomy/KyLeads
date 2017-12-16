@@ -77,6 +77,18 @@ class Auth extends MY_Controller {
                             redirect('sites', 'refresh');
                         }
                     }
+                    else if ($this->session->userdata('user_type') == 'Subscriber')
+                    {
+                        $autoupdate = $this->MCores->get_by_name('auto_update');
+                        if ($autoupdate['value'] == 'yes')
+                        {
+                            redirect('autoupdate', 'refresh');
+                        }
+                        else
+                        {
+                            redirect('sites', 'refresh');
+                        }
+                    }
                     else
                     {
                         /** Check Subscripiotn is cancelled */

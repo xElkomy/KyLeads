@@ -104,7 +104,7 @@ class Sites extends MY_Controller {
             $sites = $this->MSites->site_by_user($this->session->userdata('user_id'));
 
             /** User has some sites */
-            if (count($sites) > 0)
+            if (count($sites) > 3)
             {
                 /** User's site is more or equal its package number */
                 if (count($sites) >= $package['sites_number'])

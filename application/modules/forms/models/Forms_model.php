@@ -115,15 +115,7 @@ class Forms_model extends CI_Model {
 
     }
     
-    public function create_new_quiz(){
-        
-    }
-    
-    public function get_details(){
-        
-    }
-    
-    public function save_quiz(){
+    public function createform(){
         
     }
 

@@ -83,7 +83,6 @@
                         <option value="NoOfPages"><?php echo $this->lang->line('sites_sortby_numberofpages'); ?></option>
                     </select>
                 </div>
-
             </div><!-- /.col -->
 
         </div><!-- /.row -->
