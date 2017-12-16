@@ -16,12 +16,12 @@
               <div class="container ">
                     <div class="row row-c-u-f">
                      
-                    <h3><?php echo $quiz->title;?></h3> <h5><?php echo $quiz->description;?></h5>
+                    <h3><?php echo $quizinfo->title;?></h3> <h5><?php echo $quizinfo->description;?></h5>
                             
-                    <div class="text-center"><h3><?php echo $quizinfo->title;?> Quiz Settings</h3> <hr></div>
+                    <div class="text-center"><h6>Configuration</h6><hr></div>
                             
                             <form action="<?php echo base_url('quiz/update_quiz_info'); ?>" method="post">
-                                <input type="hidden" name="quizid" value="<?php echo $quizinfo->id;?>"></input>
+                                <input type="hidden" name="quizid" class="form-control" value = "<?php echo $quizinfo->id;?>"></input>
                                 <label>Title :<input name="quiztitle" class="form-control" style = "width: 200px;" value = "<?php echo $quizinfo->title;?>" required></input> 
                                 <label>Description :<input name="quizdescrip" class="form-control" style = "width: 500px;" value = "<?php echo $quizinfo->description;?>" required></input> 
                                 <button type ="submit" class="btn btn-lg btn-primary btn-wide margin-top-40">Save Changes</button>
@@ -42,8 +42,7 @@
                                         $index++;
                                     ?>
                                         <tr>
-                                            <td><p>Question<?php echo $index?></p> </td>
-                                            <td><?php echo $question->title;?></td>
+                                            <td><?php echo $index.'. '.$question->title;?></td>
                                             <td>
                                             <a href="<?php echo base_url('quiz/update_answers/'. $question->id); ?>" type ="submit" class="btn btn-primary">Update Answers</a>
                                             <a href="<?php echo base_url('quiz/delete_question/'. $question->id); ?>" type ="submit" class="btn btn-danger">Delete</a> 
@@ -55,8 +54,8 @@
                                 </table>
                                 
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                                Launch demo modal
+                                <button type="button" class="btn btn-primary glyphicon-plus" data-toggle="modal" data-target="#exampleModal">
+                                    New Question
                                 </button>
 
                                 <!-- Modal -->
@@ -74,7 +73,7 @@
                                             <div class="panel panel-default">
                                                 <div class="panel-body">
                                                     <form action="<?php echo base_url('quiz/newquestion'); ?>" method="post">
-                                                        <input type="hidden" name="quizid" value="<?php echo $quiz->id;?>"></input>
+                                                        <input type="hidden" name="quizID" value="<?php echo $quizinfo->id;?>"></input>
                                                         <label>Question :<input name="questiontitle" class="form-control" style = "width: 500px;" required></input>
                                                         <button type ="submit" class="btn btn-lg btn-primary btn-wide margin-top-40">Add Question</button>
                                                     </form>  
@@ -83,7 +82,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                                     </div>
                                     </div>
                                 </div>

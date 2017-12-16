@@ -10,7 +10,7 @@
     <div id="sidebar-wrapper">
       <nav id="spy">
           <ul class="nav sidebar-nav-u nav-u">
-                <a href="quiz/create" class="t-w-u"><button type="button" class="btn btn-u btn-success tablinks" 
+                <a href="quiz/templates" class="t-w-u"><button type="button" class="btn btn-u btn-success tablinks" 
                 onclick="openCity(event, 'new-optin')"> Create New <br> Quiz</button></a>
                 <li class="active"><a href="quiz/dashboard">Dashboard</a></li>
                 <li><a href="quiz/forms">Quiz Optin-in form</a></li>

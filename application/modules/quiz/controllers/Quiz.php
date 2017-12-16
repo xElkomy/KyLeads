@@ -82,6 +82,16 @@ class Quiz extends MY_Controller {
         $this->load->view('layout', $this->data);
 	}
 
+	public function templates(){
+		
+		$this->data['title'] = 'KyLeads Quizzes';
+        $this->data['content'] = 'templates';
+		$this->data['page'] = 'site';
+		$this->data['quizzes_template'] = $this->MQuiz->view_quizzes_template();
+		
+        $this->load->view('layout', $this->data);
+	}
+
 	public function preview_quiz($id = ''){
 		$this->data['quiz'] =  $this->MQuiz->get_quiz_info($id);
 		if($this->data['quiz'] === null){
@@ -125,15 +135,14 @@ class Quiz extends MY_Controller {
 		// $questionid = $this->MQuiz->save_question($title,$description,$quizid	,$typeID);	
 			
 		// redirect('quiz/view_quiz/'. $quizid, 'refresh');
-			$quizid = $this->input->post('quizid');
-			$title = $this->input->post('questiontitle');
-			$description = 'Newly Added Question';
-			$typeID = '1';
-			//var_dump($quizid);
-			$this->MQuiz->save_question($title,$description,$quizid	,$typeID);	
+		$quizid = $_POST['quizID'];
+		$title = $this->input->post('questiontitle');
+		$description = 'Newly Added Question';
+		$typeID = '1';
+		
+		$this->MQuiz->save_question($title,$description,$quizid	,$typeID);	
 			
-			//redirect('quiz/view_quiz/'. $quizid, 'refresh');
-			$this->editquiz($quizid);
+		redirect('quiz/quiz_configure/'. $quizid, 'refresh');
 	}
 
 	public function newanswer(){
@@ -186,7 +195,7 @@ class Quiz extends MY_Controller {
 		$title = $this->input->post('questiontitle');
 		
 		$this->MQuiz->delete_question($id);
-		redirect('quiz/editquiz/'. $question->quiz_id, 'refresh');
+		redirect('quiz/quiz_configure/'. $question->quiz_id, 'refresh');
 	}
 	public function delete_choice($id = ''){
 		
@@ -215,7 +224,7 @@ class Quiz extends MY_Controller {
         $this->load->view('layout', $this->data);
 	}
 
-	public function editquiz($id = ''){
+	public function quiz_configure($id = ''){
 
 		$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($id);
 		$this->data['questions'] = $this->MQuiz->view_questions($id);
@@ -230,11 +239,11 @@ class Quiz extends MY_Controller {
 	
 	public function update_quiz_info(){
 		$id = $_POST['quizid'];
-		$title =$this->input->post('quiztitle');
+		$title = $this->input->post('quiztitle');
 		$description = $this->input->post('quizdescrip');
 		$this->MQuiz->update_quiz($id,$title,$description);	
 
-		redirect('quiz/dashboard', 'refresh');
+		redirect('quiz/quiz_configure/'.$id, 'refresh');
 	}
 
 	

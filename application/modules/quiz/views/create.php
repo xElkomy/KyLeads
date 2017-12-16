@@ -1,73 +1,95 @@
-<body class="body-custom">
 
-    <?php $this->load->view("shared/nav.php"); ?>
+<!--Create-->
+<script type="text/javascript">
 
-    <!-- New Content -->
-    <div id="wrapper">
-      <!-- Sidebar -->
-      <div id="sidebar-wrapper">
-            <nav id="spy">
+</script>
+<body>
+<?php $this->load->view("shared/nav.php"); ?>
+<div class="container-fluid">
+         <!---->
+        <div class="col-sm-2">
+            <div>
                 <?php $this->load->view("quiznav.php"); ?>
-            </nav>
-      </div>
-      <!-- Page content -->
-      <div id="page-content-wrapper">
-          <div class="page-content">
-              <div class="container ">
-                    <div class="row row-c-u-q">
+            </div>
+        </div>
+         <div class="col-sm-10">
+            <div class="text-center"><h3>Create New Quiz</h3> <hr></div>
+                <div>
+                    <form action="<?php echo base_url('quiz/newquiz'); ?>" method="post">
+                        <label>Title :<input name="quiztitle" class="form-control" style = "width: 200px;" required></input> 
+                        <label>Description :<input name="quizdescrip" class="form-control" style = "width: 500px;" required></input> 
+                        <button id="btnSubmit" type ="submit" class="btn btn-lg btn-primary btn-wide margin-top-40">Save</button>
+                    </form>     
+            </div>
+            <!-- display templates -->
+            <hr>
+            <!-- <div>
+                <h6 class="text-center">Quiz templates</h6>
+                <div>
+                    <table style="width:100%">
+                        <tr>
+                            <th>Tite</th>
+                            <th>Description</th> 
+                        </tr>
+                            <?php 
+                                foreach ($quizzes_template as $quiz) 
+                                {  
+                                    ?>
+                                    <tr>
+                                        <td><?php echo $quiz->title;?></td>
+                                        <td><?php echo $quiz->description;?></td>
+                                        <td>  
+                                            <a href="#" type ="submit" class="btn btn-default">Preview</a>                                            
+                                            <a  href="<?php echo base_url('quiz/newquiz_temp/'. $quiz->id); ?>" type ="submit" class="btn btn-primary">Use Quiz</a>    
+                                        </td> 
+                                    </tr>
+                                    <tr>
+                                        <td><hr></td>
+                                        <td><hr></td>
+                                        <td><hr></td>
+                                    </tr>
+                                   
+                                    <?php
+                                }
+                            ?>
+                    </table>        
+                </div>               
+            </div> -->
+            <!-- if admin put create button for quizzes -->
+        </div>
+</div>
 
-                    <div id="new-optin" class="tabcontent">
+<!-- End of Content-->
+<!-- modals -->
 
-                      <h5 class="j-c-t-u t-b-u">Choose KyLeads Quiz Template</h5>
+<?php $this->load->view("shared/modal_sitesettings.php"); ?>
 
-                          <table class="table table-f j-c-t-u table-borderless">
-                            <tbody>
-                              <tr class="table-borderless">
-                                <td class="f-d-td"><button type="button" class="btn btn-primary n-q" >Create with default</button></td>
-                                <td class="f-d-td"><button type="button" class="btn btn-primary n-q" >Template 1</button></td>
-                                <td class="f-d-td"><button type="button" class="btn btn-primary n-q" >Template 2</button></td>
-                              </tr>
-                              <tr class="table-borderless">
-                                <td class="f-d-td"><button type="button" class="btn btn-primary n-q" >Template 3</button></td>
-                                <td class="f-d-td"><button type="button" class="btn btn-primary n-q" >Template 4</button></td>
-                                <td class="f-d-td"><button type="button" class="btn btn-primary n-q" >Template 5</button></td>
+<?php $this->load->view("shared/modal_account.php"); ?>
 
-                              </tr>
-                             </tbody>
-                          </table>
-                      </div>
+<?php $this->load->view("shared/modal_deletesite.php"); ?>
 
-                    </div>
-              </div>
-          </div>
-      </div>
-  </div>
-<!--/.fluid-container-->
-    <!-- End of Content-->
-    <!-- modals -->
+<!-- /modals -->
 
 
-    <!-- /modals -->
+<!-- Load JS here for greater good =============================-->
+<?php if (ENVIRONMENT == 'production') : ?>
+<script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>
+<?php elseif (ENVIRONMENT == 'development') : ?>
+<script src="<?php echo $this->config->item('webpack_dev_url'); ?>build/sites.bundle.js"></script>
 
+<?php endif; ?>
 
-    <!-- Load JS here for greater good =============================-->
-    <?php if (ENVIRONMENT == 'production') : ?>
-    <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>
-    <?php elseif (ENVIRONMENT == 'development') : ?>
-    <script src="<?php echo $this->config->item('webpack_dev_url'); ?>build/sites.bundle.js"></script>
-    <?php endif; ?>
+<!--[if lt IE 10]>
+<script>
+$(function(){
+    var msnry = new Masonry( '#sites', {
+        // options
+        itemSelector: '.site',
+        "gutter": 20
+    });
 
-    <!--[if lt IE 10]>
-    <script>
-    $(function(){
-    	var msnry = new Masonry( '#sites', {
-	    	// options
-	    	itemSelector: '.site',
-	    	"gutter": 20
-	    });
-
-    })
-    </script>
-    <![endif]-->
+})
+</script>
+<![endif]-->
 </body>
 </html>
