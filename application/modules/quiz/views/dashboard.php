@@ -3,66 +3,56 @@
 <script type="text/javascript">
     
 </script>
-<body>
+
+<body class="body-custom">
+
     <?php $this->load->view("shared/nav.php"); ?>
-  
-    <div class="container-fluid">
-     	    <!---->
-             <div class="col-sm-2">
-                <div>
-                    <?php $this->load->view("quiznav.php"); ?>
-                </div>
-             </div>
-     	    <div class="col-sm-10">
-     	        <h3 class="text-center">List of Quizzes</h3>
-                    <div>
-                        <table style="width:100%">
-                            <tr>
-                                <th>Tite</th>
-                                <th>Description</th> 
-                            </tr>
-                                <?php 
+
+    <!-- New Content -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+            <nav id="spy">
+                <?php $this->load->view("quiznav.php"); ?>
+            </nav>
+      </div>
+      <!-- Page content -->
+      <div id="page-content-wrapper">
+          <div class="page-content">
+              <div class="container-q ">
+                    <div class="row">
+
+                        <div id="new-optin" class="tabcontent">
+
+                            <table class="table table-q-d j-c-t-u table-borderless">
+                            <br>
+                            <h5 class="t-b-u j-c-t-u ">List of Quizzes</h5>                               
+                            <tbody>
+                                    <tr class="table-borderless">
+                                    <?php 
                                     foreach ($quizzes as $quiz) 
                                     {  
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $quiz->title;?></td>
-                                            <td><?php echo $quiz->description;?></td>
-                                            <td>
-                                                <a  type ="submit" class="btn btn-default">Preview</a>
-                                                <a href="<?php echo base_url('quiz/view_quiz/'. $quiz->id); ?>" type ="submit" class="btn btn-info">Open</a>
-                                                <a href="<?php echo base_url('quiz/editquiz/'. $quiz->id); ?>" type ="submit" class="btn btn-primary">Edit</a>                                                
-                                                <a href="<?php echo base_url('quiz/delete_quiz/'. $quiz->id); ?>" type ="submit" class="btn btn-danger">Delete</a>    
-                                            </td> 
-                                        </tr>
-                                        <tr>
-                                            <td><hr></td>
-                                            <td><hr></td>
-                                            <td><hr></td>
-                                        </tr>
-                                       
-                                        <?php
+                                    ?>   
+                                    <td class="f-d-td"><button type="button" class="btn btn-primary n-q-d"><?php echo $quiz->title;?><br><?php echo $quiz->description;?></button></td>
+                                    <td class="f-d-td"><h6 class="t-b-u c-d-f-d">Here the title of the quiz, <br>the total contacts,<br> and conversion rate is displayed </h6</td>
+                                    <td class="f-d-td"><a href="<?php echo base_url('quiz/editquiz/'. $quiz->id); ?>" class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u" aria-hidden="true"></a> 
+                                    <a href="<?php echo base_url('quiz/analytics/'. $quiz->id); ?>" class="fa fa-s fa-bar-chart fa-3x c-d-f-d t-b-u" aria-hidden="true"></a></td>
+                                    <?php
                                     }
-                                ?>
-                        </table>
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div> 
+
+                   
                     </div>
-                    
-     	       
-     	    </div>
-    </div>
-    
+              </div>
+          </div>
+      </div>
+  </div>
+
     <!-- End of Content-->
-    <!-- modals -->
-
-    <?php $this->load->view("shared/modal_sitesettings.php"); ?>
-
-    <?php $this->load->view("shared/modal_account.php"); ?>
-
-    <?php $this->load->view("shared/modal_deletesite.php"); ?>
-
-    <!-- /modals -->
-
-
+    
     <!-- Load JS here for greater good =============================-->
     <?php if (ENVIRONMENT == 'production') : ?>
     <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>

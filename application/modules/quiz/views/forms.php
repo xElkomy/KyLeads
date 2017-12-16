@@ -3,35 +3,31 @@
 <script type="text/javascript">
     
 </script>
-<body>
+
+<body class="body-custom">
+
     <?php $this->load->view("shared/nav.php"); ?>
-  
-    <div class="container-fluid">
-     	    <div class="col-sm-2">
-     	        <div>
-     	             <?php $this->load->view("quiznav.php"); ?>
-     	        </div>
-     	           
-     	    </div>
-     	    <!---->
-     	    <div class="col-sm-9">
-     	        <h3 class="text-center">Quiz forms</h3>
-                   
-     	    </div>
-    </div>
-    
+
+    <!-- New Content -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+            <nav id="spy">
+                <?php $this->load->view("quiznav.php"); ?>
+            </nav>
+      </div>
+      <!-- Page content -->
+      <div id="page-content-wrapper">
+          <div class="page-content">
+              <div class="container ">
+                    <div class="row row-c-u-f">
+                        <h3 class="text-center">Quiz forms</h3>
+                    </div>
+              </div>
+          </div>
+      </div>
+  </div> 
     <!-- End of Content-->
-    <!-- modals -->
-
-    <?php $this->load->view("shared/modal_sitesettings.php"); ?>
-
-    <?php $this->load->view("shared/modal_account.php"); ?>
-
-    <?php $this->load->view("shared/modal_deletesite.php"); ?>
-
-    <!-- /modals -->
-
-
     <!-- Load JS here for greater good =============================-->
     <?php if (ENVIRONMENT == 'production') : ?>
     <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>

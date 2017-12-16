@@ -3,29 +3,32 @@
 <script type="text/javascript">
     
 </script>
-<body>
-    <div class="container-fluid">
-     	    <div class="col-sm-2" >
+    
+<body class="body-custom">
 
-     	    </div>
-     	    <!---->
-     	    <div class="col-sm-10">
-                <?php $this->load->view("quiz/analytics"); ?>
-     	    </div>
-            
-    </div>
+    <?php $this->load->view("shared/nav.php"); ?>
+
+    <!-- New Content -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+            <nav id="spy">
+                <?php $this->load->view("quiznav.php"); ?>
+            </nav>
+      </div>
+      <!-- Page content -->
+      <div id="page-content-wrapper">
+          <div class="page-content">
+              <div class="container ">
+                    <div class="row row-c-u-f">
+                        <?php $this->load->view("quiz/analytics"); ?>     
+                    </div>
+              </div>
+          </div>
+      </div>
+  </div>
     
     <!-- End of Content-->
-    <!-- modals -->
-
-    <?php $this->load->view("shared/modal_sitesettings.php"); ?>
-
-    <?php $this->load->view("shared/modal_account.php"); ?>
-
-    <?php $this->load->view("shared/modal_deletesite.php"); ?>
-
-    <!-- /modals -->
-
 
     <!-- Load JS here for greater good =============================-->
     <?php if (ENVIRONMENT == 'production') : ?>
