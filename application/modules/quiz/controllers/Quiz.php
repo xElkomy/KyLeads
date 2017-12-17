@@ -65,7 +65,7 @@ class Quiz extends MY_Controller {
 	
 	public function contacts(){
 		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'contacts';
+        $this->data['content'] = 'contacts/contacts';
         $this->data['page'] = 'site';
         
 
@@ -75,7 +75,7 @@ class Quiz extends MY_Controller {
 	public function create(){
 		
 		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'create';
+        $this->data['content'] = 'quizmenu/create';
 		$this->data['page'] = 'site';
 		$this->data['quizzes_template'] = $this->MQuiz->view_quizzes_template();
 		
@@ -85,7 +85,7 @@ class Quiz extends MY_Controller {
 	public function templates(){
 		
 		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'templates';
+        $this->data['content'] = 'templates/templates';
 		$this->data['page'] = 'site';
 		$this->data['quizzes_template'] = $this->MQuiz->view_quizzes_template();
 		
@@ -102,7 +102,7 @@ class Quiz extends MY_Controller {
 		}
 		// var_dump($this->data['questions'][1]->choices);
 		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'quizpreview';
+        $this->data['content'] = 'quizpreview/quizpreview';
         $this->data['page'] = 'site';
         
         $this->load->view('layout', $this->data);
@@ -176,7 +176,7 @@ class Quiz extends MY_Controller {
 		}
 		
 		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'viewquiz';
+        $this->data['content'] = 'quizmenu/viewquiz';
         $this->data['page'] = 'site';
         
         $this->load->view('layout', $this->data);
@@ -207,7 +207,7 @@ class Quiz extends MY_Controller {
 	public function integrations(){
 		
 		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'integrations';
+        $this->data['content'] = 'integrations/integrations';
         $this->data['page'] = 'site';
         
 
@@ -217,7 +217,7 @@ class Quiz extends MY_Controller {
 	public function forms(){
 		
 		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'forms';
+        $this->data['content'] = 'forms/forms';
         $this->data['page'] = 'site';
         
 
@@ -230,7 +230,7 @@ class Quiz extends MY_Controller {
 		$this->data['questions'] = $this->MQuiz->view_questions($id);
 		//var_dump($this->data['questions']);
 		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'editquiz';
+        $this->data['content'] = 'quizmenu/editquiz';
 		$this->data['page'] = 'site';
 		
         
@@ -254,7 +254,7 @@ class Quiz extends MY_Controller {
 		$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($this->data['question']->quiz_id);
 		$this->data['choices'] = $this->MQuiz->view_choices($id);
 		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'quizanswer';
+        $this->data['content'] = 'quizmenu/quizanswer';
         $this->data['page'] = 'site';
         
         $this->load->view('layout', $this->data);
@@ -264,7 +264,7 @@ class Quiz extends MY_Controller {
 	public function analytics(){
 		
 		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'analytics';
+        $this->data['content'] = 'analytics/analytics';
         $this->data['page'] = 'site';
         
 
