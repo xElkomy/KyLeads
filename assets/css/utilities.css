@@ -151,6 +151,9 @@
 .row-c-u-q{
   margin: auto; max-width:1100px;
 }
+.row-c-u-a{
+  margin: auto; max-width:1100px;
+}
 .vertical-alignment-helper {
   display:table;
   height: 100%;
@@ -186,3 +189,12 @@
     border-bottom-left-radius: 110px !important;
     /* border-radius: 52.5px; */
   }
+  .row-centered {
+    text-align:center;
+}
+  .col-c-u {
+    display:inline-block;
+    float:none;
+    padding-left:20px;
+    text-align: center;
+}
