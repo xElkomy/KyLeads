@@ -178,6 +178,20 @@ class Quiz_model extends CI_Model {
         
     }
 
+    public function view_quiz_template_data($id){
+        
+        $results  = $this->db->get_where('quizzes_template',array('id'=>$id))->result();
+        foreach ($results as $key => $val) {
+            $results[$key]->questions = $this->view_questions_template($val->id);
+            foreach($results[$key]->questions as $key2 => $val2){
+                $results[$key]->questions[$key2]->choices = $this->view_choices_template($val2->id);
+            } 
+        }            
+        return $results;
+        
+    }
+
+
     public function view_all_choices(){
         
         $query  = $this->db->get('choices');

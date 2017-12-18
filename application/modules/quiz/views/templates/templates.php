@@ -34,7 +34,7 @@
                                             <td class="f-d-td">
                                                 <button type="button" class="btn btn-primary n-q" >
                                                     <h6><?php echo $quiz->title; ?></h6>
-                                                    <a href="#" type ="submit" class="btn btn-default">Preview</a>                                            
+                                                    <a href="<?php echo base_url('quiz/preview_template/'. $quiz->id); ?>" type ="submit" class="btn btn-default">Preview</a>                                            
                                                     <a  href="<?php echo base_url('quiz/newquiz_temp/'. $quiz->id); ?>" type ="submit" class="btn btn-primary">Use Quiz</a> 
                                                 </button>
                                             </td> 

@@ -92,6 +92,15 @@ class Quiz extends MY_Controller {
         $this->load->view('layout', $this->data);
 	}
 
+	public function preview_template($id = ''){
+		$this->data['quizzes'] =  $this->MQuiz->view_quiz_template_data($id);
+		$this->data['title'] = 'KyLeads Quizzes';
+        $this->data['content'] = 'templates/template_preview';
+        $this->data['page'] = 'site';
+        
+    	$this->load->view('layout', $this->data);
+	}
+
 	public function preview_quiz($id = ''){
 		$this->data['quiz'] =  $this->MQuiz->get_quiz_info($id);
 		if($this->data['quiz'] === null){
@@ -245,8 +254,6 @@ class Quiz extends MY_Controller {
 
 		redirect('quiz/quiz_configure/'.$id, 'refresh');
 	}
-
-	
 
 	public function update_answers($id = ''){
 
