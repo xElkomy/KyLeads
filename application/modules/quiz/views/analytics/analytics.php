@@ -5,93 +5,66 @@
     <!-- New Content -->
     <div id="wrapper">
       <!-- Sidebar -->
-      <div id="sidebar-wrapper">
+      	<div id="sidebar-wrapper">
             <nav id="spy">
                 <?php $this->load->view("quiznav.php"); ?>
             </nav>
-      </div>
+      	</div>
       <!-- Page content -->
-      <div id="page-content-wrapper">
-          <div class="page-content">
-              <div class="container ">
-                    <div class="row row-c-u-f">
-						<h4>Analytics/View metrics for your Quiz</h4>
-					<div class="row">
-						<div class="col-sm-2 text-center">
-							<a href="quiz"><p>Split Test Report</p></a>
-						</div>
-						<div class="col-sm-2 text-center">
-							<a href="quiz"><p>Advance Report</p></a>
-						</div>
-					</div>
+      	<div id="page-content-wrapper">
+          	<div class="page-content">
+              	<div class="container ">
+                    <div class="row row-c-u-a">
+                    	<div id="new-optin" class="tabcontent">
+							<h3>Analytics/View metrics for your Quiz</h3>
+								<ul class="nav nav-pills">
+									<li class="active j-c-t-u"><a data-toggle="pill" href="#home">Split Test <br>Report</a></li>
+									<li class="j-c-t-u"><a data-toggle="pill" href="#menu1">Advanced<br>Report</a></li>
+								</ul>
+						
+								<div class="tab-content">
 
-					<div class="row">
-							<div class="col-sm-5"></div>  
-							<div class="col-sm-4 text-center">Date Range : mm/dd/yy - mm/dd/yy</div> 
-					</div>
-
-					<div class="row">
-							<div id="advancereport">
-								<div class="row paddingbig">
-										<div class="col-sm-1"></div>
-									<div class="col-sm-2 text-center">
-										<a href="quiz"><p>Total Views</p></a>
-										<!--Chart-->
-										<div class="dot"></div>
-									</div>
-									<div class="col-sm-2 text-center">
-										<a href="quiz"><p>Quiz Starts</p></a>
-										<!--Chart-->
-										<div class="dot"></div>
-									</div>
-									<div class="col-sm-2 text-center">
-										<a href="quiz"><p>Completions</p></a>
-										<!--Chart-->
-										<div class="dot"></div>
-									</div>
-									<div class="col-sm-2 text-center">
-										<a href="quiz"><p>Contacts</p></a>
-										<!--Chart-->
-										<div class="dot"></div>
-									</div>
-									<div class="col-sm-2 text-center">
-										<a href="quiz"><p>CTA Clicks</p></a>
-										<!--Chart-->
-										<div class="dot"></div>
-									</div>
-								</div>
-								
-								<div class="row container-fluid wrapper">
-								<!--Questions here-->
-									<div class="row paddingsmall">
-										<div class="col-sm-2 text-left"><a class="btn btn-secondary">Questions</a></div>
-										<div class="col-sm-10 text-left"><a class="btn btn-secondary">Outcomes</a></div>
+									<div id="home" class="tab-pane fade in active">
+									<h3>HOME</h3>
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 									</div>
 									
-									<div class="row">
-										<ul class="listclear">
-											<?php
-											for($i=0;$i<5;$i++){
-											?>
-											<li>
-												<p class="col-sm-9 text-left">How are you?</p> 
-												<p class="col-sm-3 text-left">100%</p>
-											</li>
-											<?php
-											}
-											?>        
-										</ul>
+									<div id="menu1" class="tab-pane fade">
+
+										<div class="row">
+											<div class="j-r-t-u">Date Rage: mm/dd/yy - mm/dd/yy</div>
+										</div>
+
+										<div class="row row-centered">
+											
+											<div class="col-md-2 col-c-u">
+												Sample
+											</div>
+
+											<div class="col-md-2 col-c-u">
+												Sample
+											</div>
+											
+											<div class="col-md-2 col-c-u">
+												Sample
+											</div>	
+											
+											<div class="col-md-2 col-c-u">
+												Sample	
+											</div>	
+											
+											<div class="col-md-2 col-c-u">
+												Sample
+											</div>											
+
 										</div>
 								</div>
-							</div>                
 						</div>
 					</div>
-				</div> 
-                    </div>
-              </div>
-          </div>
-      </div>
-  </div>
+				</div>
+          	</div>
+      	</div>
+  	</div>
 <!--/.fluid-container-->
     <!-- End of Content-->
     <!-- modals -->

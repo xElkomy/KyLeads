@@ -8,25 +8,7 @@
       <div id="sidebar-wrapper">
           <nav id="spy">
               <ul class="nav sidebar-nav-u nav-u menu-sample">
-
-              <button type="button" class="btn btn-u btn-success tablinks" id="defaultOpen" 
-                onclick="openCity(event, 'new-optin')"><a href="forms/create" class="t-w-u"> Create new <br> opt-in form</a></button>
-                  
-                  <li>
-                      <a  href="forms/dashboard" class="tablinks" onclick="openCity(event, 'dashboard')">
-                          Dashboard
-                      </a>
-                  </li>
-                  <li>
-                  <a href="forms/contacts" class="tablinks" onclick="openCity(event, 'contacts')">
-                      Contacts
-                  </a>
-                  </li>
-                  <li>
-                      <a href="forms/integrations" class="tablinks" onclick="openCity(event, 'integrations')">
-                          Integrations
-                      </a>
-                  </li>
+                <?php $this->load->view("formnav.php"); ?>
               </ul>
           </nav>
       </div>
@@ -37,6 +19,7 @@
                   <div class="row row-c-u">
 
                     <div id="new-optin" class="tabcontent">
+                        
                       <div class="form-group form-group-u">
                         <label for="j-c-t-u"class="t-b-u"><h4>Name your opt-in: </h4></label>
                         <input type="text" class="form-control f-c-c" placeholder="New Opt-in">
@@ -51,12 +34,13 @@
                                 <td class="f-d-td"><button type="button" class="btn btn-primary n-f" >Standard Popup</button></td>
                                 <td class="f-d-td"><button type="button" class="btn btn-primary n-f" >Floating Bar</button></td>
                                 <td class="f-d-td"><button type="button" class="btn btn-primary n-f" >Slide In</button></td>
+                                <td class="f-d-td"><button type="button" class="btn btn-primary n-f" >Sidebar opt-in</button></td>
                               </tr>
                               <tr class="table-borderless">
                                 <td class="f-d-td"><button type="button" class="btn btn-primary n-f" >Inline Forms</button></td>
                                 <td class="f-d-td"><button type="button" class="btn btn-primary n-f" >Full Screen</button></td>
                                 <td class="f-d-td"><button type="button" class="btn btn-primary n-f" >After Post Opt-in</button></td>
-                                <td class="f-d-td"><button type="button" class="btn btn-primary n-f" >Sidebar opt-in</button></td>
+
                               </tr>
                              </tbody>
                           </table>

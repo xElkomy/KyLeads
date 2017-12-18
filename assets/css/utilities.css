@@ -37,7 +37,6 @@
     overflow-y: auto;
     z-index: 1000;
     transition: all 0.4s ease 0s;
-    text-align: center;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.50);
   }
   
@@ -126,7 +125,7 @@
   /*New Implemented for page wapper*/
   
 .row-custom-u{
-    margin: auto; max-width:50px;
+    margin: auto; max-width:50px; 
 }
 .j-c-t-u{
     text-align: center;
@@ -138,7 +137,7 @@
   color:white;
 }
 .row-c-u{
-    margin: auto; max-width:800px;
+    margin: auto; max-width:1000px;
 }
 .j-c-e{
   display: table;
@@ -149,3 +148,41 @@
   margin: auto; max-width:800px;
   width:800px;
 }
+.row-c-u-q{
+  margin: auto; max-width:1100px;
+}
+.vertical-alignment-helper {
+  display:table;
+  height: 100%;
+  width: 100%;
+}
+.vertical-align-center {
+  /* To center vertically */
+  display: table-cell;
+  vertical-align: middle;
+}
+.modal-content {
+  /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+  width:inherit;
+  height:inherit;
+  /* To center horizontally */
+  margin: 0 auto;
+}
+.g-r-u{
+  float:right;
+}
+.g-l-u{
+  float:left;
+}
+.b-t-r-l-u{
+
+  border-top-right-radius: 110px !important;
+  border-top-left-radius: 110px !important;
+  /* border-radius: 52.5px; */
+}
+.b-b-r-l-u{
+  
+    border-bottom-right-radius: 110px !important;
+    border-bottom-left-radius: 110px !important;
+    /* border-radius: 52.5px; */
+  }

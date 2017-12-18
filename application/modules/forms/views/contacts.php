@@ -8,25 +8,7 @@
       <div id="sidebar-wrapper">
           <nav id="spy">
               <ul class="nav sidebar-nav-u nav-u menu-sample">
-
-              <button type="button" class="btn btn-u btn-success tablinks" 
-                onclick="openCity(event, 'new-optin')"><a href="forms/create" class="t-w-u"> Create new <br> opt-in form</a></button>
-                
-                  <li>
-                      <a  href="forms/dashboard" class="tablinks" onclick="openCity(event, 'dashboard')">
-                          Dashboard
-                      </a>
-                  </li>
-                  <li>
-                      <a href="forms/contacts" class="tablinks" onclick="openCity(event, 'contacts')">
-                          Contacts
-                      </a>
-                  </li>
-                  <li>
-                      <a href="forms/integrations" class="tablinks" onclick="openCity(event, 'integrations')">
-                          Integrations
-                      </a>
-                  </li>
+                    <?php $this->load->view("formnav.php"); ?>
               </ul>
           </nav>
       </div>

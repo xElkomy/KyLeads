@@ -130,3 +130,7 @@ body.login {
 	white-space: nowrap;
 	font-family: arial;
 }
+.registration{
+	margin:0px;
+	padding-top:10px;
+}

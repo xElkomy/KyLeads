@@ -18,40 +18,35 @@
 
                     <div id="new-optin" class="tabcontent">
 
-                      <h5 class="j-c-t-u t-b-u">Choose KyLeads Quiz Template</h5>
+                      <h5 class="j-c-t-u t-b-u">Choose Quiz Template</h5>                    
 
-                          <table class="table table-f j-c-t-u table-borderless">
+                      <table class="table table-f j-c-t-u table-borderless">
                             <tbody>
                               <tr class="table-borderless">
-                                <td class="f-d-td"><a href="quiz/create" type="button" class="center btn btn-primary n-q" ><h6>Create Custom Quiz</h6></a></td>
+                                <td class="f-d-td"><a href="quiz/create" type="button" class="center btn btn-primary n-q" ><h6>Build your quiz <br> from scratch</h6></a></td>
                               </tr>
                               <tr class="table-borderless">
                                 <?php
-                                     foreach ($quizzes_template as $key => $quiz) 
-                                     {  
-                                         ?>
-                                        <tr> 
-                                            <td class="f-d-td">
-                                                <button type="button" class="btn btn-primary n-q" >
-                                                    <h6><?php echo $quiz->title; ?></h6>
-                                                    <a href="<?php echo base_url('quiz/preview_template/'. $quiz->id); ?>" type ="submit" class="btn btn-default">Preview</a>                                            
-                                                    <a  href="<?php echo base_url('quiz/newquiz_temp/'. $quiz->id); ?>" type ="submit" class="btn btn-primary">Use Quiz</a> 
-                                                </button>
-                                            </td> 
-                                               
-                                        </td> 
-                                        </tr>
-                                         <?php
+                                    foreach ($quizzes_template as $key => $quiz) 
+                                    {  
+                                ?>
+                                         
+                                    <td class="f-d-td">
+                                    <button type="button" class="btn btn-primary n-q" >
+                                        <h6><?php echo $quiz->title; ?></h6>
+                                        <a href="<?php echo base_url('quiz/preview_template/'. $quiz->id); ?>" type ="submit" class="btn btn-default btn-r-u">Preview</a>                                            
+                                        <a  href="<?php echo base_url('quiz/newquiz_temp/'. $quiz->id); ?>" type ="submit" class="btn btn-primary">Use Quiz</a> 
+                                    </button>
+                                    </td>       
+                                                                               
+                                <?php
                                      }
                                 ?>
-                                
-
                               </tr>
                              </tbody>
                           </table>
-                      </div>
-
                     </div>
+                </div>
               </div>
           </div>
       </div>

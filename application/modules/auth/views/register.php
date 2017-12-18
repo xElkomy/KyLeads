@@ -6,9 +6,9 @@
 
     		<div class="col-md-4 col-md-offset-4">
 
-    			<h2 class="text-center">
-                    <b>KY</b>LEADS
-                </h2>
+    			<div class="registration">
+                <img src="../images/kyleads/kyleads-logo-registration.jpg" alt="" width="470px" height="140px">
+                </div>
 
                 <?php if ($this->session->flashdata('success')) : ?>
                     <div class="alert alert-success">
@@ -84,7 +84,7 @@
                         <input type="text" class="form-control" id="captcha" name="captcha" placeholder="<?php echo $this->lang->line('register_input_captcha_placeholder'); ?>">
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block btn-embossed"><?php echo $this->lang->line('register_create_account_button'); ?></span></button>
+                    <button type="submit" class="btn btn-r-u btn-primary btn-block btn-embossed"><?php echo $this->lang->line('register_create_account_button'); ?></span></button>
 
                     <hr class="dashed light">
 

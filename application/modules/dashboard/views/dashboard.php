@@ -9,32 +9,34 @@
     <div class="container-fluid">
 
         <div class="row" id="content">
-          <div class="col-md-4" >
-                 <ul class="list-group" id="list-group">
-                  <li class="list-group-item" id="list-group-item">Top Converting</li>
-                  <a href="#" ><li class="list-group-item" id="list-group-item">Landing page</li></a>
-                  <a href="#" ><li class="list-group-item" id="list-group-item">Name</li></a>
-                  <a href="#" ><li class="list-group-item" id="list-group-item">Conversion rate</li></a>
-                  <a href="#" ><li class="list-group-item" id="list-group-item">Total contacts</li></a>
-                </ul>
-          </div>
-          <div class="col-md-4">
-                <ul class="list-group" id="list-group">
-                  <li class="list-group-item" id="list-group-item">Top Converting</li>
-                  <a href="#" ><li class="list-group-item" id="list-group-item">Quiz</li></a>
-                  <a href="#" ><li class="list-group-item" id="list-group-item">Name</li></a>
-                  <a href="#" ><li class="list-group-item" id="list-group-item">Conversion rate</li></a>
-                  <a href="#" ><li class="list-group-item" id="list-group-item">Total contacts</li></a>
-                </ul>
-          </div>
-          <div class="col-md-4">
-                <ul class="list-group" id="list-group">
-                  <li class="list-group-item" id="list-group-item">Top Converting</li>
-                  <a href="#" ><li class="list-group-item" id="list-group-item">Form</li></a>
-                  <a href="#" ><li class="list-group-item" id="list-group-item">Name</li></a>
-                  <a href="#" ><li class="list-group-item" id="list-group-item">Conversion rate</li></a>
-                  <a href="#" ><li class="list-group-item" id="list-group-item">Total contacts</li></a>
-                </ul>
+          <div id="new-optin" class="tabcontent">
+            <div class="col-md-4" >
+                  <ul class="list-group " id="list-group">
+                    <li class="list-group-item b-t-r-l-u" id="list-group-item"><i class="fa fa-signal"> Top Converting</i></li>
+                    <li class="list-group-item" id="list-group-item"><i class="fa fa-external-link"> Landing page</i></li>  
+                    <li class="list-group-item" id="list-group-item"><i class="fa fa-user" aria-hidden="true"></i> Name</li>
+                    <li class="list-group-item" id="list-group-item"><i class="fa fa-line-chart" aria-hidden="true"> Conversion rate</i></li>
+                    <li class="list-group-item b-b-r-l-u" id="list-group-item"><i class="fa fa-users" aria-hidden="true"> Total Contacts</i></li>
+                  </ul>
+                  </div>
+            <div class="col-md-4">
+                  <ul class="list-group" id="list-group">
+                    <li class="list-group-item b-t-r-l-u" id="list-group-item"><i class="fa fa-signal"> Top Converting</i></li>
+                    <li class="list-group-item" id="list-group-item"><i class="fa fa-question-circle" aria-hidden="true"> Quiz</i></li>
+                    <li class="list-group-item" id="list-group-item"><i class="fa fa-user" aria-hidden="true"></i> Name</li>
+                    <li class="list-group-item" id="list-group-item"><i class="fa fa-line-chart" aria-hidden="true"> Conversion rate</i></li>
+                    <li class="list-group-item b-b-r-l-u" id="list-group-item"><i class="fa fa-users" aria-hidden="true"> Total Contacts</i></li>
+                  </ul>
+            </div>
+            <div class="col-md-4">
+                  <ul class="list-group" id="list-group"> 
+                    <li class="list-group-item b-t-r-l-u" id="list-group-item"><i class="fa fa-signal"> Top Converting</i></li>
+                    <li class="list-group-item" id="list-group-item"><i class="fa fa-list-ul"> Form</i></li>
+                    <li class="list-group-item" id="list-group-item"><i class="fa fa-user" aria-hidden="true"> Name</i></li>
+                    <li class="list-group-item" id="list-group-item"><i class="fa fa-line-chart" aria-hidden="true"> Conversion rate</i></li>
+                    <li class="list-group-item b-b-r-l-u" id="list-group-item"><i class="fa fa-users" aria-hidden="true"> Total Contacts</i></li>
+                  </ul>
+            </div>
           </div>
         </div>
         <div class="row" align="center" id="footer">
