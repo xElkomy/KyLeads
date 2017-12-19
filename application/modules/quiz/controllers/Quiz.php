@@ -266,7 +266,7 @@ class Quiz extends MY_Controller {
 			$questiontable = "questions_template";
 			$choicetable = "choices_template";
 			$this->MQuiz->delete_quiz($id,$quiztable,$questiontable,$choicetable);
-			redirect('quiz/dashboard', 'refresh');
+			redirect('quiz/templates', 'refresh');
 		}
 		
 		

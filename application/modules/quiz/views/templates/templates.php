@@ -35,10 +35,17 @@
                                     <button type="button" class="btn btn-primary n-q" >
                                         <h6><?php echo $quiz->title; ?></h6>
                                         <a href="<?php echo base_url('quiz/preview_template/'. $quiz->id); ?>" type ="submit" class="btn btn-default btn-r-u">Preview</a>                                            
-                                        <a  href="<?php echo base_url('quiz/newquiz_temp/'. $quiz->id); ?>" type ="submit" class="btn btn-primary">Use Quiz</a> 
+                                        <a  href="<?php echo base_url('quiz/newquiz_temp/'. $quiz->id); ?>" type ="submit" class="btn btn-primary">Use Quiz</a><br>
+                                        <?php if($this->session->userdata('user_type') === "Admin"){
+                                            ?>
+                                            <a  href="<?php echo base_url('quiz/configure_template/'. $quiz->id); ?>" type ="submit" class="btn btn-seconday">Configure</a>
+                                            <a  href="<?php echo base_url('quiz/delete_quiz_template/'. $quiz->id); ?>" type ="submit" class="btn btn-default">Delete</a>
+                                            <?php
+                                        }
+                                        ?>
+                                        
                                     </button>
-                                    </td>       
-                                                                               
+                                    </td>                                                 
                                 <?php
                                      }
                                 ?>
