@@ -23,7 +23,7 @@
                       <table class="table table-f j-c-t-u table-borderless">
                             <tbody>
                               <tr class="table-borderless">
-                                <td class="f-d-td"><a href="quiz/create" type="button" class="center btn btn-primary n-q" ><h6>Build your quiz <br> from scratch</h6></a></td>
+                                <td class="f-d-td"><a href="quiz/create" type="button" class="center btn btn-primary n-q" ><h6> <br> <br> <br>  Build your quiz <br> from scratch</h6></a></td>
                               </tr>
                               <tr class="table-borderless">
                                 <?php

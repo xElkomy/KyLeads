@@ -64,7 +64,7 @@
 						<?php echo $this->lang->line('login_signup_heading'); ?>
 					</h2>
 
-					<a href="auth/register" class="btn btn-l-c btn-r-u btn-block btn-inverse btn-embossed"><?php echo $this->lang->line('login_button_signup'); ?> <span class="fui-new"></span></a>
+					<a href="auth/register" class="btn btn-l-c btn-r-u btn-block btn-inverse btn-embossed">Start your free trial<span class="fui-new"></span></a>
 				</div>
 			</div><!-- /.col -->
 				<div class="col-block col-md-6 col-md-offset-6-c">
