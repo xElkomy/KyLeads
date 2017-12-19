@@ -34,10 +34,14 @@
                                     {  
                                     ?>
                                     <tr class="table-borderless"> 
-                                        <td class="f-d-td"><button type="button" class="btn btn-primary n-q-d"><?php echo $quiz->title;?><br><?php echo $quiz->description;?></button></td>
+                                        <td class="f-d-td">
+                                            <a href="<?php echo base_url('quiz/preview_quiz/'. $quiz->id); ?>" type="button" class="btn btn-primary n-q-d"><?php echo $quiz->title;?><br><?php echo $quiz->description;?></a>
+                                            <a href="<?php echo base_url('quiz/delete_quiz/'. $quiz->id); ?>" class="btn btn-primary btn-lg glyphicon glyphicon-remove" aria-hidden="true">Remove</a>
+                                        </td>
                                         <td class="f-d-td"><h6 class="t-b-u c-d-f-d">Here the title of the quiz, <br>the total contacts,<br> and conversion rate is displayed </h6</td>
                                         <td class="f-d-td"><a href="<?php echo base_url('quiz/quiz_configure/'. $quiz->id); ?>" class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u" aria-hidden="true"></a> 
                                         <a href="<?php echo base_url('quiz/analytics/'. $quiz->id); ?>" class="fa fa-s fa-bar-chart fa-3x c-d-f-d t-b-u" aria-hidden="true"></a></td>
+                                        
                                     </tr>
                                     <?php
                                     }

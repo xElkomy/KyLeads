@@ -6,12 +6,11 @@
 <body>
     <?php $this->load->view("shared/nav.php"); ?>
   
-    <div class="container">
+    <div class="container-fluid">
      	    <div class="col-sm-2">
                 <div>
      	            <?php $this->load->view("quiznav.php"); ?>
      	        </div>
-     	           
      	    </div>
      	    <!---->
      	    <div class="col-sm-10">

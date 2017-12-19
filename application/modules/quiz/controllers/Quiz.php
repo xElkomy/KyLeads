@@ -82,6 +82,18 @@ class Quiz extends MY_Controller {
         $this->load->view('layout', $this->data);
 	}
 
+	public function createtemplate(){
+		if(!$this->isAdmin()){
+			redirect('quiz/dashboard','refresh');
+		}else{
+			$this->data['title'] = 'KyLeads Quizzes';
+			$this->data['content'] = 'templates/createtemplate';
+			$this->data['page'] = 'site';
+			$this->load->view('layout', $this->data);
+		}
+		
+	}
+
 	public function templates(){
 		
 		$this->data['title'] = 'KyLeads Quizzes';
@@ -102,16 +114,19 @@ class Quiz extends MY_Controller {
 	}
 
 	public function preview_quiz($id = ''){
-		$this->data['quiz'] =  $this->MQuiz->get_quiz_info($id);
+		$quiztable = "quizzes";
+		$questiontable = "questions";
+		$this->data['quiz'] =  $this->MQuiz->get_quiz_info($id,$quiztable);
 		if($this->data['quiz'] === null){
 			$this->data['questions'] = null;
+			redirect('quiz/dashboard','refresh');
 		}
 		else{
 			$this->data['questions'] =  $this->MQuiz->view_question_data($id);
 		}
 		// var_dump($this->data['questions'][1]->choices);
 		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'quizpreview/quizpreview';
+        $this->data['content'] = 'quizmenu/quizpreview';
         $this->data['page'] = 'site';
         
         $this->load->view('layout', $this->data);
@@ -119,39 +134,64 @@ class Quiz extends MY_Controller {
 
 	public function newquiz(){
 		// header('Content-Type: application/json');
-
 		$title =$this->input->post('quiztitle');
 		$description = $this->input->post('quizdescrip');
-			// echo $test;
-		$this->MQuiz->createquiz($this->session->userdata('user_id'),$title,$description);	
+		$table = "quizzes";
+		$new_quiz_id = $this->MQuiz->createquiz($this->session->userdata('user_id'),$title,$description,$table);	
 			// echo json_encode($test);
 			// view_quizzes();	
-		redirect('quiz/dashboard', 'refresh');
+		$this->quiz_configure($new_quiz_id);
 	}
 
+	public function newtemplate(){
+		// header('Content-Type: application/json');
+		if(!$this->isAdmin()){
+			redirect('quiz/dashboard','refresh');
+		}
+		else{
+		$title =$this->input->post('quiztitle');
+		$description = $this->input->post('quizdescrip');
+		$table = "quizzes_template";
+		$new_quiz_id = $this->MQuiz->createquiz($this->session->userdata('user_id'),$title,$description,$table);	
+			// echo json_encode($test);
+			// view_quizzes();	
+		$this->configure_template($new_quiz_id);
+		}
+	}
+		
 	public function newquiz_temp($quiztemplateID = ''){
-		$this->MQuiz->createquiz_from_template($quiztemplateID);
-		redirect('quiz/dashboard', 'refresh');
+		if(!$this->isAdmin()){
+			redirect('quiz/dashboard', 'refresh');
+		}
+		else{
+			$this->MQuiz->createquiz_from_template($quiztemplateID);
+			redirect('quiz/dashboard', 'refresh');
+		}
 	}
 
 	public function newquestion(){
-		// changes by mel
-		// $quizid = $this->input->post('quizid');
-		// $title = $this->input->post('questiontitle');
-		// $description = 'Newly Added Question';
-		// $typeID = '1';
-			
-		// $questionid = $this->MQuiz->save_question($title,$description,$quizid	,$typeID);	
-			
-		// redirect('quiz/view_quiz/'. $quizid, 'refresh');
 		$quizid = $_POST['quizID'];
 		$title = $this->input->post('questiontitle');
 		$description = 'Newly Added Question';
-		$typeID = '1';
-		
-		$this->MQuiz->save_question($title,$description,$quizid	,$typeID);	
+		$table = "questions";
+		$this->MQuiz->save_question($title,$description,$quizid,$table);	
 			
 		redirect('quiz/quiz_configure/'. $quizid, 'refresh');
+	}
+
+	public function newtemplatequestion(){
+		if(!$this->isAdmin()){
+			redirect('quiz/dashboard', 'refresh');
+		}
+		else{
+		$quizid = $_POST['quizID'];
+		$title = $this->input->post('questiontitle');
+		$description = 'New Template';
+		$table = "questions_template";
+		$this->MQuiz->save_question($title,$description,$quizid,$table);	
+			
+		redirect('quiz/configure_template/'. $quizid, 'refresh');
+		}
 	}
 
 	public function newanswer(){
@@ -159,9 +199,25 @@ class Quiz extends MY_Controller {
 		$quizid = $this->input->post('quizid');
 		$questionid = $this->input->post('questionid');
 		$answerval = $this->input->post('answerval');
-		$this->MQuiz->save_answer($answerval,$questionid);	
+		$choicetable = "choices";
+		$this->MQuiz->save_answer($answerval,$questionid,$choicetable);	
 				
 		redirect('quiz/update_answers/'. $questionid, 'refresh');
+	}
+
+	public function newanswer_template(){
+		if(!$this->isAdmin()){
+			redirect('quiz/dashboard','refresh');
+		}
+		else{
+		$quizid = $this->input->post('quizid');
+		$questionid = $this->input->post('questionid');
+		$answerval = $this->input->post('answerval');
+		$choicetable = "choices_template";
+		$this->MQuiz->save_answer($answerval,$questionid,$choicetable);	
+				
+		redirect('quiz/update_template_answers/'. $questionid, 'refresh');
+		}
 	}
 
 	public function savequizresult(){
@@ -175,44 +231,90 @@ class Quiz extends MY_Controller {
 		
 	// }
 
-	public function view_quiz($id = ''){
-		$this->data['quiz'] = $this->MQuiz->get_quiz_info($id);
-		if($this->data['quiz'] === null){
-			$this->data['questions'] = null;
-		}
-		else{
-			$this->data['questions'] = $this->MQuiz->view_questions($id);
-		}
+	// public function view_quiz($id = ''){
+	// 	$quiztable = "quizzes";
+	// 	$questiontable = "questions";
+	// 	$this->data['quiz'] = $this->MQuiz->get_quiz_info($id,$quiztable);
+	// 	if($this->data['quiz'] === null){
+	// 		$this->data['questions'] = null;
+	// 	}
+	// 	else{
+	// 		$this->data['questions'] = $this->MQuiz->view_questions($id,$questiontable);
+	// 	}
 		
-		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'quizmenu/viewquiz';
-        $this->data['page'] = 'site';
+	// 	$this->data['title'] = 'KyLeads Quizzes';
+    //     $this->data['content'] = 'quizmenu/viewquiz';
+    //     $this->data['page'] = 'site';
         
-        $this->load->view('layout', $this->data);
-
-	}
+    //     $this->load->view('layout', $this->data);
+	// }
 
 
 	public function delete_quiz($id = ''){
-		$this->MQuiz->delete_quiz($id);
+		$quiztable = "quizzes";
+		$questiontable = "questions";
+		$choicetable = "choices";
+		$this->MQuiz->delete_quiz($id,$quiztable,$questiontable,$choicetable);
 		redirect('quiz/dashboard', 'refresh');
 	}
 
-	public function delete_question($id = ''){
+	public function delete_quiz_template($id = ''){
+		if(!$this->isAdmin()){
+			redirect('quiz/dashboard', 'refresh');
+		}else{
+			$quiztable = "quizzes_template";
+			$questiontable = "questions_template";
+			$choicetable = "choices_template";
+			$this->MQuiz->delete_quiz($id,$quiztable,$questiontable,$choicetable);
+			redirect('quiz/dashboard', 'refresh');
+		}
 		
-		$question = $this->MQuiz->get_question_info($id);
+		
+	}
+
+	public function delete_question($id = ''){
+		$questiontable = "questions";
+		$question = $this->MQuiz->get_question_info($id,$questiontable);
 		$title = $this->input->post('questiontitle');
 		
-		$this->MQuiz->delete_question($id);
+		$this->MQuiz->delete_question($id,$questiontable);
 		redirect('quiz/quiz_configure/'. $question->quiz_id, 'refresh');
 	}
+
+	public function delete_question_template($id = ''){
+		if(!$this->isAdmin()){
+			redirect('quiz/dashboard'. $question->quiz_id, 'refresh');
+		}
+		else{
+			$questiontable = "questions_template";
+			$question = $this->MQuiz->get_question_info($id,$questiontable);
+			$title = $this->input->post('questiontitle');
+			$this->MQuiz->delete_question($id,$questiontable);
+			redirect('quiz/configure_template/'. $question->quiz_id, 'refresh');
+		}
+	}
+
 	public function delete_choice($id = ''){
+		$choicetable = "choices";
+		$choice = $this->MQuiz->get_choice_info($id,$choicetable);
 		
-		$choice = $this->MQuiz->get_choice_info($id);
-		
-		$this->MQuiz->delete_choice($id);
+		$this->MQuiz->delete_choice($id,$choicetable);
 		redirect('quiz/update_answers/'. $choice->question_id, 'refresh');
 	}
+
+	public function delete_choice_template($id = ''){
+		if(!$this->isAdmin()){
+			redirect('quiz/dashboard', 'refresh');
+		}
+		else{
+			$choicetable = "choices_template";
+			$choice = $this->MQuiz->get_choice_info($id,$choicetable);
+			
+			$this->MQuiz->delete_choice($id,$choicetable);
+			redirect('quiz/update_template_answers/'. $choice->question_id, 'refresh');
+		}
+	}
+
 	public function integrations(){
 		
 		$this->data['title'] = 'KyLeads Quizzes';
@@ -234,9 +336,10 @@ class Quiz extends MY_Controller {
 	}
 
 	public function quiz_configure($id = ''){
-
-		$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($id);
-		$this->data['questions'] = $this->MQuiz->view_questions($id);
+		$quiztable = "quizzes";
+		$questiontable = "questions";
+		$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($id,$quiztable);
+		$this->data['questions'] = $this->MQuiz->view_questions($id,$questiontable);
 		//var_dump($this->data['questions']);
 		$this->data['title'] = 'KyLeads Quizzes';
         $this->data['content'] = 'quizmenu/editquiz';
@@ -246,20 +349,50 @@ class Quiz extends MY_Controller {
     	$this->load->view('layout', $this->data);
 	}
 	
+	public function configure_template($id = ''){
+		if(!$this->isAdmin()){
+			redirect('quiz/dashboard','refresh');
+		}else{
+			$quiztable = "quizzes_template";
+			$questiontable = "questions_template";
+			$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($id,$quiztable);
+			$this->data['questions'] = $this->MQuiz->view_questions($id,$questiontable);
+			$this->data['title'] = 'KyLeads Quizzes';
+			$this->data['content'] = 'templates/editquiztemplate';
+			$this->data['page'] = 'site';
+			$this->load->view('layout', $this->data);
+		}	
+	}
+
 	public function update_quiz_info(){
 		$id = $_POST['quizid'];
+		$table = "quizzes";
 		$title = $this->input->post('quiztitle');
 		$description = $this->input->post('quizdescrip');
-		$this->MQuiz->update_quiz($id,$title,$description);	
+		$this->MQuiz->update_quiz($id,$title,$description,$table);	
 
 		redirect('quiz/quiz_configure/'.$id, 'refresh');
 	}
 
+	public function update_template_info(){
+		if(!$this->isAdmin()){
+			redirect('quiz/dashboard', 'refresh');
+		}else{
+			$id = $_POST['quizid'];
+			$table = "quizzes_template";
+			$title = $this->input->post('quiztitle');
+			$description = $this->input->post('quizdescrip');
+			$this->MQuiz->update_quiz($id,$title,$description,$table);	
+			redirect('quiz/configure_template/'.$id, 'refresh');
+		}
+	}
 	public function update_answers($id = ''){
-
-		$this->data['question'] = $this->MQuiz->get_question_info($id);
-		$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($this->data['question']->quiz_id);
-		$this->data['choices'] = $this->MQuiz->view_choices($id);
+		$quiztable = "quizzes";
+		$questiontable = "questions";
+		$choicetable = "choices";
+		$this->data['question'] = $this->MQuiz->get_question_info($id,$questiontable);
+		$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($this->data['question']->quiz_id,$quiztable);
+		$this->data['choices'] = $this->MQuiz->view_choices($id,$choicetable);
 		$this->data['title'] = 'KyLeads Quizzes';
         $this->data['content'] = 'quizmenu/quizanswer';
         $this->data['page'] = 'site';
@@ -267,14 +400,39 @@ class Quiz extends MY_Controller {
         $this->load->view('layout', $this->data);
 
 	}
+	public function update_template_answers($id = ''){
+		if(!$this->isAdmin()){
+			redirect('quiz/dashboard','refresh');
+		}
+		else{
+			$quiztable = "quizzes_template";
+			$questiontable = "questions_template";
+			$choicetable = "choices_template";
+			$this->data['question'] = $this->MQuiz->get_question_info($id,$questiontable);
+			$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($this->data['question']->quiz_id,$quiztable);
+			$this->data['choices'] = $this->MQuiz->view_choices($id,$choicetable);
+			$this->data['title'] = 'KyLeads Quizzes';
+			$this->data['content'] = 'templates/quizanswertemplate';
+			$this->data['page'] = 'site';
+			
+			$this->load->view('layout', $this->data);
+		}
 
+	}
 	public function analytics(){
-		
 		$this->data['title'] = 'KyLeads Quizzes';
         $this->data['content'] = 'analytics/analytics';
         $this->data['page'] = 'site';
         
 
         $this->load->view('layout', $this->data);
+	}
+
+	private function isAdmin(){
+
+		if($this->session->userdata('user_type') === "Admin"){
+			return true;
+		}
+		return false;
 	}
 }

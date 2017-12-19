@@ -38,15 +38,22 @@
                                                     <a  href="<?php echo base_url('quiz/newquiz_temp/'. $quiz->id); ?>" type ="submit" class="btn btn-primary">Use Quiz</a> 
                                                 </button>
                                             </td> 
-                                               
                                         </td> 
                                         </tr>
                                          <?php
                                      }
                                 ?>
-                                
-
                               </tr>
+                              <?php
+                                if($this->session->userdata('user_type') === "Admin"){
+                                    ?>
+                                    <tr>
+                                        <td class="f-d-td"><a href="quiz/createtemplate" type="button" class="center btn btn-primary n-q" ><h6>Create New Template</h6></a></td>
+                                    </tr>
+                                    <?php
+                                }
+                              ?>
+                              
                              </tbody>
                           </table>
                       </div>

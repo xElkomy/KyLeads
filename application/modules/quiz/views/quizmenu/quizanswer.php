@@ -43,7 +43,6 @@
                                                         <td><?php echo $choice->value;?></td>
                                                         <td><a href="<?php echo base_url('quiz/delete_choice/'. $choice->id); ?>" type ="submit" class="btn btn-danger">Delete</a></td>
                                                     </tr>
-
                                                 <?php
                                                 }
                                                 ?>
@@ -51,7 +50,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a  href="<?php echo base_url('quiz/view_quiz/'. $question->quiz_id); ?>" type ="submit" class="btn btn-success">Done</a> 
+                            <a  href="<?php echo base_url('quiz/quiz_configure/'. $question->quiz_id); ?>" type ="submit" class="btn btn-success">Done</a> 
                         </div>
                     </div>
                 </div>
