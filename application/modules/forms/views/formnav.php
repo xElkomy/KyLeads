@@ -10,12 +10,11 @@
     <div id="sidebar-wrapper">
       <nav id="spy">
           <ul class="nav sidebar-nav-u nav-u">
-                <a href="quiz/templates" class="t-w-u"><button type="button" class="btn btn-u-q btn-success tablinks" 
-                onclick="openCity(event, 'new-optin')"> Create new Quiz</button></a>
-                <li class="active"><a href="quiz/dashboard"><i class="fa fa-tachometer" aria-hidden="true">  Dashboard</i></a></li>
-                <li><a href="quiz/forms"><i class="fa fa-question-circle" aria-hidden="true">  Quiz Optin-in form</i></a></li>
-                <li><a href="quiz/contacts"><i class="fa fa-users" aria-hidden="true">  Contacts</i></a></li>
-                <li><a href="quiz/integrations"><i class="fa fa-code-fork" aria-hidden="true">  Integrations</i></a></li>
+          <a href="forms/create" class="t-w-u"><button type="button" class="btn btn-u-f btn-success tablinks" 
+                onclick="openCity(event, 'new-optin')"> Create new <br> opt-in form</button></a>
+            <li class="active"><a  href="forms/dashboard" class="tablinks" onclick="openCity(event, 'dashboard')"><i class="fa fa-tachometer" aria-hidden="true"> Dashboard</i></a></li>
+            <li><a href="forms/contacts"><i class="fa fa-users" aria-hidden="true"> Contacts</i></a></li>
+            <li><a href="forms/integrations"><i class="fa fa-code-fork" aria-hidden="true">  Integrations</i></a></li>
           </ul>
       </nav>
     </div>

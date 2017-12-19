@@ -8,25 +8,7 @@
       <div id="sidebar-wrapper">
           <nav id="spy">
               <ul class="nav sidebar-nav-u nav-u">
-
-              <a href="forms/create" class="t-w-u"><button type="button" class="btn btn-u btn-success tablinks" 
-                onclick="openCity(event, 'new-optin')"> Create New <br> Opt-in Form</button></a>
-                  
-                  <li class="active">
-                      <a  href="forms/dashboard" class="tablinks" onclick="openCity(event, 'dashboard')">
-                          Dashboard
-                      </a>
-                  </li>
-                  <li>
-                      <a href="forms/contacts">
-                          Contacts
-                      </a>
-                  </li>
-                  <li>
-                      <a href="forms/integrations">
-                          Integrations
-                      </a>
-                  </li>
+                <?php $this->load->view("formnav.php"); ?>
               </ul>
           </nav>
       </div>
@@ -45,7 +27,6 @@
           document.getElementById(name).style.display = "block";
           evt.currentTarget.className += " active";
           }
-        // document.getElementById("defaultOpen").click();
     </script>
   </div>
 <!--/.fluid-container-->

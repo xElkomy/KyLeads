@@ -46,7 +46,7 @@
 							<?php echo $this->lang->line('login_remember_me'); ?>
 						</label>
 
-						<button type="submit" class="btn btn-primary btn-block btn-embossed" tabindex="4"><?php echo $this->lang->line('login_button_login'); ?><span class="fui-arrow-right"></span></button>
+						<button type="submit" class="btn btn-r-u btn-primary btn-block btn-embossed" tabindex="4">Log in<span class="fui-arrow-right"></span></button>
 
 						<div class="row">
 							<div class="col-md-12 text-center">
@@ -64,13 +64,13 @@
 						<?php echo $this->lang->line('login_signup_heading'); ?>
 					</h2>
 
-					<a href="auth/register" class="btn btn-l-c btn-block btn-inverse btn-embossed"><?php echo $this->lang->line('login_button_signup'); ?> <span class="fui-new"></span></a>
+					<a href="auth/register" class="btn btn-l-c btn-r-u btn-block btn-inverse btn-embossed">Start your free trial<span class="fui-new"></span></a>
 				</div>
 			</div><!-- /.col -->
 				<div class="col-block col-md-6 col-md-offset-6-c">
 					<div class="center-info">
 						<p class="t-w-u f-t-s">"It's not what we do once a in while that</p>
-						<p class="t-w-u f-t-s">shape our lives. It's what we do consistently."</p>
+						<p class="t-w-u f-t-s">shapes our lives. It's what we do consistently."</p>
 						<p class="t-w-u f-t-s">-Tony Robins</p>
 					</div>
 				</div>
