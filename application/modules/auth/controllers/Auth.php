@@ -150,9 +150,9 @@ class Auth extends MY_Controller {
             $this->form_validation->set_rules('last_name', 'Last name', 'required|trim');
             $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
             $this->form_validation->set_rules('password', 'Password', 'required|trim');
-            $this->form_validation->set_rules('package_id', 'Package', 'required');
+            // $this->form_validation->set_rules('package_id', 'Package', 'required');
             $this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'required|trim|matches[password]');
-            $this->form_validation->set_rules('captcha', 'Captcha', 'required');
+            // $this->form_validation->set_rules('captcha', 'Captcha', 'required');
 
             if ($this->form_validation->run() == FALSE)
             {
@@ -169,9 +169,9 @@ class Auth extends MY_Controller {
                 /** Check the captcha */
                 if ( ! isset($user_data) || $user_data != $captcha)
                 {
-                    $this->session->set_flashdata('error', $this->lang->line('auth_register_captcha_error'));
-                    $this->session->set_flashdata('formData', $_POST);
-                    redirect("auth/register", 'refresh');
+                    // $this->session->set_flashdata('error', $this->lang->line('auth_register_captcha_error'));
+                    // $this->session->set_flashdata('formData', $_POST);
+                    // redirect("auth/register", 'refresh');
                 }
 
                 if ($this->MUsers->is_email_exist($this->input->post('email')))
@@ -184,99 +184,99 @@ class Auth extends MY_Controller {
                 {
                     /** Check if its under free plan or paid plan */
                     $package = $this->MPackages->get_by_id($this->input->post('package_id'));
-                    if ($package['price'] != 0)
-                    {
-                        /** Getting payment menthod choosed by Admin */
-                        $selected_payment_gateway = $this->MPayments->get_by_name('payment_gateway');
-                        $selected_payment_gateway = $selected_payment_gateway[0]->value;
+                    // if ($package['price'] != 0)
+                    // {
+                    //     /** Getting payment menthod choosed by Admin */
+                    //     $selected_payment_gateway = $this->MPayments->get_by_name('payment_gateway');
+                    //     $selected_payment_gateway = $selected_payment_gateway[0]->value;
 
-                        /** Check if its stripe or paypal gateway */
-                        if ($selected_payment_gateway == "stripe") /** If Stripe is selected by Admin */
-                        {
-                            $stripe_cust = '';
-                            $stripe_test_mode = $this->MPayments->get_by_name('stripe_test_mode');
-                            $stripe_secret_key = $this->MPayments->get_by_name('stripe_secret_key');
-                            $stripe_publishable_key = $this->MPayments->get_by_name('stripe_publishable_key');
-                            if ($stripe_secret_key[0]->value != "")
-                            {
-                                $options['mode'] = $stripe_test_mode[0]->value;
-                                $options['stripe_secret_key'] = $stripe_secret_key[0]->value;
-                                $options['stripe_publishable_key'] = $stripe_publishable_key[0]->value;
-                                $this->load->library('Stripe', $options);
+                    //     /** Check if its stripe or paypal gateway */
+                    //     if ($selected_payment_gateway == "stripe") /** If Stripe is selected by Admin */
+                    //     {
+                    //         $stripe_cust = '';
+                    //         $stripe_test_mode = $this->MPayments->get_by_name('stripe_test_mode');
+                    //         $stripe_secret_key = $this->MPayments->get_by_name('stripe_secret_key');
+                    //         $stripe_publishable_key = $this->MPayments->get_by_name('stripe_publishable_key');
+                    //         if ($stripe_secret_key[0]->value != "")
+                    //         {
+                    //             $options['mode'] = $stripe_test_mode[0]->value;
+                    //             $options['stripe_secret_key'] = $stripe_secret_key[0]->value;
+                    //             $options['stripe_publishable_key'] = $stripe_publishable_key[0]->value;
+                    //             $this->load->library('Stripe', $options);
 
-                                /** Stripe add customer */
-                                $customer['email'] = trim($this->input->post('email'));
-                                $customer['description'] = trim($this->input->post('first_name')) . ' ' . trim($this->input->post('last_name'));
-                                try
-                                {
-                                    $stripe_cust = $this->stripe->addCustomer($customer);
-                                }
-                                catch (\Stripe\Error\Base $e)
-                                {
-                                    $this->session->set_flashdata('error', $this->lang->line('auth_register_stripe_base_error') . $e->getMessage());
-                                    redirect('auth/register', 'refresh');
-                                }
-                                catch (\Stripe\Error\Exception $e)
-                                {
-                                    $this->session->set_flashdata('error', $this->lang->line('auth_register_stripe_exception_error') . $e->getMessage());
-                                    redirect('auth/register', 'refresh');
-                                }
-                            }
-
-                            $user_id = $this->MUsers->create('User', $stripe_cust['id'], 'Inactive', 'stripe');
-                            $this->session->set_flashdata('success', $this->lang->line('auth_register_user_success'));
-                            redirect('auth/payment_stripe/' . $user_id, 'refresh');
-                        }
-                        else /** Else paypal is selected by Admin */
-                        {
-                            $user_id = $this->MUsers->create('User', NULL, 'Inactive', 'paypal');
-                            $this->session->set_flashdata('success', $this->lang->line('auth_register_user_success'));
-                            redirect('subscription/paypal/' . $user_id, 'refresh');
-                        }
-                    }
-                    else
-                    {
+                    //             /** Stripe add customer */
+                    //             $customer['email'] = trim($this->input->post('email'));
+                    //             $customer['description'] = trim($this->input->post('first_name')) . ' ' . trim($this->input->post('last_name'));
+                    //             try
+                    //             {
+                    //                 $stripe_cust = $this->stripe->addCustomer($customer);
+                    //             }
+                    //             catch (\Stripe\Error\Base $e)
+                    //             {
+                    //                 $this->session->set_flashdata('error', $this->lang->line('auth_register_stripe_base_error') . $e->getMessage());
+                    //                 redirect('auth/register', 'refresh');
+                    //             }
+                    //             catch (\Stripe\Error\Exception $e)
+                    //             {
+                    //                 $this->session->set_flashdata('error', $this->lang->line('auth_register_stripe_exception_error') . $e->getMessage());
+                    //                 redirect('auth/register', 'refresh');
+                    //             }
+                    //         }
+                    //         // added new user
+                    //         $user_id = $this->MUsers->create('User', $stripe_cust['id'], 'Inactive', 'stripe');
+                    //         $this->session->set_flashdata('success', $this->lang->line('auth_register_user_success'));
+                    //         redirect('auth/payment_stripe/' . $user_id, 'refresh');
+                    //     }
+                    //     else /** Else paypal is selected by Admin */
+                    //     {
+                    //         $user_id = $this->MUsers->create('User', NULL, 'Inactive', 'paypal');
+                    //         $this->session->set_flashdata('success', $this->lang->line('auth_register_user_success'));
+                    //         redirect('subscription/paypal/' . $user_id, 'refresh');
+                    //     }
+                    // }
+                    // else
+                    // {
                         $user_id = $this->MUsers->create('User', NULL, 'Active');
                         $this->session->set_flashdata('success', $this->lang->line('auth_register_free_user_success'));
                         redirect('auth/free_user_confirm/' . $user_id, 'refresh');
-                    }
+                    // }
                 }
             }
         }
         else
         {
-            if (sbpro_package() != 0 && count($this->MUsers->get_all('User', 'Active')) >= sbpro_package())
-            {
-                $this->session->set_flashdata('error', $this->lang->line('auth_register_user_limit_error'));
-                redirect("auth", 'refresh');
-            }
+            // if (sbpro_package() != 0 && count($this->MUsers->get_all('User', 'Active')) >= sbpro_package())
+            // {
+            //     $this->session->set_flashdata('error', $this->lang->line('auth_register_user_limit_error'));
+            //     redirect("auth", 'refresh');
+            // }
 
-            /** Create a random string */
-            $randomString = random_string('alpha', 7);
-            $this->session->set_userdata('randomString', $randomString);
+            // /** Create a random string */
+            // $randomString = random_string('alpha', 7);
+            // $this->session->set_userdata('randomString', $randomString);
 
-            $vals = array(
-                'word'  => $randomString,
-                'img_path'  => './tmp/',
-                'img_url'   => base_url() . 'tmp/',
-                'font_path' => './assets/fonts/lato/lato-black.ttf',
-                'img_width' => 360,
-                'img_height' => 80,
-                'expiration' => 7200
-                );
+            // $vals = array(
+            //     'word'  => $randomString,
+            //     'img_path'  => './tmp/',
+            //     'img_url'   => base_url() . 'tmp/',
+            //     'font_path' => './assets/fonts/lato/lato-black.ttf',
+            //     'img_width' => 360,
+            //     'img_height' => 80,
+            //     'expiration' => 7200
+            //     );
 
-            $cap = create_captcha($vals);
-            $this->data['captcha'] = $cap['image'];
-            $this->data['title'] = $this->lang->line('auth_register_title');
-            $this->data['content'] = 'register';
-            $this->data['page'] = 'register';
-            $gateway = $this->MPayments->get_by_name('payment_gateway');
-            $this->data['packages'] = $this->MPackages->get_all($gateway[0]->value);
+            // $cap = create_captcha($vals);
+            // $this->data['captcha'] = $cap['image'];
+            // $this->data['title'] = $this->lang->line('auth_register_title');
+            // $this->data['content'] = 'register';
+            // $this->data['page'] = 'register';
+            // $gateway = $this->MPayments->get_by_name('payment_gateway');
+            // $this->data['packages'] = $this->MPackages->get_all($gateway[0]->value);
 
-            /** Hook point */
-            $this->hooks->call_hook('auth_register_post');
+            // /** Hook point */
+            // $this->hooks->call_hook('auth_register_post');
 
-            $this->load->view('layout', $this->data);
+            // $this->load->view('layout', $this->data);
         }
     }
 

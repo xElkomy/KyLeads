@@ -144,11 +144,11 @@ class Quiz_model extends CI_Model {
             if($quiz->id === $quiztemplateID){
                 //quiztemplate found
                 //add questions
-                 $new_quiz_id = $this->createquiz($this->session->userdata('user_id'),$quiz->title,$quiz->description);
+                 $new_quiz_id = $this->createquiz($this->session->userdata('user_id'),$quiz->title,$quiz->description,"quizzes");
                 foreach($quiz->questions as $key2 => $question){
-                     $new_question_id = $this->save_question($question->title,$question->description,$new_quiz_id,'1');
+                     $new_question_id = $this->save_question($question->title,$question->description,$new_quiz_id,"questions");
                     foreach($question->choices as $key3 => $choices){
-                        $this->save_answer($choices->value,$new_question_id);
+                        $this->save_answer($choices->value,$new_question_id,"choices");
                     }
                 } 
             }

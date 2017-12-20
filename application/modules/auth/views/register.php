@@ -61,7 +61,7 @@
                         <input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="<?php echo $this->lang->line('register_input_password_confirm_placeholder'); ?>" value="<?php if ( $this->session->flashdata('formData') ) {echo $this->session->flashdata('formData')['password_confirm'];}?>">
                     </div>
 
-                    <div class="input-group" style="width:100%">
+                    <!-- <div class="input-group" style="width:100%">
                         <select name="package_id" id="package_id" class="form-control select select-block mbl">
                             <option value="" selected=""><?php echo $this->lang->line('register_select_package'); ?></option>
                             <?php
@@ -73,16 +73,16 @@
                             }
                             ?>
                         </select>
-                    </div>
+                    </div> -->
 
-                    <?php echo $captcha; ?>
+                    <!-- <?php echo $captcha; ?> -->
 
-                    <div class="input-group">
+                    <!-- <div class="input-group">
                         <span class="input-group-btn">
                             <button class="btn"><span class="fui-arrow-right"></span></button>
                         </span>
                         <input type="text" class="form-control" id="captcha" name="captcha" placeholder="<?php echo $this->lang->line('register_input_captcha_placeholder'); ?>">
-                    </div>
+                    </div> -->
 
                     <button type="submit" class="btn btn-r-u btn-primary btn-block btn-embossed"><?php echo $this->lang->line('register_create_account_button'); ?></span></button>
 
