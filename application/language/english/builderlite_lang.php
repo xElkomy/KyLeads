@@ -110,7 +110,8 @@ $lang['auth_register_captcha_error'] = "Captcha validation mismatch.";
 $lang['auth_register_email_exist_error'] = "User email already exists.";
 $lang['auth_register_stripe_base_error'] = "Customer create has some problem. Please try again.";
 $lang['auth_register_stripe_exception_error'] = "Customer create has some problem. Please try again.";
-$lang['auth_register_user_success'] = "User register successfully. <br>Please pay the package price.";
+// $lang['auth_register_user_success'] = "User register successfully. <br>Please pay the package price.";
+$lang['auth_register_user_success'] = "Congratulations you have registered successfully. <br>You may now use your free account.";
 $lang['auth_register_free_user_success'] = "User register successfully. <br>Please click below link for login to your account.";
 
 $lang['auth_payment_stripe_title'] = "SBPro user registration.";

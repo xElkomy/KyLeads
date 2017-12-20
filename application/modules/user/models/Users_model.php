@@ -398,7 +398,8 @@ class Users_model extends CI_Model {
     public function create($type, $streip_cus_id = NULL, $status, $current_subscription_gateway = '')
     {
         $data = array(
-            'package_id'                    => $this->input->post('package_id'),
+            // 'package_id'                    => $this->input->post('package_id'),
+            'package_id'                    => '1',
             'username'                      => $this->input->post('email'),
             'email'                         => $this->input->post('email'),
             'password'                      => substr(do_hash($this->input->post('password')), 0, 32),
@@ -408,7 +409,8 @@ class Users_model extends CI_Model {
             'current_subscription_gateway'  => $current_subscription_gateway,
             'type'                          => $type,
             'status'                        => $status,
-            'activation_code'               => substr(do_hash($this->input->post('email')), 0, 32),
+            // 'activation_code'               => substr(do_hash($this->input->post('email')), 0, 32),
+            'activation_code'               => NULL,
             'created_at'                    => date('Y-m-d H:i:s', time())
             );
         $this->db->insert('users', $data);

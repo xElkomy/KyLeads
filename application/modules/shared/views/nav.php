@@ -56,7 +56,7 @@
 			<!--<li <?php if (isset($page) && $page == "site") : ?>class="active"<?php endif; ?>><a href="sites"><span class="fui-windows"></span> <?php echo $this->lang->line('nav_sites'); ?></a></li>-->
 			<!--<li <?php if (isset($page) && $page == "asset") : ?>class="active"<?php endif; ?>><a href="asset/images"><span class="fui-image"></span> <?php echo $this->lang->line('nav_imagelibrary'); ?></a></li>-->
 			
-			<?php if ($this->session->userdata('user_type') == 'Admin' || $this->session->userdata('user_type') == 'Subscriber') : ?>
+			<?php if ($this->session->userdata('user_type') == 'Admin' || $this->session->userdata('user_type') == 'Subscriber' || $this->session->userdata('user_type') == 'User') : ?>
 				<!--<li <?php if (isset($page) && $page == "user") : ?>class="active"<?php endif; ?>><a href="user"><span class="fui-user"></span> <?php echo $this->lang->line('nav_users'); ?></a></li>-->
 				<!--<li <?php if (isset($page) && $page == "package") : ?>class="active"<?php endif; ?>><a href="package"><span class="fui-list-bulleted"></span> <?php echo $this->lang->line('nav_packages'); ?></a></li>-->
 				<!--<li <?php if (isset($page) && $page == "settings") : ?>class="active"<?php endif; ?>><a href="settings"><span class="fui-gear"></span> <?php echo $this->lang->line('nav_settings'); ?></a></li>-->

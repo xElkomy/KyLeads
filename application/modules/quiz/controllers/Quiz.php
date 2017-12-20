@@ -160,13 +160,8 @@ class Quiz extends MY_Controller {
 	}
 		
 	public function newquiz_temp($quiztemplateID = ''){
-		if(!$this->isAdmin()){
-			redirect('quiz/dashboard', 'refresh');
-		}
-		else{
 			$this->MQuiz->createquiz_from_template($quiztemplateID);
 			redirect('quiz/dashboard', 'refresh');
-		}
 	}
 
 	public function newquestion(){
