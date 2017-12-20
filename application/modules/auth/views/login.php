@@ -1,6 +1,6 @@
 <body class="login">
 
-	<div class="container">
+	<div class="container-l">
 
 		<div class="row">
 

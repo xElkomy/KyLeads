@@ -1,6 +1,4 @@
-.table-borderless .f-d-td, .table-borderless .f-d-th {
-    border: none;
-}
+
 .f-d-th{
     padding:0px;
 }
@@ -39,10 +37,7 @@
 .f-c-c::placeholder {
     color: black;;
   }
-.table-f{
-    width: 0px;
-    margin: 0px auto;
-}
+
 .c-d-f-d{
     margin: 60px auto;
 }
@@ -90,12 +85,14 @@
     margin:30px;
     font-size: 20px;
     border-radius: 52.5px;
+    background-color:#49CEA4;
 }
 .btn-u-f{
     margin:30px;
     font-size: 20px;
     width:200px;;
     border-radius: 52.5px;
+    background-color:#49CEA4;
 }
 .btn-r-u{
     font-size: 18px;
