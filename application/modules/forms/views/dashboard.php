@@ -27,17 +27,17 @@
                                   <tr class="table-borderless">
                                     <td class="f-d-td"><button type="button" class="btn btn-primary n-q-d btn-r-u">Icon/Image</button></td>
                                     <td class="f-d-td"><h6 class="t-b-u c-d-f-d">Here you have date create, <br>Views, and conversion rate </h6</td>
-                                    <td class="f-d-td"><a class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u" aria-hidden="true"></a> <a class="fa fa-s fa-bar-chart fa-3x c-d-f-d t-b-u" aria-hidden="true"></a></td>
+                                    <td class="f-d-td"><a class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u a-u active-shadow" aria-hidden="true"></a> <a class="fa fa-s fa-bar-chart fa-3x c-d-f-d t-b-u active-shadow a-u" aria-hidden="true"></a></td>
                                   </tr>
                                   <tr class="table-borderless">
                                     <td class="f-d-td"><button type="button" class="btn btn-primary n-q-d btn-r-u">Icon/Image</button></td>
                                     <td class="f-d-td"><h6 class="t-b-u c-d-f-d">Here you have date create, <br>Views, and conversion rate </h6</td>
-                                    <td class="f-d-td"><a class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u" aria-hidden="true"></a> <a class="fa fa-s fa-bar-chart fa-3x c-d-f-d t-b-u" aria-hidden="true"></a></td>
+                                    <td class="f-d-td"><a class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u a-u active-shadow" aria-hidden="true"></a> <a class="fa fa-s fa-bar-chart fa-3x c-d-f-d t-b-u active-shadow a-u" aria-hidden="true"></a></td>
                                   </tr>
                                   <tr class="table-borderless">
                                     <td class="f-d-td"><button type="button" class="btn btn-primary n-q-d btn-r-u">Icon/Image</button></td>
                                     <td class="f-d-td"><h6 class="t-b-u c-d-f-d">Here you have date create, <br>Views, and conversion rate </h6</td>
-                                    <td class="f-d-td"><a class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u" aria-hidden="true"></a> <a class="fa fa-s fa-bar-chart fa-3x c-d-f-d t-b-u" aria-hidden="true"></a></td>
+                                    <td class="f-d-td"><a class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u a-u active-shadow" aria-hidden="true"></a> <a class="fa fa-s fa-bar-chart fa-3x c-d-f-d t-b-u active-shadow a-u" aria-hidden="true"></a></td>
                                   </tr>
                                 </tbody>
                             </table>
@@ -47,21 +47,6 @@
               </div>
           </div>
       </div>
-      <script>
-        function openCity(evt, name) {
-          var i, tabcontent, tablinks;
-          tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-            }
-          tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-          document.getElementById(name).style.display = "block";
-          evt.currentTarget.className += " active";
-          }
-    </script>
   </div>
 <!--/.fluid-container-->
     <!-- End of Content-->

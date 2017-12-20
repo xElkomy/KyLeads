@@ -1,0 +1,33 @@
+.body-t-p{
+    background-color: #ccc;
+}
+.nav-t-p{
+    background-color: #365397;
+}
+.outer-div{
+  padding-top: 100px;
+  height: 100%;
+
+}
+.inner-div{
+  margin: auto;
+  width:800px;
+  padding:50px;
+  background-color:white;
+  border-radius: 10px;
+}
+.btn-t-p{
+    width:200px;
+    font-size: 20px;
+    border-radius:40px;
+    background-color:#49CEA4
+}
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #365397;
+    color: white;
+    text-align: center;
+}

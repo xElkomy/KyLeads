@@ -1,5 +1,5 @@
 .main-a{
-  padding: 50px;
+  padding: 5px;
   margin: 0 auto;
   background: #fff;
 }
@@ -46,4 +46,17 @@
 #tab1-a:checked ~ #content1-a,
 #tab2-a:checked ~ #content2-a {
   display: block;
+}
+.glyphicon { margin-right:10px; }
+.panel-body { padding:0px; }
+.panel-body table tr td { padding-left: 15px }
+.panel-body .table {margin-bottom: 0px; }
+
+.panel-group .panel {
+    border-radius: 0px;
+}
+.tab-content-a{
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }

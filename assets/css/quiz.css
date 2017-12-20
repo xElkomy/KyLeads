@@ -69,3 +69,51 @@ ul li p  {
     margin:0px;
     
 }
+
+ .active-shadow:hover{
+    text-shadow: 0 0 3px white, 0 0 5px green;
+ }
+ .a-u:hover{
+    color:black;
+ }
+ .dropbtn {
+    border: none;
+    cursor: pointer;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    top:110px;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 40px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.show {display:block;}
+
+#quizcontent #quizcontent-li {
+    display: inline-block;
+    padding: 0% 1%;
+  }
+
+  #quizcontent #quizcontent-li ~ #quizcontent-li {
+    border-left: 1.5px solid #333;
+  }
+  #quizcontent-li a {
+    color:black;
+}
