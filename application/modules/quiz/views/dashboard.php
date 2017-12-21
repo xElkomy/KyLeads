@@ -24,7 +24,7 @@
                             <table class="table table-f j-c-t-u table-borderless">
                             <hr>
                             <tbody>
-                                    <?php foreach ($quizzes as $quiz){  ?>
+                                    <?php foreach ($quizzes as $key => $quiz){  ?>
                                         <tr class="table-borderless">
                                             <td class="f-d-td"><button type="button" class="btn btn-primary n-q-d btn-r-u"><i class="fa fa fa-3x fa-home" aria-hidden="true"></i></button></td>
                                             <td class="f-d-td">
@@ -46,14 +46,12 @@
                                             <td class="f-d-td">
                                             <div class="dropdown">
                                                 
-                                                <a onclick="myFunction()" class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u a-u active-shadow dropbtn" aria-hidden="true"></a> 
-                                                
-                                                <div id="myDropdown" class="dropdown-content">
+                                                <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($quizzes);?>)" class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u a-u active-shadow dropbtn" aria-hidden="true"></a>
+                                                <div id="myDropdown<?php echo $key+1;?>" class="dropdown-content">
                                                     <a href="<?php echo base_url('quiz/quiz_configure/'. $quiz->id); ?>" class="btn btn-primary"><i class="fa fa-1x fa-wrench" aria-hidden="true"></i></a>
                                                     <a href="<?php echo base_url('quiz/delete_quiz/'. $quiz->id); ?>" class="btn btn-danger"><i class="fa fa-1x fa-trash-o" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
-
                                                 <a href="<?php echo base_url('quiz/analytics/'. $quiz->id); ?>" class="fa fa-s fa-bar-chart fa-3x c-d-f-d t-b-u active-shadow a-u" aria-hidden="true"></a>
                                             </td>
                                         </tr>
@@ -66,8 +64,14 @@
                             <script>
                                 /* When the user clicks on the button, 
                                 toggle between hiding and showing the dropdown content */
-                                function myFunction() {
-                                    document.getElementById("myDropdown").classList.toggle("show");
+                                function myFunction(id,total) {
+                                    for (let index = 1; index < total+1; index++) {
+                                        if(index == id){
+                                            document.getElementById("myDropdown"+id).classList.toggle("show");
+                                        }else{
+                                            document.getElementById("myDropdown"+index).classList.remove("show");
+                                        }       
+                                    }  
                                 }
 
                                 // Close the dropdown if the user clicks outside of it
@@ -78,9 +82,9 @@
                                     var i;
                                     for (i = 0; i < dropdowns.length; i++) {
                                     var openDropdown = dropdowns[i];
-                                    if (openDropdown.classList.contains('show')) {
-                                        openDropdown.classList.remove('show');
-                                    }
+                                        if (openDropdown.classList.contains('show')) {
+                                            openDropdown.classList.remove('show');
+                                        }
                                     }
                                 }
                                 }
