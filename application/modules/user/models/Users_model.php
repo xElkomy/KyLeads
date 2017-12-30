@@ -31,6 +31,7 @@ class Users_model extends CI_Model {
             $data['user_lname'] = $row['last_name'];
             $data['user_email'] = $row['email'];
             $data['user_type'] = $row['type'];
+            $data['cquiz_id'] = null;
             $this->session->set_userdata($data);
             return TRUE;
         }

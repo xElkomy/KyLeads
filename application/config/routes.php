@@ -110,6 +110,9 @@ if ($req_host == $app_host)
 	$route['forms'] = 'forms';
 	$route['forms/(.+)'] = 'forms/$1';
 
+	$route['api'] = 'api';
+	$route['api/(.+)'] = 'api/$1';
+
 	// Migrate controller's method route
 	$route['migrate'] = 'migrate';
 

@@ -199,6 +199,15 @@ class Quiz_model extends CI_Model {
         
     }
 
+    public function view_outcomes($quizID,$table){
+        
+        $query = $this->db->get_where($table,array('quiz_id'=>$quizID));
+
+        return $query->result();
+        
+    }
+
+
     public function view_questions($quizID,$table){
         
         $query = $this->db->get_where($table,array('quiz_id'=>$quizID));
@@ -237,6 +246,8 @@ class Quiz_model extends CI_Model {
         return $query->result();
         
     }
+
+
 
     public function get_quiz_info($id,$table){
         $data = array('id'=>$id,'user_id'=>$this->session->userdata('user_id'));
@@ -280,6 +291,11 @@ class Quiz_model extends CI_Model {
         $this->db->delete($questiontable);  
     }
 
+    public function delete_outcome($id,$table){
+        $this->db->delete($table, array('id' => $id));
+        // $this->db->where('question_id', $id);
+    }
+
     public function delete_question($id,$table){
         $this->db->delete($table, array('id' => $id));
         // $this->db->where('question_id', $id);
@@ -300,14 +316,26 @@ class Quiz_model extends CI_Model {
         $this->db->update($table, $data);
     }
 
-    public function update_user_logs($userID,$answerID,$questionID){
+    public function update_choice_outcome($choiceID,$outcomeID,$table){
         $data = array(
-            'user_id' => $userID,
-            'question_id' => $questionID,
-            'answer_id' => $answerID,
+            'outcome_id' => $outcomeID,
         );
-        $this->db->insert('questions', $data);
+        $this->db->where('id', $choiceID);
+        $this->db->update($table, $data);
     }
+
+    public function save_outcome($title,$description,$quizID,$table){
+
+        $data = array(
+            'title' => $title,
+            'description' => $description,
+            'quiz_id' => $quizID,
+        );
+        $this->db->insert($table, $data);
+        // $new_outcome_id = $this->db->insert_id();
+        // return $new_outcome_id;
+    }
+
     public function save_question($title,$description,$quizID,$table){
 
         $data = array(
@@ -338,9 +366,21 @@ class Quiz_model extends CI_Model {
 
         $this->db->insert('questions', $data);
     }
-    public function get_category(){
-
-        // return all categories
+    public function isMyData($questionID,$questiontable,$quiztable){
+        $userID = $this->session->userdata('user_id');
+        $quizID = $this->session->userdata('cquiz_id');
+        // query
+        // get question where (question.id = questionid and question.quizid == session(quizid)) and quiz.user_id == session(userid)
+        // $this->db->select ( '*' ); 
+        // $this->db->from ( $questiontable );
+        // $this->db->join ( $quiztable, $quiztable.'.id = '.$questiontable.'.quiz_id' , 'inner' );
+        // $query = $this->db->where($questiontable,array($questiontable.'.id' => $questionID));
+        // $query = $this->db->where($quiztable,array($quiztable.'.id' => $quizID, $quiztable.'.user_id' => $userID));
+        // $query = $this->db->get ();
+        $query = $this->db->get_where($questiontable,array('id' => $questionID,'quiz_id'=>$quizID));
+        return $query->first_row();
     }
+
+
     
 }

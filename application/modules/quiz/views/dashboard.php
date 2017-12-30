@@ -19,12 +19,13 @@
                   <div class="row row-c-u">
                     <div id="new-optin" class="tabcontent">
                       <h2 class="j-c-t-u">List of Quiz</h2>
-              
+                            
                               <!-- DASHBOARD MODULE -->
                             <table class="table table-f j-c-t-u table-borderless">
                             <hr>
                             <tbody>
                                     <?php foreach ($quizzes as $key => $quiz){  ?>
+
                                         <tr class="table-borderless">
                                             <td class="f-d-td"><button type="button" class="btn btn-primary n-q-d btn-r-u"><i class="fa fa fa-3x fa-home" aria-hidden="true"></i></button></td>
                                             <td class="f-d-td">
@@ -46,9 +47,9 @@
                                             <td class="f-d-td">
                                             <div class="dropdown">
                                                 
-                                                <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($quizzes);?>)" class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u a-u active-shadow dropbtn" aria-hidden="true"></a>
+                                                <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($quizzes);?>, <?php echo $quiz->id;?> )" class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u a-u active-shadow dropbtn" aria-hidden="true"></a>
                                                 <div id="myDropdown<?php echo $key+1;?>" class="dropdown-content">
-                                                    <a href="<?php echo base_url('quiz/quiz_configure/'. $quiz->id); ?>" class="btn btn-primary"><i class="fa fa-1x fa-wrench" aria-hidden="true"></i></a>
+                                                    <a href="<?php echo base_url('quiz/quiz_configure/'.$quiz->id);?>" class="btn btn-primary"><i class="fa fa-1x fa-wrench" aria-hidden="true"></i></a>
                                                     <a href="<?php echo base_url('quiz/delete_quiz/'. $quiz->id); ?>" class="btn btn-danger"><i class="fa fa-1x fa-trash-o" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
@@ -64,9 +65,10 @@
                             <script>
                                 /* When the user clicks on the button, 
                                 toggle between hiding and showing the dropdown content */
-                                function myFunction(id,total) {
+                                function myFunction(id,total,quizid) {
                                     for (let index = 1; index < total+1; index++) {
                                         if(index == id){
+                                            // alert("currenquiz"+quizid);
                                             document.getElementById("myDropdown"+id).classList.toggle("show");
                                         }else{
                                             document.getElementById("myDropdown"+index).classList.remove("show");

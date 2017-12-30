@@ -53,7 +53,8 @@ class Quiz extends MY_Controller {
 	}
 	
 	public function dashboard(){
-		
+				
+		$this->session->unset_userdata('cquiz_id');
 		$this->data['title'] = 'KyLeads Quizzes';
         $this->data['content'] = 'dashboard'; //dashboard
 		$this->data['page'] = 'site';
@@ -82,6 +83,7 @@ class Quiz extends MY_Controller {
         $this->load->view('layout', $this->data);
 	}
 
+	
 	public function createtemplate(){
 		if(!$this->isAdmin()){
 			redirect('quiz/dashboard','refresh');
@@ -165,14 +167,17 @@ class Quiz extends MY_Controller {
 	}
 
 	public function newquestion(){
-		$quizid = $_POST['quizID'];
+		$quizid = $this->session->userdata('cquiz_id');
 		$title = $this->input->post('questiontitle');
 		$description = 'Newly Added Question';
 		$table = "questions";
-		$this->MQuiz->save_question($title,$description,$quizid,$table);	
+		$new_question_id = $this->MQuiz->save_question($title,$description,$quizid,$table);	
 			
-		redirect('quiz/quiz_configure/'. $quizid, 'refresh');
+		redirect('quiz/update_answers/'.$new_question_id, 'refresh');
 	}
+
+	
+
 
 	public function newtemplatequestion(){
 		if(!$this->isAdmin()){
@@ -187,6 +192,17 @@ class Quiz extends MY_Controller {
 			
 		redirect('quiz/configure_template/'. $quizid, 'refresh');
 		}
+	}
+
+	public function newoutcome(){
+		$quizid = $this->session->userdata('cquiz_id');
+		$title = $this->input->post('outcometitle');
+		$description = 'Newly Added Outcome';
+		$table = "outcomes";
+		
+		$this->MQuiz->save_outcome($title,$description,$quizid,$table);	
+			
+		redirect('quiz/outcome', 'refresh');
 	}
 
 	public function newanswer(){
@@ -266,6 +282,12 @@ class Quiz extends MY_Controller {
 		
 		
 	}
+	
+	public function delete_outcome($id = ''){
+		$outcometable = "outcomes";
+		$this->MQuiz->delete_outcome($id,$outcometable);
+		redirect('quiz/outcome', 'refresh');
+	}
 
 	public function delete_question($id = ''){
 		$questiontable = "questions";
@@ -273,7 +295,7 @@ class Quiz extends MY_Controller {
 		$title = $this->input->post('questiontitle');
 		
 		$this->MQuiz->delete_question($id,$questiontable);
-		redirect('quiz/quiz_configure/'. $question->quiz_id, 'refresh');
+		redirect('quiz/quizquestions', 'refresh');
 	}
 
 	public function delete_question_template($id = ''){
@@ -330,7 +352,30 @@ class Quiz extends MY_Controller {
         $this->load->view('layout', $this->data);
 	}
 
-	public function quiz_configure($id = ''){
+	public function quizquestions(){
+		$id = $this->session->userdata('cquiz_id');
+		$quiztable = "quizzes";
+		$questiontable = "questions";
+		$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($id,$quiztable);
+		$this->data['questions'] = $this->MQuiz->view_questions($id,$questiontable);
+		//var_dump($this->data['questions']);
+		$this->data['title'] = 'KyLeads Quizzes';
+        $this->data['content'] = 'quizmenu/quizquestions';
+		$this->data['page'] = 'site';
+		
+        
+    	$this->load->view('layout', $this->data);
+	}
+
+	public function quiz_configure($id=''){
+		if($this->session->userdata('cquiz_id')== NULL){
+			$this->session->userdata['cquiz_id'] = $id; 
+		}
+		else{
+			$id = $this->session->userdata('cquiz_id');
+		}
+		
+			
 		$quiztable = "quizzes";
 		$questiontable = "questions";
 		$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($id,$quiztable);
@@ -360,13 +405,21 @@ class Quiz extends MY_Controller {
 	}
 
 	public function update_quiz_info(){
-		$id = $_POST['quizid'];
+		$id = $this->session->userdata('cquiz_id');
 		$table = "quizzes";
 		$title = $this->input->post('quiztitle');
 		$description = $this->input->post('quizdescrip');
 		$this->MQuiz->update_quiz($id,$title,$description,$table);	
 
-		redirect('quiz/quiz_configure/'.$id, 'refresh');
+		redirect('quiz/quiz_configure', 'refresh');
+	}
+
+	public function link_outcome($questionid='',$choiceID='',$outcomeID=''){
+		$table = "choices";
+		$description = $this->input->post('quizdescrip');
+		$this->MQuiz->update_choice_outcome($choiceID,$outcomeID,$table);	
+
+		redirect('quiz/update_answers/'.$questionid, 'refresh');
 	}
 
 	public function update_template_info(){
@@ -381,18 +434,42 @@ class Quiz extends MY_Controller {
 			redirect('quiz/configure_template/'.$id, 'refresh');
 		}
 	}
-	public function update_answers($id = ''){
+
+	public function outcome(){
+		
+		$id = $this->session->userdata('cquiz_id'); 
 		$quiztable = "quizzes";
-		$questiontable = "questions";
-		$choicetable = "choices";
-		$this->data['question'] = $this->MQuiz->get_question_info($id,$questiontable);
-		$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($this->data['question']->quiz_id,$quiztable);
-		$this->data['choices'] = $this->MQuiz->view_choices($id,$choicetable);
+		$outcometable = "outcomes";
+		$this->data['outcomes'] = $this->MQuiz->view_outcomes($id,$outcometable);
+		$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($id,$quiztable);
 		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'quizmenu/quizanswer';
+        $this->data['content'] = 'quizmenu/quizoutcome';
         $this->data['page'] = 'site';
         
         $this->load->view('layout', $this->data);
+
+	}
+
+	public function update_answers($id = ''){
+		if($this->isDataMine($id)){
+			$quizid = $this->session->userdata('cquiz_id');
+			$quiztable = "quizzes";
+			$questiontable = "questions";
+			$choicetable = "choices";
+			$outcometable = "outcomes";
+			$this->data['outcomes'] = $this->MQuiz->view_outcomes($quizid,$outcometable);
+			$this->data['question'] = $this->MQuiz->get_question_info($id,$questiontable);
+			$this->data['quizinfo'] = $this->MQuiz->get_quiz_info($this->data['question']->quiz_id,$quiztable);
+			$this->data['choices'] = $this->MQuiz->view_choices($id,$choicetable);
+			$this->data['title'] = 'KyLeads Quizzes';
+			$this->data['content'] = 'quizmenu/quizanswer';
+			$this->data['page'] = 'site';
+			
+			$this->load->view('layout', $this->data);
+		}else{
+			redirect('quiz/quizquestions','refresh');
+		}
+		
 
 	}
 	public function update_template_answers($id = ''){
@@ -429,5 +506,19 @@ class Quiz extends MY_Controller {
 			return true;
 		}
 		return false;
+	}
+
+	private function isDataMine($id){
+		$quiztable = "quizzes";
+		$questiontable = "questions";
+		$data = $this->MQuiz->isMyData($id,$questiontable,$quiztable);
+		// var_dump($data);
+		if(count($data)>0){
+			return true;
+		}else{
+			return false;
+		}
+			
+		
 	}
 }
