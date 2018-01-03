@@ -15,3 +15,5 @@ ERROR - 2018-01-03 14:12:45 --> Severity: error --> Exception: Too few arguments
 ERROR - 2018-01-03 14:21:57 --> Severity: error --> Exception: syntax error, unexpected ',' C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 404
 ERROR - 2018-01-03 14:22:01 --> Severity: error --> Exception: syntax error, unexpected ',' C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 404
 ERROR - 2018-01-03 14:54:36 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizpreview.php 28
+ERROR - 2018-01-03 15:14:37 --> Severity: error --> Exception: syntax error, unexpected ')', expecting variable (T_VARIABLE) C:\xampp\htdocs\application\modules\quiz\controllers\Quiz.php 118
+ERROR - 2018-01-03 15:14:43 --> Severity: error --> Exception: syntax error, unexpected ')', expecting variable (T_VARIABLE) C:\xampp\htdocs\application\modules\quiz\controllers\Quiz.php 118
