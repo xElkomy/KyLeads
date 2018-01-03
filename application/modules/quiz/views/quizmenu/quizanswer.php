@@ -41,7 +41,7 @@
                                                     <td class="col-md-4">
                                                     <div class="dropdown">
                                                         <?php 
-                                                            if($choice->outcome_id != null){
+                                                            if($choice->outcome_id != NULL){
                                                                 $buttosize = "3x";
                                                             }else{
                                                                 $buttosize = "1x";
@@ -51,14 +51,19 @@
                                                         <div id="myDropdown<?php echo $key+1;?>" class="dropdown-content">
                                                            <?php
                                                                 // var_dump($outcomes[0]->title);
-                                                                foreach ($outcomes as $outcome) {
-                                                                    // var_dump($outcome->title);
-                                                                    if($choice->outcome_id == $outcome->id)
-                                                                        $color = "btn btn-primary";
-                                                                    else    
-                                                                        $color = "btn btn-default";
-                                                                    ?><a class="<?php echo $color;?>" href="<?php echo base_url('quiz/link_outcome/'.$question->id.'/'. $choice->id).'/'.$outcome->id; ?>"><?php echo $outcome->title;?></a><?php
+                                                                if(count($outcomes)>0){
+                                                                    foreach ($outcomes as $outcome) {
+                                                                        // var_dump($outcome->title);
+                                                                        if($choice->outcome_id == $outcome->id)
+                                                                            $color = "btn btn-primary";
+                                                                        else    
+                                                                            $color = "btn btn-default";
+                                                                        ?><a class="<?php echo $color;?>" href="<?php echo base_url('quiz/link_outcome/'.$question->id.'/'. $choice->id).'/'.$outcome->id; ?>"><?php echo $outcome->title;?></a><?php
+                                                                    }
+                                                                }else{
+                                                                    ?><p class="btn btn-default">No Outcome yet</p><?php
                                                                 }
+                                                                
                                                            ?>
                                                         </div>
 

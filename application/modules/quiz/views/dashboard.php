@@ -50,6 +50,7 @@
                                                 <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($quizzes);?>, <?php echo $quiz->id;?> )" class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u a-u active-shadow dropbtn" aria-hidden="true"></a>
                                                 <div id="myDropdown<?php echo $key+1;?>" class="dropdown-content">
                                                     <a href="<?php echo base_url('quiz/quiz_configure/'.$quiz->id);?>" class="btn btn-primary"><i class="fa fa-1x fa-wrench" aria-hidden="true"></i></a>
+                                                    <a href="<?php echo base_url('quiz/preview_quiz/'. $quiz->id); ?>" class="btn btn-info btn-m-s-u btn-r-u"><i class="fa fa-1x fa-eye" aria-hidden="true"></i></a>  
                                                     <a href="<?php echo base_url('quiz/delete_quiz/'. $quiz->id); ?>" class="btn btn-danger"><i class="fa fa-1x fa-trash-o" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
@@ -90,7 +91,7 @@
                                     }
                                 }
                                 }
-                                </script>
+                            </script>
                       </div> 
                     </div>
                   </div>

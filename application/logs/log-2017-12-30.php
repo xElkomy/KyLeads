@@ -510,3 +510,9 @@ ERROR - 2017-12-30 23:07:45 --> Severity: Notice --> Undefined variable: page C:
 ERROR - 2017-12-30 23:07:45 --> Severity: Notice --> Undefined variable: page C:\xampp\htdocs\application\modules\shared\views\header.php 36
 ERROR - 2017-12-30 23:07:45 --> Severity: Notice --> Undefined variable: page C:\xampp\htdocs\application\modules\shared\views\header.php 44
 ERROR - 2017-12-30 23:07:45 --> Severity: Notice --> Undefined variable: page C:\xampp\htdocs\application\modules\shared\views\header.php 52
+ERROR - 2017-12-30 23:19:48 --> Severity: Notice --> Undefined variable: page C:\xampp\htdocs\application\modules\shared\views\header.php 12
+ERROR - 2017-12-30 23:19:48 --> Severity: Notice --> Undefined variable: page C:\xampp\htdocs\application\modules\shared\views\header.php 20
+ERROR - 2017-12-30 23:19:48 --> Severity: Notice --> Undefined variable: page C:\xampp\htdocs\application\modules\shared\views\header.php 28
+ERROR - 2017-12-30 23:19:48 --> Severity: Notice --> Undefined variable: page C:\xampp\htdocs\application\modules\shared\views\header.php 36
+ERROR - 2017-12-30 23:19:48 --> Severity: Notice --> Undefined variable: page C:\xampp\htdocs\application\modules\shared\views\header.php 44
+ERROR - 2017-12-30 23:19:48 --> Severity: Notice --> Undefined variable: page C:\xampp\htdocs\application\modules\shared\views\header.php 52
