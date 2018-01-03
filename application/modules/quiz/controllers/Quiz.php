@@ -107,23 +107,27 @@ class Quiz extends MY_Controller {
 	}
 
 	public function preview_template($id = ''){
+		if($this->isAdmin()){
+			$quiztable = "quizzes_template";
+			$questiontable = "questions_template";
+			$choicetable = "choices_template";
+			$outcometable = "outcomes_template";
+			$this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
+			if($this->data['quiz'] === null){
+				$this->data['questions'] = null;
+				redirect('quiz/dashboard','refresh');
+			}
 
-		$quiztable = "quizzes_template";
-		$questiontable = "questions_template";
-		$choicetable = "choices_template";
-		$outcometable = "outcomes_template";
-		$this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
-		if($this->data['quiz'] === null){
-			$this->data['questions'] = null;
+			// $this->data['quizzes'] =  $this->MQuiz->view_quiz_template_data($id);
+			$this->data['title'] = 'KyLeads Quizzes';
+			$this->data['content'] = 'templates/template_preview';
+			$this->data['page'] = 'site';
+			
+			$this->load->view('layout', $this->data);
+		}else {
 			redirect('quiz/dashboard','refresh');
 		}
-
-		// $this->data['quizzes'] =  $this->MQuiz->view_quiz_template_data($id);
-		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'templates/template_preview';
-        $this->data['page'] = 'site';
-        
-    	$this->load->view('layout', $this->data);
+		
 	}
 
 	public function preview_quiz($id = ''){
@@ -258,7 +262,7 @@ class Quiz extends MY_Controller {
 	public function newoutcometemplate(){
 		$quizid = $this->session->userdata('cquiz_id');
 		$title = $this->input->post('outcometitle');
-		$description = 'Newly Added Outcome';
+		$description = $this->input->post('outcomedescription');
 		$table = "outcomes_template";
 		
 		$this->MQuiz->save_outcome($title,$description,$quizid,$table);	
@@ -269,7 +273,7 @@ class Quiz extends MY_Controller {
 	public function newoutcome(){
 		$quizid = $this->session->userdata('cquiz_id');
 		$title = $this->input->post('outcometitle');
-		$description = 'Newly Added Outcome';
+		$description = $this->input->post('outcomedescription');
 		$table = "outcomes";
 		
 		$this->MQuiz->save_outcome($title,$description,$quizid,$table);	
