@@ -229,3 +229,15 @@ ERROR - 2018-01-03 15:36:01 --> Query error: Table 'c9.outcomes_template' doesn'
 FROM `outcomes_template`
 WHERE `quiz_id` = '1'
 ERROR - 2018-01-03 15:36:01 --> Severity: error --> Exception: Call to a member function result() on boolean C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 218
+ERROR - 2018-01-03 15:45:57 --> Query error: Table 'c9.outcomes_template' doesn't exist - Invalid query: SELECT *
+FROM `outcomes_template`
+WHERE `quiz_id` = '1'
+ERROR - 2018-01-03 15:45:57 --> Severity: error --> Exception: Call to a member function result() on boolean C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 218
+ERROR - 2018-01-03 15:46:55 --> Query error: Table 'c9.outcomes_template' doesn't exist - Invalid query: SELECT *
+FROM `outcomes_template`
+WHERE `quiz_id` = '1'
+ERROR - 2018-01-03 15:46:55 --> Severity: error --> Exception: Call to a member function result() on boolean C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 218
+ERROR - 2018-01-03 15:47:08 --> Query error: Table 'c9.outcomes_template' doesn't exist - Invalid query: SELECT *
+FROM `outcomes_template`
+WHERE `quiz_id` = '1'
+ERROR - 2018-01-03 15:47:08 --> Severity: error --> Exception: Call to a member function result() on boolean C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 218
