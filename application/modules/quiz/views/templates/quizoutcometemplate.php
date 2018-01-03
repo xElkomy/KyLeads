@@ -88,6 +88,7 @@
                                                                 <form action="<?php echo base_url('quiz/newoutcometemplate'); ?>" method="post">
                                                                     <!-- <input type="hidden" name="quizID" value="<?php echo $outcome->id;?>"></input> -->
                                                                     <label><input name="outcometitle" placeholder="New Outcome" class="form-control" style = "width: 540px;" required></input>
+                                                                    <input name="outcomedescription" placeholder="Put Description here" class="form-control" style = "width: 540px; height:  300px;" required></input>
                                                                     <button type ="submit" class="btn btn-lg btn-primary btn-wide margin-top-40 g-r-u btn-r-u"><i class="fa fa-plus-circle" aria-hidden="true"> Add Outcome</i></button>
                                                                 </form>                                                    
                                                             </div>
