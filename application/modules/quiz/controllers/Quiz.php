@@ -107,7 +107,18 @@ class Quiz extends MY_Controller {
 	}
 
 	public function preview_template($id = ''){
-		$this->data['quizzes'] =  $this->MQuiz->view_quiz_template_data($id);
+
+		$quiztable = "quizzes_template";
+		$questiontable = "questions_template";
+		$choicetable = "choices_template";
+		$outcometable = "outcomes_template";
+		$this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
+		if($this->data['quiz'] === null){
+			$this->data['questions'] = null;
+			redirect('quiz/dashboard','refresh');
+		}
+
+		// $this->data['quizzes'] =  $this->MQuiz->view_quiz_template_data($id);
 		$this->data['title'] = 'KyLeads Quizzes';
         $this->data['content'] = 'templates/template_preview';
         $this->data['page'] = 'site';
@@ -116,22 +127,24 @@ class Quiz extends MY_Controller {
 	}
 
 	public function preview_quiz($id = ''){
+		
 		$quiztable = "quizzes";
 		$questiontable = "questions";
-		$this->data['quiz'] =  $this->MQuiz->get_quiz_info($id,$quiztable);
+		$choicetable = "choices";
+		$outcometable = "outcomes";
+		$this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
 		if($this->data['quiz'] === null){
 			$this->data['questions'] = null;
 			redirect('quiz/dashboard','refresh');
 		}
-		else{
-			$this->data['questions'] =  $this->MQuiz->view_question_data($id);
-		}
-		// var_dump($this->data['questions'][1]->choices);
+
+		// $this->data['quizzes'] =  $this->MQuiz->view_quiz_template_data($id);
 		$this->data['title'] = 'KyLeads Quizzes';
         $this->data['content'] = 'quizmenu/quizpreview';
         $this->data['page'] = 'site';
         
-        $this->load->view('layout', $this->data);
+    	$this->load->view('layout', $this->data);
+		// -----------------------
 	}
 
 	public function newquiz(){

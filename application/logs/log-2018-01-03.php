@@ -192,7 +192,40 @@ ERROR - 2018-01-03 14:12:45 --> Severity: error --> Exception: Too few arguments
 ERROR - 2018-01-03 14:21:57 --> Severity: error --> Exception: syntax error, unexpected ',' C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 404
 ERROR - 2018-01-03 14:22:01 --> Severity: error --> Exception: syntax error, unexpected ',' C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 404
 ERROR - 2018-01-03 14:54:36 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizpreview.php 28
+<<<<<<< HEAD
 >>>>>>> 35eec0c4ba7cec8214aa613bc9b1727ab14836b7
 ERROR - 2018-01-03 15:09:10 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizpreview.php 28
 ERROR - 2018-01-03 15:09:15 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizpreview.php 28
 ERROR - 2018-01-03 15:11:20 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizpreview.php 28
+=======
+ERROR - 2018-01-03 15:14:37 --> Severity: error --> Exception: syntax error, unexpected ')', expecting variable (T_VARIABLE) C:\xampp\htdocs\application\modules\quiz\controllers\Quiz.php 118
+ERROR - 2018-01-03 15:14:43 --> Severity: error --> Exception: syntax error, unexpected ')', expecting variable (T_VARIABLE) C:\xampp\htdocs\application\modules\quiz\controllers\Quiz.php 118
+>>>>>>> b861ae73eaeae57c77f97661d80ce4a358cd4512
+ERROR - 2018-01-03 15:33:48 --> Query error: Table 'c9.outcomes_template' doesn't exist - Invalid query: SELECT *
+FROM `outcomes_template`
+WHERE `quiz_id` = '1'
+ERROR - 2018-01-03 15:33:48 --> Severity: error --> Exception: Call to a member function result() on boolean C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 218
+ERROR - 2018-01-03 15:34:34 --> Query error: Table 'c9.outcomes_template' doesn't exist - Invalid query: SELECT *
+FROM `outcomes_template`
+WHERE `quiz_id` = '1'
+ERROR - 2018-01-03 15:34:34 --> Severity: error --> Exception: Call to a member function result() on boolean C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 218
+ERROR - 2018-01-03 15:35:08 --> Query error: Table 'c9.outcomes_template' doesn't exist - Invalid query: SELECT *
+FROM `outcomes_template`
+WHERE `quiz_id` = '1'
+ERROR - 2018-01-03 15:35:08 --> Severity: error --> Exception: Call to a member function result() on boolean C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 218
+ERROR - 2018-01-03 15:35:56 --> Query error: Table 'c9.outcomes_template' doesn't exist - Invalid query: SELECT *
+FROM `outcomes_template`
+WHERE `quiz_id` = '1'
+ERROR - 2018-01-03 15:35:56 --> Severity: error --> Exception: Call to a member function result() on boolean C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 218
+ERROR - 2018-01-03 15:36:01 --> Query error: Table 'c9.outcomes_template' doesn't exist - Invalid query: SELECT *
+FROM `outcomes_template`
+WHERE `quiz_id` = '1'
+ERROR - 2018-01-03 15:36:01 --> Severity: error --> Exception: Call to a member function result() on boolean C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 218
+ERROR - 2018-01-03 15:36:01 --> Query error: Table 'c9.outcomes_template' doesn't exist - Invalid query: SELECT *
+FROM `outcomes_template`
+WHERE `quiz_id` = '1'
+ERROR - 2018-01-03 15:36:01 --> Severity: error --> Exception: Call to a member function result() on boolean C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 218
+ERROR - 2018-01-03 15:36:01 --> Query error: Table 'c9.outcomes_template' doesn't exist - Invalid query: SELECT *
+FROM `outcomes_template`
+WHERE `quiz_id` = '1'
+ERROR - 2018-01-03 15:36:01 --> Severity: error --> Exception: Call to a member function result() on boolean C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 218
