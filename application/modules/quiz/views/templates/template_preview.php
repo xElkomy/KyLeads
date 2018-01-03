@@ -31,26 +31,6 @@
                             <div class="item active">                                              
                                     <p>Question <?php echo $idx+1;?> of <?php echo count($quizzes[0]->questions);?></p>
                                     <h6> <?php echo $question->title?></h6>
-                                    <table>
-                                                <?php 
-                                                    ?>
-                                                    <form action="">
-                                                    <ul>
-                                                        <?php
-                                                        foreach ($question->choices as $choice) 
-                                                        {  
-                                                            ?>
-                                                            <li class = "btn btn-lg btn-seconday btn-wide" style="text-align: left; width: 300px;">
-                                                                <input type="radio" name="choice" value="<?php echo $choice->id;?>"><a><h7><?php echo $choice->value;?></h7></a>
-                                                            </li></br>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </ul>
-                                                    </form>
-                                                    <?php
-                                                ?>
-                                        </table>
                             </div> 
                     <?php  
                         }else{
@@ -58,26 +38,6 @@
                             <div class="item">                                              
                                 <p>Question <?php echo $idx+1;?> of <?php echo count($quizzes[0]->questions);?></p>
                                 <h6> <?php echo $question->title?></h6>
-                                <table>
-                                                <?php 
-                                                    ?>
-                                                    <form action="">
-                                                    <ul>
-                                                        <?php
-                                                        foreach ($question->choices as $choice) 
-                                                        {  
-                                                            ?>
-                                                            <li class = "btn btn-lg btn-seconday btn-wide" style="text-align: left; width: 300px;">
-                                                                <input type="radio" name="choice" value="<?php echo $choice->id;?>"><a><h7><?php echo $choice->value;?></h7></a>
-                                                            </li></br>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </ul>
-                                                    </form>
-                                                    <?php
-                                                ?>
-                                        </table>
                             </div>
                             <?php 
                             }       
@@ -130,4 +90,4 @@ $(function(){
 <![endif]-->
 </body>
 
-</html> 
+</html>

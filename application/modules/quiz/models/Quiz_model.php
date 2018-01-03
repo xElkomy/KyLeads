@@ -190,6 +190,18 @@ class Quiz_model extends CI_Model {
         return $results; 
     }
 
+    public function view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable){
+        
+        $results  = $this->db->get_where($quiztable,array('id'=>$id))->result();
+        foreach ($results as $key => $val) {
+            $results[$key]->questions = $this->view_questions($val->id,$questiontable);
+            $results[$key]->outcomes = $this->view_outcomes($val->id,$outcometable);
+            foreach($results[$key]->questions as $key2 => $val2){
+                $results[$key]->questions[$key2]->choices = $this->view_choices($val2->id,$choicetable);
+            } 
+        }            
+        return $results; 
+    }
 
     public function view_all_choices(){
         
@@ -280,18 +292,25 @@ class Quiz_model extends CI_Model {
         
     }
     
-    public function delete_quiz($id,$quiztable,$questiontable,$choicetable){ 
+    public function delete_quiz($id,$quiztable,$questiontable,$choicetable,$outcometable){ 
         $results = $this->view_questions($id,$questiontable);
         foreach($results as $key => $val){
             $this->db->delete($choicetable, array('question_id' => $val->id)); 
         }  
         $this->db->delete($quiztable, array('id' => $id));
+        $this->db->delete($outcometable, array('quiz_id' => $id));
         // delete all questions of the quiz
         $this->db->where('quiz_id', $id);
-        $this->db->delete($questiontable);  
+        $this->db->delete($questiontable);
+
     }
 
-    public function delete_outcome($id,$table){
+    public function delete_outcome($id,$table,$choicetable){ 
+        // UPDATE `choicetable` SET `outcome_id` = 'null' WHERE `outcome_id` = id
+        $this->db->set('outcome_id', NULL);
+        $this->db->where('outcome_id', $id);
+        $this->db->update($choicetable);
+
         $this->db->delete($table, array('id' => $id));
         // $this->db->where('question_id', $id);
     }
@@ -378,6 +397,11 @@ class Quiz_model extends CI_Model {
         // $query = $this->db->where($quiztable,array($quiztable.'.id' => $quizID, $quiztable.'.user_id' => $userID));
         // $query = $this->db->get ();
         $query = $this->db->get_where($questiontable,array('id' => $questionID,'quiz_id'=>$quizID));
+        return $query->first_row();
+    }
+
+    public function isMyQuiz($id){
+        $query = $this->db->get_where('quizzes',array('user_id' => $this->session->userdata('user_id'),'id' => $id));
         return $query->first_row();
     }
 

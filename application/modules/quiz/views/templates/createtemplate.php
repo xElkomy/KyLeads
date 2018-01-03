@@ -9,7 +9,7 @@
     <div class="row row-c-u-q">
         <div class="col-sm-2">
             <div>
-                <?php $this->load->view("quiznav.php"); ?>
+                <?php $this->load->view("templatemenunav.php"); ?>
             </div>
         </div>
          <div class="col-sm-10">
