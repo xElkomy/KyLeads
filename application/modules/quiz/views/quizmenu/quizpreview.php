@@ -24,69 +24,63 @@
                         <div class="carousel-inner">
                 <?php
                     $firstQuestion=0;
-                    
-                    foreach($quiz[0]->questions  as $idx => $question){
+    
+                    foreach($quiz[0]->questions as $idx => $question){
                         if($firstQuestion === $idx){
                     ?>
-                            <div class="item active">                                              
+                            <div class="item active">
                                     <p>Question <?php echo $idx+1;?> of <?php echo count($quiz[0]->questions);?></p>
                                     <h6> <?php echo $question->title?></h6>
-                                    <table>
-                                                <?php 
-                                                    ?>
-                                                    <form action="">
-                                                    <ul>
-                                                        <?php
-                                                        foreach ($question->choices as $choice) 
-                                                        {  
-                                                            ?>
-                                                            <li class = "btn btn-lg btn-seconday btn-wide" style="text-align: left; width: 300px;">
-                                                                <input type="radio" name="choice" value="<?php echo $choice->id;?>"><a><h7><?php echo $choice->value;?></h7></a>
-                                                            </li></br>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </ul>
-                                                    </form>
+                                       
+                                        <div class="form-check f-c-c-t-p">
+                                            <?php
+                                                foreach ($question->choices as $choice) 
+                                                {
+                                            ?>
+                                                        <div class="margin-l-t-p">
+                                                            <label class="form-check-label f-c-l-t-p">
+                                                                <input type="radio" class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u"><?php echo $choice->value;?></h7></a>   
+                                                            </label>    
+                                                        </div>
+                                               
+                                                    <br>
                                                     <?php
-                                                ?>
-                                        </table>
+                                                }
+                                            ?>
+                                        </div>
+                                          
                             </div> 
                     <?php  
                         }else{
                     ?>
-                            <div class="item">                                              
+                            <div class="item">                                            
                                 <p>Question <?php echo $idx+1;?> of <?php echo count($quiz[0]->questions);?></p>
                                 <h6> <?php echo $question->title?></h6>
-                                <table>
-                                                <?php 
-                                                    ?>
-                                                    <form action="">
-                                                    <ul>
-                                                        <?php
-                                                        foreach ($question->choices as $choice) 
-                                                        {  
-                                                            ?>
-                                                            <li class = "btn btn-lg btn-seconday btn-wide" style="text-align: left; width: 300px;">
-                                                                <input type="radio" name="choice" value="<?php echo $choice->id;?>"><a><h7><?php echo $choice->value;?></h7></a>
-                                                            </li></br>
-                                                            <?php
-                                                        }
-                                                        ?>
-                                                    </ul>
-                                                    </form>
-                                                    <?php
-                                                ?>
-                                        </table>
+                                
+                                <div class="form-check f-c-c-t-p">
+                                    <?php
+                                        foreach ($question->choices as $choice) 
+                                        {
+                                    ?>
+                                                <div class="margin-l-t-p">
+                                                    <label class="form-check-label f-c-l-t-p">
+                                                        <input type="radio" class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u"><?php echo $choice->value;?></h7></a>   
+                                                    </label>    
+                                                </div>
+                                                
+                                            <br>
+                                            <?php
+                                        }
+                                    ?>
+                                </div>
+                                    <button type="button" name="back" class="btn back btn-success" style="float:left"><i class="fa fa-arrow-left" aria-hidden="true"> Back</i></button>
                             </div>
                             <?php 
-                            }       
+                            }
+                            
                         }
                     ?>                                                                           
                 </div>
-                        <!-- Carousel controls -->
-                        <a class="carousel-control left" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
-                        <a class="carousel-control right" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 </div>
                 <div>
@@ -97,13 +91,23 @@
 <div class="footer"><h6>Powered by KyLeads</h6></div>
 
 <script>
-    function start(cityName) {
+    function start(name) {
         var i;
         var x = document.getElementsByClassName("city");
         for (i = 0; i < x.length; i++) {
         x[i].style.display = "none";  
         }
-        document.getElementById(cityName).style.display = "block";  
+        document.getElementById(name).style.display = "block";  
+    
+    var $choice = $( "input:radio[name=choice]" );
+    $choice.on( "click", function() {
+        $("#myCarousel").carousel("next");
+    });
+
+    var $back = $( "button[name=back]" );
+    $back.on( "click", function() {
+        $("#myCarousel").carousel("prev");
+    });
     }
 </script>
 <!-- End of Content-->
