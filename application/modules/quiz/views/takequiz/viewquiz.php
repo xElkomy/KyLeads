@@ -41,7 +41,7 @@
                                                         {  
                                                             ?>
                                                             <li class = "btn btn-lg btn-seconday btn-wide" style="text-align: left; width: 300px;">
-                                                                <input type="radio" name="choice" value="<?php echo $choice->id;?>"><a><h7><?php echo $choice->value;?></h7></a>
+                                                                <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)" type="radio" name="choice"><a><h7><?php echo $choice->value;?></h7></a>
                                                             </li></br>
                                                             <?php
                                                         }
@@ -104,6 +104,33 @@
         x[i].style.display = "none";  
         }
         document.getElementById(cityName).style.display = "block";  
+    }
+    var resultData = [];
+    var outcomeArray = [];
+    function addResult(quizid,questionid,answerid,outcomeid){
+        resultData.push({
+            questionid : questionid,
+            answerid : answerid
+        });
+        // console.log("Question : "+questionid+" answer : "+answerid+" outcome : "+outcomeid );
+        // console.log(resultData);
+        submitResult();
+    }
+    function submitResult(){
+        Data = JSON.stringify( resultData );
+        // var myJSON = JSON.stringify(resultData);
+        // $.ajax({
+        //     type: "POST",
+        //     url: "<?php echo base_url() ?>takequiz/submitData",
+        //     data: {
+        //         results: "test",
+        //     }   
+        // }).done(function (result) {      
+        //  alert("data added");
+        // });  
+        $.post('http://localhost:8084/takequiz/submitData', {results: Data, }).done(function(data) {
+         alert(data);
+        });
     }
 </script>
 <!-- End of Content-->

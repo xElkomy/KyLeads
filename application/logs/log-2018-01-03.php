@@ -241,3 +241,4 @@ ERROR - 2018-01-03 15:47:08 --> Query error: Table 'c9.outcomes_template' doesn'
 FROM `outcomes_template`
 WHERE `quiz_id` = '1'
 ERROR - 2018-01-03 15:47:08 --> Severity: error --> Exception: Call to a member function result() on boolean C:\xampp\htdocs\application\modules\quiz\models\Quiz_model.php 218
+ERROR - 2018-01-03 16:46:56 --> Could not find the language line "asset_imagedelete_button_loading"

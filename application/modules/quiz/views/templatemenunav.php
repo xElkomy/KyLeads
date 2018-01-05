@@ -14,6 +14,7 @@
                 <li class="active"><a href="quiz/configure_template"><i class="fa fa-tachometer" aria-hidden="true">Configure</i></a></li>
                 <li><a href="quiz/templateoutcome"><i class="fa fa-question-circle" aria-hidden="true">Outcomes</i></a></li>
                 <li><a href="quiz/templatequestions"><i class="fa fa-question-circle" aria-hidden="true">Questions</i></a></li>
+                <li><a href="quiz/templatequestions"><i class="fa fa-question-circle" aria-hidden="true">Review</i></a></li>
                 <li><a href="quiz/publishtemplate"><i class="fa fa-code-fork" aria-hidden="true">Publish</i></a></li>
                 <hr>
                 <li><a href="quiz/dashboard"><i class="fa fa-tachometer" aria-hidden="true">  Dashboard</i></a></li>

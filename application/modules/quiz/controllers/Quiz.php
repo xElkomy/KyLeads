@@ -93,7 +93,6 @@ class Quiz extends MY_Controller {
 			$this->data['page'] = 'site';
 			$this->load->view('layout', $this->data);
 		}
-		
 	}
 
 	public function templates(){
@@ -131,26 +130,32 @@ class Quiz extends MY_Controller {
 	}
 
 	public function preview_quiz($id = ''){
-		
 		$quiztable = "quizzes";
 		$questiontable = "questions";
 		$choicetable = "choices";
 		$outcometable = "outcomes";
-		$this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
-		if($this->data['quiz'] === null){
-			$this->data['questions'] = null;
+		if($this->isMyQuiz($id)){
+			if(!$this->isQuizActive($id,$quiztable)){
+				$this->data['status'] = "Note: This quiz is still unpublish and not yet visible to the public";
+			}else {
+				$this->data['status'] = "";
+			}
+			$this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
+			if($this->data['quiz'] === null){
+				$this->data['questions'] = null;
+				redirect('quiz/dashboard','refresh');
+			}
+			$this->data['title'] = 'KyLeads Quizzes';
+			$this->data['content'] = 'quizmenu/quizpreview';
+			$this->data['page'] = 'site';
+			
+			$this->load->view('layout', $this->data);
+		}else{
 			redirect('quiz/dashboard','refresh');
 		}
-
-		// $this->data['quizzes'] =  $this->MQuiz->view_quiz_template_data($id);
-		$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'quizmenu/quizpreview';
-        $this->data['page'] = 'site';
-        
-    	$this->load->view('layout', $this->data);
 		// -----------------------
 	}
-
+	
 	public function newquiz(){
 		// header('Content-Type: application/json');
 		$title =$this->input->post('quiztitle');
@@ -201,6 +206,26 @@ class Quiz extends MY_Controller {
 		$new_question_id = $this->MQuiz->save_question($title,$description,$quizid,$table);	
 		
 		redirect('quiz/update_template_answers/'.$new_question_id, 'refresh');
+	}
+
+	public function publishcreatedquiz(){
+		$id = $this->session->userdata('cquiz_id');
+		if($this->isMyQuiz($id)){
+			$quiztable = "quizzes";
+			$this->MQuiz->publishQuiz($quiztable);
+		}
+		
+		redirect('quiz/dashboard','refresh');
+	}
+
+	public function unpublishcreatedquiz(){
+		$id = $this->session->userdata('cquiz_id');
+		if($this->isMyQuiz($id)){
+			$quiztable = "quizzes";
+			$this->MQuiz->unpublishQuiz($quiztable);
+		}
+		
+		redirect('quiz/dashboard','refresh');
 	}
 
 	public function publishquiz(){
@@ -660,6 +685,15 @@ class Quiz extends MY_Controller {
 
 	private function isMyQuiz($id){
 		$data = $this->MQuiz->isMyQuiz($id);
+		if(count($data)>0){
+			return true;
+		}else{
+			return false;
+		}	
+	}
+
+	private function isQuizActive($id,$quiztable){
+		$data = $this->MQuiz->GetQuizStatus($id,$quiztable);
 		if(count($data)>0){
 			return true;
 		}else{

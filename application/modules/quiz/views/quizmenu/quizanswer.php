@@ -42,7 +42,7 @@
                                                     <div class="dropdown">
                                                         <?php 
                                                             if($choice->outcome_id != NULL){
-                                                                $buttosize = "3x";
+                                                                $buttosize = "2x";
                                                             }else{
                                                                 $buttosize = "1x";
                                                             }

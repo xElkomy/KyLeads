@@ -60,7 +60,10 @@
                                 $mapStatus=true;
                             }
                         if($outcomesStatus==true && $questionsStatus==true && $mapStatus==true){
-                            echo "<br>Ready to Publish";
+                            echo "<hr><br>Quiz Ready to Publish<br>";
+                            ?>
+                                <a href="<?php echo base_url('quiz/publishcreatedquiz'); ?>" type ="submit" class="btn btn-primary btn-r-u">Publish Quiz</a>
+                            <?php
                         }else{
                             echo "<br>Not Ready to Publish";
                         }

@@ -14,6 +14,7 @@
                 <li class="active"><a href="quiz/quiz_configure"><i class="fa fa-wrench" aria-hidden="true"> Configure</i></a></li>
                 <li><a href="quiz/outcome"><i class="fa fa-folder-open-o" aria-hidden="true"> Outcomes</i></a></li>
                 <li><a href="quiz/quizquestions"><i class="fa fa-question-circle" aria-hidden="true"> Questions</i></a></li>
+                <li><a href="quiz/quizquestions"><i class="fa fa-wrench" aria-hidden="true"> Review</i></a></li>
                 <li><a href="quiz/publishquiz"><i class="fa fa-desktop" aria-hidden="true"> Publish</i></a></li>
                 <hr>
                 <li><a href="quiz/dashboard"><i class="fa fa-tachometer" aria-hidden="true">  Dashboard</i></a></li>

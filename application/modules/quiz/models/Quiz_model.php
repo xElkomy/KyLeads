@@ -385,23 +385,42 @@ class Quiz_model extends CI_Model {
 
         $this->db->insert('questions', $data);
     }
+
+    public function publishQuiz($quiztable){
+        $quizID = $this->session->userdata('cquiz_id');
+        $data = array(
+        	'isactive' => true
+        );
+
+        $this->db->where('id', $quizID);
+        $this->db->update($quiztable, $data);
+    }
+
+    public function unpublishQuiz($quiztable){
+        $quizID = $this->session->userdata('cquiz_id');
+        $data = array(
+        	'isactive' => false
+        );
+
+        $this->db->where('id', $quizID);
+        $this->db->update($quiztable, $data);
+    }
+
+
     public function isMyData($questionID,$questiontable,$quiztable){
         $userID = $this->session->userdata('user_id');
         $quizID = $this->session->userdata('cquiz_id');
-        // query
-        // get question where (question.id = questionid and question.quizid == session(quizid)) and quiz.user_id == session(userid)
-        // $this->db->select ( '*' ); 
-        // $this->db->from ( $questiontable );
-        // $this->db->join ( $quiztable, $quiztable.'.id = '.$questiontable.'.quiz_id' , 'inner' );
-        // $query = $this->db->where($questiontable,array($questiontable.'.id' => $questionID));
-        // $query = $this->db->where($quiztable,array($quiztable.'.id' => $quizID, $quiztable.'.user_id' => $userID));
-        // $query = $this->db->get ();
         $query = $this->db->get_where($questiontable,array('id' => $questionID,'quiz_id'=>$quizID));
         return $query->first_row();
     }
 
     public function isMyQuiz($id){
         $query = $this->db->get_where('quizzes',array('user_id' => $this->session->userdata('user_id'),'id' => $id));
+        return $query->first_row();
+    }
+
+    public function GetQuizStatus($id,$table){
+        $query = $this->db->get_where('quizzes',array('user_id' => $this->session->userdata('user_id'),'isactive' => 1));
         return $query->first_row();
     }
 
