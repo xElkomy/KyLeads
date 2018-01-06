@@ -11,10 +11,10 @@
       <nav id="spy">
           <ul class="nav sidebar-nav-u nav-u">
           <a href="forms/create" class="t-w-u"><button type="button" class="btn btn-u-f btn-success tablinks" 
-                onclick="openCity(event, 'new-optin')"> Create new <br> opt-in form</button></a>
-            <li class="active"><a  href="forms/dashboard" class="tablinks" onclick="openCity(event, 'dashboard')"><i class="fa fa-tachometer" aria-hidden="true"> Dashboard</i></a></li>
-            <li><a href="forms/contacts"><i class="fa fa-users" aria-hidden="true"> Contacts</i></a></li>
-            <li><a href="forms/integrations"><i class="fa fa-code-fork" aria-hidden="true">  Integrations</i></a></li>
+                onclick="openCity(event, 'new-optin')">Create new <br> opt-in form</button></a>
+            <li class="active"><a  href="forms/dashboard" class="tablinks" onclick="openCity(event, 'dashboard')"><i class="fa fa-tachometer" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Dashboard</i></a></li>
+            <li><a href="forms/contacts"><i class="fa fa-users" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Contacts</i></a></li>
+            <li><a href="forms/integrations"><i class="fa fa-code-fork" aria-hidden="true"> &nbsp&nbsp&nbsp&nbsp Integrations</i></a></li>
           </ul>
       </nav>
     </div>

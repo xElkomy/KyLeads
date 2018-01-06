@@ -14,9 +14,9 @@
       <div id="page-content-wrapper">
           <div class="page-content">
               <div class="container-q ">
-                    <div class="row row-c-u-f">
+                    <div class="row row-c-u-f"> 
                         <div id="new-optin" class="tabcontent">
-                            <h3><?php echo $quizinfo->title;?></h3> <h5><?php echo $quizinfo->description;?></h5>
+                            <h3><?php echo $quizinfo->title;?></h3> <h5><?php echo $quizinfo->description;?></h5><hr>
                                 <table class="table table-bordered table-hover">
             
                                     <tr>
@@ -70,6 +70,8 @@
                                         ?>
                                     </table>
                                     
+                            
+                                    <a  href="<?php echo base_url('quiz/quizquestions'); ?>" type ="submit" style="margin-top:10px;width:180px" class=" g-r-u btn btn-r-u btn-lg btn-primary btn-wide fa fa-angle-double-right "> Continue and <br>View  Review</a>
 
 
                                     <!-- Modal -->
@@ -80,15 +82,15 @@
                                                     <div class="modal-header">
                                                     
                                                         <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
-                                                        <h5 class="modal-title" id="exampleModalLabel">Add Question for <?php echo $quizinfo->title;?> </h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Add Question: <?php echo $quizinfo->title;?> </h5>
                                                     </button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <div class="panel panel-default">
                                                             <div class="panel-body">
                                                                 <form action="<?php echo base_url('quiz/newquestion'); ?>" method="post">
-                                                                    <input type="hidden" name="quizID" value="<?php echo $quizinfo->id;?>"></input>
-                                                                    <label><input name="questiontitle" placeholder="New Question" class="form-control" style = "width: 540px;" required></input>
+                                                                    <input type="hidden" name="quizID" value="<?php echo $quizinfo->id;?>"></input><br>
+                                                                    <label><input name="questiontitle" placeholder="Insert Question" class="form-control" style = "margin-left:10px;width: 550px;" required></input>
                                                                     <button type ="submit" class="btn btn-lg btn-primary btn-wide margin-top-40 g-r-u btn-r-u"><i class="fa fa-plus-circle" aria-hidden="true"> Add Question</i></button>
                                                                 </form>                                                    
                                                             </div>

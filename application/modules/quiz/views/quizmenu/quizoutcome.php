@@ -20,8 +20,8 @@
                         
                             <h3><?php echo $quizinfo->title;?></h3> <h5><?php echo $quizinfo->description;?></h5>
                                 
-                                <h6 class="text-center"><i class="fa fa-lg fa-cogs" aria-hidden="true">Outcome Configuration</i></h6><hr>
-                                <hr>
+                                <h6 class="text-center"><i class="fa fa-lg fa-cogs" aria-hidden="true"> Outcome Configuration</i></h6><hr>
+                               
 
                                 <table class="table table-bordered table-hover">
             
@@ -43,7 +43,7 @@
                                                 <button type="button" class="btn btn-r-u btn-primary" data-toggle="modal" data-target="#addquestion">
                                                 <i class="fa fa-plus-circle" aria-hidden="true"> New Outcome</i>
                                                 </button>
-
+                                                
                                         </td>
                                     </tr>
 
@@ -68,8 +68,8 @@
                                         }
                                         ?>
                                     </table>
-                                    
 
+                                    <a  href="<?php echo base_url('quiz/quizquestions'); ?>" type ="submit" style="margin-top:10px;width:180px" class=" g-r-u btn btn-r-u btn-lg btn-primary btn-wide fa fa-angle-double-right "> Continue and <br>Create Question</a>
 
                                     <!-- Modal -->
                                     <div class="modal fade" id="addquestion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -79,7 +79,7 @@
                                                     <div class="modal-header">
                                                     
                                                         <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times fa-lg" aria-hidden="true"></i></button>
-                                                        <h5 class="modal-title" id="exampleModalLabel">Add Outcome for <?php echo $quizinfo->title;?> </h5>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Add Outcome: <?php echo $quizinfo->title;?> </h5>
                                                     </button>
                                                     </div>
                                                     <div class="modal-body">
@@ -87,9 +87,9 @@
                                                             <div class="panel-body">
                                                                 <form action="<?php echo base_url('quiz/newoutcome'); ?>" method="post">
                                                                     <!-- <input type="hidden" name="quizID" value="<?php echo $outcome->id;?>"></input> -->
-                                                                    <label><input name="outcometitle" placeholder="New Outcome" class="form-control" style = "width: 540px;" required></input>
-                                                                    <input name="outcomedescription" placeholder="Put Description here" class="form-control" style = "width: 540px; height:  300px;" required></input>
-                                                                    <button type ="submit" class="btn btn-lg btn-primary btn-wide margin-top-40 g-r-u btn-r-u"><i class="fa fa-plus-circle" aria-hidden="true"> Add Outcome</i></button>
+                                                                    <label><input name="outcometitle" placeholder="Insert new outcome" class="form-control" style = "margin:10px 0px 0px 10px;width: 550px;" required></input>                                                       
+                                                                    <textarea name="outcomedescription" class="form-control col-xs-12" placeholder="Insert description here" style = "margin:10px 0px 0px 10px;width: 550px;" required></textarea>
+                                                                    <button type ="submit" class="btn btn-lg btn-primary btn-wide margin-top-20 g-r-u btn-r-u"><i class="fa fa-plus-circle" aria-hidden="true"> Add Outcome</i></button>
                                                                 </form>                                                    
                                                             </div>
                                                         </div>

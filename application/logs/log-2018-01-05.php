@@ -178,3 +178,4 @@ ERROR - 2018-01-05 13:24:34 --> Severity: Warning --> Invalid argument supplied 
 ERROR - 2018-01-05 13:26:21 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\templates\template_preview.php 29
 ERROR - 2018-01-05 13:31:38 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\templates\template_preview.php 29
 >>>>>>> 975577d13a64b90f9dccd57270ae4dba3e9fd672
+ERROR - 2018-01-05 18:38:32 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\publishquiz.php 47

@@ -10,17 +10,17 @@
     <div id="sidebar-wrapper">
       <nav id="spy">
           <ul class="nav sidebar-nav-u nav-u">
-                <li ><i type="hidden" class="fa fa" aria-hidden="true"></i></li>
-                <li class="active"><a href="quiz/quiz_configure"><i class="fa fa-wrench" aria-hidden="true"> Configure</i></a></li>
-                <li><a href="quiz/outcome"><i class="fa fa-folder-open-o" aria-hidden="true"> Outcomes</i></a></li>
-                <li><a href="quiz/quizquestions"><i class="fa fa-question-circle" aria-hidden="true"> Questions</i></a></li>
-                <li><a href="quiz/quizquestions"><i class="fa fa-wrench" aria-hidden="true"> Review</i></a></li>
-                <li><a href="quiz/publishquiz"><i class="fa fa-desktop" aria-hidden="true"> Publish</i></a></li>
+               
+                <li class="active"><a href="quiz/quiz_configure"><i class="fa fa-wrench" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Configure</i></a></li>
+                <li><a href="quiz/outcome"><i class="fa fa-folder-open-o" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Outcomes</i></a></li>
+                <li><a href="quiz/quizquestions"><i class="fa fa-question-circle" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Questions</i></a></li>
+                <li><a href="quiz/quizquestions"><i class="fa fa-eye" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Review</i></a></li>
+                <li><a href="quiz/publishquiz"><i class="fa fa-desktop" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Publish</i></a></li>
                 <hr>
-                <li><a href="quiz/dashboard"><i class="fa fa-tachometer" aria-hidden="true">  Dashboard</i></a></li>
-                <li><a href="quiz/forms"><i class="fa fa-question-circle" aria-hidden="true">  Quiz Optin-in form</i></a></li>
-                <li><a href="quiz/contacts"><i class="fa fa-users" aria-hidden="true">  Contacts</i></a></li>
-                <li><a href="quiz/integrations"><i class="fa fa-code-fork" aria-hidden="true">  Integrations</i></a></li>
+                <li><a href="quiz/dashboard"><i class="fa fa-tachometer" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Dashboard</i></a></li>
+                <li><a href="quiz/forms"><i class="fa fa-question-circle" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Quiz Optin-in form</i></a></li>
+                <li><a href="quiz/contacts"><i class="fa fa-users" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Contacts</i></a></li>
+                <li><a href="quiz/integrations"><i class="fa fa-code-fork" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Integrations</i></a></li>
 
           </ul>
       </nav>
