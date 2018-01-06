@@ -1,7 +1,19 @@
-<body class="body-t-p">
-<nav class="nav-t-p">
-    <img src="../images/kyleads/kyleads-logo-template-preview.jpg" alt="" width="250px" height="90px">  
-</nav>  
+<body class="body-custom ">
+
+    <?php $this->load->view("shared/nav.php"); ?>
+
+    <!-- New Content -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+            <nav id="spy">
+                <?php $this->load->view("quizmenunav.php"); ?>
+            </nav>
+      </div>
+      <!-- Page content -->
+      <div id="page-content-wrapper">
+          <div class="page-content">
+                <div class="container-q ">           
 
 
 <div class="outer-div">
@@ -86,9 +98,9 @@
                     
             </div>
         </div> 
-    </div>   
+    </div>  
 </div>
-<div class="footer"><h6>Powered by KyLeads</h6></div>
+
 
 <script>
     var totalItems = $(".item").length;
@@ -144,3 +156,36 @@ $(function(){
 </body>
 
 </html> 
+                </div>
+            </div>
+        </div>
+  </div>
+    <!-- End of Content-->
+    <!-- modals -->
+    <script>
+    $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+    })
+    </script>
+    <!-- Load JS here for greater good =============================-->
+    <?php if (ENVIRONMENT == 'production') : ?>
+    <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>
+    <?php elseif (ENVIRONMENT == 'development') : ?>
+    <script src="<?php echo $this->config->item('webpack_dev_url'); ?>build/sites.bundle.js"></script>
+    
+    <?php endif; ?>
+
+    <!--[if lt IE 10]>
+    <script>
+    $(function(){
+    	var msnry = new Masonry( '#sites', {
+	    	// options
+	    	itemSelector: '.site',
+	    	"gutter": 20
+	    });
+
+    })
+    </script>
+    <![endif]-->
+</body>
+</html>

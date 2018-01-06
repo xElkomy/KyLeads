@@ -207,7 +207,7 @@
 <?php endif; ?>
 
 <!--[if lt IE 10]>
-<script>
+<script>    
 $(function(){
     var msnry = new Masonry( '#sites', {
         // options

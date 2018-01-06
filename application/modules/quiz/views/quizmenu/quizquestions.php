@@ -71,7 +71,7 @@
                                     </table>
                                     
                             
-                                    <a  href="<?php echo base_url('quiz/quizquestions'); ?>" type ="submit" style="margin-top:10px;width:180px" class=" g-r-u btn btn-r-u btn-lg btn-primary btn-wide fa fa-angle-double-right "> Continue and <br>View  Review</a>
+                                    <a  href="<?php echo base_url('quiz/quizreview'); ?>" type ="submit" style="margin-top:10px;width:180px" class=" g-r-u btn btn-r-u btn-lg btn-primary btn-wide fa fa-angle-double-right "> Continue and <br>View  Review</a>
 
 
                                     <!-- Modal -->
