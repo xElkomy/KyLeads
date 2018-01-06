@@ -3,10 +3,16 @@
     <?php $this->load->view("shared/nav.php"); ?>
 
     <div class="container-fluid">
-
-        <h1>Comming Soon</h1>
-
-    </div><!-- /.container -->
+        <div class="row">
+            <div class="col-8">
+                <div class="wrap-s-c t-w-u">
+                <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                    <span class="sr-only">Loading...</span>
+                    <h6>KyPages Landing pages is coming soon!</h6>
+                </div>
+            </div>
+        </div>
+    </div><!-- /.container -->  
 
 
     <!-- modals -->

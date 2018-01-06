@@ -24,9 +24,9 @@
                             <div class="panel panel-default row vdivide">
                                 <div class="panel-body ">
                                     
-                                    <div class="col-md-6">
+                                    <div class="col-md-7">
                                         
-                                        <h6>Answer</h6>
+                                        <h6>Answers:</h6>
 
                                             <table class="table table-bordered table-hover">     
                                                 <?php 
@@ -36,9 +36,9 @@
                                                     $index++;
                                                 ?>
                                                 <tr>
-                                                    <td class="col-md-3">Answer: <?php echo $index?></td>
-                                                    <td class="col-md-7"><?php echo $choice->value;?></td>
-                                                    <td class="col-md-4">
+                                                    <td class="col-md-1"><?php echo $index?></td>
+                                                    <td class="col-md-10"><?php echo $choice->value;?></td>
+                                                    <td class="col-md-10">
                                                     <div class="dropdown">
                                                         <?php 
                                                             if($choice->outcome_id != NULL){
@@ -47,8 +47,8 @@
                                                                 $buttosize = "1x";
                                                             }
                                                         ?>
-                                                        <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($choices);?>, <?php echo $choice->id;?> )" class="fa fa-s fa-cogs fa-<?php echo $buttosize;?> c-d-f-d t-b-u a-u active-shadow dropbtn" aria-hidden="true"></a>
-                                                        <div id="myDropdown<?php echo $key+1;?>" class="dropdown-content">
+                                                        <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($choices);?>, <?php echo $choice->id;?> )" class="fa fa-2x fa-list fa-<?php echo $buttosize;?> t-b-u a-u active-shadow dropbtn" aria-hidden="true"></a>
+                                                        <div id="myDropdown<?php echo $key+1;?>" class="dropdown-content dropdown-content-c">
                                                            <?php
                                                                 // var_dump($outcomes[0]->title);
                                                                 if(count($outcomes)>0){
@@ -77,21 +77,23 @@
                                             </table>
                                         </div>
                                         
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
+                                                <br>
 
-                                    <a  href="<?php echo base_url('quiz/quizquestions'); ?>" type ="submit" class="btn btn-r-u btn-lg btn-primary btn-wide fa fa-pencil-square g-r-u "> Exit and Save changes</a>
-                                        
                                         <form action="<?php echo base_url('quiz/newanswer'); ?>" method="post">
                                             
                                             <label><h6>New Answer:</h6><input name="answerval" class="form-control" style = "width: 410px;" required></input></label>
                                             <input type="hidden" name="quizid" value="<?php echo $question->quiz_id;?>"></input>
                                             <input type="hidden" name="questionid" value="<?php echo $question->id;?>"></input>
                                             <button type ="submit" class="btn btn-lg btn-primary btn-wide g-l-u btn-r-u"><i class="fa fa-plus-circle" aria-hidden="true"> Add answer</i></button>                                  
-                                        
+                                            
                                         </form>
-                                
+                                        <a  href="<?php echo base_url('quiz/quizquestions'); ?>" type ="submit" class="btn btn-r-u btn-lg btn-primary btn-wide fa fa-pencil-square g-r-u-q "> Exit and <br>Save changes</a>
+                                    
                                     </div>
-                                </div>  
+                       
+                                </div>
+                                <br>  
                             </div>
                         </div>
                     </div>

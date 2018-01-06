@@ -178,6 +178,9 @@ ERROR - 2018-01-05 13:24:34 --> Severity: Warning --> Invalid argument supplied 
 ERROR - 2018-01-05 13:26:21 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\templates\template_preview.php 29
 ERROR - 2018-01-05 13:31:38 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\templates\template_preview.php 29
 >>>>>>> 975577d13a64b90f9dccd57270ae4dba3e9fd672
+<<<<<<< HEAD
+ERROR - 2018-01-05 18:38:32 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\publishquiz.php 47
+=======
 ERROR - 2018-01-05 17:06:23 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\models\Takequiz_model.php 122
 ERROR - 2018-01-05 17:57:19 --> Severity: error --> Exception: syntax error, unexpected '?>' C:\xampp\htdocs\application\modules\quiz\views\takequiz\viewquiz.php 76
 ERROR - 2018-01-05 17:57:47 --> Severity: error --> Exception: syntax error, unexpected '?>' C:\xampp\htdocs\application\modules\quiz\views\takequiz\viewquiz.php 76
@@ -193,3 +196,4 @@ ERROR - 2018-01-05 18:50:44 --> Severity: Warning --> Invalid argument supplied 
 ERROR - 2018-01-05 19:02:07 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\models\Takequiz_model.php 122
 ERROR - 2018-01-05 19:05:38 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\takequiz\viewquiz.php 28
 ERROR - 2018-01-05 19:06:48 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\takequiz\viewquiz.php 28
+>>>>>>> b5825066ba5484807e6eb84939ba3ec1b7d7bad4

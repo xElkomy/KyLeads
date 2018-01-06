@@ -49,9 +49,9 @@
                                                 
                                                 <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($quizzes);?>, <?php echo $quiz->id;?> )" class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u a-u active-shadow dropbtn" aria-hidden="true"></a>
                                                 <div id="myDropdown<?php echo $key+1;?>" class="dropdown-content">
-                                                    <a href="<?php echo base_url('quiz/quiz_configure/'.$quiz->id);?>" class="btn btn-primary"><i class="fa fa-1x fa-wrench" aria-hidden="true"></i></a>
-                                                    <a href="<?php echo base_url('quiz/preview_quiz/'. $quiz->id); ?>" class="btn btn-info"><i class="fa fa-1x fa-eye" aria-hidden="true"></i></a>  
-                                                    <a href="<?php echo base_url('quiz/delete_quiz/'. $quiz->id); ?>" class="btn btn-danger"><i class="fa fa-1x fa-trash-o" aria-hidden="true"></i></a>
+                                                    <a class="btn btn-primary tooltip-l" type ="submit" href="<?php echo base_url('quiz/quiz_configure/'.$quiz->id);?>" ><i class="fa fa-1x fa-wrench" aria-hidden="true"></i></a>
+                                                    <a class="btn btn-info tooltip-l" type ="submit" href="<?php echo base_url('quiz/preview_quiz/'. $quiz->id); ?>"><i class="fa fa-1x fa-eye" aria-hidden="true"></i></a>  
+                                                    <a class="btn btn-danger tooltip-l" type ="submit" href="<?php echo base_url('quiz/delete_quiz/'. $quiz->id); ?>" ><i class="fa fa-1x fa-trash-o" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
                                                 <a href="<?php echo base_url('quiz/analytics/'. $quiz->id); ?>" class="fa fa-s fa-bar-chart fa-3x c-d-f-d t-b-u active-shadow a-u" aria-hidden="true"></a>
