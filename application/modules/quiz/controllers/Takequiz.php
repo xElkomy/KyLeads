@@ -19,6 +19,7 @@ class Takequiz extends MY_Controller {
 		'sites/Pages_model' => 'MPages',
 		'quiz/Quiz_model' => 'MQuiz',
 		'quiz/Takequiz_model' => 'MTQuiz',
+		'contacts/Contacts_model' => 'MContacts',
 		];
 		$this->load->model($model_list);
 
@@ -41,6 +42,42 @@ class Takequiz extends MY_Controller {
 		}
 	}
 	
+	
+	public function quiz($id = ''){
+		$quiztable = "quizzes";
+		$questiontable = "questions";
+		$choicetable = "choices";
+		$outcometable = "outcomes";
+		$this->data['quizid'] = $id;
+
+		if(!$this->isQuizActive($id,$quiztable)){
+			$this->data['status'] = "Note: This quiz is still unpublish and not yet visible to the public";
+			$isActive = false;
+		}else {
+			$this->data['status'] = "";
+			$isActive = true;
+		}
+		if(count($this->MQuiz->isMyQuiz($id))>0){
+			$this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
+			if($this->data['quiz'] === null){
+				$this->data['questions'] = null;
+				redirect('quiz/dashboard','refresh');
+			}
+			$this->data['title'] = 'KyLeads Quizzes';
+			$this->data['content'] = 'takequiz/viewquiz';
+			$this->data['page'] = 'site';
+				
+			$this->load->view('layout', $this->data);
+		}else if(! $this->session->has_userdata('user_id')){
+			redirect('auth', 'refresh');
+		}else{
+			redirect('quiz/dashboard', 'refresh');
+		}
+		
+		
+		// -----------------------
+	}
+
 	public function submitData(){
 		$results = $_POST['results'];
     	$data = json_decode($results);
@@ -48,31 +85,26 @@ class Takequiz extends MY_Controller {
 		$this->MTQuiz->submitresult($data);
 		
 	}
-	public function quiz($id = ''){
-		$quiztable = "quizzes";
-		$questiontable = "questions";
-		$choicetable = "choices";
-		$outcometable = "outcomes";
-		$this->data['quizid'] = $id;
-		if(!$this->isQuizActive($id,$quiztable)){
-			$this->data['status'] = "Note: This quiz is still unpublish and not yet visible to the public";
-		}else {
-			$this->data['status'] = "";
-		}
-		$this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
-		if($this->data['quiz'] === null){
-			$this->data['questions'] = null;
-			redirect('quiz/dashboard','refresh');
-		}
-		$this->data['title'] = 'KyLeads Quizzes';
-		$this->data['content'] = 'takequiz/viewquiz';
-		$this->data['page'] = 'site';
-			
-		$this->load->view('layout', $this->data);
+
+	public function AddContact(){
+		$results = $_POST['results'];
+		$data = json_decode($results);
 		
-		// -----------------------
+		$new_contact_id = $this->MContacts->newContact($data);
+		$this->AddContactData($new_contact_id,$data->quizid,$data->outcomeid);
 	}
-	
+
+	private function GetMyResult($outcomeid){
+		$outcometable = "outcomes";
+		$outcome_details = $this->TQuiz->GetOutcomeDetails($outcomeid,$outcometable);
+	}
+
+	private function AddContactData($contactid,$quizid,$outcomeid){
+		var_dump($data->$outcomeid);
+		$this->MTQuiz->Addcontacts_results($contactid,$quizid,$outcomeid);
+	}
+
+	// -------------------------------
 	private function isQuizActive($id,$quiztable){
 		$data = $this->MQuiz->GetQuizStatus($id,$quiztable);
 		if(count($data)>0){

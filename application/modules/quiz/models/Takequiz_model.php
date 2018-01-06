@@ -121,13 +121,32 @@ class Takequiz_model extends CI_Model {
         $table = "results";
         foreach ($results as $key => $data) {
             $data = array(
-                'quiz_id' => 1,
+                'quiz_id' => $data->quizid,
                 'question_id' => $data->questionid,
                 'answer_id' => $data->answerid,  
             );
             $this->db->insert($table, $data);
         }
-       
+    }
+
+    public function Addcontacts_results($contactid,$quizid,$outcomeid){
+        // $title = "Quiz";
+        // $description = "Another Quiz";
+        $table = "contacts_results";
+        $data = array(
+            'contact_id' => $contactid,
+            'quiz_id' => $quizid,
+            'outcome_id' => $outcomeid,  
+        );
+        $this->db->insert($table, $data);
+    }
+
+    public function GetOutcomeDetails($outcomeid,$outcometable){
+        
+        $table = $outcometable;
+        $query  = $this->db->get_where($table,array('id'=>$outcomeid));
+            
+        return $query->result();
     }
 
 }

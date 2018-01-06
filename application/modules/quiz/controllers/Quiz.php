@@ -106,27 +106,25 @@ class Quiz extends MY_Controller {
 	}
 
 	public function preview_template($id = ''){
+			redirect('takequiz/quiz/');
+			// ---------old code---------
+            // $quiztable = "quizzes_template";
+            // $questiontable = "questions_template";
+            // $choicetable = "choices_template";
+            // $outcometable = "outcomes_template";
+            // $this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
+            // if($this->data['quiz'] === null){
+            //     $this->data['questions'] = null;
+            //     redirect('quiz/dashboard','refresh');
+            // }
 
-		if($this->isAdmin()){
-            $quiztable = "quizzes_template";
-            $questiontable = "questions_template";
-            $choicetable = "choices_template";
-            $outcometable = "outcomes_template";
-            $this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
-            if($this->data['quiz'] === null){
-                $this->data['questions'] = null;
-                redirect('quiz/dashboard','refresh');
-            }
-
-            // $this->data['quizzes'] =  $this->MQuiz->view_quiz_template_data($id);
-            $this->data['title'] = 'KyLeads Quizzes';
-            $this->data['content'] = 'templates/template_preview';
-            $this->data['page'] = 'site';
+            // // $this->data['quizzes'] =  $this->MQuiz->view_quiz_template_data($id);
+            // $this->data['title'] = 'KyLeads Quizzes';
+            // $this->data['content'] = 'templates/template_preview';
+            // $this->data['page'] = 'site';
             
-            $this->load->view('layout', $this->data);
-        }else {
-            redirect('quiz/dashboard','refresh');
-        }
+            // $this->load->view('layout', $this->data);
+        
 	}
 
 	public function preview_quiz($id = ''){
