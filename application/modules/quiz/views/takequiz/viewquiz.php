@@ -152,7 +152,7 @@
     function submitResult(){
         addContactData();
         Data = JSON.stringify( resultData );
-        $.post('http://localhost:8084/takequiz/submitData', {results: Data, }).done(function(data) {
+        $.post('http://localhost/takequiz/submitData', {results: Data, }).done(function(data) {
         //  alert(data);
         });
         
@@ -169,7 +169,7 @@
         });
         Data = JSON.stringify( userData[0]);
         console.log(Data);
-        $.post('http://localhost:8084/takequiz/AddContact', {results: Data, }).done(function(data) {
+        $.post('http://localhost/takequiz/AddContact', {results: Data, }).done(function(data) {
              alert("information added: "+data);
         });
     }
