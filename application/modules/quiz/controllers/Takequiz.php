@@ -77,6 +77,29 @@ class Takequiz extends MY_Controller {
 		
 		// -----------------------
 	}
+	public function quiztemp($id = ''){
+		$quiztable = "quizzes_template";
+		$questiontable = "questions_template";
+		$choicetable = "choices_template";
+		$outcometable = "outcomes_template";
+		$this->data['quizid'] = $id;
+
+		if(!$this->isQuizActive($id,$quiztable)){
+			redirect('auth', 'refresh');
+		}else {
+			$this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
+			if($this->data['quiz'] === null){
+				$this->data['questions'] = null;
+				redirect('quiz/dashboard','refresh');
+			}
+			$this->data['title'] = 'KyLeads Quizzes';
+			$this->data['content'] = 'takequiz/viewquiz';
+			$this->data['page'] = 'site';
+				
+			$this->load->view('layout', $this->data);
+		}		
+		// -----------------------
+	}
 
 	public function submitData(){
 		$results = $_POST['results'];
