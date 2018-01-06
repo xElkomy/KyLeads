@@ -108,3 +108,8 @@ ERROR - 2018-01-06 10:01:33 --> Severity: Warning --> Invalid argument supplied 
 ERROR - 2018-01-06 11:23:00 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\templates\template_preview.php 28
 ERROR - 2018-01-06 11:23:00 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\templates\template_preview.php 188
 >>>>>>> b5825066ba5484807e6eb84939ba3ec1b7d7bad4
+ERROR - 2018-01-06 12:27:28 --> Query error: Column 'outcome_id' cannot be null - Invalid query: INSERT INTO `contacts_results` (`contact_id`, `quiz_id`, `outcome_id`) VALUES (2, 1, NULL)
+ERROR - 2018-01-06 16:29:44 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 16:29:45 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 18:12:20 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 18:12:21 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102

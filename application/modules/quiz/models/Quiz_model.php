@@ -424,6 +424,16 @@ class Quiz_model extends CI_Model {
         return $query->first_row();
     }
 
+    public function QuizStatus($id,$table){
+        $query = $this->db->get_where($table,array('isactive' => 1));
+
+        if($query->first_row()>0){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 
     
 }

@@ -40,17 +40,14 @@
                                                     <p>0.00%</p>
                                                     <div id="quizcontent-li"><h7><a><i class="fa fa fa-2x fa-line-chart" aria-hidden="true"></i> Conversion rate</a></h7></div>
                                                 </div>
-                                            
                                             </div>
-                                        
                                             </td>
                                             <td class="f-d-td">
-                                            <div class="dropdown">
-                                                
+                                            <div class="dropdown">  
                                                 <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($quizzes);?>, <?php echo $quiz->id;?> )" class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u a-u active-shadow dropbtn" aria-hidden="true"></a>
                                                 <div id="myDropdown<?php echo $key+1;?>" class="dropdown-content">
                                                     <a class="btn btn-primary tooltip-l" type ="submit" href="<?php echo base_url('quiz/quiz_configure/'.$quiz->id);?>" ><i class="fa fa-1x fa-wrench" aria-hidden="true"></i></a>
-                                                    <a class="btn btn-info tooltip-l" type ="submit" href="<?php echo base_url('quiz/preview_quiz/'. $quiz->id); ?>"><i class="fa fa-1x fa-eye" aria-hidden="true"></i></a>  
+                                                    <a class="btn btn-info tooltip-l" type ="submit" href="<?php echo base_url('takequiz/quiz/'. $quiz->id); ?>" target="_blank"><i class="fa fa-1x fa-eye" aria-hidden="true"></i></a>  
                                                     <a class="btn btn-danger tooltip-l" type ="submit" href="<?php echo base_url('quiz/delete_quiz/'. $quiz->id); ?>" ><i class="fa fa-1x fa-trash-o" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
