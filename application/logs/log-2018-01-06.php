@@ -113,3 +113,23 @@ ERROR - 2018-01-06 16:29:44 --> Severity: Notice --> Undefined variable: package
 ERROR - 2018-01-06 16:29:45 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
 ERROR - 2018-01-06 18:12:20 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
 ERROR - 2018-01-06 18:12:21 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:11:51 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:11:51 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:12:04 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:12:04 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:12:20 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:12:20 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:13:14 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:13:14 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:15:35 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:15:35 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:16:20 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:16:20 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:16:24 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:16:24 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:17:33 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:17:33 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:24:05 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:24:05 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:28:09 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-06 20:28:09 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102

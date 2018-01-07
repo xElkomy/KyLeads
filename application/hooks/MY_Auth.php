@@ -12,7 +12,7 @@ class MY_Auth {
 
     public function auth_construct ()
     {
-        echo "Pre Controller";
+        // echo "Pre Controller";
     }
 
     public function auth_index_pre()
@@ -23,12 +23,12 @@ class MY_Auth {
     public function auth_index_post ()
     {
         //$this->CI->data['title'] = $this->CI->lang->line('auth_register_title');
-        $this->CI->data['title'] = 'Test Hooks';
+        $this->CI->data['title'] = 'KyLeads';
     }
 
     public function auth_destruct ()
     {
-        echo "Post Controller";
+        // echo "Post Controller";
     }
 
 }

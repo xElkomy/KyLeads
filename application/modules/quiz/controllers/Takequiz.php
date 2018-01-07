@@ -44,13 +44,18 @@ class Takequiz extends MY_Controller {
 	
 	
 	public function quiz($id = ''){
+		
+
 		$quiztable = "quizzes";
 		$questiontable = "questions";
 		$choicetable = "choices";
 		$outcometable = "outcomes";
 		$this->data['quizid'] = $id;
-
+		
 		if($this->MQuiz->isMyQuiz($id)){
+			/**put hook here */
+			
+			$this->hooks->call_hook('quiz_views_add');
 			if(!$this->MQuiz->QuizStatus($id,$quiztable)){
 				$this->data['status'] = "Note: This quiz is still unpublish and not yet visible to the public";
 			}else{
@@ -68,6 +73,8 @@ class Takequiz extends MY_Controller {
 			$this->load->view('layout', $this->data);
 		}
 		else if($this->MQuiz->QuizStatus($id,$quiztable)){
+			/**put hook here */
+			$this->hooks->call_hook('quiz_views_add',[1,2,3]);
 			$this->data['status'] = "";
 			$this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
 			if($this->data['quiz'] === null){

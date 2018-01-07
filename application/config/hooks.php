@@ -41,3 +41,13 @@ $hook['auth_destruct'][] = array(
         'filepath' => 'hooks',
         'params'   => ''
 );
+
+$hook['quiz_views_add'][] = array(
+        'class'    => 'Quiz_Report_Model',
+        'function' => 'addViews',
+        'filename' => 'Quiz_Report_Model.php',
+        'filepath' => 'hooks',
+        'params'   => ''
+);
+
+
