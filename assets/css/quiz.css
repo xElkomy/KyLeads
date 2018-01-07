@@ -215,3 +215,6 @@ ul li p  {
 .bg-q-r{
     background-color:rgb(179, 179, 179);
 }
+#showform, #showquizsummary{
+    display:none;
+}

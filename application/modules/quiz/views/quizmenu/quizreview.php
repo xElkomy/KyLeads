@@ -22,15 +22,46 @@
                         <div class="col j-c-t-u">
 
                         <div id="London" class="city">
-                        <hr>
-                            <div class="text-center"><h3><?php echo $quiz[0]->title?></h3></div>
-                            <div class="text-center"><h6><?php echo $quiz[0]->description?></h6></div>
-                            <button type="button" onclick="start('previewquestion')" class="btn btn-t-p btn-success"><i class="fa fa-sign-in" aria-hidden="true"> Start</i></button>
-                        <hr>
-                    </div>
+                            <hr>
+                                <div class="text-center"><h3><?php echo $quiz[0]->title?></h3></div>
+                                <div class="text-center"><h6><?php echo $quiz[0]->description?></h6></div>
+                                <button type="button" onclick="start('previewquestion')" class="btn btn-t-p btn-success"><i class="fa fa-sign-in" aria-hidden="true"> Start</i></button>
+                            <hr>
+                        </div>
+                        <div id="showform">
+                            <hr>
+                            <form class="form-horizontal">
+
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="pwd">Name:</label>
+                                    <div class="col-sm-10"> 
+                                        <input type="text" class="form-control" id="usr" placeholder="Enter name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="email">Email:</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" required>
+                                    </div>
+                                </div>
+                                <div class="form-group"> 
+                                    <div class="col-sm-offset-2 col-sm-8">
+                                        <button type="submit" class="btn next btn-success btn-t-p"><i class="fa fa-paper-plane-o" aria-hidden="true"> Send!</i></button>
+                                    </div>
+                                </div>
+
+                            </form>
+                            <hr>
+                        </div>
+
+                        <div id="showquizsummary">
+                            <hr>
+                                <h1>Summary</h1>
+                            <hr>
+                        </div>
     
                     <div id="previewquestion" style="display:none">
-    
+                    <div id="hideform">
                         <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
                             <!-- Wrapper for carousel items -->
                             <div class="carousel-inner">
@@ -88,7 +119,7 @@
                                             ?>
                                         </div>
                                         <?php if($idx+1 >= count($quiz[0]->questions)){
-                                                ?><button onclick="submitResult()" type="button" class="btn next btn-success btn-t-p" style="float:center">Get Result <i class="fa fa-arrow-right" aria-hidden="true">  </i></button> <?php
+                                                ?><button onclick="submitResult()" type="button"class="btn next btn-success btn-t-p" style="float:center">Get Result <i class="fa fa-arrow-right" aria-hidden="true">  </i></button> <?php
                                             }else{
                                                 ?> <button type="button" name="back" class="btn next btn-success btn-t-p" style="float:left"><i class="fa fa-arrow-left" aria-hidden="true"> Previous </i></button>   <?php
                                                 ?><button type="button" name="next" class="btn next btn-success btn-t-p" style="float:right"> Continue <i class="fa fa-arrow-right" aria-hidden="true"></i></button>  <?php
@@ -99,7 +130,7 @@
                                     <?php 
                                     }       
                                 }
-                            ?>                                                                           
+                            ?>                                                                          
                                     </div>
                                 </div>
                             <div>
@@ -108,9 +139,9 @@
                     </div> 
                 </div>  
             </div>
+        </div>
 
-
-            <script>
+    <script>
     function start(cityName) {
         var i;
         var x = document.getElementsByClassName("city");
@@ -165,11 +196,19 @@
         // console.log(resultData);
         // submitResult();
     }
+    $(document).ready(function(){
+        $("form").submit(function(){
+            $("showquizsummary").show();
+        });       
+    });
     function submitResult(){
         addContactData();
         Data = JSON.stringify( resultData );
         $.post('http://localhost/takequiz/submitData', {results: Data, }).done(function(data) {
-            $("#myCarousel").carousel("prev");
+
+            $("#showform").show();
+            $('#hideform').hide();
+        
         });
         
     }
@@ -186,7 +225,7 @@
         Data = JSON.stringify( userData[0]);
         console.log(Data);
         $.post('http://localhost/takequiz/AddContact', {results: Data, }).done(function(data) {
-             alert("information added: "+data);
+            //  alert("information added: "+data);
         });
     }
 
@@ -211,50 +250,21 @@
         }
        return item;
     }
+        $('#myModal').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+            })
 </script>
-<!-- End of Content-->
+                    <!-- End of Content-->
 
-<!-- Load JS here for greater good =============================-->
-<?php if (ENVIRONMENT == 'production') : ?>                
-<script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>
-<?php elseif (ENVIRONMENT == 'development') : ?>
-<script src="<?php echo $this->config->item('webpack_dev_url'); ?>build/sites.bundle.js"></script>
+                    <!-- Load JS here for greater good =============================-->
+                    <?php if (ENVIRONMENT == 'production') : ?>                
+                    <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>
+                    <?php elseif (ENVIRONMENT == 'development') : ?>
+                    <script src="<?php echo $this->config->item('webpack_dev_url'); ?>build/sites.bundle.js"></script>
 
-<?php endif; ?>
+                    <?php endif; ?>
 
-<!--[if lt IE 10]>
-<script>
-$(function(){
-    var msnry = new Masonry( '#sites', {
-        // options
-        itemSelector: '.site',
-        "gutter": 20
-    });
 
-})
-</script>
-<![endif]-->
-</body>
-
-</html> 
-                </div>
-            </div>
-        </div>
-  </div>
-    <!-- End of Content-->
-    <!-- modals -->
-    <script>
-    $('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').trigger('focus')
-    })
-    </script>
-    <!-- Load JS here for greater good =============================-->
-    <?php if (ENVIRONMENT == 'production') : ?>
-    <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>
-    <?php elseif (ENVIRONMENT == 'development') : ?>
-    <script src="<?php echo $this->config->item('webpack_dev_url'); ?>build/sites.bundle.js"></script>
-    
-    <?php endif; ?>
 
     <!--[if lt IE 10]>
     <script>

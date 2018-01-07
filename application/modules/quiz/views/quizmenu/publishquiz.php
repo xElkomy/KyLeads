@@ -20,7 +20,6 @@
                             <div class="content-p-q">
                                 <div class="col-md-4 c-p-q-l">
                                     <h3 class="t-w-u">Awesome!</h3>
-                                    <h5 class="t-w-u">Status</h5>
                                     <?php $cquiz = $quiz[0]; ?>
                                     <h6 class="t-w-u">Title: <?php echo $cquiz->title?></h6>
                                     <h6 class="t-w-u">Outcomes: 

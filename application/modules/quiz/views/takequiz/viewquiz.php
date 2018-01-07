@@ -28,7 +28,7 @@
                     foreach($quiz[0]->questions  as $idx => $question){
                         if($firstQuestion === $idx){
                     ?>
-                            <div class="item active">
+                        <div class="item active">
                             <p>Question <?php echo $idx+1;?> of <?php echo count($quiz[0]->questions);?></p>
                             <h6> <?php echo $question->title?></h6>
                                
@@ -44,11 +44,11 @@
                                                 </div>
                                        
                                             <br>
-                                            <?php
+                                    <?php
                                         }
                                     ?> 
                                 </div>
-                                <button type="button" name="next" class="btn next btn-info" style="float:right">Continue   <i class="fa fa-arrow-right" aria-hidden="true">  </i></button>    
+                            <button type="button" name="next" class="btn next btn-info" style="float:right">Continue   <i class="fa fa-arrow-right" aria-hidden="true">  </i></button>    
                     </div> 
                     <?php  
                         }else{
@@ -152,7 +152,7 @@
     function submitResult(){
         addContactData();
         Data = JSON.stringify( resultData );
-        $.post('http://localhost:8084/takequiz/submitData', {results: Data, }).done(function(data) {
+        $.post('http://localhost/takequiz/submitData', {results: Data, }).done(function(data) {
         //  alert(data);
         });
         
@@ -169,7 +169,7 @@
         });
         Data = JSON.stringify( userData[0]);
         console.log(Data);
-        $.post('http://localhost:8084/takequiz/AddContact', {results: Data, }).done(function(data) {
+        $.post('http://localhost/takequiz/AddContact', {results: Data, }).done(function(data) {
              alert("information added: "+data);
         });
     }
