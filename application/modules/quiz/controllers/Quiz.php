@@ -661,6 +661,19 @@ class Quiz extends MY_Controller {
         $this->load->view('layout', $this->data);
 	}
 
+	public function quizreview(){
+		$id = $this->session->userdata('cquiz_id');
+		$quiztable = "quizzes";
+		$questiontable = "questions";
+		$choicetable = "choices";
+		$outcometable = "outcomes";
+		$this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
+		$this->data['title'] = 'KyLeads Quizzes';
+        $this->data['content'] = 'quizmenu/quizreview';
+        $this->data['page'] = 'site';
+        $this->load->view('layout', $this->data);
+	}
+
 	private function isAdmin(){
 
 		if($this->session->userdata('user_type') === "Admin"){

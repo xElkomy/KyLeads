@@ -19,6 +19,9 @@
     margin:0px;
 
 }
+.bg-dirty-white-u{
+  background-color:#eff3f6;
+}
 /*end for body*/
 /*Whole  Reference: https://bootsnipp.com/snippets/4OZ8R */
 #wrapper {
@@ -86,7 +89,6 @@
     background: #22345f;
     text-decoration: none;
   }
-  
   .sidebar-nav-  li a:active,
   .sidebar-nav-j li a:focus {
     text-decoration: none;

@@ -108,11 +108,56 @@ ERROR - 2018-01-06 10:01:33 --> Severity: Warning --> Invalid argument supplied 
 ERROR - 2018-01-06 11:23:00 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\templates\template_preview.php 28
 ERROR - 2018-01-06 11:23:00 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\templates\template_preview.php 188
 >>>>>>> b5825066ba5484807e6eb84939ba3ec1b7d7bad4
+<<<<<<< HEAD
+ERROR - 2018-01-06 15:57:42 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 29
+ERROR - 2018-01-06 15:59:54 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 53
+ERROR - 2018-01-06 16:09:38 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 53
+ERROR - 2018-01-06 16:38:21 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 41
+ERROR - 2018-01-06 16:38:25 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 41
+ERROR - 2018-01-06 16:38:29 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 41
+ERROR - 2018-01-06 16:40:02 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 25
+ERROR - 2018-01-06 16:41:16 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 29
+ERROR - 2018-01-06 16:43:49 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 28
+ERROR - 2018-01-06 16:49:14 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 29
+ERROR - 2018-01-06 16:49:38 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:35 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:35 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:37 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:37 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:38 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:38 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:38 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:39 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:40 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:40 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:41 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:41 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:41 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:42 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:42 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:42 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:42 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:50:43 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:52:27 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:52:33 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:52:34 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 16:53:28 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 38
+ERROR - 2018-01-06 17:27:04 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 41
+ERROR - 2018-01-06 17:27:11 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizreview.php 41
+ERROR - 2018-01-06 18:54:24 --> Query error: Table 'c9.users' doesn't exist - Invalid query: SELECT *
+FROM `users`
+WHERE `email` = 'admin@bearzu.com'
+AND `password` = 'f865b53623b121fd34ee5426c792e5c3'
+AND `status` = 'Active'
+ LIMIT 1
+ERROR - 2018-01-06 18:54:24 --> Severity: error --> Exception: Call to a member function num_rows() on boolean C:\xampp\htdocs\application\modules\user\models\Users_model.php 25
+=======
 ERROR - 2018-01-06 12:27:28 --> Query error: Column 'outcome_id' cannot be null - Invalid query: INSERT INTO `contacts_results` (`contact_id`, `quiz_id`, `outcome_id`) VALUES (2, 1, NULL)
 ERROR - 2018-01-06 16:29:44 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
 ERROR - 2018-01-06 16:29:45 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
 ERROR - 2018-01-06 18:12:20 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
 ERROR - 2018-01-06 18:12:21 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+<<<<<<< HEAD
 ERROR - 2018-01-06 20:11:51 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
 ERROR - 2018-01-06 20:11:51 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
 ERROR - 2018-01-06 20:12:04 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
@@ -133,3 +178,9 @@ ERROR - 2018-01-06 20:24:05 --> Severity: Notice --> Undefined variable: package
 ERROR - 2018-01-06 20:24:05 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
 ERROR - 2018-01-06 20:28:09 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
 ERROR - 2018-01-06 20:28:09 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+=======
+>>>>>>> fa3d895337d5f1c427793636fb8b89286e2c263c
+ERROR - 2018-01-06 19:57:26 --> Query error: Column 'outcome_id' cannot be null - Invalid query: INSERT INTO `contacts_results` (`contact_id`, `quiz_id`, `outcome_id`) VALUES (1, 17, NULL)
+ERROR - 2018-01-06 20:01:21 --> Query error: Column 'outcome_id' cannot be null - Invalid query: INSERT INTO `contacts_results` (`contact_id`, `quiz_id`, `outcome_id`) VALUES (2, 17, NULL)
+ERROR - 2018-01-06 20:03:36 --> Query error: Column 'outcome_id' cannot be null - Invalid query: INSERT INTO `contacts_results` (`contact_id`, `quiz_id`, `outcome_id`) VALUES (3, 17, NULL)
+>>>>>>> b54bf7c7b3f78da8049137e911a3d8efb287ae2d

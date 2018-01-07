@@ -195,4 +195,26 @@ ul li p  {
     width:1200px;
     height: 600px;
     background-color: #F5FFFA;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+}
+/*quizreview*/
+.r-r-q{
+    margin:50px 50px auto;
+    text-align: center;
+}
+.c-r-q-r{
+    text-align: center;
+}
+.content-r-q{
+    border-radius:10px;
+    width:1200px;
+    height: 600px;
+    background-color: #F5FFFA;
+    box-shadow: 0 1px 1px 0 rgb(38, 0, 255);
+}
+.bg-q-r{
+    background-color:rgb(179, 179, 179);
+}
+#showform, #showquizsummary{
+    display:none;
 }

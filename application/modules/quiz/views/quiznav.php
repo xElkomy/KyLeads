@@ -12,7 +12,7 @@
           <ul class="nav sidebar-nav-u nav-u">
                 <a href="quiz/templates" class="t-w-u"><button type="button" class="btn btn-u-q btn-success tablinks" 
                 onclick="openCity(event, 'new-optin')"> Create new Quiz</button></a>
-                <li class="active"><a href="quiz/dashboard"><i class="fa fa-tachometer" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Dashboard</i></a></li>
+                <li class=""><a href="quiz/dashboard"><i class="fa fa-tachometer" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Dashboard</i></a></li>
                 <li><a href="quiz/forms"><i class="fa fa-question-circle" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Quiz Optin-in form</i></a></li>
                 <li><a href="quiz/contacts"><i class="fa fa-users" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Contacts</i></a></li>
                 <li><a href="quiz/integrations"><i class="fa fa-code-fork" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Integrations</i></a></li>

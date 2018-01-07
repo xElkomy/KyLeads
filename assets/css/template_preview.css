@@ -32,7 +32,7 @@
     text-align: center;
 }
 .f-c-c-t-p{
-    padding:20px;
+    padding:50px;
 }
 .f-c-l-t-p{
     background-color:rgb(189, 184, 184);
@@ -41,7 +41,6 @@
     left:20px;
     color: black;
     width:660px;
-
 }
 .f-c-l-t-p:hover{
     background-color:rgb(128, 125, 125);
