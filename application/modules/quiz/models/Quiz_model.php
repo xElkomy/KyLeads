@@ -420,8 +420,18 @@ class Quiz_model extends CI_Model {
     }
 
     public function GetQuizStatus($id,$table){
-        $query = $this->db->get_where('quizzes',array('user_id' => $this->session->userdata('user_id'),'isactive' => 1));
+        $query = $this->db->get_where($table,array('user_id' => $this->session->userdata('user_id'),'isactive' => 1));
         return $query->first_row();
+    }
+
+    public function QuizStatus($id,$table){
+        $query = $this->db->get_where($table,array('isactive' => 1));
+
+        if($query->first_row()>0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 

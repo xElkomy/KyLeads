@@ -149,30 +149,6 @@
         // console.log(resultData);
         // submitResult();
     }
-    function submitResult(){
-        addContactData();
-        Data = JSON.stringify( resultData );
-        $.post('http://localhost:8084/takequiz/submitData', {results: Data, }).done(function(data) {
-        //  alert(data);
-        });
-        
-    }
-
-    function addContactData(){
-        userData.push({
-            userid : <?php echo $quiz[0]->user_id;?>,
-            fname : "firstname",
-            lname : "lastname",
-            email : "fistlast@gmail.com",
-            outcomeid: GetOutcomeResult(),
-            quizid : <?php echo $quiz[0]->id;?>,
-        });
-        Data = JSON.stringify( userData[0]);
-        console.log(Data);
-        $.post('http://localhost:8084/takequiz/AddContact', {results: Data, }).done(function(data) {
-             alert("information added: "+data);
-        });
-    }
 
     function GetOutcomeResult(){
         var arr1 = outcomeData;
@@ -207,7 +183,7 @@
 <?php endif; ?>
 
 <!--[if lt IE 10]>
-<script>    
+<script>
 $(function(){
     var msnry = new Masonry( '#sites', {
         // options
