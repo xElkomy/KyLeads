@@ -115,7 +115,7 @@ class Takequiz_model extends CI_Model {
 
     }
     
-    public function submitresult($results){
+    public function submitresult($results,$contactid){
         // $title = "Quiz";
         // $description = "Another Quiz";
         $table = "results";
@@ -123,7 +123,8 @@ class Takequiz_model extends CI_Model {
             $data = array(
                 'quiz_id' => $data->quizid,
                 'question_id' => $data->questionid,
-                'answer_id' => $data->answerid,  
+                'answer_id' => $data->answerid,
+                'contact_id' => $contactid,
             );
             $this->db->insert($table, $data);
         }

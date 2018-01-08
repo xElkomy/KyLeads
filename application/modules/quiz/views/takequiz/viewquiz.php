@@ -13,7 +13,7 @@
                     <hr>
                         <div class="text-center"><h3><?php echo $quiz[0]->title?></h3></div>
                         <div class="text-center"><h6><?php echo $quiz[0]->description?></h6></div>
-                        <button type="button" onclick="start('previewquestion')" class="btn btn-t-p btn-success"><i class="fa fa-sign-in" aria-hidden="true"> Start</i></button>
+                        <button type="button" onclick="start('previewquestion'); startquiz();" class="btn btn-t-p btn-success"><i class="fa fa-sign-in" aria-hidden="true"> Start</i></button>
                     <hr>
                 </div>
 
@@ -112,6 +112,33 @@
             $("#myCarousel").carousel("prev");
         });
     }
+    
+    function startquiz(){
+        var quizData = [];
+        quizData.push({
+                quizid : <?php echo $quiz[0]->id;?>,
+                user_id : <?php echo $quiz[0]->user_id;?>
+         });
+        Data = JSON.stringify( quizData[0]);
+        // alert(Data);
+        $.post('http://localhost:8084/takequiz/startquiz', {results: Data, }).done(function(data) {
+            //  alert("start quiz");
+        });
+    }
+
+    function completequiz(){
+        var quizData = [];
+        quizData.push({
+                quizid : <?php echo $quiz[0]->id;?>,
+                user_id : <?php echo $quiz[0]->user_id;?>
+         });
+        Data = JSON.stringify( quizData[0]);
+        // alert(Data);
+        $.post('http://localhost:8084/takequiz/startquiz', {results: Data, }).done(function(data) {
+            //  alert("start quiz");
+        });
+    }
+
     var resultData = [];
     var outcome = [];
     var outcomeData = [];
@@ -152,9 +179,6 @@
     function submitResult(){
         addContactData();
         Data = JSON.stringify( resultData );
-        $.post('http://localhost/takequiz/submitData', {results: Data, }).done(function(data) {
-        //  alert(data);
-        });
         
     }
 
@@ -168,8 +192,9 @@
             quizid : <?php echo $quiz[0]->id;?>,
         });
         Data = JSON.stringify( userData[0]);
+        rData = JSON.stringify( resultData );
         console.log(Data);
-        $.post('http://localhost/takequiz/AddContact', {results: Data, }).done(function(data) {
+        $.post('http://localhost:8084/takequiz/AddContact', {accountData: Data, resultData: rData, }).done(function(data) {
              alert("information added: "+data);
         });
     }

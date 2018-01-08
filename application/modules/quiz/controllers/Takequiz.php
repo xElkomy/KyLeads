@@ -42,9 +42,21 @@ class Takequiz extends MY_Controller {
 		}
 	}
 	
+	public function startquiz(){
+		$results = $_POST['results'];
+    	$this->data['quizdata'] = json_decode($results);
+		/**put hook here */
+		$this->hooks->call_hook('quiz_start_add');
+	}
+
+	public function completequiz(){
+		$results = $_POST['results'];
+    	$this->data['quizdata'] = json_decode($results);
+		/**put hook here */
+		$this->hooks->call_hook('quiz_complete_add');
+	}
 	
 	public function quiz($id = ''){
-		
 
 		$quiztable = "quizzes";
 		$questiontable = "questions";
@@ -53,9 +65,9 @@ class Takequiz extends MY_Controller {
 		$this->data['quizid'] = $id;
 		
 		if($this->MQuiz->isMyQuiz($id)){
-			/**put hook here */
 			
-			$this->hooks->call_hook('quiz_views_add');
+			
+			
 			if(!$this->MQuiz->QuizStatus($id,$quiztable)){
 				$this->data['status'] = "Note: This quiz is still unpublish and not yet visible to the public";
 			}else{
@@ -66,6 +78,9 @@ class Takequiz extends MY_Controller {
 				$this->data['questions'] = null;
 				redirect('quiz/dashboard','refresh');
 			}
+			/**put hook here */
+			$this->hooks->call_hook('quiz_views_add');
+
 			$this->data['title'] = 'KyLeads Quizzes';
 			$this->data['content'] = 'takequiz/viewquiz';
 			$this->data['page'] = 'site';
@@ -73,14 +88,17 @@ class Takequiz extends MY_Controller {
 			$this->load->view('layout', $this->data);
 		}
 		else if($this->MQuiz->QuizStatus($id,$quiztable)){
-			/**put hook here */
-			$this->hooks->call_hook('quiz_views_add',[1,2,3]);
+			
+			
 			$this->data['status'] = "";
 			$this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
 			if($this->data['quiz'] === null){
 				$this->data['questions'] = null;
 				redirect('quiz/dashboard','refresh');
 			}
+			/**put hook here */
+			$this->hooks->call_hook('quiz_views_add');
+
 			$this->data['title'] = 'KyLeads Quizzes';
 			$this->data['content'] = 'takequiz/viewquiz';
 			$this->data['page'] = 'site';
@@ -135,7 +153,6 @@ class Takequiz extends MY_Controller {
 						
 				$this->load->view('layout', $this->data);
 			}
-			
 		}
 		// --------------------------------
 		// if(!$this->isQuizActive($id,$quiztable)){
@@ -155,20 +172,25 @@ class Takequiz extends MY_Controller {
 		// -----------------------
 	}
 
-	public function submitData(){
-		$results = $_POST['results'];
-    	$data = json_decode($results);
-		// var_dump("asdfsfsf");
-		$this->MTQuiz->submitresult($data);
-		
-	}
 
 	public function AddContact(){
-		$results = $_POST['results'];
-		$data = json_decode($results);
+		$accData = $_POST['accountData'];
+		$rData = $_POST['resultData'];
+
+		$accountdata = json_decode($accData);
+		$resultData = json_decode($rData);
 		
-		$new_contact_id = $this->MContacts->newContact($data);
-		$this->AddContactData($new_contact_id,$data->quizid,$data->outcomeid);
+		$new_contact_id = $this->MContacts->newContact($accountdata);
+
+		$this->AddContactData($new_contact_id,$accountdata->quizid,$accountdata->outcomeid);
+		$this->submitResultData($resultData,$new_contact_id);
+	}
+
+	private function submitResultData($data,$contactid){
+		
+		// var_dump("asdfsfsf");
+		$this->MTQuiz->submitresult($data,$contactid);
+		
 	}
 
 	private function GetMyResult($outcomeid){
@@ -177,7 +199,7 @@ class Takequiz extends MY_Controller {
 	}
 
 	private function AddContactData($contactid,$quizid,$outcomeid){
-		var_dump($data->$outcomeid);
+		// var_dump($data->$outcomeid);
 		$this->MTQuiz->Addcontacts_results($contactid,$quizid,$outcomeid);
 	}
 

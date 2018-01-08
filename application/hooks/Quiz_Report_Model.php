@@ -22,19 +22,53 @@ class Quiz_Report_Model extends CI_Model {
 
     public function addViews(){
         $CI =& get_instance();
-        $data = $CI->data['quizid'];
-    //    echo "test";
-        // var_dump($data);
+        $quizid = $CI->data['quizid'];
+        $quizinfo = $CI->data['quiz'][0];
+        //   echo "test";
+        //  var_dump($quizinfo->user_id);
 
-        // $table  = "quiz_views";
-        // $data = array(
-        //     'quiz_id' => 1,
-        //     'user_id' => 1,
-        // );
-        // $this->db->insert($table, $data);
+        $table  = "quiz_views";
+        $data = array(
+            'quiz_id' => $quizinfo->id,
+            'user_id' => $quizinfo->user_id,
+        );
+        $this->db->insert($table, $data);
         
         // $new_quiz_id = $this->db->insert_id();
     }
+    
+    public function startquiz(){
+        $CI =& get_instance();
+        $quizinfo = $CI->data['quizdata'];
+        //   echo "test";
+        //  var_dump($quizinfo->user_id);
+
+        $table  = "quiz_starts";
+        $data = array(
+            'quiz_id' => $quizinfo->quizid,
+            'user_id' => $quizinfo->user_id,
+        );
+        $this->db->insert($table, $data);
+        
+        // $new_quiz_id = $this->db->insert_id();
+    }
+
+    public function completequiz(){
+        $CI =& get_instance();
+        $quizinfo = $CI->data['quizdata'];
+        //   echo "test";
+        //  var_dump($quizinfo->user_id);
+
+        $table  = "quiz_completions";
+        $data = array(
+            'quiz_id' => $quizinfo->quizid,
+            'user_id' => $quizinfo->user_id,
+        );
+        $this->db->insert($table, $data);
+        
+        // $new_quiz_id = $this->db->insert_id();
+    }
+
     
    
 }

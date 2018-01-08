@@ -50,4 +50,19 @@ $hook['quiz_views_add'][] = array(
         'params'   => ''
 );
 
+$hook['quiz_start_add'][] = array(
+        'class'    => 'Quiz_Report_Model',
+        'function' => 'startquiz',
+        'filename' => 'Quiz_Report_Model.php',
+        'filepath' => 'hooks',
+        'params'   => ''
+);
+
+$hook['quiz_complete_add'][] = array(
+        'class'    => 'Quiz_Report_Model',
+        'function' => 'completequiz',
+        'filename' => 'Quiz_Report_Model.php',
+        'filepath' => 'hooks',
+        'params'   => ''
+);
 
