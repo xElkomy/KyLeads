@@ -30,26 +30,19 @@
                         </div>
                         <div id="showform">
                             <hr>
-                            <form class="form-horizontal">
+                            <h6 style="padding:50px 0 0 20px;">Enter in your information in below to get your result!</h6>
+                            <form style="width:500px;margin:auto;">
+                            
+                                <div class="form-group">
+                                    <label for="usr" style="float:left">Name:</label>
+                                    <input type="text" class="form-control" id="usr">
+                                </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="pwd">Name:</label>
-                                    <div class="col-sm-10"> 
-                                        <input type="text" class="form-control" id="usr" placeholder="Enter name">
-                                    </div>
+                                    <label for="email" style="float:left">Email:</label>
+                                    <input type="email" class="form-control" id="email" required>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2" for="email">Email:</label>
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" required>
-                                    </div>
-                                </div>
-                                <div class="form-group"> 
-                                    <div class="col-sm-offset-2 col-sm-8">
-                                        <button type="submit" class="btn next btn-success btn-t-p"><i class="fa fa-paper-plane-o" aria-hidden="true"> Send!</i></button>
-                                    </div>
-                                </div>
-
+                                <button type="submit" class="btn next btn-success btn-t-p">Submit</button>
                             </form>
                             <hr>
                         </div>
@@ -119,7 +112,7 @@
                                             ?>
                                         </div>
                                         <?php if($idx+1 >= count($quiz[0]->questions)){
-                                                ?><button onclick="submitResult()" type="button"class="btn next btn-success btn-t-p" style="float:center">Get Result <i class="fa fa-arrow-right" aria-hidden="true">  </i></button> <?php
+                                                ?><button onclick="submitResult()" type="button"class="btn next btn-success btn-t-p" style="float:center">Next <i class="fa fa-arrow-right" aria-hidden="true">  </i></button> <?php
                                             }else{
                                                 ?> <button type="button" name="back" class="btn next btn-success btn-t-p" style="float:left"><i class="fa fa-arrow-left" aria-hidden="true"> Previous </i></button>   <?php
                                                 ?><button type="button" name="next" class="btn next btn-success btn-t-p" style="float:right"> Continue <i class="fa fa-arrow-right" aria-hidden="true"></i></button>  <?php
