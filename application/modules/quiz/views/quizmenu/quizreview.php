@@ -50,7 +50,8 @@
                         </div>
                         <div id="showquizsummary">
                             <hr>
-                                <h1>Summary</h1>
+                                <h5>title</h5>
+                                <h5>description</h5>
                             <hr>
                         </div>
     
