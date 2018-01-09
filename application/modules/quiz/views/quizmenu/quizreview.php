@@ -31,22 +31,21 @@
                         <div id="showform">
                             <hr>
                             <h6 style="padding:50px 0 0 20px;">Enter in your information in below to get your result!</h6>
-                            <form style="width:500px;margin:auto;">
-                            
-                                <div class="form-group">
-                                    <label for="usr" style="float:left">Name:</label>
-                                    <input type="text" class="form-control" id="usr">
-                                </div>
+                                <form style="width:500px;margin:auto;">
+                                
+                                    <div class="form-group">
+                                        <label for="usr" style="float:left">Name:</label>
+                                        <input type="text" class="form-control" id="usr">
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="email" style="float:left">Email:</label>
-                                    <input type="email" class="form-control" id="email" required>
-                                </div>
-                                <button type="submit" class="btn next btn-success btn-t-p">Submit</button>
-                            </form>
+                                    <div class="form-group">
+                                        <label for="email" style="float:left">Email:</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <button type="button" class="btn next btn-success btn-t-p" id="hide_form" style="width:300px;"><i class="fa fa-paper-plane-o" aria-hidden="true"> GET MY RESULT!</i></button>
+                                </form>
                             <hr>
                         </div>
-
                         <div id="showquizsummary">
                             <hr>
                                 <h1>Summary</h1>
@@ -86,7 +85,7 @@
                                                 }
                                             ?> 
                                         </div>
-                                        <button type="button" name="next" class="btn btn-success btn-t-p" style="float:right"> Continue <i class="fa fa-arrow-right" aria-hidden="true">  </i></button>    
+                                        <!-- <button type="button" name="next" class="btn btn-success btn-t-p" style="float:right"> Continue <i class="fa fa-arrow-right" aria-hidden="true">  </i></button>     -->
                             </div> 
                             <?php  
                                 }else{
@@ -102,8 +101,20 @@
                                             ?>
                                                         <div class="margin-l-t-p">
                                                             <label class="form-check-label f-c-l-t-p">
-                                                                <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)"type="radio" 
-                                                                class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>   
+                                                                <?php
+                                                                    if($idx+1 >= count($quiz[0]->questions)){
+                                                                        ?>
+                                                                        <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>); submitResult();"type="radio" 
+                                                                        class="form-check-input f-c-i-t-p" name="last" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
+                                                                        <?php
+                                                                    }else{
+                                                                        ?>
+                                                                        <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)"type="radio" 
+                                                                        class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
+                                                                    <?php
+                                                                    }
+                                                                ?>
+                                                                  
                                                             </label>    
                                                         </div>
                                                     <br>
@@ -111,19 +122,12 @@
                                                 }
                                             ?>
                                         </div>
-                                        <?php if($idx+1 >= count($quiz[0]->questions)){
-                                                ?><button onclick="submitResult()" type="button"class="btn next btn-success btn-t-p" style="float:center">Next <i class="fa fa-arrow-right" aria-hidden="true">  </i></button> <?php
-                                            }else{
-                                                ?> <button type="button" name="back" class="btn next btn-success btn-t-p" style="float:left"><i class="fa fa-arrow-left" aria-hidden="true"> Previous </i></button>   <?php
-                                                ?><button type="button" name="next" class="btn next btn-success btn-t-p" style="float:right"> Continue <i class="fa fa-arrow-right" aria-hidden="true"></i></button>  <?php
-                                            }
-                                        ?>       
-                
-                                </div> 
-                                    <?php 
-                                    }       
-                                }
-                            ?>                                                                          
+                                            <button type="button" name="back" class="btn next btn-success btn-t-p" style="float:left"><i class="fa fa-arrow-left" aria-hidden="true"> Previous </i></button>               
+                                        </div> 
+                                            <?php 
+                                            }       
+                                        }
+                                    ?>                                                                          
                                     </div>
                                 </div>
                             <div>
@@ -143,14 +147,29 @@
         }
         document.getElementById(cityName).style.display = "block";  
 
-        var $next = $("button[name=next]");
-        $next.on( "click", function() {
+        var $choice = $( "input:radio[name=choice]" );
+        $choice.on( "click", function() {
             $("#myCarousel").carousel("next");
         });
+
+        var $last = $( "input:radio[name=last]" );
+        $last.on( "click", function() {
+            $("#showform").show();
+            $('#hideform').hide();
+        });
+    
         var $back = $("button[name=back]");
         $back.on( "click", function() {
             $("#myCarousel").carousel("prev");
         });
+
+
+        $("#hide_form").click(function(){
+
+            $("#showform").hide();
+            $("#showquizsummary").show();
+        });
+
     }
     var resultData = [];
     var outcome = [];
@@ -189,18 +208,14 @@
         // console.log(resultData);
         // submitResult();
     }
-    $(document).ready(function(){
-        $("form").submit(function(){
-            $("showquizsummary").show();
-        });       
-    });
+    //prevent refreshing page by onlick form!
+
     function submitResult(){
         addContactData();
         Data = JSON.stringify( resultData );
         $.post('http://localhost/takequiz/submitData', {results: Data, }).done(function(data) {
 
-            $("#showform").show();
-            $('#hideform').hide();
+
         
         });
         
