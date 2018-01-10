@@ -56,8 +56,31 @@ class Takequiz extends MY_Controller {
 		$this->hooks->call_hook('quiz_complete_add');
 	}
 	
-	public function quiz($id = ''){
+	public function getresult(){
+		// $this->data['outcomeData'] = $_POST['outcomeresult'];
+		if(isset($_GET['id'])){
+			$outcomeid = $_GET['id'];
+			$outcometable = "outcomes";
+			// $this->data['out'] = $this->TQuiz->get_outcome_info($outcomeid,$outcometable);
+			$this->data['outcome'] = $this->MQuiz->view_outcome_data($outcomeid,$outcometable);
+			if(count($this->data['outcome']) > 0){
+				$this->data['title'] = 'KyLeads Quizzes';
+				$this->data['content'] = 'takequiz/viewresult';
+				$this->data['page'] = 'site';
+						
+				$this->load->view('layout', $this->data);
+			}else {
+				echo "Page not found";
+			}
+			
+		}
+		
+	}
 
+	public function quiz($id = '',$outcomeData =''){
+
+		// $this->data['outcomeData'] = $_POST['outcomeresult'];
+		// echo $this->data['outcomeData'];
 		$quiztable = "quizzes";
 		$questiontable = "questions";
 		$choicetable = "choices";
@@ -74,12 +97,15 @@ class Takequiz extends MY_Controller {
 				$this->data['status'] = "";
 			}
 			$this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
+			$this->data['outcomes'] = $this->MQuiz->view_outcomes($id,$outcometable);
 			if($this->data['quiz'] === null){
 				$this->data['questions'] = null;
 				redirect('quiz/dashboard','refresh');
 			}
 			/**put hook here */
 			$this->hooks->call_hook('quiz_views_add');
+			// $outcomeresultid = $_POST['outcomeresult'];
+			$this->data['outcomeData'] = $outcomeData;
 
 			$this->data['title'] = 'KyLeads Quizzes';
 			$this->data['content'] = 'takequiz/viewquiz';

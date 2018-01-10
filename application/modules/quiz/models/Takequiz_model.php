@@ -147,7 +147,15 @@ class Takequiz_model extends CI_Model {
         $table = $outcometable;
         $query  = $this->db->get_where($table,array('id'=>$outcomeid));
             
-        return $query->result();
+        return $query->first_row();
     }
+
+    public function get_outcome_info($id,$table){
+        $query = $this->db->get_where($table,array('id'=>$id));
+                    
+        return $query->result();
+        
+    }
+
 
 }

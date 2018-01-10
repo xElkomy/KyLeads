@@ -9,83 +9,121 @@
         <div class="row">
         <p><?php echo $status;?></p>
             <div class="col j-c-t-u">
-                <div id="London" class="city">
-                    <hr>
-                        <div class="text-center"><h3><?php echo $quiz[0]->title?></h3></div>
-                        <div class="text-center"><h6><?php echo $quiz[0]->description?></h6></div>
-                        <button type="button" onclick="start('previewquestion'); startquiz();" class="btn btn-t-p btn-success"><i class="fa fa-sign-in" aria-hidden="true"> Start</i></button>
-                    <hr>
-                </div>
-
-                <div id="previewquestion" style="display:none">
-
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-                        <!-- Wrapper for carousel items -->
-                        <div class="carousel-inner">
-                <?php
-                    $firstQuestion=0;
+            <div id="London" class="city">
+            <hr>
+                <div class="text-center"><h3><?php echo $quiz[0]->title?></h3></div>
+                <div class="text-center"><h6><?php echo $quiz[0]->description?></h6></div>
+                <button type="button" onclick="start('previewquestion'); startquiz();" class="btn btn-t-p btn-success"><i class="fa fa-sign-in" aria-hidden="true"> Start</i></button>
+            <hr>
+        </div>
+        <div id="showform">
+            <hr>
+            <h6 style="padding:50px 0 0 20px;">Enter in your information in below to get your result!</h6>
+                <form style="width:500px;margin:auto;">
+                    <div class="form-group">
+                        <?php
+                            if($_POST['outcomeresult'] == null){
+                                echo "no value";
+                            }else{
+                                echo "has value";
+                            }
+                        ?>
+                        <form name="myForm">
+                            <label for="usr" style="float:left">Name:</label>
+                            <input type="text" class="form-control" id="username">
+                            <label for="email" style="float:left">Email:</label>
+                            <input type="email" class="form-control" id="email"><br>
+                            <button onclick = "submitResult()" type="submit" class="btn next btn-success btn-t-p" id="hide_form" style="width:300px;"><i class="fa fa-paper-plane-o" aria-hidden="true"> GET MY RESULT!</i></button>
+                        </form>
+                    </div>
                     
-                    foreach($quiz[0]->questions  as $idx => $question){
-                        if($firstQuestion === $idx){
-                    ?>
-                        <div class="item active">
-                            <p>Question <?php echo $idx+1;?> of <?php echo count($quiz[0]->questions);?></p>
-                            <h6> <?php echo $question->title?></h6>
-                               
-                                <div class="form-check f-c-c-t-p">
+                </form>
+            <hr>
+        </div>
+        <div id="showquizsummary"> 
+                            
+        </div>
+
+    <div id="previewquestion" style="display:none">
+    <div id="hideform">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+            <!-- Wrapper for carousel items -->
+            <div class="carousel-inner">
+        <?php
+            $firstQuestion=0;
+            
+            foreach($quiz[0]->questions  as $idx => $question){
+                if($firstQuestion === $idx){
+            ?>
+                    <div class="item active">
+                    <p>Question <?php echo $idx+1;?> of <?php echo count($quiz[0]->questions);?></p>
+                    <h6> <?php echo $question->title?></h6>
+                    
+                        <div class="form-check f-c-c-t-p">
+                            <?php
+                                foreach ($question->choices as $choice) 
+                                {
+                            ?>
+
+                                        <div class="margin-l-t-p">
+                                            <label class="form-check-label f-c-l-t-p">
+                                                <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)" 
+                                                type="radio" class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>   
+                                            </label>    
+                                        </div>
+                            
+                                    <br>
                                     <?php
-                                        foreach ($question->choices as $choice) 
-                                        {
-                                    ?>
-                                                <div class="margin-l-t-p">
-                                                    <label class="form-check-label f-c-l-t-p">
-                                                        <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)" type="radio" class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u"><?php echo $choice->value;?></h7></a>   
-                                                    </label>    
-                                                </div>
-                                       
-                                            <br>
-                                    <?php
-                                        }
-                                    ?> 
-                                </div>
-                            <button type="button" name="next" class="btn next btn-info" style="float:right">Continue   <i class="fa fa-arrow-right" aria-hidden="true">  </i></button>    
-                    </div> 
-                    <?php  
-                        }else{
-                    ?>
-                            <div class="item">
-                            <p>Question <?php echo $idx+1;?> of <?php echo count($quiz[0]->questions);?></p>
-                            <h6> <?php echo $question->title?></h6>
-                               
-                                <div class="form-check f-c-c-t-p">
-                                    <?php
-                                        foreach ($question->choices as $choice) 
-                                        {
-                                    ?>
-                                                <div class="margin-l-t-p">
-                                                    <label class="form-check-label f-c-l-t-p">
-                                                        <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)" type="radio" class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u"><?php echo $choice->value;?></h7></a>   
-                                                    </label>    
-                                                </div>
-                                            <br>
-                                            <?php
-                                        }
-                                    ?>
-                                </div>
-                                <?php if($idx+1 >= count($quiz[0]->questions)){
-                                        ?><button onclick="submitResult()" type="button" class="btn next btn-success" style="float:center">Get Result <i class="fa fa-arrow-right" aria-hidden="true">  </i></button> <?php
-                                    }else{
-                                        ?> <button type="button" name="back" class="btn next btn-info" style="float:left"><i class="fa fa-arrow-left" aria-hidden="true"> Previous </i></button>   <?php
-                                        ?><button type="button" name="next" class="btn next btn-info" style="float:right"> Continue <i class="fa fa-arrow-right" aria-hidden="true"></i></button>  <?php
-                                    }
-                                ?>       
-                                            
+                                }
+                            ?> 
+                        </div>
+                        <!-- <button type="button" name="next" class="btn btn-success btn-t-p" style="float:right"> Continue <i class="fa fa-arrow-right" aria-hidden="true">  </i></button>     -->
+            </div> 
+            <?php  
+                }else{
+            ?>
+                    <div class="item">
+                    <p>Question <?php echo $idx+1;?> of <?php echo count($quiz[0]->questions);?></p>
+                    <h6> <?php echo $question->title?></h6>
+                    
+                        <div class="form-check f-c-c-t-p">
+                            <?php
+                                foreach ($question->choices as $choice) 
+                                {
+                            ?>
+                                        <div class="margin-l-t-p">
+                                            <label class="form-check-label f-c-l-t-p">
+                                                <?php
+                                                    if($idx+1 >= count($quiz[0]->questions)){
+                                                        ?>
+                                                        <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>); completequiz(); " type="radio" 
+                                                        class="form-check-input f-c-i-t-p" name="last" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
+                                                        <?php
+                                                    }else{
+                                                        ?>
+                                                        <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)"type="radio" 
+                                                        class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
+                                                    <?php
+                                                    }
+                                                ?>
+                                                  
+                                            </label>    
+                                        </div>
+                                    <br>
+                            <?php
+                                }
+                            ?>
+                        </div>
+                            <button type="button" name="back" class="btn next btn-success btn-t-p" style="float:left"><i class="fa fa-arrow-left" aria-hidden="true"> Previous </i></button>               
                         </div> 
                             <?php 
                             }       
                         }
-                    ?>                                                                           
+                    ?>                                                                          
+                    </div>
                 </div>
+            <div>
+        </div>
                 </div>
                 <div>
             </div>
@@ -103,13 +141,27 @@
         }
         document.getElementById(cityName).style.display = "block";  
 
-        var $next = $("button[name=next]");
-        $next.on( "click", function() {
+        var $choice = $( "input:radio[name=choice]" );
+        $choice.on( "click", function() {
             $("#myCarousel").carousel("next");
         });
+
+        var $last = $( "input:radio[name=last]" );
+        $last.on( "click", function() {
+            $("#showform").show();
+            $('#hideform').hide();
+        });
+    
         var $back = $("button[name=back]");
         $back.on( "click", function() {
             $("#myCarousel").carousel("prev");
+        });
+
+
+        $("#hide_form").click(function(){
+
+            $("#showform").hide();
+            $("#showquizsummary").show();
         });
     }
     
@@ -121,7 +173,7 @@
          });
         Data = JSON.stringify( quizData[0]);
         // alert(Data);
-        $.post('http://localhost:8084/takequiz/startquiz', {results: Data, }).done(function(data) {
+        $.post('<?php echo base_url(); ?>takequiz/startquiz', {results: Data, }).done(function(data) {
             //  alert("start quiz");
         });
     }
@@ -134,9 +186,11 @@
          });
         Data = JSON.stringify( quizData[0]);
         // alert(Data);
-        $.post('http://localhost:8084/takequiz/startquiz', {results: Data, }).done(function(data) {
+        $.post('<?php echo base_url(); ?>takequiz/completequiz', {results: Data, }).done(function(data) {
             //  alert("start quiz");
         });
+        var outcomeid =  GetOutcomeResult();
+        $('#showquizsummary').load('<?php echo base_url(); ?>takequiz/getresult?id='+outcomeid);
     }
 
     var resultData = [];
@@ -177,26 +231,39 @@
         // submitResult();
     }
     function submitResult(){
-        addContactData();
-        Data = JSON.stringify( resultData );
-        
+        addContactData(); 
+    }
+
+    function validateForm() {
+        var username = document.forms["myForm"]["username"].value;
+        var email = document.forms["myForm"]["email"].value;
+        if (username == "" || email == "") {
+            
+            return false;
+        }else{
+            return true;
+        }
     }
 
     function addContactData(){
+        var name = document.getElementById("username").value;
+        var email = document.getElementById("email").value;
         userData.push({
             userid : <?php echo $quiz[0]->user_id;?>,
-            fname : "firstname",
-            lname : "lastname",
-            email : "fistlast@gmail.com",
+            fname : name,
+            lname :  "",
+            email :  email,
             outcomeid: GetOutcomeResult(),
             quizid : <?php echo $quiz[0]->id;?>,
         });
         Data = JSON.stringify( userData[0]);
         rData = JSON.stringify( resultData );
         console.log(Data);
-        $.post('http://localhost:8084/takequiz/AddContact', {accountData: Data, resultData: rData, }).done(function(data) {
-             alert("information added: "+data);
+        $.post('<?php echo base_url(); ?>takequiz/AddContact', {accountData: Data, resultData: rData, }).done(function(data) {
+            //  alert("information added: "+data);
         });
+        
+
     }
 
     function GetOutcomeResult(){

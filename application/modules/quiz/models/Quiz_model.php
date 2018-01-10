@@ -219,6 +219,13 @@ class Quiz_model extends CI_Model {
         
     }
 
+    public function view_outcome_data($id,$table){
+        
+        $query = $this->db->get_where($table,array('id'=>$id));
+
+        return $query->first_row();
+        
+    }
 
     public function view_questions($quizID,$table){
         
