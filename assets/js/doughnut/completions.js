@@ -14,12 +14,6 @@ $(document).ready(function(){
 			highlight: "yellowgreen",
 			label: "Data2"
 		},
-		{
-			value: 140,
-			color: "orange",
-			highlight: "darkorange",
-			label: "Data1"
-		}
 	];
 
 	var chart = new Chart(ctx).Doughnut(data);

@@ -1,25 +1,19 @@
 $(document).ready(function(){
 	var ctx = $("#quizstarts").get(0).getContext("2d");
-
+	var views = 270;
 	var data = [
 		{
-			value: 270,
+			value: views,
 			color: "#9BC53D",
 			highlight: "lightskyblue",
-			label: "Data1"
+			label: "Views"
 		},
 		{
 			value: 50,
 			color: "#FDE74C",
 			highlight: "yellowgreen",
-			label: "Data2"
+			label: "Start"
 		},
-		{
-			value: 120,
-			color: "#5BC0EB",
-			highlight: "darkorange",
-			label: "Data3"
-		}
 	];
 
 	var chart = new Chart(ctx).Doughnut(data);
