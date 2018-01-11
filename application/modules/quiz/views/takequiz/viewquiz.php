@@ -17,28 +17,24 @@
             <hr>
         </div>
         <div id="showform">
-            <hr>
-            <h6 style="padding:50px 0 0 20px;">Enter in your information in below to get your result!</h6>
-                <form style="width:500px;margin:auto;">
-                    <div class="form-group">
-                        <?php
-                            if($_POST['outcomeresult'] == null){
-                                echo "no value";
-                            }else{
-                                echo "has value";
-                            }
-                        ?>
-                        <form name="myForm">
-                            <label for="usr" style="float:left">Name:</label>
-                            <input type="text" class="form-control" id="username">
-                            <label for="email" style="float:left">Email:</label>
-                            <input type="email" class="form-control" id="email"><br>
-                            <button onclick = "submitResult()" type="submit" class="btn next btn-success btn-t-p" id="hide_form" style="width:300px;"><i class="fa fa-paper-plane-o" aria-hidden="true"> GET MY RESULT!</i></button>
-                        </form>
-                    </div>
-                    
+                <hr>
+                <h6 style="padding:50px 0 0 20px;">Enter in your information in below to get your result!</h6>
+                                
+                <form style="width:500px;margin:auto;" id="prospects_form" onsubmit="return false" >
+                                
+                <div class="form-group">
+                    <label for="usr" name="name" style="float:left">Name:</label>
+                    <input type="text" class="form-control" id="username">
+                </div>
+
+                <div class="form-group">
+                    <label for="email" email="email"style="float:left">Email:</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <button type="submit" class="btn btn-success btn-t-p" style="width:300px;"><i class="fa fa-paper-plane-o" aria-hidden="true"> GET MY RESULT!</i></button>
                 </form>
-            <hr>
+
+                <hr>
         </div>
         <div id="showquizsummary"> 
                             
@@ -157,12 +153,18 @@
             $("#myCarousel").carousel("prev");
         });
 
+        var x = document.getElementById("email").required;
 
-        $("#hide_form").click(function(){
-
-            $("#showform").hide();
-            $("#showquizsummary").show();
+        $("#prospects_form").submit(function(e) {
+            e.preventDefault();
+                
+                if(x===true){
+                $("#showform").hide();
+                submitResult();
+                $('#showquizsummary').show();
+            }
         });
+
     }
     
     function startquiz(){
