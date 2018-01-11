@@ -86,7 +86,7 @@
 	<link href="<?php echo base_url(); ?>assets/css/create.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/css/analytics.css" rel="stylesheet">
 	<link href="<?php echo base_url(); ?>assets/css/template_preview.css" rel="stylesheet">
-	<link href="<?php echo base_url(); ?>assets/css/site.css" rel="stylesheet">      
+	<link href="<?php echo base_url(); ?>assets/css/site.css" rel="stylesheet">
 	<script>
 		var baseUrl = '<?php echo base_url('/'); ?>';
 		var siteUrl = '<?php echo site_url('/'); ?>';

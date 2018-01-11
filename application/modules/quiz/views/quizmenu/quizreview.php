@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col j-c-t-u">
 
-                        <div id="London" class="city">
+                        <div class="city">
                             <hr>
                                 <div class="text-center"><h3><?php echo $quiz[0]->title?></h3></div>
                                 <div class="text-center"><h6><?php echo $quiz[0]->description?></h6></div>
@@ -31,24 +31,27 @@
                         <div id="showform">
                             <hr>
                             <h6 style="padding:50px 0 0 20px;">Enter in your information in below to get your result!</h6>
-                                <form style="width:500px;margin:auto;">
+                                
+                                <form style="width:500px;margin:auto;" id="prospects_form" onsubmit="return false" >
                                 
                                     <div class="form-group">
-                                        <label for="usr" style="float:left">Name:</label>
+                                        <label for="usr" name="name" style="float:left">Name:</label>
                                         <input type="text" class="form-control" id="usr">
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="email" style="float:left">Email:</label>
-                                        <input type="email" class="form-control" id="email" required>
+                                        <label for="email" email="email"style="float:left">Email:</label>
+                                        <input type="email" class="form-control" id="myemail" required>
                                     </div>
-                                    <button type="button" class="btn next btn-success btn-t-p" id="hide_form" style="width:300px;"><i class="fa fa-paper-plane-o" aria-hidden="true"> GET MY RESULT!</i></button>
+                                    <button type="submit" class="btn btn-success btn-t-p" style="width:300px;"><i class="fa fa-paper-plane-o" aria-hidden="true"> GET MY RESULT!</i></button>
                                 </form>
+
                             <hr>
                         </div>
                         <div id="showquizsummary">
                             <hr>
-                                <h1>Summary</h1>
+                                <h5>title</h5>
+                                <h5>description</h5>
                             <hr>
                         </div>
     
@@ -70,7 +73,7 @@
                                         <div class="form-check f-c-c-t-p">
                                             <?php
                                                 foreach ($question->choices as $choice) 
-                                                {
+                                                {    
                                             ?>
 
                                                         <div class="margin-l-t-p">
@@ -95,7 +98,9 @@
                                     <h6> <?php echo $question->title?></h6>
                                     
                                         <div class="form-check f-c-c-t-p">
+                                        <form>
                                             <?php
+                                    
                                                 foreach ($question->choices as $choice) 
                                                 {
                                             ?>
@@ -121,6 +126,7 @@
                                             <?php
                                                 }
                                             ?>
+                                            </form>
                                         </div>
                                             <button type="button" name="back" class="btn next btn-success btn-t-p" style="float:left"><i class="fa fa-arrow-left" aria-hidden="true"> Previous </i></button>               
                                         </div> 
@@ -164,13 +170,23 @@
         });
 
 
-        $("#hide_form").click(function(){
+        var x = document.getElementById("myemail").required;
 
-            $("#showform").hide();
-            $("#showquizsummary").show();
+        $("#prospects_form").submit(function(e) {
+
+            e.preventDefault();
+                
+                if(x===true){
+                $("#showform").hide();
+                $('#showquizsummary').show();
+            }
+
         });
 
+
     }
+
+
     var resultData = [];
     var outcome = [];
     var outcomeData = [];
@@ -208,7 +224,6 @@
         // console.log(resultData);
         // submitResult();
     }
-    //prevent refreshing page by onlick form!
 
     function submitResult(){
         addContactData();
@@ -220,7 +235,7 @@
         });
         
     }
-
+    
     function addContactData(){
         userData.push({
             userid : <?php echo $quiz[0]->user_id;?>,
