@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <div>
-	<head>
-		<script type="text/javascript" src="./assets/js/doughnut/completions.js"></script>
-	</head>
-	
-		<canvas id="completions" width="150" height="150"></canvas>
+	<canvas id="completions" width="150" height="150"></canvas>
+	<script type="text/javascript">
+			var urldata = "<?php echo base_url(); ?>/api/quizreport?id="+"<?php echo $id?>";
+	</script>
+	<script type="text/javascript" src="./assets/js/doughnut/completions.js">
+			
+	</script>
 </div>

@@ -652,7 +652,9 @@ class Quiz extends MY_Controller {
 		}
 
 	}
-	public function analytics(){
+	public function analytics($id=''){
+		
+		$this->data['id'] = $id;
 		$this->data['title'] = 'KyLeads Quizzes';
         $this->data['content'] = 'analytics/analytics';
         $this->data['page'] = 'site';

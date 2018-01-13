@@ -225,4 +225,29 @@ class Quiz_model extends CI_Model {
 
         $this->db->insert('questions', $data);
     }
+
+
+    // ------------------QUIZ REPORTS--------------------------
+    public function get_quiz_report($id,$table){
+
+        $data = array(
+            'quiz_id' => $id,
+        );
+    
+        $query = $this->db->get_where($table,$data);
+        return count($query->result());
+    }
+    
+    
+//    --------------VALIDATIONS-------------------
+    public function isMyQuiz($id){
+        $query = $this->db->get_where('quizzes',array('user_id' => $this->session->userdata('user_id'),'id' => $id));
+        
+        if($query->first_row() > 0){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
 }

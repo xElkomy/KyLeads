@@ -19,9 +19,13 @@ if(count($questions)>0){
     }
     // var_dump($quiz_item);
     echo json_encode($question_arr["records"]);
+    return json_encode($question_arr["records"]);
 }
 else{
     echo json_encode(
         array("message" => "No Questions found.")
      );
+    // return json_encode(
+    //     array("message" => "No Questions found.")
+    //  );
 }

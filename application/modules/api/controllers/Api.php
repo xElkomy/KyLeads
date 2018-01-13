@@ -51,5 +51,34 @@ class Api extends MY_Controller {
         $this->load->view('layout', $this->data);
 	}
 	
+	public function quizreport(){
+		$quizID = isset($_GET['id']) ? $_GET['id'] : die();
+		// $userID = isset($_GET['userid']) ? $_GET['userid'] : die();
+		if($this->MQuiz->isMyQuiz($quizID)){
+			$this->data['title'] = 'KyLeads API';
+			$this->data['content'] = 'quizreport/viewreport';
+			$tableviews = "quiz_views";
+			$tablestarts = "quiz_starts";
+			$tablecompletions ="quiz_completions";
+			$tablecontacts = "contacts_results";
+			$this->data['views'] = $this->MQuiz->get_quiz_report($quizID,$tableviews);
+			$this->data['starts'] = $this->MQuiz->get_quiz_report($quizID,$tablestarts);
+			$this->data['completions'] = $this->MQuiz->get_quiz_report($quizID,$tablecompletions);
+			$this->data['contacts'] = $this->MQuiz->get_quiz_report($quizID,$tablecompletions);
+			$quizreportdetials=array(
+				"views" => $this->data['views'],
+				"starts" => $this->data['starts'],
+				"completions" => $this->data['completions'],
+				"contacts" => $this->data['contacts'],
+			);
+			
+			$jsonData = json_encode($quizreportdetials);
+			echo $jsonData;
+			return $jsonData;
+		}else{
+			die();
+		}
+		
+    }
 	
 }

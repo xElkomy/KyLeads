@@ -441,6 +441,19 @@ class Quiz_model extends CI_Model {
         }
     }
 
+    // -------------------------QUIZ REPORTS HERE----------------------
 
+    public function get_quiz_views($id,$table){
+        $userID = $this->session->userdata('user_id');
+        
+        $data = array(
+            'quiz_id' => $id,
+            'user_id' => $userID,
+        );
+
+        $query = $this->db->get_where($table, $data);
+
+        return count($query->result());
+    }
     
 }

@@ -1,20 +1,36 @@
 $(document).ready(function(){
 	var ctx = $("#contacts").get(0).getContext("2d");
 
-	var data = [
+	$.ajax({
+		type: "GET",
+		url: urldata,
+		dataType: "json",
+		success: function(result)
 		{
-			value: 270,
-			color: "#F77F00",
-			highlight: "lightskyblue",
-			label: "Data1"
-		},
-		{
-			value: 90,
-			color: "#FCBF49",
-			highlight: "yellowgreen",
-			label: "Data2"
-		},
-	];
+			var data = JSON.parse(JSON.stringify(result));
+			createReport(data.views,data.contacts);
+			// alert("data here"+urldata);
+		}
+		
+	});
 
-	var chart = new Chart(ctx).Doughnut(data);
+	function createReport(totalviews,totalcontacts){
+
+		var data = [
+			{
+				value: totalviews,
+				color: "#9BC53D",
+				highlight: "lightskyblue",
+				label: "Views"
+			},
+			{
+				value: totalcontacts,
+				color: "#FDE74C",
+				highlight: "yellowgreen",
+				label: "Contacts"
+			},
+		];
+	
+		var chart = new Chart(ctx).Doughnut(data);
+	}
 });

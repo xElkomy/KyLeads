@@ -1,20 +1,36 @@
 $(document).ready(function(){
 	var ctx = $("#completions").get(0).getContext("2d");
 
-	var data = [
+	$.ajax({
+		type: "GET",
+		url: urldata,
+		dataType: "json",
+		success: function(result)
 		{
-			value: 70,
-			color: "cornflowerblue",
-			highlight: "lightskyblue",
-			label: "Data1"
-		},
-		{
-			value: 200,
-			color: "lightgreen",
-			highlight: "yellowgreen",
-			label: "Data2"
-		},
-	];
+			var data = JSON.parse(JSON.stringify(result));
+			createReport(data.views,data.completions);
+			// alert("data here"+urldata);
+		}
+		
+	});
 
-	var chart = new Chart(ctx).Doughnut(data);
+	function createReport(totalviews,totalcompletions){
+
+		var data = [
+			{
+				value: totalviews,
+				color: "#9BC53D",
+				highlight: "lightskyblue",
+				label: "Views"
+			},
+			{
+				value: totalcompletions,
+				color: "#FDE74C",
+				highlight: "yellowgreen",
+				label: "Completions"
+			},
+		];
+	
+		var chart = new Chart(ctx).Doughnut(data);
+	}
 });

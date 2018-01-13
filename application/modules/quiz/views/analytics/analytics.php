@@ -39,22 +39,22 @@
 											
 											<div class="col-md-2 col-c-u">
 												<h6>Total Views</h6>
-												<?php $this->load->view("analytics/totalviews.php"); ?>										
+												<?php $this->load->view("analytics/totalviews.php",$id); ?>										
 											</div>
 
 											<div class="col-md-2 col-c-u">
 												<h6>Quiz Starts</h6>
-												<?php $this->load->view("analytics/quizstarts.php"); ?>
+												<?php $this->load->view("analytics/quizstarts.php",$id); ?>
 											</div>
 											
 											<div class="col-md-2 col-c-u">
 												<h6>Completions</h6>
-												<?php $this->load->view("analytics/completions.php"); ?>
+												<?php $this->load->view("analytics/completions.php",$id); ?>
 											</div>	
 											
 											<div class="col-md-2 col-c-u">
 												<h6>Contacts</h6>
-												<?php $this->load->view("analytics/contacts.php"); ?>
+												<?php $this->load->view("analytics/contacts.php",$id); ?>
 											</div>	
 											
 											<div class="col-md-2 col-c-u">
@@ -136,10 +136,7 @@
 																</div>
 															</div>
 														</div>
-
-
-													</section>
-																									
+													</section>										
 												</div>
 											</div>
 										</div>
