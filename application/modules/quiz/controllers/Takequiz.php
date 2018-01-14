@@ -208,14 +208,14 @@ class Takequiz extends MY_Controller {
 		
 		$new_contact_id = $this->MContacts->newContact($accountdata);
 
-		$this->AddContactData($new_contact_id,$accountdata->quizid,$accountdata->outcomeid);
-		$this->submitResultData($resultData,$new_contact_id);
+		$new_contacts_results_id = $this->AddContactData($new_contact_id,$accountdata->quizid,$accountdata->outcomeid);
+		$this->submitResultData($resultData,$new_contacts_results_id);
 	}
 
-	private function submitResultData($data,$contactid){
+	private function submitResultData($data,$contactresultid){
 		
 		// var_dump("asdfsfsf");
-		$this->MTQuiz->submitresult($data,$contactid);
+		$this->MTQuiz->submitresult($data,$contactresultid);
 		
 	}
 
@@ -226,7 +226,8 @@ class Takequiz extends MY_Controller {
 
 	private function AddContactData($contactid,$quizid,$outcomeid){
 		// var_dump($data->$outcomeid);
-		$this->MTQuiz->Addcontacts_results($contactid,$quizid,$outcomeid);
+		$new_contacts_results_id = $this->MTQuiz->Addcontacts_results($contactid,$quizid,$outcomeid);
+		return $new_contacts_results_id;
 	}
 
 	// -------------------------------

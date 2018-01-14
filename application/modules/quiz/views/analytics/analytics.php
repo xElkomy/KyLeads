@@ -59,7 +59,7 @@
 											
 											<div class="col-md-2 col-c-u">
 												<h6>CTA Clicks</h6>
-												<?php $this->load->view("analytics/ctaclicks.php"); ?>
+												<?php $this->load->view("analytics/ctaclicks.php",$id); ?>
 											</div>											
 
 										</div>
@@ -78,13 +78,8 @@
 													</input>	
 													
 													<section class="section-a" id="content1-a">
-														<h1>Question</h1>
-													</section>
 														
-													<section class="section-a" id="content2-a">
-														
-													
-														<div class="container">
+													<div class="container">
 															<div class="row">
 																<div class="col-sm-12 col-md-12">
 																	<div class="panel-group" id="accordion">
@@ -96,40 +91,53 @@
 																			</div>
 																			<div id="collapseOne" class="panel-collapse collapse in ">
 																				<div class="panel-body">
-																				
 																					<table class="table">
-																						<tr><td><li class="active"><a href="#" data-target-id="1"><i></i> 18-22 
+																						<tr><td><li class="active"><a data-target-id="1"><i></i> 18-22 
 																							<div class="percent-a g-r-u">150 (21.5%)</div> 
 																						</a></li></td></tr>
-																						<tr><td><li class=""><a href="#" data-target-id="2"><i></i> 22-27 
+																						<tr><td><li class=""><a data-target-id="2"><i></i> 22-27 
 																							<div class="percent-a g-r-u">550 (78.5)</div> 
 																						</a></li></td></tr>
-																						
 																					</table>
 																				</div>
 																			</div>
 																		</div>
-																		<div class="panel panel-default">
-																			<div class="panel-heading">
+																		<div class="panel panel-default nav nav-pills nav-stacked">
+																			<div class="panel-heading ">
 																				<h4 class="panel-title">
-																					<a data-toggle="collapse"  data-target-id="5" data-parent="#accordion" href="#collapseTwo">What you favorite sport? <div class="percent-a g-r-u">700 (100%)</a>
+																					<a class=""data-toggle="collapse"  data-target-id="2" data-parent="#accordion" href="#collapseTwo">How old are you? <div class="percent-a g-r-u">700 (100%)</div> </a>
 																				</h4>
 																			</div>
-																			<div id="collapseTwo" class="panel-collapse collapse">
+																			<div id="collapseTwo" class="panel-collapse collapse in ">
 																				<div class="panel-body">
 																					<table class="table">
-																						<tr>
-																							<td>
-																								<li class="active"><a href="#" data-target-id="5"><i></i>Basketball</a></li>
-																							</td>
-																						</tr>
-																						<tr>
-																							<td>
-																								<li class="active"><a href="#" data-target-id="6"><i></i>Soccer</a></li>
-																							</td>
-																						</tr>
+																						<tr><td><li class="active"><a><i></i> 18-22 
+																							<div class="percent-a g-r-u">150 (21.5%)</div> 
+																						</a></li></td></tr>
+																						<tr><td><li class=""><a><i></i> 22-27 
+																							<div class="percent-a g-r-u">550 (78.5)</div> 
+																						</a></li></td></tr>
 																					</table>
 																				</div>
+																			</div>
+																		</div>
+																		
+																	</div>
+																</div>
+															</div>
+														</div>
+													</section>
+														
+													<section class="section-a" id="content2-a">
+													<div class="container">
+															<div class="row">
+																<div class="col-sm-12 col-md-12">
+																	<div class="panel-group" id="accordion">
+																		<div class="panel panel-default nav nav-pills nav-stacked">
+																			<div class="panel-heading ">
+																				<h4 class="panel-title">
+																					<a data-parent="#accordion">Outcome here<div class="percent-a g-r-u">700 (100%)</div> </a>
+																				</h4>
 																			</div>
 																		</div>
 																	</div>
@@ -156,11 +164,7 @@
 	<script type="text/javascript" src="./assets/js/doughnut/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="./assets/js/doughnut/Chart.js"></script>
     <!-- Load JS here for greater good =============================-->
-    <?php if (ENVIRONMENT == 'production') : ?>
-    <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>
-    <?php elseif (ENVIRONMENT == 'development') : ?>
-    <script src="<?php echo $this->config->item('webpack_dev_url'); ?>build/sites.bundle.js"></script>
-    <?php endif; ?>
+    
 
     <!--[if lt IE 10]>
     <script>

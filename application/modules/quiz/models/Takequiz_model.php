@@ -115,16 +115,15 @@ class Takequiz_model extends CI_Model {
 
     }
     
-    public function submitresult($results,$contactid){
+    public function submitresult($results,$contactresultid){
         // $title = "Quiz";
         // $description = "Another Quiz";
         $table = "results";
         foreach ($results as $key => $data) {
             $data = array(
-                'quiz_id' => $data->quizid,
+                'contacts_results_id' => $contactresultid,
                 'question_id' => $data->questionid,
                 'answer_id' => $data->answerid,
-                'contact_id' => $contactid,
             );
             $this->db->insert($table, $data);
         }
@@ -140,6 +139,8 @@ class Takequiz_model extends CI_Model {
             'outcome_id' => $outcomeid,  
         );
         $this->db->insert($table, $data);
+        $new_contacts_results_id = $this->db->insert_id();
+        return $new_contacts_results_id;
     }
 
     public function GetOutcomeDetails($outcomeid,$outcometable){

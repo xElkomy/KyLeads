@@ -1,26 +1,44 @@
 $(document).ready(function(){
 	var ctx = $("#ctaclicks").get(0).getContext("2d");
 
-	var data = [
+	
+	$.ajax({
+		type: "GET",
+		url: urldata,
+		dataType: "json",
+		success: function(result)
 		{
-			value: 270,
-			color: "#C02942",
-			highlight: "lightskyblue",
-			label: "Data1"
-		},
-		{
-			value: 150,
-			color: "#542437",
-			highlight: "yellowgreen",
-			label: "Data2"
-		},
-		{
-			value: 10,
-			color: "#53777A",
-			highlight: "darkorange",
-			label: "Data3"
+			var data = JSON.parse(JSON.stringify(result));
+			createReport(data.views,data.ctaclicks);
+			// alert("data here"+urldata);
+			var percentage  = (data.ctaclicks / data.views) * 100;
+			document.getElementById("ctaStats").innerHTML = roundToTwo(percentage)+"%";
+			document.getElementById("ctaCounts").innerHTML = data.ctaclicks;
 		}
-	];
+		
+	});
 
-	var chart = new Chart(ctx).Doughnut(data);
+	
+	function roundToTwo(num) {    
+		return +(Math.round(num + "e+2")  + "e-2");
+	}
+	function createReport(totalviews,totalclicks){
+
+		var data = [
+			{
+				value: totalviews,
+				color: "#9BC53D",
+				highlight: "lightskyblue",
+				label: "Views"
+			},
+			{
+				value: totalclicks,
+				color: "#FDE74C",
+				highlight: "yellowgreen",
+				label: "Clicks"
+			},
+		];
+	
+		var chart = new Chart(ctx).Doughnut(data);
+	}
 });

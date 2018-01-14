@@ -76,12 +76,7 @@
 
 
     <!-- Load JS here for greater good =============================-->
-    <?php if (ENVIRONMENT == 'production') : ?>
-    <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>
-    <?php elseif (ENVIRONMENT == 'development') : ?>
-    <script src="<?php echo $this->config->item('webpack_dev_url'); ?>build/sites.bundle.js"></script>
-    <?php endif; ?>
-
+   
     <!--[if lt IE 10]>
     <script>
     $(function(){

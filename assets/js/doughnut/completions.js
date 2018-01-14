@@ -10,10 +10,16 @@ $(document).ready(function(){
 			var data = JSON.parse(JSON.stringify(result));
 			createReport(data.views,data.completions);
 			// alert("data here"+urldata);
+			var percentage = (data.completions / data.views) * 100;
+			document.getElementById("comStats").innerHTML = roundToTwo(percentage)+"%";
+			document.getElementById("comCounts").innerHTML = data.completions;
 		}
 		
 	});
 
+	function roundToTwo(num) {    
+		return +(Math.round(num + "e+2")  + "e-2");
+	}
 	function createReport(totalviews,totalcompletions){
 
 		var data = [

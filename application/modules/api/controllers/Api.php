@@ -61,15 +61,18 @@ class Api extends MY_Controller {
 			$tablestarts = "quiz_starts";
 			$tablecompletions ="quiz_completions";
 			$tablecontacts = "contacts_results";
+			$tablectaclicks = "cta_clicks";
 			$this->data['views'] = $this->MQuiz->get_quiz_report($quizID,$tableviews);
 			$this->data['starts'] = $this->MQuiz->get_quiz_report($quizID,$tablestarts);
 			$this->data['completions'] = $this->MQuiz->get_quiz_report($quizID,$tablecompletions);
-			$this->data['contacts'] = $this->MQuiz->get_quiz_report($quizID,$tablecompletions);
+			$this->data['contacts'] = $this->MQuiz->get_quiz_report($quizID,$tablecontacts);
+			$this->data['ctaclicks'] = $this->MQuiz->get_quiz_report($quizID,$tablectaclicks);
 			$quizreportdetials=array(
 				"views" => $this->data['views'],
 				"starts" => $this->data['starts'],
 				"completions" => $this->data['completions'],
 				"contacts" => $this->data['contacts'],
+				"ctaclicks" => $this->data['ctaclicks'],
 			);
 			
 			$jsonData = json_encode($quizreportdetials);

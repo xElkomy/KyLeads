@@ -12,10 +12,17 @@ $(document).ready(function(){
 		{
 			var data = JSON.parse(JSON.stringify(result));
 			createReport(data.views);
-			// alert("data here"+urldata);
+			var percentage = (data.views / data.views) * 100;	
+			document.getElementById("vStats").innerHTML = roundToTwo(percentage)+"%";
+			document.getElementById("viewsCount").innerHTML = data.views;
 		}
 		
 	});
+
+	function roundToTwo(num) {    
+		return +(Math.round(num + "e+2")  + "e-2");
+	}
+
 	function createReport(totalviews){
 		var data = [
 			{

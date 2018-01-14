@@ -10,10 +10,18 @@ $(document).ready(function(){
 		{
 			var data = JSON.parse(JSON.stringify(result));
 			createReport(data.views,data.starts);
+			// sStats
+			var percentage = (data.starts / data.views) * 100;	
+			document.getElementById("sStats").innerHTML = roundToTwo(percentage)+"%";
+			document.getElementById("startCounts").innerHTML = data.starts;
 			// alert("data here"+urldata);
 		}
 		
 	});
+
+	function roundToTwo(num) {    
+		return +(Math.round(num + "e+2")  + "e-2");
+	}
 
 	function createReport(totalviews,totalstarts){
 
