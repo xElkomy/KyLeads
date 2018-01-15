@@ -238,7 +238,15 @@ class Quiz_model extends CI_Model {
         return count($query->result());
     }
     
+    public function get_quiz_outcome_report($quizid,$outcomeid,$table){
+        $data = array(
+            'quiz_id' => $quizid,
+            'outcome_id' => $outcomeid,
+        );
     
+        $query = $this->db->get_where($table,$data);
+        return count($query->result());
+    }
 //    --------------VALIDATIONS-------------------
     public function isMyQuiz($id){
         $query = $this->db->get_where('quizzes',array('user_id' => $this->session->userdata('user_id'),'id' => $id));
@@ -250,4 +258,5 @@ class Quiz_model extends CI_Model {
         }
         
     }
+    
 }

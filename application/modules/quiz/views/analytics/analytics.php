@@ -16,6 +16,7 @@
               	<div class="container ">
                     <div class="row row-c-u-a">
                     	<div id="new-optin" class="tabcontent">
+						<?php $cquiz = $quiz[0];?>
 							<h4>Analytics/<i>View metrics for your Quiz</i> </h4>
 								<ul class="nav nav-pills">
 									<li class="active j-c-t-u"><a data-toggle="pill" href="#home">Split Test <br>Report</a></li>
@@ -78,54 +79,42 @@
 													</input>	
 													
 													<section class="section-a" id="content1-a">
-														
 													<div class="container">
 															<div class="row">
 																<div class="col-sm-12 col-md-12">
 																	<div class="panel-group" id="accordion">
 																		<div class="panel panel-default nav nav-pills nav-stacked">
-																			<div class="panel-heading ">
-																				<h4 class="panel-title">
-																					<a class=""data-toggle="collapse"  data-target-id="1" data-parent="#accordion" href="#collapseOne">How old are you? <div class="percent-a g-r-u">700 (100%)</div> </a>
-																				</h4>
-																			</div>
-																			<div id="collapseOne" class="panel-collapse collapse in ">
-																				<div class="panel-body">
-																					<table class="table">
-																						<tr><td><li class="active"><a data-target-id="1"><i></i> 18-22 
+																			<?php 
+																				foreach ($cquiz->questions as $key => $question) {
+																					?>
+																						<div class="panel-heading ">
+																						<h4 class="panel-title">
+																							<a class=""data-toggle="collapse"  data-target-id="1" data-parent="#accordion" href="#collapse<?php echo $key?>"> <?php echo $question->title?><div class="percent-a g-r-u">700 (100%)</div> </a>
+																						</h4>
+																						</div>
+																						<div id="collapse<?php echo $key?>" class="panel-collapse collapse in ">
+																						<div class="panel-body">
+																							<table class="table">
+																					<?php foreach ($question->choices as $key => $choice) {
+																							?>
+																							<tr><td><li class="active"><a id="outcome<?php echo $key?>"><i></i><?php echo $choice->value; ?> 
 																							<div class="percent-a g-r-u">150 (21.5%)</div> 
-																						</a></li></td></tr>
-																						<tr><td><li class=""><a data-target-id="2"><i></i> 22-27 
-																							<div class="percent-a g-r-u">550 (78.5)</div> 
-																						</a></li></td></tr>
-																					</table>
-																				</div>
-																			</div>
+																							</a></li></td></tr>
+																							<?php
+																						}
+																						?>						
+																								</table>
+																							</div>
+																						</div>
+																			<?php	
+																				}
+																			?>																	
 																		</div>
-																		<div class="panel panel-default nav nav-pills nav-stacked">
-																			<div class="panel-heading ">
-																				<h4 class="panel-title">
-																					<a class=""data-toggle="collapse"  data-target-id="2" data-parent="#accordion" href="#collapseTwo">How old are you? <div class="percent-a g-r-u">700 (100%)</div> </a>
-																				</h4>
-																			</div>
-																			<div id="collapseTwo" class="panel-collapse collapse in ">
-																				<div class="panel-body">
-																					<table class="table">
-																						<tr><td><li class="active"><a><i></i> 18-22 
-																							<div class="percent-a g-r-u">150 (21.5%)</div> 
-																						</a></li></td></tr>
-																						<tr><td><li class=""><a><i></i> 22-27 
-																							<div class="percent-a g-r-u">550 (78.5)</div> 
-																						</a></li></td></tr>
-																					</table>
-																				</div>
-																			</div>
-																		</div>
-																		
 																	</div>
 																</div>
 															</div>
 														</div>
+													
 													</section>
 														
 													<section class="section-a" id="content2-a">
@@ -134,13 +123,17 @@
 																<div class="col-sm-12 col-md-12">
 																	<div class="panel-group" id="accordion">
 																		<div class="panel panel-default nav nav-pills nav-stacked">
-																			<div class="panel-heading ">
-																				<h4 class="panel-title">
-																					<a data-parent="#accordion">Outcome here<div class="percent-a g-r-u">700 (100%)</div> </a>
-																				</h4>
-																			</div>
+																		<?php
+																			foreach ($cquiz->outcomes as $key => $outcome) {
+																				?>	<div class="panel-heading">
+																					<h4 class="panel-title">
+																					<a class="outcome" id="<?php echo $key?>"><?php echo $outcome->title;?><div class="percent-a g-r-u" id="outcometarget<?php echo $key?>">700 (100%)</div> </a>
+																					</h4>
+																				</div><?php
+																			}
+																		?>																		
 																		</div>
-																	</div>
+																	</div>																	
 																</div>
 															</div>
 														</div>
@@ -159,10 +152,17 @@
   	</div>
 
     <!-- End of Content-->
-
+	<script type="text/javascript" >
+		var outcomes = new Array();
+		var urlData = "<?php echo base_url();?>api/quizreport?id=16&outcomeid=";
+		<?php foreach($cquiz->outcomes as $key => $val){ ?>
+			outcomes.push('<?php echo $val->id; ?>');
+    	<?php } ?>	
+	</script>
 	<script type="text/javascript" src="./assets/js/analytics.js"></script>
 	<script type="text/javascript" src="./assets/js/doughnut/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="./assets/js/doughnut/Chart.js"></script>
+	<script type="text/javascript" src="./assets/js/report/outcomes.js"></script>
     <!-- Load JS here for greater good =============================-->
     
 

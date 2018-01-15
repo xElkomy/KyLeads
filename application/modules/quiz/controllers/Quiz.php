@@ -655,6 +655,11 @@ class Quiz extends MY_Controller {
 	public function analytics($id=''){
 		
 		$this->data['id'] = $id;
+		$quiztable = "quizzes";
+		$questiontable = "questions";
+		$choicetable = "choices";
+		$outcometable = "outcomes";
+		$this->data['quiz'] =  $this->MQuiz->view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable);
 		$this->data['title'] = 'KyLeads Quizzes';
         $this->data['content'] = 'analytics/analytics';
         $this->data['page'] = 'site';

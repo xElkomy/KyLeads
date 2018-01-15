@@ -52,6 +52,7 @@ class Api extends MY_Controller {
 	}
 	
 	public function quizreport(){
+		$userID = $this->session->userdata('user_id');
 		$quizID = isset($_GET['id']) ? $_GET['id'] : die();
 		// $userID = isset($_GET['userid']) ? $_GET['userid'] : die();
 		if($this->MQuiz->isMyQuiz($quizID)){
@@ -62,22 +63,40 @@ class Api extends MY_Controller {
 			$tablecompletions ="quiz_completions";
 			$tablecontacts = "contacts_results";
 			$tablectaclicks = "cta_clicks";
+			$tableoutcomes = "contacts_results";
 			$this->data['views'] = $this->MQuiz->get_quiz_report($quizID,$tableviews);
 			$this->data['starts'] = $this->MQuiz->get_quiz_report($quizID,$tablestarts);
 			$this->data['completions'] = $this->MQuiz->get_quiz_report($quizID,$tablecompletions);
 			$this->data['contacts'] = $this->MQuiz->get_quiz_report($quizID,$tablecontacts);
 			$this->data['ctaclicks'] = $this->MQuiz->get_quiz_report($quizID,$tablectaclicks);
-			$quizreportdetials=array(
-				"views" => $this->data['views'],
-				"starts" => $this->data['starts'],
-				"completions" => $this->data['completions'],
-				"contacts" => $this->data['contacts'],
-				"ctaclicks" => $this->data['ctaclicks'],
-			);
+			if(isset($_GET['outcomeid'])){
+				$outcomeID = isset($_GET['outcomeid']) ? $_GET['outcomeid'] : die();
+				$this->data['outcomeresults'] = $this->MQuiz->get_quiz_outcome_report($quizID,$outcomeID,$tableoutcomes);
+			}
 			
-			$jsonData = json_encode($quizreportdetials);
-			echo $jsonData;
-			return $jsonData;
+			if(isset($_GET['outcomeid'])){
+				$quizreportdetials=array(
+					"completes" => $this->data['contacts'],
+					"results" => $this->data['outcomeresults'],
+				);
+				$jsonData = json_encode($quizreportdetials);
+				echo $jsonData;
+				return $jsonData;
+			}
+			if(isset($_GET['id']) && $_GET['outcomeid'] == null){
+				$quizreportdetials=array(
+					"views" => $this->data['views'],
+					"starts" => $this->data['starts'],
+					"completions" => $this->data['completions'],
+					"contacts" => $this->data['contacts'],
+					"ctaclicks" => $this->data['ctaclicks'],
+				);
+				
+				$jsonData = json_encode($quizreportdetials);
+				echo $jsonData;
+				return $jsonData;
+			}
+			
 		}else{
 			die();
 		}
