@@ -115,13 +115,14 @@ class Takequiz_model extends CI_Model {
 
     }
     
-    public function submitresult($results,$contactresultid){
+    public function submitresult($results,$contactresultid,$quizid){
         // $title = "Quiz";
         // $description = "Another Quiz";
         $table = "results";
         foreach ($results as $key => $data) {
             $data = array(
                 'contacts_results_id' => $contactresultid,
+                'quiz_id' => $quizid,
                 'question_id' => $data->questionid,
                 'answer_id' => $data->answerid,
             );

@@ -209,13 +209,13 @@ class Takequiz extends MY_Controller {
 		$new_contact_id = $this->MContacts->newContact($accountdata);
 
 		$new_contacts_results_id = $this->AddContactData($new_contact_id,$accountdata->quizid,$accountdata->outcomeid);
-		$this->submitResultData($resultData,$new_contacts_results_id);
+		$this->submitResultData($resultData,$new_contacts_results_id,$accountdata->quizid);
 	}
 
-	private function submitResultData($data,$contactresultid){
+	private function submitResultData($data,$contactresultid,$quizid){
 		
 		// var_dump("asdfsfsf");
-		$this->MTQuiz->submitresult($data,$contactresultid);
+		$this->MTQuiz->submitresult($data,$contactresultid,$quizid);
 		
 	}
 

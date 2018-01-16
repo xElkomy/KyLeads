@@ -89,16 +89,16 @@
 																					?>
 																						<div class="panel-heading ">
 																						<h4 class="panel-title">
-																							<a class=""data-toggle="collapse"  data-target-id="1" data-parent="#accordion" href="#collapse<?php echo $key?>"> <?php echo $question->title?><div class="percent-a g-r-u">700 (100%)</div> </a>
+																							<a class="question" data-toggle="collapse"  data-target-id="1" data-parent="#accordion" href="#collapse<?php echo $key?>"> <?php echo $question->title?><div class="percent-a g-r-u"  id="questiontarget<?php echo $key?>">0 (100%)</div> </a>
 																						</h4>
 																						</div>
 																						<div id="collapse<?php echo $key?>" class="panel-collapse collapse in ">
 																						<div class="panel-body">
 																							<table class="table">
-																					<?php foreach ($question->choices as $key => $choice) {
+																					<?php foreach ($question->choices as $key1 => $choice) {
 																							?>
-																							<tr><td><li class="active"><a id="outcome<?php echo $key?>"><i></i><?php echo $choice->value; ?> 
-																							<div class="percent-a g-r-u">150 (21.5%)</div> 
+																							<tr><td><li class="active"><a ><i></i><?php echo $choice->value; ?> 
+																							<div class="percent-a g-r-u" id="choice<?php echo $key1+1?>of<?php echo $key+1?>">0 (0%)</div> 
 																							</a></li></td></tr>
 																							<?php
 																						}
@@ -154,15 +154,21 @@
     <!-- End of Content-->
 	<script type="text/javascript" >
 		var outcomes = new Array();
-		var urlData = "<?php echo base_url();?>api/quizreport?id=16&outcomeid=";
+		var questions = new Array();
+		var urlData = "<?php echo base_url();?>api/quizreport?id=<?php echo $id?>&outcomeid=";
+		var urlDataQuestion = "<?php echo base_url();?>api/quizreport?id=<?php echo $id?>&questionid=";
 		<?php foreach($cquiz->outcomes as $key => $val){ ?>
 			outcomes.push('<?php echo $val->id; ?>');
-    	<?php } ?>	
+		<?php } ?>
+		<?php foreach($cquiz->questions as $key => $val){ ?>
+			questions.push('<?php echo $val->id; ?>');
+    	<?php } ?>		
 	</script>
 	<script type="text/javascript" src="./assets/js/analytics.js"></script>
 	<script type="text/javascript" src="./assets/js/doughnut/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="./assets/js/doughnut/Chart.js"></script>
 	<script type="text/javascript" src="./assets/js/report/outcomes.js"></script>
+	<script type="text/javascript" src="./assets/js/report/questions.js"></script>
     <!-- Load JS here for greater good =============================-->
     
 

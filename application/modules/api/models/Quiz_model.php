@@ -247,10 +247,48 @@ class Quiz_model extends CI_Model {
         $query = $this->db->get_where($table,$data);
         return count($query->result());
     }
+
+    public function get_quiz_question_report($questionid){
+        $table = "choices";
+        $data = array(
+            'question_id' => $questionid,
+        );
+        $result = array();
+        $results = $this->db->get_where($table,$data)->result();
+        foreach ($results as $key => $value) {
+            $data =  $this->count_answers($questionid,$value->id);
+            $indexname = "choice".($key+1);
+            $result[$indexname] = $data;
+        }
+        return $result;
+    }
+    
+
+    // -----private functions -------
+    private function count_answers($questionid,$answerid){
+        $table = "results";
+        $data = array(
+            'question_id' => $questionid,
+            'answer_id' => $answerid,
+        );
+    
+        $query = $this->db->get_where($table,$data);
+        return count($query->result());
+    }
 //    --------------VALIDATIONS-------------------
     public function isMyQuiz($id){
         $query = $this->db->get_where('quizzes',array('user_id' => $this->session->userdata('user_id'),'id' => $id));
         
+        if($query->first_row() > 0){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+    
+    public function isQuestionExist($quizid,$id){
+        $query = $this->db->get_where('questions',array('quiz_id' => $quizid,'id' => $id));
         if($query->first_row() > 0){
             return true;
         }else{
