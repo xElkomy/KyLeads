@@ -9,6 +9,14 @@ class Api extends MY_Controller {
      *
      * @return  void
      */
+	
+	protected $tableviews = "quiz_views";
+	protected $tablestarts = "quiz_starts";
+	protected $tablecompletions ="quiz_completions";
+	protected $tablecontacts = "contacts_results";
+	protected $tablectaclicks = "cta_clicks";
+	protected $tableoutcomes = "contacts_results";
+	protected $tableresults = "results";
 	public function __construct()
 	{
 		parent::__construct();
@@ -56,24 +64,16 @@ class Api extends MY_Controller {
 		$quizID = isset($_GET['id']) ? $_GET['id'] : die();
 		// $userID = isset($_GET['userid']) ? $_GET['userid'] : die();
 		if($this->MQuiz->isMyQuiz($quizID)){
-			$this->data['title'] = 'KyLeads API';
-			$this->data['content'] = 'quizreport/viewreport';
-			$tableviews = "quiz_views";
-			$tablestarts = "quiz_starts";
-			$tablecompletions ="quiz_completions";
-			$tablecontacts = "contacts_results";
-			$tablectaclicks = "cta_clicks";
-			$tableoutcomes = "contacts_results";
-			$tableresults = "results";
-			$this->data['views'] = $this->MQuiz->get_quiz_report($quizID,$tableviews);
-			$this->data['starts'] = $this->MQuiz->get_quiz_report($quizID,$tablestarts);
-			$this->data['completions'] = $this->MQuiz->get_quiz_report($quizID,$tablecompletions);
-			$this->data['contacts'] = $this->MQuiz->get_quiz_report($quizID,$tablecontacts);
-			$this->data['ctaclicks'] = $this->MQuiz->get_quiz_report($quizID,$tablectaclicks);
+			
+			$this->data['views'] = $this->MQuiz->get_quiz_report($quizID,$this->tableviews);
+			$this->data['starts'] = $this->MQuiz->get_quiz_report($quizID,$this->tablestarts);
+			$this->data['completions'] = $this->MQuiz->get_quiz_report($quizID,$this->tablecompletions);
+			$this->data['contacts'] = $this->MQuiz->get_quiz_report($quizID,$this->tablecontacts);
+			$this->data['ctaclicks'] = $this->MQuiz->get_quiz_report($quizID,$this->tablectaclicks);
 			
 			if(isset($_GET['outcomeid'])){
 				$outcomeID = isset($_GET['outcomeid']) ? $_GET['outcomeid'] : die();
-				$this->data['outcomeresults'] = $this->MQuiz->get_quiz_outcome_report($quizID,$outcomeID,$tableoutcomes);
+				$this->data['outcomeresults'] = $this->MQuiz->get_quiz_outcome_report($quizID,$outcomeID,$this->tableoutcomes);
 			}
 			if(isset($_GET['questionid'])){
 				$questionID = isset($_GET['questionid']) ? $_GET['questionid'] : die();
@@ -124,7 +124,37 @@ class Api extends MY_Controller {
 		}else{
 			die();
 		}
-		
-    }
+	}
 	
+	public function mydatareports(){
+		$userID = $this->session->userdata('user_id');
+		$mydata['results'] = array();
+		
+		if(isset($userID)){
+			$quizzes = $this->MQuiz->get_all_quiz();
+			$quizData = array();
+			foreach ($quizzes as $key => $quiz) {
+				$this->data['views'] = $this->MQuiz->get_quiz_report($quiz->id,$this->tableviews);
+				$this->data['starts'] = $this->MQuiz->get_quiz_report($quiz->id,$this->tablestarts);
+				$this->data['completions'] = $this->MQuiz->get_quiz_report($quiz->id,$this->tablecompletions);
+				$this->data['contacts'] = $this->MQuiz->get_quiz_report($quiz->id,$this->tablecontacts);
+				$this->data['ctaclicks'] = $this->MQuiz->get_quiz_report($quiz->id,$this->tablectaclicks);
+		
+				$quizreportdetials=array(
+						"views" => $this->data['views'],
+						"starts" => $this->data['starts'],
+						"completions" => $this->data['completions'],
+						"contacts" => $this->data['contacts'],
+						"ctaclicks" => $this->data['ctaclicks'],
+				);
+				
+				$quizData[$quiz->id] = $quizreportdetials;	
+			}
+			$mydata['results']['quiz'] = $quizData;
+		}
+		$jsonData = json_encode($mydata);
+		
+		echo $jsonData;
+		return $jsonData;
+	}
 }

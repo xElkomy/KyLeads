@@ -31,13 +31,16 @@
                                             <td class="f-d-td">
                                             <div class="row"><h6><?php echo $quiz->title;?></h6></div>
                                             <div class="row">
-                                               
-                                                <div class="col-md-6 j-c-t-u">
-                                                    <p>0</p>
+                                                <div class="col-md-4 j-c-t-u">
+                                                    <p id ="calenderid<?php echo $key+1?>"><?php echo date("d/m/Y", $quiz->create_at) ?></p>
+                                                    <div id="quizcontent-li"><h7><a><i class="fa fa fa-2x fa-calendar" aria-hidden="true"></i>Date Created</a></h7></div>
+                                                </div>
+                                                <div class="col-md-4 j-c-t-u">
+                                                    <p id ="contactsid<?php echo $key+1?>">0</p>
                                                     <div id="quizcontent-li"><h7><a><i class="fa fa fa-2x fa-users" aria-hidden="true"></i> Contacts</a></h7></div>
                                                 </div>
-                                                <div class="col-md-6 j-c-t-u">
-                                                    <p>0.00%</p>
+                                                <div class="col-md-4 j-c-t-u">
+                                                    <p id ="conversionrateid<?php echo $key+1?>">0.00%</p>
                                                     <div id="quizcontent-li"><h7><a><i class="fa fa fa-2x fa-line-chart" aria-hidden="true"></i> Conversion rate</a></h7></div>
                                                 </div>
                                             </div>
@@ -105,6 +108,14 @@
 
 
     <!-- Load JS here for greater good =============================-->
+    <script type="text/javascript" >
+		
+		
+			
+	</script>
+    <script type="text/javascript" src="./assets/js/quiz/dashboard.js">
+        var baseUrl = "<?php echo base_url()?>";    
+    </script>
     <!-- <?php if (ENVIRONMENT == 'production') : ?>
     <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>
     <?php elseif (ENVIRONMENT == 'development') : ?>

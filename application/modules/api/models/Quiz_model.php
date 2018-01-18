@@ -228,6 +228,12 @@ class Quiz_model extends CI_Model {
 
 
     // ------------------QUIZ REPORTS--------------------------
+    public function get_all_quiz(){
+        $userID = $this->session->userdata('user_id');
+        $table = "quizzes";
+        $query = $this->db->get_where($table,array('user_id'=>$userID));
+        return $query->result();
+    }
     public function get_quiz_report($id,$table){
 
         $data = array(

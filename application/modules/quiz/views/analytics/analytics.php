@@ -17,7 +17,7 @@
                     <div class="row row-c-u-a">
                     	<div id="new-optin" class="tabcontent">
 						<?php $cquiz = $quiz[0];?>
-							<h4>Analytics/<i>View metrics for your Quiz</i> </h4>
+								<h4>Analytics/<i>View metrics for your Quiz</i> </h4>
 								<ul class="nav nav-pills">
 									<li class="active j-c-t-u"><a data-toggle="pill" href="#home">Split Test <br>Report</a></li>
 									<li class="j-c-t-u"><a data-toggle="pill" href="#menu1">Advanced<br>Report</a></li>
@@ -26,10 +26,8 @@
 								<div class="tab-content tab-content-a">
 
 									<div id="home" class="tab-pane fade in active">
-									<h3>HOME</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+										<p>Display Line Graph No Split Testing</p>
 									</div>
-									
 									<div id="menu1" class="tab-pane fade">
 
 										<div class="row">
