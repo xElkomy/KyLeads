@@ -17,7 +17,7 @@
                 <li><a href="quiz/quizreview"><i class="fa fa-eye" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Review</i></a></li>
                 <li><a href="quiz/publishquiz"><i class="fa fa-desktop" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Publish</i></a></li>
                 <hr>
-                <li><a href="quiz/dashboard"><i class="fa fa-tachometer" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Dashboard</i></a></li>
+                <li><a href="quiz/dashboard/<?php echo $this->session->userdata('quizproj_id')?>"><i class="fa fa-tachometer" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Dashboard</i></a></li>
                 <li><a href="quiz/forms"><i class="fa fa-question-circle" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Quiz Optin-in form</i></a></li>
                 <li><a href="quiz/contacts"><i class="fa fa-users" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Contacts</i></a></li>
                 <li><a href="quiz/integrations"><i class="fa fa-code-fork" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Integrations</i></a></li>

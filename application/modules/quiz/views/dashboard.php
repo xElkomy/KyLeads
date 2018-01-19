@@ -18,14 +18,20 @@
               <div class="container">
                   <div class="row row-c-u">
                     <div id="new-optin" class="tabcontent">
-                      <h2 class="j-c-t-u">List of Quiz</h2>
-                            
+                    <?php 
+                        if(count($quizzes)>0){
+                            ?><h2 class="j-c-t-u">List of Quiz</h2><?php
+                        }else{
+                            ?><h2 class="j-c-t-u">No Quiz</h2><?php
+                        }
+                    
+                    ?>  
                               <!-- DASHBOARD MODULE -->
-                            <table class="table table-f j-c-t-u table-borderless">
                             <hr>
+                            <table class="table table-f j-c-t-u table-borderless">
                             <tbody>
                                     <?php foreach ($quizzes as $key => $quiz){  ?>
-
+                                        
                                         <tr class="table-borderless">
                                             <td class="f-d-td"><button type="button" class="btn btn-primary n-q-d btn-r-u"><i class="fa fa fa-3x fa-home" aria-hidden="true"></i></button></td>
                                             <td class="f-d-td">
@@ -61,7 +67,6 @@
                                     }
                                     ?>
                                 </tbody>
-                                
                             </table>
                             <script>
                                 /* When the user clicks on the button, 

@@ -114,8 +114,8 @@ class Quiz_model extends CI_Model {
         $this->db->update('apps_settings', $data);
 
     }
-    
-    public function createquiz($userID,$title,$description,$table){
+    // ------------------------------------
+    public function createproject($userID,$title,$description,$table){
         // $title = "Quiz";
         // $description = "Another Quiz";
         
@@ -129,9 +129,27 @@ class Quiz_model extends CI_Model {
         $this->db->insert($table, $data);
         
         $new_quiz_id = $this->db->insert_id();
+    }
+    // ---------------------------------
+    public function createquiz($userID,$projectID,$title,$description,$table){
+        // $title = "Quiz";
+        // $description = "Another Quiz";
+        
+        $data = array(
+            'user_id' => $userID,
+            'parent_quiz_id' => $projectID,
+            'title' => $title,
+            'description' => $description,
+            'create_at' => time(),
+            
+        );
+        $this->db->insert($table, $data);
+        
+        $new_quiz_id = $this->db->insert_id();
 
         return $new_quiz_id;
     }
+
 
     public function createquiz_from_template($quiztemplateID){
          $quiztemplate = $this->view_quizzes_template();
@@ -157,9 +175,17 @@ class Quiz_model extends CI_Model {
 
     }
 
-    public function view_quizzes(){
+    public function view_quizzes($projectid){
 
-        $query  = $this->db->get_where('quizzes',array('user_id'=>$this->session->userdata('user_id')));
+        $query  = $this->db->get_where('quizzes',array('user_id'=>$this->session->userdata('user_id'),'parent_quiz_id' => $projectid));
+            
+        return $query->result();
+
+    }
+
+    public function view_projects(){
+
+        $query  = $this->db->get_where('quiz_projects',array('user_id'=>$this->session->userdata('user_id')));
             
         return $query->result();
 
@@ -298,7 +324,12 @@ class Quiz_model extends CI_Model {
         return $query->result();
         
     }
-    
+   
+    public function  delete_project($id,$projecttable){ 
+        
+        $this->db->delete($projecttable, array('id' => $id));
+
+    }
     public function delete_quiz($id,$quiztable,$questiontable,$choicetable,$outcometable){ 
         $results = $this->view_questions($id,$questiontable);
         foreach($results as $key => $val){
@@ -421,6 +452,11 @@ class Quiz_model extends CI_Model {
         return $query->first_row();
     }
 
+    public function isMyProject($id){
+        $query = $this->db->get_where('quiz_projects',array('user_id' => $this->session->userdata('user_id'),'id' => $id));
+        return $query->first_row();
+    }
+
     public function isMyQuiz($id){
         $query = $this->db->get_where('quizzes',array('user_id' => $this->session->userdata('user_id'),'id' => $id));
         return $query->first_row();
@@ -432,7 +468,7 @@ class Quiz_model extends CI_Model {
     }
 
     public function QuizStatus($id,$table){
-        $query = $this->db->get_where($table,array('isactive' => 1));
+        $query = $this->db->get_where($table,array('id' => $id,'isactive' => 1));
 
         if($query->first_row()>0){
             return true;

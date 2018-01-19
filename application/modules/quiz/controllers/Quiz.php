@@ -43,22 +43,44 @@ class Quiz extends MY_Controller {
          error_reporting(-1);
 
         $this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'dashboard';
+        $this->data['content'] = 'quizproject/projects';
         $this->data['page'] = 'site';
-		$this->data['quizzes'] = $this->MQuiz->view_quizzes();
+		$this->data['projects'] = $this->MQuiz->view_projects();
 		$this->session->unset_userdata('cquiz_id');
+		$this->session->unset_userdata('quizproj_id');
         $this->load->view('layout', $this->data);
 
 		// $this->load->view('quiz/Quiz_view');
 	}
+
+	public function createproject(){
+		if ( ! $this->session->has_userdata('user_id'))
+		{
+			redirect('auth', 'refresh');
+		}
+		$title =$this->input->post('title');
+		$description = $this->input->post('description');
+		$table = "quiz_projects";
+		$new_project_id = $this->MQuiz->createproject($this->session->userdata('user_id'),$title,$description,$table);	
+			// echo json_encode($test);
+			// view_quizzes();	
+		// $this->quiz_configure($new_quiz_id);
+		redirect('quiz','refresh');
+	}
 	
-	public function dashboard(){
-				
+	public function dashboard($id=''){
+		if($id == null || !$this->isMyProject($id)){
+			redirect('quiz', 'refresh');
+		}
+		$this->session->userdata['quizproj_id'] = $id;
+		$projectid = $id;
+		
+		
 		$this->session->unset_userdata('cquiz_id');
 		$this->data['title'] = 'KyLeads Quizzes';
         $this->data['content'] = 'dashboard'; //dashboard
 		$this->data['page'] = 'site';
-		$this->data['quizzes'] = $this->MQuiz->view_quizzes();
+		$this->data['quizzes'] = $this->MQuiz->view_quizzes($projectid);
 		
         $this->load->view('layout', $this->data);
 	
@@ -159,7 +181,7 @@ class Quiz extends MY_Controller {
 		$title =$this->input->post('quiztitle');
 		$description = $this->input->post('quizdescrip');
 		$table = "quizzes";
-		$new_quiz_id = $this->MQuiz->createquiz($this->session->userdata('user_id'),$title,$description,$table);	
+		$new_quiz_id = $this->MQuiz->createquiz($this->session->userdata('user_id'),$this->session->userdata('quizproj_id'),$title,$description,$table);	
 			// echo json_encode($test);
 			// view_quizzes();	
 		$this->quiz_configure($new_quiz_id);
@@ -359,6 +381,14 @@ class Quiz extends MY_Controller {
     //     $this->load->view('layout', $this->data);
 	// }
 
+	public function delete_project($id = ''){
+		if($this->isMyProject($id)){
+			$projecttable= "quiz_projects";
+			$this->MQuiz->delete_project($id,$projecttable);
+		}
+		
+		redirect('quiz', 'refresh');
+	}
 
 	public function delete_quiz($id = ''){
 		if($this->isMyQuiz($id)==true){
@@ -474,17 +504,19 @@ class Quiz extends MY_Controller {
 		$this->data['title'] = 'KyLeads Quizzes';
         $this->data['content'] = 'quizmenu/quizquestions';
 		$this->data['page'] = 'site';
-		
-        
+	
     	$this->load->view('layout', $this->data);
 	}
 
 	public function quiz_configure($id=''){
-		if($this->session->userdata('cquiz_id')== NULL){
-			$this->session->userdata['cquiz_id'] = $id; 
+		
+		if($this->session->userdata('cquiz_id') == NULL){
+			$this->session->userdata['cquiz_id'] = $id;
 		}
-		else{
-			$id = $this->session->userdata('cquiz_id');
+		else if($this->session->userdata('cquiz_id') != NULL){
+			$id = $this->session->userdata('cquiz_id');	
+		}else if($id != $this->session->userdata('cquiz_id')){
+			redirect('quiz','refresh');
 		}
 		
 			
@@ -703,6 +735,15 @@ class Quiz extends MY_Controller {
 
 	private function isMyQuiz($id){
 		$data = $this->MQuiz->isMyQuiz($id);
+		if(count($data)>0){
+			return true;
+		}else{
+			return false;
+		}	
+	}
+
+	private function isMyProject($id){
+		$data = $this->MQuiz->isMyProject($id);
 		if(count($data)>0){
 			return true;
 		}else{
