@@ -41,7 +41,7 @@
 
                                     <div class="form-group">
                                         <label for="email" email="email"style="float:left">Email:</label>
-                                        <input type="email" class="form-control" id="myemail" required>
+                                        <input type="email" class="form-control" id="myemail">
                                     </div>
                                     <button type="submit" class="btn btn-success btn-t-p" style="width:300px;"><i class="fa fa-paper-plane-o" aria-hidden="true"> GET MY RESULT!</i></button>
                                 </form>
@@ -49,10 +49,7 @@
                             <hr>
                         </div>
                         <div id="showquizsummary">
-                            <hr>
-                                <h5>title</h5>
-                                <h5>description</h5>
-                            <hr>
+                            <h6>Please wait .....</h6> 
                         </div>
     
                     <div id="previewquestion" style="display:none">
@@ -73,12 +70,12 @@
                                         <div class="form-check f-c-c-t-p">
                                             <?php
                                                 foreach ($question->choices as $choice) 
-                                                {    
+                                                { 
                                             ?>
-
+                                                       
                                                         <div class="margin-l-t-p">
                                                             <label class="form-check-label f-c-l-t-p">
-                                                                <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)" 
+                                                                <input onclick="addResult(<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)" 
                                                                 type="radio" class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>   
                                                             </label>    
                                                         </div>
@@ -109,17 +106,16 @@
                                                                 <?php
                                                                     if($idx+1 >= count($quiz[0]->questions)){
                                                                         ?>
-                                                                        <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>); submitResult();"type="radio" 
+                                                                        <input onclick="addResult(<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)"type="radio" 
                                                                         class="form-check-input f-c-i-t-p" name="last" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
                                                                         <?php
                                                                     }else{
                                                                         ?>
-                                                                        <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)"type="radio" 
+                                                                        <input onclick="addResult(<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)"type="radio" 
                                                                         class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
                                                                     <?php
                                                                     }
                                                                 ?>
-                                                                  
                                                             </label>    
                                                         </div>
                                                     <br>
@@ -170,16 +166,15 @@
         });
 
 
-        var x = document.getElementById("myemail").required;
+        // var x = document.getElementById("myemail").required;
 
         $("#prospects_form").submit(function(e) {
 
             e.preventDefault();
-                
-                if(x===true){
-                $("#showform").hide();
-                $('#showquizsummary').show();
-            }
+            $("#showform").hide();
+            completequiz();
+            $('#showquizsummary').show();
+            
 
         });
 
@@ -191,10 +186,10 @@
     var outcome = [];
     var outcomeData = [];
     var userData = [];
-    function addResult(quizid,questionid,answerid,outcomeid){
+    function addResult(questionid,answerid,outcomeid){
+       
         if(resultData.length <= 0){
             resultData.push({
-                    quizid : quizid,
                     questionid : questionid,
                     answerid : answerid
             });
@@ -210,7 +205,6 @@
             }
             if(isDataExist == false){
                 resultData.push({
-                        quizid : quizid,
                         questionid : questionid,
                         answerid : answerid
                 });
@@ -224,34 +218,12 @@
         // console.log(resultData);
         // submitResult();
     }
-
-    function submitResult(){
-        addContactData();
-        Data = JSON.stringify( resultData );
-        $.post('http://localhost/takequiz/submitData', {results: Data, }).done(function(data) {
-
-
-        
-        });
-        
-    }
     
-    function addContactData(){
-        userData.push({
-            userid : <?php echo $quiz[0]->user_id;?>,
-            fname : "firstname",
-            lname : "lastname",
-            email : "fistlast@gmail.com",
-            outcomeid: GetOutcomeResult(),
-            quizid : <?php echo $quiz[0]->id;?>,
-        });
-        Data = JSON.stringify( userData[0]);
-        console.log(Data);
-        $.post('http://localhost/takequiz/AddContact', {results: Data, }).done(function(data) {
-            //  alert("information added: "+data);
-        });
+    function completequiz(){
+        
+        var outcomeid =  GetOutcomeResult();
+        $('#showquizsummary').load('<?php echo base_url(); ?>takequiz/getresult?id='+outcomeid);
     }
-
     function GetOutcomeResult(){
         var arr1 = outcomeData;
         var mf = 1;

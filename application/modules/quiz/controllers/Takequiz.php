@@ -66,8 +66,7 @@ class Takequiz extends MY_Controller {
 			if(count($this->data['outcome']) > 0){
 				$this->data['title'] = 'KyLeads Quizzes';
 				$this->data['content'] = 'takequiz/viewresult';
-				$this->data['page'] = 'site';
-						
+				$this->data['page'] = 'site';		
 				$this->load->view('layout', $this->data);
 			}else {
 				echo "Page not found";
@@ -88,8 +87,6 @@ class Takequiz extends MY_Controller {
 		$this->data['quizid'] = $id;
 		
 		if($this->MQuiz->isMyQuiz($id)){
-			
-			
 			
 			if(!$this->MQuiz->QuizStatus($id,$quiztable)){
 				$this->data['status'] = "Note: This quiz is still unpublish and not yet visible to the public";

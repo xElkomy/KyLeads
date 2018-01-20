@@ -18,6 +18,7 @@ class Quiz extends MY_Controller {
 		'sites/Sites_model' => 'MSites',
 		'sites/Pages_model' => 'MPages',
 		'quiz/Quiz_model' => 'MQuiz',
+		'authtoken/Token_model' => 'MToken',
 		];
 		$this->load->model($model_list);
 
@@ -235,7 +236,7 @@ class Quiz extends MY_Controller {
 			$this->MQuiz->publishQuiz($quiztable);
 		}
 		
-		redirect('quiz/dashboard','refresh');
+		redirect('quiz/publishquiz','refresh');
 	}
 
 	public function unpublishcreatedquiz(){
@@ -244,8 +245,7 @@ class Quiz extends MY_Controller {
 			$quiztable = "quizzes";
 			$this->MQuiz->unpublishQuiz($quiztable);
 		}
-		
-		redirect('quiz/dashboard','refresh');
+		redirect('quiz/publishquiz','refresh');
 	}
 
 	public function publishquiz(){
@@ -758,5 +758,11 @@ class Quiz extends MY_Controller {
 		}else{
 			return false;
 		}	
+	}
+
+	// -------------------------test token here---------------------------
+	public function generate($id=''){
+		
+		echo $this->MToken->generatetoken($id);
 	}
 }	

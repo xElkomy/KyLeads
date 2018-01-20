@@ -37,89 +37,91 @@
                 <hr>
         </div>
         <div id="showquizsummary"> 
-                            
+            <h6>Please wait .....</h6>            
         </div>
 
-    <div id="previewquestion" style="display:none">
-    <div id="hideform">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-            <!-- Wrapper for carousel items -->
-            <div class="carousel-inner">
-        <?php
-            $firstQuestion=0;
-            
-            foreach($quiz[0]->questions  as $idx => $question){
-                if($firstQuestion === $idx){
-            ?>
-                    <div class="item active">
-                    <p>Question <?php echo $idx+1;?> of <?php echo count($quiz[0]->questions);?></p>
-                    <h6> <?php echo $question->title?></h6>
-                    
-                        <div class="form-check f-c-c-t-p">
-                            <?php
-                                foreach ($question->choices as $choice) 
-                                {
-                            ?>
+        <div id="previewquestion" style="display:none">
+            <div id="hideform">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+                        <!-- Wrapper for carousel items -->
+                    <div class="carousel-inner">
+                    <?php
+                        $firstQuestion=0;
+                        
+                        foreach($quiz[0]->questions  as $idx => $question){
+                            if($firstQuestion === $idx){
+                        ?>
+                                <div class="item active">
+                                <p>Question <?php echo $idx+1;?> of <?php echo count($quiz[0]->questions);?></p>
+                                <h6> <?php echo $question->title?></h6>
+                                
+                                    <div class="form-check f-c-c-t-p">
+                                        <?php
+                                            foreach ($question->choices as $choice) 
+                                            {
+                                        ?>
 
-                                        <div class="margin-l-t-p">
-                                            <label class="form-check-label f-c-l-t-p">
-                                                <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)" 
-                                                type="radio" class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>   
-                                            </label>    
-                                        </div>
-                            
-                                    <br>
-                                    <?php
-                                }
-                            ?> 
-                        </div>
-                        <!-- <button type="button" name="next" class="btn btn-success btn-t-p" style="float:right"> Continue <i class="fa fa-arrow-right" aria-hidden="true">  </i></button>     -->
-            </div> 
-            <?php  
-                }else{
-            ?>
-                    <div class="item">
-                    <p>Question <?php echo $idx+1;?> of <?php echo count($quiz[0]->questions);?></p>
-                    <h6> <?php echo $question->title?></h6>
-                    
-                        <div class="form-check f-c-c-t-p">
-                            <?php
-                                foreach ($question->choices as $choice) 
-                                {
-                            ?>
-                                        <div class="margin-l-t-p">
-                                            <label class="form-check-label f-c-l-t-p">
+                                                    <div class="margin-l-t-p">
+                                                        <label class="form-check-label f-c-l-t-p">
+                                                            <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)" 
+                                                            type="radio" class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>   
+                                                        </label>    
+                                                    </div>
+                                        
+                                                <br>
                                                 <?php
-                                                    if($idx+1 >= count($quiz[0]->questions)){
-                                                        ?>
-                                                        <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>); completequiz(); " type="radio" 
-                                                        class="form-check-input f-c-i-t-p" name="last" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
-                                                        <?php
-                                                    }else{
-                                                        ?>
-                                                        <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)"type="radio" 
-                                                        class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
-                                                    <?php
-                                                    }
-                                                ?>
-                                                  
-                                            </label>    
-                                        </div>
-                                    <br>
-                            <?php
-                                }
-                            ?>
-                        </div>
-                            <button type="button" name="back" class="btn next btn-success btn-t-p" style="float:left"><i class="fa fa-arrow-left" aria-hidden="true"> Previous </i></button>               
+                                            }
+                                        ?> 
+                                    </div>
+                                    <!-- <button type="button" name="next" class="btn btn-success btn-t-p" style="float:right"> Continue <i class="fa fa-arrow-right" aria-hidden="true">  </i></button>     -->
                         </div> 
-                            <?php 
-                            }       
-                        }
-                    ?>                                                                          
+                        <?php  
+                            }else{
+                        ?>
+                                <div class="item">
+                                <p>Question <?php echo $idx+1;?> of <?php echo count($quiz[0]->questions);?></p>
+                                <h6> <?php echo $question->title?></h6>
+                                
+                                    <div class="form-check f-c-c-t-p">
+                                        <form>
+                                        <?php
+                                            foreach ($question->choices as $choice) 
+                                            {
+                                        ?>
+                                                    <div class="margin-l-t-p">
+                                                        <label class="form-check-label f-c-l-t-p">
+                                                            <?php
+                                                                if($idx+1 >= count($quiz[0]->questions)){
+                                                                    ?>
+                                                                    <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>); completequiz(); " type="radio" 
+                                                                    class="form-check-input f-c-i-t-p" name="last" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
+                                                                    <?php
+                                                                }else{
+                                                                    ?>
+                                                                    <input onclick="addResult(<?php echo $quizid;?>,<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)"type="radio" 
+                                                                    class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
+                                                                <?php
+                                                                }
+                                                            ?>
+                                                            
+                                                        </label>    
+                                                    </div>
+                                                <br>
+                                        <?php
+                                            }
+                                        ?>
+                                         </form>
+                                    </div>
+                                        <button type="button" name="back" class="btn next btn-success btn-t-p" style="float:left"><i class="fa fa-arrow-left" aria-hidden="true"> Previous </i></button>               
+                                    </div> 
+                                        <?php 
+                                        }       
+                                    }
+                                ?>                                                                          
+                                </div>
+                            </div>
+                        <div>
                     </div>
-                </div>
-            <div>
-        </div>
                 </div>
                 <div>
             </div>
@@ -191,8 +193,7 @@
         $.post('<?php echo base_url(); ?>takequiz/completequiz', {results: Data, }).done(function(data) {
             //  alert("start quiz");
         });
-        var outcomeid =  GetOutcomeResult();
-        $('#showquizsummary').load('<?php echo base_url(); ?>takequiz/getresult?id='+outcomeid);
+        
     }
 
     var resultData = [];
@@ -263,6 +264,8 @@
         console.log(Data);
         $.post('<?php echo base_url(); ?>takequiz/AddContact', {accountData: Data, resultData: rData, }).done(function(data) {
             //  alert("information added: "+data);
+            var outcomeid =  GetOutcomeResult();
+            $('#showquizsummary').load('<?php echo base_url(); ?>takequiz/getresult?id='+outcomeid);
         });
         
 
