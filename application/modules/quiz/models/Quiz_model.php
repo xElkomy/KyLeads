@@ -6,6 +6,10 @@ class Quiz_model extends CI_Model {
     function __construct()
     {
         parent::__construct();
+        $model_list = [
+            'authtoken/Token_model' => 'MToken',
+            ];
+        $this->load->model($model_list);
     }
 
     /**
@@ -120,7 +124,7 @@ class Quiz_model extends CI_Model {
         // $description = "Another Quiz";
         
         $data = array(
-            'user_id' => $userID,
+            'user_token' => $userID,
             'title' => $title,
             'description' => $description,
             'create_at' => time(),
@@ -128,7 +132,13 @@ class Quiz_model extends CI_Model {
         );
         $this->db->insert($table, $data);
         
-        $new_quiz_id = $this->db->insert_id();
+        $new_project_id = $this->db->insert_id();
+
+        $token = $this->MToken->generatetoken($new_project_id);
+        //update row with token
+        $this->db->set('auth_token',$token);
+        $this->db->where('id', $new_project_id);
+        $this->db->update($table);
     }
     // ---------------------------------
     public function createquiz($userID,$projectID,$title,$description,$table){
@@ -136,18 +146,24 @@ class Quiz_model extends CI_Model {
         // $description = "Another Quiz";
         
         $data = array(
-            'user_id' => $userID,
-            'parent_quiz_id' => $projectID,
+            'user_token' => $userID,
+            'parent_token' => $projectID,
             'title' => $title,
             'description' => $description,
             'create_at' => time(),
-            
         );
         $this->db->insert($table, $data);
         
         $new_quiz_id = $this->db->insert_id();
 
-        return $new_quiz_id;
+        $token = $this->MToken->generatetoken($new_quiz_id);
+       
+        //update row with token
+        $this->db->set('auth_token',   $token );
+        $this->db->where('id', $new_quiz_id);
+        $this->db->update($table);
+
+        return $token;
     }
 
 
@@ -177,7 +193,7 @@ class Quiz_model extends CI_Model {
 
     public function view_quizzes($projectid){
 
-        $query  = $this->db->get_where('quizzes',array('user_id'=>$this->session->userdata('user_id'),'parent_quiz_id' => $projectid));
+        $query  = $this->db->get_where('quizzes',array('user_token'=>$this->session->userdata('user_id'),'parent_token' => $projectid));
             
         return $query->result();
 
@@ -185,7 +201,7 @@ class Quiz_model extends CI_Model {
 
     public function view_projects(){
 
-        $query  = $this->db->get_where('quiz_projects',array('user_id'=>$this->session->userdata('user_id')));
+        $query  = $this->db->get_where('quiz_projects',array('user_token'=>$this->session->userdata('user_id')));
             
         return $query->result();
 
@@ -218,12 +234,12 @@ class Quiz_model extends CI_Model {
 
     public function view_quiz_data($id,$quiztable,$questiontable,$choicetable,$outcometable){
         
-        $results  = $this->db->get_where($quiztable,array('id'=>$id))->result();
+        $results  = $this->db->get_where($quiztable,array('auth_token'=>$id))->result();
         foreach ($results as $key => $val) {
-            $results[$key]->questions = $this->view_questions($val->id,$questiontable);
-            $results[$key]->outcomes = $this->view_outcomes($val->id,$outcometable);
+            $results[$key]->questions = $this->view_questions($val->auth_token,$questiontable);
+            $results[$key]->outcomes = $this->view_outcomes($val->auth_token,$outcometable);
             foreach($results[$key]->questions as $key2 => $val2){
-                $results[$key]->questions[$key2]->choices = $this->view_choices($val2->id,$choicetable);
+                $results[$key]->questions[$key2]->choices = $this->view_choices($val2->auth_token,$choicetable);
             } 
         }            
         return $results; 
@@ -239,7 +255,7 @@ class Quiz_model extends CI_Model {
 
     public function view_outcomes($quizID,$table){
         
-        $query = $this->db->get_where($table,array('quiz_id'=>$quizID));
+        $query = $this->db->get_where($table,array('quiz_token'=>$quizID));
 
         return $query->result();
         
@@ -247,7 +263,7 @@ class Quiz_model extends CI_Model {
 
     public function view_outcome_data($id,$table){
         
-        $query = $this->db->get_where($table,array('id'=>$id));
+        $query = $this->db->get_where($table,array('auth_token'=>$id));
 
         return $query->first_row();
         
@@ -255,7 +271,7 @@ class Quiz_model extends CI_Model {
 
     public function view_questions($quizID,$table){
         
-        $query = $this->db->get_where($table,array('quiz_id'=>$quizID));
+        $query = $this->db->get_where($table,array('quiz_token'=>$quizID));
 
         return $query->result();
         
@@ -278,7 +294,7 @@ class Quiz_model extends CI_Model {
     }
     public function view_choices($questionID,$table){
         
-        $query = $this->db->get_where($table,array('question_id'=>$questionID));
+        $query = $this->db->get_where($table,array('question_token'=>$questionID));
                     
         return $query->result();
         
@@ -295,7 +311,7 @@ class Quiz_model extends CI_Model {
 
 
     public function get_quiz_info($id,$table){
-        $data = array('id'=>$id,'user_id'=>$this->session->userdata('user_id'));
+        $data = array('auth_token'=>$id,'user_token'=>$this->session->userdata('user_id'));
         $query = $this->db->get_where($table,$data);
 
         return $query->first_row();
@@ -304,14 +320,14 @@ class Quiz_model extends CI_Model {
 
     public function get_question_info($id,$table){
         
-        $query = $this->db->get_where($table,array('id'=>$id));
+        $query = $this->db->get_where($table,array('auth_token'=>$id));
         
         return $query->first_row();
                 
     }
     public function get_choice_info($id,$table){
         
-        $query = $this->db->get_where($table,array('id'=>$id));
+        $query = $this->db->get_where($table,array('auth_token'=>$id));
         
         return $query->first_row();
                 
@@ -327,7 +343,7 @@ class Quiz_model extends CI_Model {
    
     public function  delete_project($id,$projecttable){ 
         
-        $this->db->delete($projecttable, array('id' => $id));
+        $this->db->delete($projecttable, array('auth_token' => $id));
 
     }
     public function delete_quiz($id,$quiztable,$questiontable,$choicetable,$outcometable){ 
@@ -335,32 +351,32 @@ class Quiz_model extends CI_Model {
         foreach($results as $key => $val){
             $this->db->delete($choicetable, array('question_id' => $val->id)); 
         }  
-        $this->db->delete($quiztable, array('id' => $id));
-        $this->db->delete($outcometable, array('quiz_id' => $id));
+        $this->db->delete($quiztable, array('auth_token' => $id));
+        $this->db->delete($outcometable, array('quiz_token' => $id));
         // delete all questions of the quiz
-        $this->db->where('quiz_id', $id);
+        $this->db->where('quiz_token', $id);
         $this->db->delete($questiontable);
 
     }
 
     public function delete_outcome($id,$table,$choicetable){ 
         // UPDATE `choicetable` SET `outcome_id` = 'null' WHERE `outcome_id` = id
-        $this->db->set('outcome_id', NULL);
-        $this->db->where('outcome_id', $id);
+        $this->db->set('outcome_token', NULL);
+        $this->db->where('outcome_token', $id);
         $this->db->update($choicetable);
 
-        $this->db->delete($table, array('id' => $id));
+        $this->db->delete($table, array('auth_token' => $id));
         // $this->db->where('question_id', $id);
     }
 
     public function delete_question($id,$table){
-        $this->db->delete($table, array('id' => $id));
+        $this->db->delete($table, array('auth_token' => $id));
         // $this->db->where('question_id', $id);
-        $this->db->delete('choices',array('question_id' => $id));  
+        $this->db->delete('choices',array('question_token' => $id));  
     }
 
     public function delete_choice($id,$table){
-        $this->db->delete($table, array('id' => $id)); 
+        $this->db->delete($table, array('auth_token' => $id)); 
     }
     
     public function update_quiz($id,$title,$description,$table){
@@ -369,15 +385,15 @@ class Quiz_model extends CI_Model {
             'description' => $description,
             'modify_at' => time(),
         );
-        $this->db->where('id', $id);
+        $this->db->where('auth_token', $id);
         $this->db->update($table, $data);
     }
 
     public function update_choice_outcome($choiceID,$outcomeID,$table){
         $data = array(
-            'outcome_id' => $outcomeID,
+            'outcome_token' => $outcomeID,
         );
-        $this->db->where('id', $choiceID);
+        $this->db->where('auth_token', $choiceID);
         $this->db->update($table, $data);
     }
 
@@ -386,10 +402,16 @@ class Quiz_model extends CI_Model {
         $data = array(
             'title' => $title,
             'description' => $description,
-            'quiz_id' => $quizID,
+            'quiz_token' => $quizID,
         );
         $this->db->insert($table, $data);
-        // $new_outcome_id = $this->db->insert_id();
+        $new_outcome_id = $this->db->insert_id();
+
+        $token = $this->MToken->generatetoken($new_outcome_id);
+        //update row with token
+        $this->db->set('auth_token',$token);
+        $this->db->where('id', $new_outcome_id);
+        $this->db->update($table);
         // return $new_outcome_id;
     }
 
@@ -398,20 +420,35 @@ class Quiz_model extends CI_Model {
         $data = array(
             'title' => $title." ?",
             'description' => $description,
-            'quiz_id' => $quizID,
+            'quiz_token' => $quizID,
         );
         $this->db->insert($table, $data);
         $new_questions_id = $this->db->insert_id();
-        return $new_questions_id;
+
+        $token = $this->MToken->generatetoken($new_questions_id);
+        //update row with token
+        $this->db->set('auth_token',$token);
+        $this->db->where('id', $new_questions_id);
+        $this->db->update($table);
+        
+        return $token;
     }
 
     public function save_answer($val,$questionID,$table){
 
         $data = array(  
             'value' => $val,
-            'question_id' => $questionID,
+            'question_token' => $questionID,
         );
         $this->db->insert($table, $data);
+
+        $new_answer_id = $this->db->insert_id();
+
+        $token = $this->MToken->generatetoken($new_answer_id);
+        //update row with token
+        $this->db->set('auth_token',$token);
+        $this->db->where('id', $new_answer_id);
+        $this->db->update($table);
     }
 
     public function save_question_answer($questionID,$answerID){
@@ -430,7 +467,7 @@ class Quiz_model extends CI_Model {
         	'isactive' => true
         );
 
-        $this->db->where('id', $quizID);
+        $this->db->where('auth_token', $quizID);
         $this->db->update($quiztable, $data);
     }
 
@@ -440,7 +477,7 @@ class Quiz_model extends CI_Model {
         	'isactive' => false
         );
 
-        $this->db->where('id', $quizID);
+        $this->db->where('auth_token', $quizID);
         $this->db->update($quiztable, $data);
     }
 
@@ -448,17 +485,17 @@ class Quiz_model extends CI_Model {
     public function isMyData($questionID,$questiontable,$quiztable){
         $userID = $this->session->userdata('user_id');
         $quizID = $this->session->userdata('cquiz_id');
-        $query = $this->db->get_where($questiontable,array('id' => $questionID,'quiz_id'=>$quizID));
+        $query = $this->db->get_where($questiontable,array('auth_token' => $questionID,'quiz_token'=>$quizID));
         return $query->first_row();
     }
 
     public function isMyProject($id){
-        $query = $this->db->get_where('quiz_projects',array('user_id' => $this->session->userdata('user_id'),'id' => $id));
+        $query = $this->db->get_where('quiz_projects',array('user_token' => $this->session->userdata('user_id'),'auth_token' => $id));
         return $query->first_row();
     }
 
     public function isMyQuiz($id){
-        $query = $this->db->get_where('quizzes',array('user_id' => $this->session->userdata('user_id'),'id' => $id));
+        $query = $this->db->get_where('quizzes',array('user_token' => $this->session->userdata('user_id'),'auth_token' => $id));
         return $query->first_row();
     }
 
@@ -468,7 +505,7 @@ class Quiz_model extends CI_Model {
     }
 
     public function QuizStatus($id,$table){
-        $query = $this->db->get_where($table,array('id' => $id,'isactive' => 1));
+        $query = $this->db->get_where($table,array('auth_token' => $id,'isactive' => 1));
 
         if($query->first_row()>0){
             return true;

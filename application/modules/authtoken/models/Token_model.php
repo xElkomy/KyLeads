@@ -11,12 +11,21 @@ class Token_model extends CI_Model {
     public function generatetoken($id){
         
         // return substr(do_hash($data), 0, 32);
-        $hash1 = bin2hex(random_bytes(10));
+        $hash1 = bin2hex(random_bytes(9));
         $hash2 = bin2hex(random_bytes(5));
         $token =  $hash1 . $id . $hash2;
 
         return  $token; 
     }
 
+    public function generateAdmintoken($id){
+        
+        // return substr(do_hash($data), 0, 32);
+        $hash1 = bin2hex(random_bytes(10));
+        $hash2 = bin2hex(random_bytes(6));
+        $token =  $hash1 . $id . $hash2;
+
+        return  $token; 
+    }
 
 }

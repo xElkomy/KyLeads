@@ -6,6 +6,10 @@ class Contacts_model extends CI_Model {
     public function __construct()
     {
         parent::__construct();
+        $model_list = [
+            'authtoken/Token_model' => 'MToken',
+            ];
+            $this->load->model($model_list);
     }
 
     /**
@@ -45,7 +49,7 @@ class Contacts_model extends CI_Model {
     {
         $table = "contacts";
         $data = array(
-            'user_id'=> $data->userid,
+            'user_token'=> $data->userid,
             'first_name' => $data->fname,
             'last_name' => $data->lname,
             'email' => $data->email,
@@ -55,7 +59,13 @@ class Contacts_model extends CI_Model {
         
         $new_contact_id = $this->db->insert_id();
 
-    return $new_contact_id;
+        $token = $this->MToken->generatetoken($new_contact_id);
+        //update row with token
+        $this->db->set('auth_token',$token);
+        $this->db->where('id', $new_contact_id);
+        $this->db->update($table);
+
+    return $token;
       
     }
 

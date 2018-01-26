@@ -328,7 +328,6 @@ class Quiz extends MY_Controller {
 
 	public function newanswer(){
 		
-		$quizid = $this->input->post('quizid');
 		$questionid = $this->input->post('questionid');
 		$answerval = $this->input->post('answerval');
 		$choicetable = "choices";
@@ -399,7 +398,7 @@ class Quiz extends MY_Controller {
 			$this->MQuiz->delete_quiz($id,$quiztable,$questiontable,$choicetable,$outcometable);
 		}
 		
-		redirect('quiz/dashboard', 'refresh');
+		redirect('quiz/dashboard/'.$this->session->userdata('quizproj_id'), 'refresh');
 	}
 
 	public function delete_quiz_template($id = ''){
@@ -458,7 +457,7 @@ class Quiz extends MY_Controller {
 		$choice = $this->MQuiz->get_choice_info($id,$choicetable);
 		
 		$this->MQuiz->delete_choice($id,$choicetable);
-		redirect('quiz/update_answers/'. $choice->question_id, 'refresh');
+		redirect('quiz/update_answers/'. $choice->question_token, 'refresh');
 	}
 
 	public function delete_choice_template($id = ''){
@@ -764,5 +763,6 @@ class Quiz extends MY_Controller {
 	public function generate($id=''){
 		
 		echo $this->MToken->generatetoken($id);
+		// echo $this->MToken->generateAdmintoken($id);
 	}
 }	

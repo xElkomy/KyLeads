@@ -125,7 +125,7 @@
 																			foreach ($cquiz->outcomes as $key => $outcome) {
 																				?>	<div class="panel-heading">
 																					<h4 class="panel-title">
-																					<a class="outcome" id="<?php echo $key?>"><?php echo $outcome->title;?><div class="percent-a g-r-u" id="outcometarget<?php echo $key?>">700 (100%)</div> </a>
+																					<a class="outcome" id="<?php echo $key?>"><?php echo $outcome->title;?><div class="percent-a g-r-u" id="outcometarget<?php echo $key?>">0 (100%)</div> </a>
 																					</h4>
 																				</div><?php
 																			}
@@ -156,10 +156,10 @@
 		var urlData = "<?php echo base_url();?>api/quizreport?id=<?php echo $id?>&outcomeid=";
 		var urlDataQuestion = "<?php echo base_url();?>api/quizreport?id=<?php echo $id?>&questionid=";
 		<?php foreach($cquiz->outcomes as $key => $val){ ?>
-			outcomes.push('<?php echo $val->id; ?>');
+			outcomes.push('<?php echo $val->auth_token; ?>');
 		<?php } ?>
 		<?php foreach($cquiz->questions as $key => $val){ ?>
-			questions.push('<?php echo $val->id; ?>');
+			questions.push('<?php echo $val->auth_token; ?>');
     	<?php } ?>		
 	</script>
 	<script type="text/javascript" src="./assets/js/analytics.js"></script>

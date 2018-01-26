@@ -36,6 +36,7 @@
                                             <td class="f-d-td"><button type="button" class="btn btn-primary n-q-d btn-r-u"><i class="fa fa fa-3x fa-home" aria-hidden="true"></i></button></td>
                                             <td class="f-d-td">
                                             <div class="row"><h6><?php echo $quiz->title;?></h6></div>
+                                            <div class="row"><a href="<?php echo base_url('takequiz/quiz/'. $quiz->auth_token); ?>" target="_blank"><?php echo base_url('takequiz/quiz/'. $quiz->auth_token);?></a></div>
                                             <div class="row">
                                                 <div class="col-md-4 j-c-t-u">
                                                     <p id ="calenderid<?php echo $key+1?>"><?php echo date("d/m/Y", $quiz->create_at) ?></p>
@@ -55,12 +56,12 @@
                                             <div class="dropdown">  
                                                 <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($quizzes);?>, <?php echo $quiz->id;?> )" class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u a-u active-shadow dropbtn" aria-hidden="true"></a>
                                                 <div id="myDropdown<?php echo $key+1;?>" class="dropdown-content">
-                                                    <a class="btn btn-primary tooltip-l" type ="submit" href="<?php echo base_url('quiz/quiz_configure/'.$quiz->id);?>" ><i class="fa fa-1x fa-wrench" aria-hidden="true"></i></a>
-                                                    <a class="btn btn-info tooltip-l" type ="submit" href="<?php echo base_url('takequiz/quiz/'. $quiz->id); ?>" target="_blank"><i class="fa fa-1x fa-eye" aria-hidden="true"></i></a>  
-                                                    <a class="btn btn-danger tooltip-l" type ="submit" href="<?php echo base_url('quiz/delete_quiz/'. $quiz->id); ?>" ><i class="fa fa-1x fa-trash-o" aria-hidden="true"></i></a>
+                                                    <a class="btn btn-primary tooltip-l" type ="submit" href="<?php echo base_url('quiz/quiz_configure/'.$quiz->auth_token);?>" ><i class="fa fa-1x fa-wrench" aria-hidden="true"></i></a>
+                                                    <a class="btn btn-info tooltip-l" type ="submit" href="<?php echo base_url('takequiz/quiz/'. $quiz->auth_token); ?>" target="_blank"><i class="fa fa-1x fa-eye" aria-hidden="true"></i></a>  
+                                                    <a class="btn btn-danger tooltip-l" type ="submit" href="<?php echo base_url('quiz/delete_quiz/'. $quiz->auth_token); ?>" ><i class="fa fa-1x fa-trash-o" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
-                                                <a href="<?php echo base_url('quiz/analytics/'. $quiz->id); ?>" class="fa fa-s fa-bar-chart fa-3x c-d-f-d t-b-u active-shadow a-u" aria-hidden="true"></a>
+                                                <a href="<?php echo base_url('quiz/analytics/'. $quiz->auth_token); ?>" class="fa fa-s fa-bar-chart fa-3x c-d-f-d t-b-u active-shadow a-u" aria-hidden="true"></a>
                                             </td>
                                         </tr>
                                     <?php

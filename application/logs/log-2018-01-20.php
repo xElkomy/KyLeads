@@ -43,3 +43,5 @@ ERROR - 2018-01-20 12:39:02 --> Severity: error --> Exception: syntax error, une
 ERROR - 2018-01-20 13:39:50 --> Severity: error --> Exception: Call to undefined method Token_model::geneartetoken() C:\xampp\htdocs\application\modules\quiz\controllers\Quiz.php 768
 ERROR - 2018-01-20 14:46:47 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
 ERROR - 2018-01-20 14:46:47 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-20 18:28:07 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-01-20 18:28:07 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102

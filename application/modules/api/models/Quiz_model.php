@@ -232,38 +232,58 @@ class Quiz_model extends CI_Model {
         $userID = $this->session->userdata('user_id');
         $projectID = $this->session->userdata('quizproj_id');
         $table = "quizzes";
-        $query = $this->db->get_where($table,array('user_id'=>$userID,'parent_quiz_id' => $projectID));
+        $query = $this->db->get_where($table,array('user_token'=>$userID,'parent_token' => $projectID));
         return $query->result();
     }
-    public function get_quiz_report($id,$table){
+    public function get_quiz_report($id,$table,$startdate,$enddate){
 
-        $data = array(
-            'quiz_id' => $id,
-        );
-    
-        $query = $this->db->get_where($table,$data);
+        // ------------
+        // quiz_id to quiz_token
+        // $data = array(
+        //     // 'user_token' => $this->session->userdata('user_id');
+        //     'quiz_token' => $id,
+        //     // 'create_at' => $startdate
+        // );
+        // $query = $this->db->get_where($table,$data);
+
+        // ----------
+        
+        $this->db->where('quiz_token =',$id);
+        $this->db->where('create_at >=',$startdate);
+        $this->db->where('create_at <=',$enddate);
+        $query = $this->db->get($table);
+        
         return count($query->result());
     }
     
-    public function get_quiz_outcome_report($quizid,$outcomeid,$table){
-        $data = array(
-            'quiz_id' => $quizid,
-            'outcome_id' => $outcomeid,
-        );
-    
-        $query = $this->db->get_where($table,$data);
+    public function get_quiz_outcome_report($quizid,$outcomeid,$table,$startdate,$enddate){
+
+        // ----------
+        // $data = array(
+        //     'quiz_token' => $quizid,
+        //     'outcome_token' => $outcomeid,
+        // );
+        
+        // $query = $this->db->get_where($table,$data);
+        // -----------
+        $this->db->where('quiz_token =',$quizid);
+        $this->db->where('outcome_token =',$outcomeid);
+        $this->db->where('create_at >=',$startdate);
+        $this->db->where('create_at <=',$enddate);
+        $query = $this->db->get($table);
         return count($query->result());
     }
 
-    public function get_quiz_question_report($questionid){
+    public function get_quiz_question_report($questionid,$startid,$endid){
         $table = "choices";
         $data = array(
-            'question_id' => $questionid,
+            'question_token' => $questionid,
         );
         $result = array();
+        
         $results = $this->db->get_where($table,$data)->result();
         foreach ($results as $key => $value) {
-            $data =  $this->count_answers($questionid,$value->id);
+            $data =  $this->count_answers($questionid,$value->auth_token,$startid,$endid);
             $indexname = "choice".($key+1);
             $result[$indexname] = $data;
         }
@@ -271,20 +291,35 @@ class Quiz_model extends CI_Model {
     }
     
 
+    public function get_contacts_results_data($id,$table,$startdate,$enddate){
+        
+        $this->db->where('quiz_token =',$id);
+        $this->db->where('create_at >=',$startdate);
+        $this->db->where('create_at <=',$enddate);
+        $query = $this->db->get($table);
+        
+        return $query->result();
+    }
     // -----private functions -------
-    private function count_answers($questionid,$answerid){
+    private function count_answers($questionid,$answerid,$startid,$endid){
         $table = "results";
-        $data = array(
-            'question_id' => $questionid,
-            'answer_id' => $answerid,
-        );
-    
-        $query = $this->db->get_where($table,$data);
+        // $data = array(
+        //     'question_token' => $questionid,
+        //     'answer_token' => $answerid,
+        // );
+        // $query = $this->db->get_where($table,$data);
+
+        $this->db->where('question_token =',$questionid);
+        $this->db->where('answer_token =',$answerid);
+        $this->db->where('contacts_results_id >=',$startid);
+        $this->db->where('contacts_results_id <=',$endid);
+        $query = $this->db->get($table);
+        
         return count($query->result());
     }
 //    --------------VALIDATIONS-------------------
     public function isMyQuiz($id){
-        $query = $this->db->get_where('quizzes',array('user_id' => $this->session->userdata('user_id'),'id' => $id));
+        $query = $this->db->get_where('quizzes',array('user_token' => $this->session->userdata('user_id'),'auth_token' => $id));
         
         if($query->first_row() > 0){
             return true;
@@ -295,7 +330,7 @@ class Quiz_model extends CI_Model {
     }
     
     public function isQuestionExist($quizid,$id){
-        $query = $this->db->get_where('questions',array('quiz_id' => $quizid,'id' => $id));
+        $query = $this->db->get_where('questions',array('quiz_token' => $quizid,'auth_token' => $id));
         if($query->first_row() > 0){
             return true;
         }else{

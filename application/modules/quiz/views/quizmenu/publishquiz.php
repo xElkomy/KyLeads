@@ -53,7 +53,7 @@
                                                 foreach ($cquiz->questions as $question) {
                                                 
                                                     foreach ($question->choices as $choice) {
-                                                        if($choice->outcome_id == NULL){
+                                                        if($choice->outcome_token == NULL){
                                                             $isOutcomeComplete = false;
                                                         }
                                                     }
@@ -96,7 +96,17 @@
 
                                 </div>
                                 <div class="col-md-4 c-p-q-r">
-                                    <!-- <p>header link here</p> -->
+                                <?php if($cquiz->isactive){?>
+                                    <div>
+                                        Embedded link here :
+                                        <?php
+                                            $link = ' <div id="quiz"> '.
+                                                    ' <iframe width="1000" height="600" src="'.base_url().'takequiz/quiz/'.$cquiz->auth_token.'" frameborder="0" allowfullscreen></iframe>'.
+                                                    ' </div>';       
+                                        ?>
+                                        <textarea style = "width: 500px; height: 100px;"  class ="form-control" type="text"><?php echo $link;?></textarea>
+                                    </div>
+                                <?php }?>
                                 </div>
                             </div>
                         </div>

@@ -61,7 +61,7 @@
                                             <tr class="tr-custom">
                                                 <td class="col-md-12 l-t-i-u"><?php echo $index.'. '.$outcome->title;?></td>
                                                 <td class="j-c-t-u">
-                                                <a href="<?php echo base_url('quiz/delete_outcome/'. $outcome->id); ?>" type ="submit" class="btn  btn-r-u btn-danger"><i class="fa fa-trash" aria-hidden="true">  Delete</i></a> 
+                                                <a href="<?php echo base_url('quiz/delete_outcome/'. $outcome->auth_token); ?>" type ="submit" class="btn  btn-r-u btn-danger"><i class="fa fa-trash" aria-hidden="true">  Delete</i></a> 
                                                 </td>
                                             </tr>
                                         <?php

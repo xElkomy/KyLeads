@@ -58,11 +58,11 @@
                                                 <td class="col-md-12 l-t-i-u"><?php echo $index.'. '.$question->title;?></td>
                                                 <td>
 
-                                                <a href="<?php echo base_url('quiz/update_answers/'. $question->id); ?>" type ="submit" class="btn btn-r-u   btn-primary"><i class="fa fa-pencil-square" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"> Update Answers</i></a>
+                                                <a href="<?php echo base_url('quiz/update_answers/'. $question->auth_token); ?>" type ="submit" class="btn btn-r-u   btn-primary"><i class="fa fa-pencil-square" aria-hidden="true" data-toggle="modal" data-target="#exampleModal"> Update Answers</i></a>
                                                 
                                                 </td>
                                                 <td class="j-c-t-u">
-                                                <a href="<?php echo base_url('quiz/delete_question/'. $question->id); ?>" type ="submit" class="btn  btn-r-u btn-danger"><i class="fa fa-trash" aria-hidden="true">  Delete</i></a> 
+                                                <a href="<?php echo base_url('quiz/delete_question/'. $question->auth_token); ?>" type ="submit" class="btn  btn-r-u btn-danger"><i class="fa fa-trash" aria-hidden="true">  Delete</i></a> 
                                                 </td>
                                             </tr>
                                         <?php
@@ -89,7 +89,7 @@
                                                         <div class="panel panel-default">
                                                             <div class="panel-body">
                                                                 <form action="<?php echo base_url('quiz/newquestion'); ?>" method="post">
-                                                                    <input type="hidden" name="quizID" value="<?php echo $quizinfo->id;?>"></input><br>
+                                                                   
                                                                     <label><input name="questiontitle" placeholder="Insert Question" class="form-control" style = "margin-left:10px;width: 550px;" required></input>
                                                                     <button type ="submit" class="btn btn-lg btn-primary btn-wide margin-top-40 g-r-u btn-r-u"><i class="fa fa-plus-circle" aria-hidden="true"> Add Question</i></button>
                                                                 </form>                                                    

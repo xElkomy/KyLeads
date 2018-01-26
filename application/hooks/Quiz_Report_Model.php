@@ -29,8 +29,8 @@ class Quiz_Report_Model extends CI_Model {
 
         $table  = "quiz_views";
         $data = array(
-            'quiz_id' => $quizinfo->id,
-            'user_id' => $quizinfo->user_id,
+            'quiz_token' => $quizinfo->auth_token,
+            'user_token' => $quizinfo->user_token,
         );
         $this->db->insert($table, $data);
         
@@ -45,8 +45,8 @@ class Quiz_Report_Model extends CI_Model {
 
         $table  = "quiz_starts";
         $data = array(
-            'quiz_id' => $quizinfo->quizid,
-            'user_id' => $quizinfo->user_id,
+            'quiz_token' => $quizinfo->quizid,
+            'user_token' => $quizinfo->user_id,
         );
         $this->db->insert($table, $data);
         
@@ -61,8 +61,8 @@ class Quiz_Report_Model extends CI_Model {
 
         $table  = "quiz_completions";
         $data = array(
-            'quiz_id' => $quizinfo->quizid,
-            'user_id' => $quizinfo->user_id,
+            'quiz_token' => $quizinfo->quizid,
+            'user_token' => $quizinfo->user_id,
         );
         $this->db->insert($table, $data);
         

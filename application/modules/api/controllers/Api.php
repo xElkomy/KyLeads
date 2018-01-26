@@ -63,21 +63,31 @@ class Api extends MY_Controller {
 		$userID = $this->session->userdata('user_id');
 		$quizID = isset($_GET['id']) ? $_GET['id'] : die();
 		// $userID = isset($_GET['userid']) ? $_GET['userid'] : die();
+		// echo "user : ".$userID;
+		// echo "quiz : ".$quizID;
+		$starton = '2018-01-25';
+		$endon = '2018-01-26';
 		if($this->MQuiz->isMyQuiz($quizID)){
+			$startdate = $starton.' 00:00:00';
+			$enddate = $endon.' 23:59:59';
+			$days = $this->getDateRange($starton,$endon);
 			
-			$this->data['views'] = $this->MQuiz->get_quiz_report($quizID,$this->tableviews);
-			$this->data['starts'] = $this->MQuiz->get_quiz_report($quizID,$this->tablestarts);
-			$this->data['completions'] = $this->MQuiz->get_quiz_report($quizID,$this->tablecompletions);
-			$this->data['contacts'] = $this->MQuiz->get_quiz_report($quizID,$this->tablecontacts);
-			$this->data['ctaclicks'] = $this->MQuiz->get_quiz_report($quizID,$this->tablectaclicks);
+			$this->data['views'] = $this->MQuiz->get_quiz_report($quizID,$this->tableviews,$startdate,$enddate);
+			$this->data['starts'] = $this->MQuiz->get_quiz_report($quizID,$this->tablestarts,$startdate,$enddate);
+			$this->data['completions'] = $this->MQuiz->get_quiz_report($quizID,$this->tablecompletions,$startdate,$enddate);
+			$this->data['contacts'] = $this->MQuiz->get_quiz_report($quizID,$this->tablecontacts,$startdate,$enddate);
+			$this->data['ctaclicks'] = $this->MQuiz->get_quiz_report($quizID,$this->tablectaclicks,$startdate,$enddate);
+			
+			$contact_results  = $this->MQuiz->get_contacts_results_data($quizID,$this->tablecontacts,$startdate,$enddate);
 			
 			if(isset($_GET['outcomeid'])){
 				$outcomeID = isset($_GET['outcomeid']) ? $_GET['outcomeid'] : die();
-				$this->data['outcomeresults'] = $this->MQuiz->get_quiz_outcome_report($quizID,$outcomeID,$this->tableoutcomes);
+				$this->data['outcomeresults'] = $this->MQuiz->get_quiz_outcome_report($quizID,$outcomeID,$this->tableoutcomes,$startdate,$enddate);
 			}
 			if(isset($_GET['questionid'])){
+				
 				$questionID = isset($_GET['questionid']) ? $_GET['questionid'] : die();
-				$this->data['questionresults'] = $this->MQuiz->get_quiz_question_report($questionID);
+				$this->data['questionresults'] = $this->MQuiz->get_quiz_question_report($questionID,$contact_results[0]->id,$contact_results[count($contact_results)-1]->id);
 			}
 			
 			if(isset($_GET['outcomeid'])){
@@ -90,6 +100,7 @@ class Api extends MY_Controller {
 				return $jsonData;
 			}
 			if(isset($_GET['questionid'])){
+				
 				$questionID = isset($_GET['questionid']) ? $_GET['questionid'] : die();
 				if($this->MQuiz->isQuestionExist($quizID,$questionID)){
 						$quizreportdetials=array(
@@ -108,20 +119,39 @@ class Api extends MY_Controller {
 				return $jsonData;
 			}
 			if(isset($_GET['id']) && $_GET['outcomeid'] == null){
+
+				$reportsperday = array();
+				foreach ($days as $key => $day) {
+					$startday = $day.' 00:00:00';
+					$endday = $day.' 23:59:59';
+					
+					$viewsonday = $this->MQuiz->get_quiz_report($quizID,$this->tableviews,$startday,$endday);
+					$startsonday = $this->MQuiz->get_quiz_report($quizID,$this->tablestarts,$startday,$endday);
+					$completionsonday = $this->MQuiz->get_quiz_report($quizID,$this->tablecompletions,$startday,$endday);
+					$contactsonday= $this->MQuiz->get_quiz_report($quizID,$this->tablecontacts,$startday,$endday);
+					$ctaclicksonday = $this->MQuiz->get_quiz_report($quizID,$this->tablectaclicks,$startday,$endday);
+
+					$rates = $this->getpercentage($contactsonday,$viewsonday);
+					$reportsperday[$day] = array(
+							"rate" => $rates,
+					);
+				}
+
 				$quizreportdetials=array(
 					"views" => $this->data['views'],
 					"starts" => $this->data['starts'],
 					"completions" => $this->data['completions'],
 					"contacts" => $this->data['contacts'],
 					"ctaclicks" => $this->data['ctaclicks'],
+					"daily_conversion_rate" => $reportsperday,
 				);
-				
 				$jsonData = json_encode($quizreportdetials);
 				echo $jsonData;
 				return $jsonData;
 			}
 			
 		}else{
+			
 			die();
 		}
 	}
@@ -131,15 +161,20 @@ class Api extends MY_Controller {
 		$mydata['results'] = array();
 		
 		if(isset($userID)){
+			
 			$quizzes = $this->MQuiz->get_all_quiz();
 			$quizData = array();
+			$startdate = '2017-12-08'.' 00:00:00';
+			$enddate = '2018-01-25'.' 23:59:59';
+
 			foreach ($quizzes as $key => $quiz) {
-				$this->data['views'] = $this->MQuiz->get_quiz_report($quiz->id,$this->tableviews);
-				$this->data['starts'] = $this->MQuiz->get_quiz_report($quiz->id,$this->tablestarts);
-				$this->data['completions'] = $this->MQuiz->get_quiz_report($quiz->id,$this->tablecompletions);
-				$this->data['contacts'] = $this->MQuiz->get_quiz_report($quiz->id,$this->tablecontacts);
-				$this->data['ctaclicks'] = $this->MQuiz->get_quiz_report($quiz->id,$this->tablectaclicks);
-		
+				
+				$this->data['views'] = $this->MQuiz->get_quiz_report($quiz->auth_token,$this->tableviews,$startdate,$enddate);
+				$this->data['starts'] = $this->MQuiz->get_quiz_report($quiz->auth_token,$this->tablestarts,$startdate,$enddate);
+				$this->data['completions'] = $this->MQuiz->get_quiz_report($quiz->auth_token,$this->tablecompletions,$startdate,$enddate);
+				$this->data['contacts'] = $this->MQuiz->get_quiz_report($quiz->auth_token,$this->tablecontacts,$startdate,$enddate);
+				$this->data['ctaclicks'] = $this->MQuiz->get_quiz_report($quiz->auth_token,$this->tablectaclicks,$startdate,$enddate);
+				
 				$quizreportdetials=array(
 						"views" => $this->data['views'],
 						"starts" => $this->data['starts'],
@@ -148,13 +183,46 @@ class Api extends MY_Controller {
 						"ctaclicks" => $this->data['ctaclicks'],
 				);
 				
-				$quizData[$quiz->id] = $quizreportdetials;	
+				$quizData[$quiz->auth_token] = $quizreportdetials;	
 			}
 			$mydata['results']['quiz'] = $quizData;
 		}
+		
 		$jsonData = json_encode($mydata);
 		
 		echo $jsonData;
 		return $jsonData;
+		
 	}
+
+	// --------------PRIVATE FUNCTIONS--------------------
+	private function getDateRange($startDate, $endDate, $format = "Y-m-d")
+	{
+		
+		$begin = new DateTime($startDate);
+		$end = new DateTime($endDate);
+
+		$interval = new DateInterval('P1D'); // 1 Day
+		$dateRange = new DatePeriod($begin, $interval, $end);
+
+		$range = [];
+		if($startDate == $endDate){
+			$range[] = $startDate;
+			return $range;
+		}
+		foreach ($dateRange as $date) {
+			$range[] = $date->format($format);
+		}
+		array_push($range,$endDate);
+		return $range;
+	}
+
+	private function getpercentage($contacts,$views){
+		if($views == 0 || $contacts == 0 && $views == 0){
+			return 0;
+		}
+		return round($contacts/$views*100);
+	}
+
+
 }

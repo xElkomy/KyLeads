@@ -1,3 +1,6 @@
+<script type="text/javascript">
+    var Quiz = <?php echo json_encode($quiz[0])?>;
+</script>
 <body class="body-custom bg-q-r">
 
     <?php $this->load->view("shared/nav.php"); ?>
@@ -20,7 +23,7 @@
                 <div class="inner-div">
                     <div class="row">
                         <div class="col j-c-t-u">
-
+                      
                         <div class="city">
                             <hr>
                                 <div class="text-center"><h3><?php echo $quiz[0]->title?></h3></div>
@@ -69,16 +72,14 @@
                                     
                                         <div class="form-check f-c-c-t-p">
                                             <?php
-                                                foreach ($question->choices as $choice) 
+                                                foreach ($question->choices as $idx1 => $choice) 
                                                 { 
                                             ?>
-                                                       
                                                         <div class="margin-l-t-p">
                                                             <label class="form-check-label f-c-l-t-p">
-                                                                <input onclick="addResult(<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)" 
-                                                                type="radio" class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>   
-                                                            </label>    
-                                                        </div>
+                                                                <input type="radio" onclick="addResult(<?= $idx1?>,<?= $idx?>)"
+                                                                class="form-check-input f-c-i-t-p" name="choice"/><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a></label>    
+                                                        </div> 
                                             
                                                     <br>
                                                     <?php
@@ -98,7 +99,7 @@
                                         <form>
                                             <?php
                                     
-                                                foreach ($question->choices as $choice) 
+                                                foreach ($question->choices as $idx1 => $choice) 
                                                 {
                                             ?>
                                                         <div class="margin-l-t-p">
@@ -106,13 +107,13 @@
                                                                 <?php
                                                                     if($idx+1 >= count($quiz[0]->questions)){
                                                                         ?>
-                                                                        <input onclick="addResult(<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)"type="radio" 
-                                                                        class="form-check-input f-c-i-t-p" name="last" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
+                                                                        <input onclick="addResult(<?= $idx1?>,<?= $idx?>)" type="radio" 
+                                                                        class="form-check-input f-c-i-t-p" name="last" ><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
                                                                         <?php
                                                                     }else{
                                                                         ?>
-                                                                        <input onclick="addResult(<?php echo $question->id;?>,<?php echo $choice->id;?>,<?php echo $choice->outcome_id;?>)"type="radio" 
-                                                                        class="form-check-input f-c-i-t-p" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
+                                                                        <input onclick="addResult(<?= $idx1?>,<?= $idx?>)" type="radio" 
+                                                                        class="form-check-input f-c-i-t-p" name="choice"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
                                                                     <?php
                                                                     }
                                                                 ?>
@@ -141,6 +142,7 @@
         </div>
 
     <script>
+
     function start(cityName) {
         var i;
         var x = document.getElementsByClassName("city");
@@ -150,9 +152,9 @@
         document.getElementById(cityName).style.display = "block";  
 
         var $choice = $( "input:radio[name=choice]" );
-        $choice.on( "click", function() {
-            $("#myCarousel").carousel("next");
-        });
+        // $choice.on( "click", function() {
+        //     $("#myCarousel").carousel("next");
+        // });
 
         var $last = $( "input:radio[name=last]" );
         $last.on( "click", function() {
@@ -178,6 +180,7 @@
 
         });
 
+      
 
     }
 
@@ -186,8 +189,13 @@
     var outcome = [];
     var outcomeData = [];
     var userData = [];
-    function addResult(questionid,answerid,outcomeid){
-       
+    function addResult(choiceidx,questionidx){
+        
+        $("#myCarousel").carousel("next");
+        var questionid = Quiz.questions[questionidx].auth_token;
+        var answerid = Quiz.questions[questionidx].choices[choiceidx].auth_token;
+        var outcomeid = Quiz.questions[questionidx].choices[choiceidx].outcome_token;
+        // alert("Question : "+questionid+"Choice : "+answerid);
         if(resultData.length <= 0){
             resultData.push({
                     questionid : questionid,
@@ -211,6 +219,7 @@
                 outcomeData.push(outcomeid);
             }
         }
+
         // console.log(outcomeData);
         // console.log(resultData);
        
@@ -233,7 +242,7 @@
         {
                 for (var j=i; j<arr1.length; j++)
                 {
-                        if (arr1[i] == arr1[j])
+                        if (arr1[i] === arr1[j])
                         m++;
                         if (mf<m)
                         {

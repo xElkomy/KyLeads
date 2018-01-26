@@ -47,18 +47,18 @@
                                                                 $buttosize = "1x";
                                                             }
                                                         ?>
-                                                        <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($choices);?>, <?php echo $choice->id;?> )" class="fa fa-2x fa-list fa-<?php echo $buttosize;?> t-b-u a-u active-shadow dropbtn" aria-hidden="true"></a>
+                                                        <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($choices);?> )" class="fa fa-2x fa-list fa-<?php echo $buttosize;?> t-b-u a-u active-shadow dropbtn" aria-hidden="true"></a>
                                                         <div id="myDropdown<?php echo $key+1;?>" class="dropdown-content dropdown-content-c">
                                                            <?php
                                                                 // var_dump($outcomes[0]->title);
                                                                 if(count($outcomes)>0){
                                                                     foreach ($outcomes as $outcome) {
                                                                         // var_dump($outcome->title);
-                                                                        if($choice->outcome_id == $outcome->id)
+                                                                        if($choice->outcome_token == $outcome->auth_token)
                                                                             $color = "btn btn-primary";
                                                                         else    
                                                                             $color = "btn btn-default";
-                                                                        ?><a class="<?php echo $color;?>" href="<?php echo base_url('quiz/link_outcome/'.$question->id.'/'. $choice->id).'/'.$outcome->id; ?>"><?php echo $outcome->title;?></a><?php
+                                                                        ?><a class="<?php echo $color;?>" href="<?php echo base_url('quiz/link_outcome/'.$question->auth_token.'/'. $choice->auth_token).'/'.$outcome->auth_token; ?>"><?php echo $outcome->title;?></a><?php
                                                                     }
                                                                 }else{
                                                                     ?><p class="btn btn-default">No Outcome yet</p><?php
@@ -69,7 +69,7 @@
 
                                                     </div>
                                                     </td>
-                                                    <td><a href="<?php echo base_url('quiz/delete_choice/'. $choice->id); ?>" type ="submit" class="btn btn-danger btn-r-u"><i class="fa fa-trash" aria-hidden="true">  Delete</i></a></td>
+                                                    <td><a href="<?php echo base_url('quiz/delete_choice/'. $choice->auth_token); ?>" type ="submit" class="btn btn-danger btn-r-u"><i class="fa fa-trash" aria-hidden="true">  Delete</i></a></td>
                                                 </tr>
                                                 <?php
                                                 }
@@ -83,8 +83,8 @@
                                         <form action="<?php echo base_url('quiz/newanswer'); ?>" method="post">
                                             
                                             <label><h6>New Answer:</h6><input name="answerval" class="form-control" style = "width: 410px;" required></input></label>
-                                            <input type="hidden" name="quizid" value="<?php echo $question->quiz_id;?>"></input>
-                                            <input type="hidden" name="questionid" value="<?php echo $question->id;?>"></input>
+                                           
+                                            <input type="hidden" name="questionid" value="<?php echo $question->auth_token;?>"></input>
                                             <button type ="submit" class="btn btn-lg btn-primary btn-wide g-l-u btn-r-u"><i class="fa fa-plus-circle" aria-hidden="true"> Add answer</i></button>                                  
                                             
                                         </form>
@@ -103,7 +103,7 @@
         <script>
                                 /* When the user clicks on the button, 
                                 toggle between hiding and showing the dropdown content */
-                                function myFunction(id,total,quizid) {
+                                function myFunction(id,total) {
                                     for (let index = 1; index < total+1; index++) {
                                         if(index == id){
                                             // alert("currenquiz"+quizid);

@@ -47,9 +47,9 @@
                                             </div>
                                             </td>
                                             <td class="f-d-td">
-                                                <a href="<?php echo base_url('quiz/dashboard/'. $project->id); ?>" ><span class="glyphicon glyphicon-share fa-3x"></span></a>
+                                                <a href="<?php echo base_url('quiz/dashboard/'. $project->auth_token); ?>" ><span class="glyphicon glyphicon-share fa-3x"></span></a>
                                                 <a class="fa fa-s fa-bar-chart fa-3x c-d-f-d t-b-u active-shadow a-u" aria-hidden="true"></a>
-                                                <a href="<?php echo base_url('quiz/delete_project/'. $project->id); ?>" ><span class="glyphicon glyphicon-trash fa-3x"></span></a>
+                                                <a href="<?php echo base_url('quiz/delete_project/'. $project->auth_token); ?>" ><span class="glyphicon glyphicon-trash fa-3x"></span></a>
                                             </td>
                                         </tr>
                                     <?php

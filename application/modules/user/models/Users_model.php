@@ -25,7 +25,8 @@ class Users_model extends CI_Model {
         if ($q->num_rows() > 0)
         {
             $row = $q->row_array();
-            $data['user_id'] = $row['id'];
+            // $data['user_id'] = $row['id'];
+            $data['user_id'] = $row['auth_token'];
             $data['package_id'] = $row['package_id'];
             $data['user_fname'] = $row['first_name'];
             $data['user_lname'] = $row['last_name'];
