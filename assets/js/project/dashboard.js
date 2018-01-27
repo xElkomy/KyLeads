@@ -9,7 +9,6 @@ $(document).ready(function()
 		{
 			var data = JSON.parse(JSON.stringify(result));
             createReport(data['results']);
-           
 		}
     });
     
