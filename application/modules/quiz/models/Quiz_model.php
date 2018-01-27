@@ -193,8 +193,9 @@ class Quiz_model extends CI_Model {
 
     public function view_quizzes($projectid){
 
+        $this->db->order_by('id', 'desc');
         $query  = $this->db->get_where('quizzes',array('user_token'=>$this->session->userdata('user_id'),'parent_token' => $projectid));
-            
+                    
         return $query->result();
 
     }

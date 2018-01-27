@@ -66,7 +66,7 @@ class Api extends MY_Controller {
 		// echo "user : ".$userID;
 		// echo "quiz : ".$quizID;
 		$starton = '2018-01-25';
-		$endon = '2018-01-26';
+		$endon = '2018-01-27';
 		if($this->MQuiz->isMyQuiz($quizID)){
 			$startdate = $starton.' 00:00:00';
 			$enddate = $endon.' 23:59:59';
@@ -161,11 +161,11 @@ class Api extends MY_Controller {
 		$mydata['results'] = array();
 		
 		if(isset($userID)){
-			
-			$quizzes = $this->MQuiz->get_all_quiz();
+			$projectID = $this->session->userdata('quizproj_id');
+			$quizzes = $this->MQuiz->get_all_quiz($projectID);
 			$quizData = array();
 			$startdate = '2017-12-08'.' 00:00:00';
-			$enddate = '2018-01-25'.' 23:59:59';
+			$enddate = '2018-01-27'.' 23:59:59';
 
 			foreach ($quizzes as $key => $quiz) {
 				
@@ -186,13 +186,78 @@ class Api extends MY_Controller {
 				$quizData[$quiz->auth_token] = $quizreportdetials;	
 			}
 			$mydata['results']['quiz'] = $quizData;
+			$jsonData = json_encode($mydata);
+		
+			echo $jsonData;
+			return $jsonData;
+		}else{
+			die();
 		}
 		
-		$jsonData = json_encode($mydata);
 		
-		echo $jsonData;
-		return $jsonData;
 		
+	}
+
+	public function getprojectreports(){
+		$userID = $this->session->userdata('user_id');
+		
+		
+		if(isset($userID)){
+			$projects = $this->MQuiz->get_all_projects();
+
+			$projectdata['results'] = array();
+			
+			
+			foreach ($projects as $key => $project) {
+				$quizdata = array();
+				$projectID = $project->auth_token;
+				
+				$quizzes = $this->MQuiz->get_all_quiz($projectID);
+				
+				$quizData = array();
+				$startdate = '2017-12-08'.' 00:00:00';
+				$enddate = '2018-01-27'.' 23:59:59';
+				
+				$projectreport['reports'] = array("views"=>0,"starts"=>0,"completions"=>0,"contacts"=>0,"ctaclicks"=>0);
+				foreach ($quizzes as $key => $quiz) {
+					
+					$this->data['views'] = $this->MQuiz->get_quiz_report($quiz->auth_token,$this->tableviews,$startdate,$enddate);
+					$this->data['starts'] = $this->MQuiz->get_quiz_report($quiz->auth_token,$this->tablestarts,$startdate,$enddate);
+					$this->data['completions'] = $this->MQuiz->get_quiz_report($quiz->auth_token,$this->tablecompletions,$startdate,$enddate);
+					$this->data['contacts'] = $this->MQuiz->get_quiz_report($quiz->auth_token,$this->tablecontacts,$startdate,$enddate);
+					$this->data['ctaclicks'] = $this->MQuiz->get_quiz_report($quiz->auth_token,$this->tablectaclicks,$startdate,$enddate);
+					
+					$quizreportdetials=array(
+							"views" => $this->data['views'],
+							"starts" => $this->data['starts'],
+							"completions" => $this->data['completions'],
+							"contacts" => $this->data['contacts'],
+							"ctaclicks" => $this->data['ctaclicks'],
+					);
+					
+					$projectreport['reports']['views'] += $this->data['views'];
+					$projectreport['reports']['starts'] += $this->data['starts'];
+					$projectreport['reports']['completions'] += $this->data['completions'];
+					$projectreport['reports']['contacts'] += $this->data['contacts'];
+					$projectreport['reports']['ctaclicks'] += $this->data['ctaclicks'];
+
+					$quizData[$quiz->auth_token] = $quizreportdetials;	
+				}
+
+				$projectdata['results'][$projectID] = $projectreport;
+				$projectdata['results'][$projectID]['quizData'] = $quizData;
+			}
+			
+			$jsonData = json_encode($projectdata);
+			
+			echo $jsonData;
+			return $jsonData;
+		}else{
+			die();
+		}
+		
+		
+
 	}
 
 	// --------------PRIVATE FUNCTIONS--------------------

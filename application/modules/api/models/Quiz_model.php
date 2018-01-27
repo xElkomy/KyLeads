@@ -225,13 +225,21 @@ class Quiz_model extends CI_Model {
 
         $this->db->insert('questions', $data);
     }
-
-
-    // ------------------QUIZ REPORTS--------------------------
-    public function get_all_quiz(){
+    // --------------PROJECT REPORTS--------------------------
+    public function get_all_projects(){
         $userID = $this->session->userdata('user_id');
-        $projectID = $this->session->userdata('quizproj_id');
+        
+        $table = "quiz_projects";
+        $query = $this->db->get_where($table,array('user_token'=>$userID));
+        return $query->result();
+    }
+    
+    // ------------------QUIZ REPORTS--------------------------
+    public function get_all_quiz($projectID){
+        $userID = $this->session->userdata('user_id');
+        
         $table = "quizzes";
+        $this->db->order_by('id', 'desc');
         $query = $this->db->get_where($table,array('user_token'=>$userID,'parent_token' => $projectID));
         return $query->result();
     }

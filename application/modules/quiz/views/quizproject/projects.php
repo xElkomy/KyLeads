@@ -71,19 +71,15 @@
 
 
     <!-- Load JS here for greater good =============================-->
-    <script type="text/javascript" >
-		
-		
-			
-	</script>
-    <script type="text/javascript" src="./assets/js/quiz/dashboard.js">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/js/project/dashboard.js">
         var baseUrl = "<?php echo base_url()?>";    
     </script>
-    <!-- <?php if (ENVIRONMENT == 'production') : ?>
+    <?php if (ENVIRONMENT == 'production') : ?>
     <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>
     <?php elseif (ENVIRONMENT == 'development') : ?>
     <script src="<?php echo $this->config->item('webpack_dev_url'); ?>build/sites.bundle.js"></script>
-    <?php endif; ?> -->
+    <?php endif; ?>
 
     <!--[if lt IE 10]>
     <script>
