@@ -1,5 +1,7 @@
 .body-t-p{
     background-color: #ccc;
+    position: relative;
+    top:-70px;
 }
 .nav-t-p{
     background-color: #365397;
@@ -15,6 +17,7 @@
   padding:50px;
   background-color:white;
   border-radius: 10px;
+  margin-bottom:100px;
 }
 .btn-t-p{
     width:200px;

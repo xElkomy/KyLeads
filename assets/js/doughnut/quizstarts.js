@@ -1,23 +1,26 @@
 $(document).ready(function(){
 	var ctx = $("#quizstarts").get(0).getContext("2d");
 	
-
-	$.ajax({
-		type: "GET",
-		url: urldata,
-		dataType: "json",
-		success: function(result)
-		{
-			var data = JSON.parse(JSON.stringify(result));
-			createReport(data.views,data.starts);
-			// sStats
-			var percentage = (data.starts / data.views) * 100;	
-			document.getElementById("sStats").innerHTML = roundToTwo(percentage)+"%";
-			document.getElementById("startCounts").innerHTML = data.starts;
-			// alert("data here"+urldata);
-		}
-		
-	});
+	executeStarts();
+	function executeStarts(){
+		$.ajax({
+			type: "GET",
+			url: baseUrl+"api/quizreport?id="+id+"&start="+from+"&end="+to,
+			dataType: "json",
+			success: function(result)
+			{
+				var data = JSON.parse(JSON.stringify(result));
+				createReport(data.views,data.starts);
+				// sStats
+				var percentage = (data.starts / data.views) * 100;	
+				document.getElementById("sStats").innerHTML = roundToTwo(percentage)+"%";
+				document.getElementById("startCounts").innerHTML = data.starts;
+				// alert("data here"+urldata);
+			}
+			
+		});
+	}
+	
 
 	function roundToTwo(num) {    
 		return +(Math.round(num + "e+2")  + "e-2");

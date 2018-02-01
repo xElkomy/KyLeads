@@ -26,48 +26,38 @@
                         }
                     
                     ?>  
-                              <!-- DASHBOARD MODULE -->
-                            <hr>
                             <table class="table table-f j-c-t-u table-borderless">
                             <tbody>
                                     <?php foreach ($quizzes as $key => $quiz){  ?>
-                                        
-                                        <tr class="table-borderless">
-                                            <td class="f-d-td"><button type="button" class="btn btn-primary n-q-d btn-r-u"><i class="fa fa fa-3x fa-home" aria-hidden="true"></i></button></td>
-                                            <td class="f-d-td">
-                                            <div class="row"><h6><?php echo $quiz->title;?></h6></div>
-                                            <div class="row"><a href="<?php echo base_url('takequiz/quiz/'. $quiz->auth_token); ?>" target="_blank"><?php echo base_url('takequiz/quiz/'. $quiz->auth_token);?></a></div>
-                                            <div class="row">
-                                                <div class="col-md-4 j-c-t-u">
-                                                    <p id ="calenderid<?php echo $key+1?>"><?php echo date("d/m/Y", $quiz->create_at) ?></p>
-                                                    <div id="quizcontent-li"><h7><a><i class="fa fa fa-2x fa-calendar" aria-hidden="true"></i>Date Created</a></h7></div>
+                                            <tr class="center-u bg-tr-quiz-dashboard">
+                                                <td class="nomargin quizdashboard"><button type="button" class="btn btn-primary rounded-button-u resize-button-u signature-color-button">Icon/Image</button></td>
+                                                <td>
+                                                    <div class="row bold-u a-b-u center-u custom-quiz-title-alignment">TITLE:<br><?php echo $quiz->title;?>?</div> 
+                                                    <div class="row row-dashboard-total-cons">
+                                                        <div class="col-md-4 bold-u a-b-u"><p id ="contactsid<?php echo $key+1?>">0</p><br><i class="fa fa-users fa-2x" aria-hidden="true"></i><br>Total Contacts</div>
+                                                        <div class="col-md-4 bold-u a-b-u"><p id ="conversionrateid<?php echo $key+1?>">0.00%</p><br><i class="fa fa fa-2x fa-line-chart" aria-hidden="true"></i><br>Conversion rate</div>
+                                                		<div class="col-md-4 bold-u a-b-u"><p id ="calenderid<?php echo $key+1?>"><?php echo date("d/m/Y", $quiz->create_at) ?></p><br><i class="fa fa fa-2x fa-calendar" aria-hidden="true"></i></i><br>Date Created</div>
+                                                    </div>
+                                                </td>
+
+                                            <td class="alignment-quiz-table alignment-u-table-custom">
+                                                <hr>
+                                                <div class="dropdown">  
+                                                    <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($quizzes);?>, <?php echo $quiz->id;?> )" class="fa fa-forms-custom bg-tr-quiz-dashboard-button fa-cogs fa-2x a-b-u dropbtn" aria-hidden="true"></a>
+                                                        <div id="myDropdown<?php echo $key+1;?>" class="dropdown-content">
+                                                            <a class="btn btn-quiz-dropdown-config bold-u" type ="submit" href="<?php echo base_url('quiz/quiz_configure/'.$quiz->auth_token);?>" >Edit</a>
+                                                            <a class="btn btn-quiz-dropdown-config bold-u" type ="submit" href="<?php echo base_url('takequiz/quiz/'. $quiz->auth_token); ?>" target="_blank">Preview</i></a>  
+                                                            <a class="btn btn-quiz-dropdown-config bold-u" type ="submit" href="<?php echo base_url('quiz/delete_quiz/'. $quiz->auth_token); ?>" >Delete</i></a>
+                                                        </div>
                                                 </div>
-                                                <div class="col-md-4 j-c-t-u">
-                                                    <p id ="contactsid<?php echo $key+1?>">0</p>
-                                                    <div id="quizcontent-li"><h7><a><i class="fa fa fa-2x fa-users" aria-hidden="true"></i> Contacts</a></h7></div>
-                                                </div>
-                                                <div class="col-md-4 j-c-t-u">
-                                                    <p id ="conversionrateid<?php echo $key+1?>">0.00%</p>
-                                                    <div id="quizcontent-li"><h7><a><i class="fa fa fa-2x fa-line-chart" aria-hidden="true"></i> Conversion rate</a></h7></div>
-                                                </div>
-                                            </div>
-                                            </td>
-                                            <td class="f-d-td">
-                                            <div class="dropdown">  
-                                                <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($quizzes);?>, <?php echo $quiz->id;?> )" class="fa fa-s fa-cogs fa-3x c-d-f-d t-b-u a-u active-shadow dropbtn" aria-hidden="true"></a>
-                                                <div id="myDropdown<?php echo $key+1;?>" class="dropdown-content">
-                                                    <a class="btn btn-primary tooltip-l" type ="submit" href="<?php echo base_url('quiz/quiz_configure/'.$quiz->auth_token);?>" ><i class="fa fa-1x fa-wrench" aria-hidden="true"></i></a>
-                                                    <a class="btn btn-info tooltip-l" type ="submit" href="<?php echo base_url('takequiz/quiz/'. $quiz->auth_token); ?>" target="_blank"><i class="fa fa-1x fa-eye" aria-hidden="true"></i></a>  
-                                                    <a class="btn btn-danger tooltip-l" type ="submit" href="<?php echo base_url('quiz/delete_quiz/'. $quiz->auth_token); ?>" ><i class="fa fa-1x fa-trash-o" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                                <a href="<?php echo base_url('quiz/analytics/'. $quiz->auth_token); ?>" class="fa fa-s fa-bar-chart fa-3x c-d-f-d t-b-u active-shadow a-u" aria-hidden="true"></a>
-                                            </td>
-                                        </tr>
-                                    <?php
-                                    }
-                                    ?>
-                                </tbody>
+                                                <a href="<?php echo base_url('quiz/analytics/'. $quiz->auth_token); ?>" class="fa fa-forms-custom bg-tr-quiz-dashboard-button fa-bar-chart fa-2x a-b-u" aria-hidden="true"></a>
+                                            <hr class="hrmargin">
+                                        </td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </tbody>
                             </table>
                             <script>
                                 /* When the user clicks on the button, 
@@ -103,8 +93,9 @@
                   </div>
               </div>
           </div>
-      </div>
   </div>
+  
+        
 <!--/.fluid-container-->
     <!-- End of Content-->
     <!-- modals -->

@@ -65,8 +65,10 @@ class Api extends MY_Controller {
 		// $userID = isset($_GET['userid']) ? $_GET['userid'] : die();
 		// echo "user : ".$userID;
 		// echo "quiz : ".$quizID;
-		$starton = '2018-01-25';
-		$endon = '2018-01-27';
+		$starton = isset($_GET['start']) ? $_GET['start'] : die();
+		$endon = isset($_GET['end']) ? $_GET['end'] : die();
+		// $starton = '2018-01-01';
+		// $endon = '2018-01-31';
 		if($this->MQuiz->isMyQuiz($quizID)){
 			$startdate = $starton.' 00:00:00';
 			$enddate = $endon.' 23:59:59';
@@ -201,6 +203,8 @@ class Api extends MY_Controller {
 	public function getprojectreports(){
 		$userID = $this->session->userdata('user_id');
 		
+		$id = $_GET['id'];
+		$order = $_GET['order_by_date'];
 		
 		if(isset($userID)){
 			$projects = $this->MQuiz->get_all_projects();
@@ -218,6 +222,8 @@ class Api extends MY_Controller {
 				$startdate = '2017-12-08'.' 00:00:00';
 				$enddate = '2018-01-27'.' 23:59:59';
 				
+				$days = $this->getDateRange($starton,$endon);
+				
 				$projectreport['reports'] = array("views"=>0,"starts"=>0,"completions"=>0,"contacts"=>0,"ctaclicks"=>0);
 				foreach ($quizzes as $key => $quiz) {
 					
@@ -233,6 +239,7 @@ class Api extends MY_Controller {
 							"completions" => $this->data['completions'],
 							"contacts" => $this->data['contacts'],
 							"ctaclicks" => $this->data['ctaclicks'],
+							"daily_conversion_rate" => array(),
 					);
 					
 					$projectreport['reports']['views'] += $this->data['views'];
@@ -247,8 +254,18 @@ class Api extends MY_Controller {
 				$projectdata['results'][$projectID] = $projectreport;
 				$projectdata['results'][$projectID]['quizData'] = $quizData;
 			}
-			
-			$jsonData = json_encode($projectdata);
+			$datatobepass = [];
+			if(isset($id)){
+				if (array_key_exists($id, $projectdata['results'])) {
+					$datatobepass =  $projectdata['results'][$id];
+				}else{
+					$datatobepass = array('message' => 'no data found.');
+				}
+			}
+			else{
+				$datatobepass = $projectdata;
+			}
+			$jsonData = json_encode($datatobepass);
 			
 			echo $jsonData;
 			return $jsonData;

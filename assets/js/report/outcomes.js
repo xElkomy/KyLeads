@@ -1,15 +1,19 @@
 $(document).ready(function(){
 		
 	$("outcome").ready(function() {
-		for (var i in outcomes) {
-			var targetid = "outcometarget"+i;
-			createReport(outcomes[i],targetid);
-		}
 
+		executeOutcomes();
+		function executeOutcomes(){
+			for (var i in outcomes) {
+				var targetid = "outcometarget"+i;
+				createReport(outcomes[i],targetid);
+			}
+		}
+		
 		function createReport(outcome,target){
 			$.ajax({
 				type: "GET",
-				url: urlData+outcome,
+				url: baseUrl+"api/quizreport?id="+id+"&outcomeid="+outcome+"&start="+from+"&end="+to,
 				dataType: "json",
 				success: function(result)
 				{
@@ -18,7 +22,6 @@ $(document).ready(function(){
 				}
 			});
 		}
-
 		function roundToTwo(num) {    
 			return +(Math.round(num + "e+2")  + "e-2");
 		}

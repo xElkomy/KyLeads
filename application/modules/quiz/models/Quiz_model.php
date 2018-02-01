@@ -515,6 +515,16 @@ class Quiz_model extends CI_Model {
         }
     }
 
+    // ----------------update functions--------------
+    public function updatequizinfo($id,$title,$description,$table){
+        $data = array(
+                "title" => $title,
+                "description" => $description
+        );
+
+        $this->db->where('auth_token', $id);
+        $this->db->update($table, $data);
+    }
     // -------------------------QUIZ REPORTS HERE----------------------
 
     public function get_quiz_views($id,$table){

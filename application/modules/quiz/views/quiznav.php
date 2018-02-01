@@ -5,21 +5,54 @@
 <script type="text/javascript">
     
 </script>
-<body class="body-custom">
+<body class="body-custom">  
+  ----------------
   <div id="wrapper">
     <div id="sidebar-wrapper">
-      <nav id="spy">
-          <ul class="nav sidebar-nav-u nav-u">
-                <a href="quiz/templates" class="t-w-u"><button type="button" class="btn btn-u-q btn-success tablinks" 
-                onclick="openCity(event, 'new-optin')"> Create new Quiz</button></a>
-                <li class=""><a href="quiz/dashboard/<?php echo $this->session->userdata('quizproj_id')?>"><i class="fa fa-tachometer" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Dashboard</i></a></li>
-                <li><a href="quiz/forms"><i class="fa fa-question-circle" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Quiz Optin-in form</i></a></li>
-                <li><a href="quiz/contacts"><i class="fa fa-users" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Contacts</i></a></li>
-                <li><a href="quiz/integrations"><i class="fa fa-code-fork" aria-hidden="true">&nbsp&nbsp&nbsp&nbsp Integrations</i></a></li>
-          </ul>
-      </nav>
+        <nav class="main-menu sidebar-nav nav">
+            <ul class="ul-custom-sidebar">
+                <li class="li-custom ">
+                        <a class="quiznav"href="quiz/templates"><button type="button" 
+                          class="btn-custom-quiz btn btn-success signature-color-button">
+                          Create New Quiz</button>
+                        </a>
+                  </li>
+                <hr>
+                <li class="li-custom">
+                    <a href="quiz/dashboard/<?php echo $this->session->userdata('quizproj_id')?>"class="a-custom-form">
+                        <i class="fa fa-u fa-tachometer fa-3x"></i>
+                        <span class="nav-text">
+                            Dashboard
+                        </span>
+                    </a>
+                </li>
+                <li class="li-custom">
+                    <a href="quiz/forms" class="a-custom-form">
+                    <i class="fa fa-u  fa-question  fa-3x"></i>
+                        <span class="nav-text">
+                            Quiz Opt-in Form
+                        </span>
+                    </a>
+                </li>
+                <li class="li-custom">
+                    <a href="quiz/contacts" class="a-custom-form">
+                    <i class="fa fa-u fa-users fa-3x"></i>
+                        <span class="nav-text">
+                            Contacts
+                        </span>
+                    </a>
+                </li>
+                <li class="li-custom">
+                    <a href="quiz/integrations" class="a-custom-form">
+                    <i class="fa fa-u fa-sitemap fa-3x"></i>
+                        <span class="nav-text">
+                            Integrations
+                        </span>
+                    </a>   
+                </li>
+            </ul>
+        </nav>
     </div>
-  </div>
     <!-- Load JS here for greater good =============================-->
     <?php if (ENVIRONMENT == 'production') : ?>
     <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>

@@ -1,152 +1,129 @@
- <body class="body-custom">
 
-    <?php $this->load->view("shared/nav.php"); ?>
+  <div id="">
+      <div class="">
+          <div class="container ">
+                <div class="row" style="width:100%;height:100%">          
+                        <div class="panel panel-default row vdivide">
+                            <div class="panel-body ">
 
-    <!-- New Content -->
-    <div id="wrapper">
-      <!-- Sidebar -->
-      <div id="sidebar-wrapper">
-            <nav id="spy">
-                <?php $this->load->view("quizmenunav.php"); ?>
-            </nav>
-      </div>
-      <!-- Page content -->
-      <div id="page-content-wrapper">
-          <div class="page-content">
-              <div class="container ">
-                    <div class="row row-c-u-q">
-                        <div id="new-optin" class="tabcontent">
-                            <p><h3>Quiz title: <?php echo $quizinfo->title;?></h3></p>
-                                <hr>
-                            
-                            <h6>Question: <?php echo $question->title;?>  </h6>
-                                                
-                            <div class="panel panel-default row vdivide">
-                                <div class="panel-body ">
+
+                                <div class="col-md-7">
                                     
-                                    <div class="col-md-7">
+                                    <!-- <h7 class="bold-u a-b-u">Your answers:</h6> -->
+                                    <form action="<?php echo base_url('quiz/newanswer'); ?>" method="post" class="go-to-right">
+                                    
+                                    <button type ="" class="btn btn-lg btn-primary quiz-add-new-answer go-to-right"data-toggle="modal"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add Answer</button>                                                                  
                                         
-                                        <h6>Answers:</h6>
+                                        <input name="answerval" placeholder="Insert new Answer here.." class="form-control" style = "width: 300px; margin:2px" required></input></label>
+                                        <input type="hidden" name="quizid" value="<?php echo $question->quiz_token;?>"></input>
+                                        <input type="hidden" name="questionid" value="<?php echo $question->auth_token;?>"></input>
+                                        
+                                    </form>
+                                  
+                                        
+                                        <table class="table table-bordered table-hover">
+                                            
+                                            <tr>
+                                                <td class="col-md-1">#</td>
+                                                <td class="col-md-1">Answers:</td>
+                                                <td class="col-md-1 center-u">Outcomes</td>
+                                                <td class="col-md-1 center-u">Delete</td>
+                                            </tr>
+                                            <?php 
+                                                $index=0;
+                                            foreach ($choices as $key => $choice) 
+                                            {  
+                                                $index++;
+                                            ?>
+                                            <tr>
+                                                <td class="col-md-1"><?php echo $index?></td>
+                                                <td class="col-md-10"><?php echo $choice->value;?></td>
+                                                <td class="col-md-10 center-u">
+                                                <div class="dropdown">
+                                                    <?php 
+                                                        if($choice->outcome_id != NULL){
+                                                            $buttosize = "2x";
+                                                        }else{
+                                                            $buttosize = "1x";
+                                                        }
+                                                    ?>
 
-                                            <table class="table table-bordered table-hover">     
-                                                <?php 
-                                                    $index=0;
-                                                foreach ($choices as $key => $choice) 
-                                                {  
-                                                    $index++;
-                                                ?>
-                                                <tr>
-                                                    <td class="col-md-1"><?php echo $index?></td>
-                                                    <td class="col-md-10"><?php echo $choice->value;?></td>
-                                                    <td class="col-md-10">
-                                                    <div class="dropdown">
-                                                        <?php 
-                                                            if($choice->outcome_id != NULL){
-                                                                $buttosize = "2x";
-                                                            }else{
-                                                                $buttosize = "1x";
-                                                            }
-                                                        ?>
-                                                        <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($choices);?> )" class="fa fa-2x fa-list fa-<?php echo $buttosize;?> t-b-u a-u active-shadow dropbtn" aria-hidden="true"></a>
-                                                        <div id="myDropdown<?php echo $key+1;?>" class="dropdown-content dropdown-content-c">
-                                                           <?php
-                                                                // var_dump($outcomes[0]->title);
-                                                                if(count($outcomes)>0){
-                                                                    foreach ($outcomes as $outcome) {
-                                                                        // var_dump($outcome->title);
-                                                                        if($choice->outcome_token == $outcome->auth_token)
-                                                                            $color = "btn btn-primary";
-                                                                        else    
-                                                                            $color = "btn btn-default";
-                                                                        ?><a class="<?php echo $color;?>" href="<?php echo base_url('quiz/link_outcome/'.$question->auth_token.'/'. $choice->auth_token).'/'.$outcome->auth_token; ?>"><?php echo $outcome->title;?></a><?php
-                                                                    }
-                                                                }else{
-                                                                    ?><p class="btn btn-default">No Outcome yet</p><?php
+                                                    <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($choices);?>, <?php echo $choice->id;?> )" class="fa fa-2x fa-tasks fa-<?php echo $buttosize;?> a-b-u dropbtn" aria-hidden="true"></a>
+                                                        <div id="myDropdown<?php echo $key+1;?>" class="dropdown-content-outcomes">
+                                                        
+                                                        <div class="go-to-left bold-u a-b-u">Logic Branching: <i class="fa fa-question-circle" aria-hidden="true"></i></div><br>
+                                                        <div class="go-to-left a-b-u">Select the logic branching action for your answer </div>
+                                                        
+                                                       <?php
+                                                            // var_dump($outcomes[0]->title);
+                                                            if(count($outcomes)>0){
+                                                                foreach ($outcomes as $outcome) {
+                                                                    // var_dump($outcome->title);
+                                                                    if($choice->outcome_token == $outcome->auth_token) 
+                                                                        $color = "btn btn-primary ";
+                                                                    else    
+                                                                        $color = "btn btn-default";
+                                                                    ?>
+                                                                        
+         
+                                                                        <a style="width:100%; margin:2px"class="<?php echo $color;?> quiz-outcome-result" href="<?php echo base_url('quiz/link_outcome/'.$question->id.'/'. $choice->id).'/'.$outcome->id; ?>"><?php echo $outcome->title;?></a>
+                                                                     
+                                                                    <?php
                                                                 }
-                                                                
-                                                           ?>
-                                                        </div>
-
+                                                            }else{
+                                                                ?><p class="btn btn-default">No Outcome yet</p><?php
+                                                            }
+                                                            
+                                                       ?>
                                                     </div>
-                                                    </td>
-                                                    <td><a href="<?php echo base_url('quiz/delete_choice/'. $choice->auth_token); ?>" type ="submit" class="btn btn-danger btn-r-u"><i class="fa fa-trash" aria-hidden="true">  Delete</i></a></td>
-                                                </tr>
-                                                <?php
-                                                }
-                                                ?>
-                                            </table>
-                                        </div>
-                                        
-                                    <div class="col-md-5">
-                                                <br>
 
-                                        <form action="<?php echo base_url('quiz/newanswer'); ?>" method="post">
-                                            
-                                            <label><h6>New Answer:</h6><input name="answerval" class="form-control" style = "width: 410px;" required></input></label>
-                                           
-                                            <input type="hidden" name="questionid" value="<?php echo $question->auth_token;?>"></input>
-                                            <button type ="submit" class="btn btn-lg btn-primary btn-wide g-l-u btn-r-u"><i class="fa fa-plus-circle" aria-hidden="true"> Add answer</i></button>                                  
-                                            
-                                        </form>
-                                        <a  href="<?php echo base_url('quiz/quizquestions'); ?>" type ="submit" class="btn btn-r-u btn-lg btn-primary btn-wide fa fa-pencil-square g-r-u-q "> Exit and <br>Save changes</a>
-                                    
+                                                </div>
+                                                </td>
+                                                <td class="center-u">
+                                                <a href="<?php echo base_url('quiz/delete_choice/'. $choice->id); ?>" type ="submit" class="btn btn-danger btn-r-u custom-quiz-quizanswer-button-delete "><i class="fa fa-trash" aria-hidden="true"> </i></a>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                            }
+                                            ?>
+                                        </table>
                                     </div>
-                       
-                                </div>
-                                <br>  
+                                    
                             </div>
+                            <br>  
                         </div>
                     </div>
-              </div>
-            </div>
+                </div>
+          </div>
         </div>
-        <script>
-                                /* When the user clicks on the button, 
-                                toggle between hiding and showing the dropdown content */
-                                function myFunction(id,total) {
-                                    for (let index = 1; index < total+1; index++) {
-                                        if(index == id){
-                                            // alert("currenquiz"+quizid);
-                                            document.getElementById("myDropdown"+id).classList.toggle("show");
-                                        }else{
-                                            document.getElementById("myDropdown"+index).classList.remove("show");
-                                        }       
-                                    }  
-                                }
+    <script>
+                            /* When the user clicks on the button, 
+                            toggle between hiding and showing the dropdown content */
+                            function myFunction(id,total,quizid) {
+                                for (let index = 1; index < total+1; index++) {
+                                    if(index == id){
+                                        // alert("currenquiz"+quizid);
+                                        document.getElementById("myDropdown"+id).classList.toggle("show");
+                                    }else{
+                                        document.getElementById("myDropdown"+index).classList.remove("show");
+                                    }       
+                                }  
+                            }
 
-                                // Close the dropdown if the user clicks outside of it
-                                window.onclick = function(event) {
-                                if (!event.target.matches('.dropbtn')) {
+                            // Close the dropdown if the user clicks outside of it
+                            window.onclick = function(event) {
+                            if (!event.target.matches('.dropbtn')) {
 
-                                    var dropdowns = document.getElementsByClassName("dropdown-content");
-                                    var i;
-                                    for (i = 0; i < dropdowns.length; i++) {
-                                    var openDropdown = dropdowns[i];
-                                        if (openDropdown.classList.contains('show')) {
-                                            openDropdown.classList.remove('show');
-                                        }
+                                var dropdowns = document.getElementsByClassName("dropdown-content");
+                                var i;
+                                for (i = 0; i < dropdowns.length; i++) {
+                                var openDropdown = dropdowns[i];
+                                    if (openDropdown.classList.contains('show')) {
+                                        openDropdown.classList.remove('show');
                                     }
                                 }
-                                }
-                            </script>
-    </div>
+                            }
+                            }
+                        </script>
+</div>
 
-    <!-- End of Content-->
-
-    <!-- Load JS here for greater good =============================-->
-   
-
-    <!--[if lt IE 10]>
-    <script>
-    $(function(){
-    	var msnry = new Masonry( '#sites', {
-	    	// options
-	    	itemSelector: '.site',
-	    	"gutter": 20
-	    });
-
-    })
-    </script>
-    <![endif]-->
-</body>
-</html>

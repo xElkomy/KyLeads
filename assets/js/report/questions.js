@@ -1,18 +1,26 @@
 $(document).ready(function(){
 		
-	$("outcome").ready(function() {
-		for (var i in questions) {
-			var targetid = "questiontarget"+i;
-			createReport(questions[i],targetid,i);
+	$("question").ready(function() {
+
+		executeQuestions();
+		
+		function executeQuestions(){
+			for (var i in questions) {
+				var targetid = "questiontarget"+i;
+				createReport(questions[i],targetid,i);
+			}
 		}
 
+		
+		
 		function createReport(question,target,i){
 			$.ajax({
 				type: "GET",
-				url: urlDataQuestion+question,
+				url: baseUrl+"api/quizreport?id="+id+"&questionid="+question+"&start="+from+"&end="+to,
 				dataType: "json",
 				success: function(result)
 				{
+					
 					var data = JSON.parse(JSON.stringify(result));
 					document.getElementById(target).innerHTML = data.results + "     ("+roundToTwo((data.results/data.completes)*100)+"%)";
 					createanswerReport(data.answers,i,data.results);

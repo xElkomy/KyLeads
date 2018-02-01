@@ -13,6 +13,7 @@
 /*body*/
 .body-custom{
     padding-top:67px;
+
 }
 .container-fluid-custom{
     padding:0px;
@@ -40,7 +41,6 @@
     overflow-y: auto;
     z-index: 1000;
     transition: all 0.4s ease 0s;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.50);
   }
   
   #wrapper.active {
@@ -214,8 +214,337 @@
   border: none; 
   border-radius: 100px !important; 
 }
-.table-f{
-  max-width: 1200px;
-  border-radius: 50px;
 
+
+
+/*new------------------------------------------------------------------------------------------------------------------*/
+.center-content-u{
+  height: 500px;
+  width:800px;
+  margin: 0px auto;
+  border-radius: 10px;
+  text-align: center;
 }
+.list-of-project{
+  width: 80%;
+  top:1
+}
+.container-fluid-u{
+  padding:0px !important;
+  height: 100%;
+}
+.a-b-u{
+  color:black;
+}
+.go-to-left{
+  float:left;
+}
+.go-to-right{
+  float:right;
+}
+.a-w-u{
+  color:white;
+}
+.center-u{
+  text-align: center;
+}
+.dirtywhite{
+  background-color:rgb(235, 243, 239);
+}
+.btn-r-u{
+  border-radius: 50px;
+}
+.bold-u{
+  font-weight: bold;
+}
+.container-fluid-custom{
+  padding: 0px;
+}
+.w-bg{
+  background-color:white;
+}
+.b-bg{
+  background-color:black;
+}
+.nopadding{
+  padding:0px !important  ;
+}
+.nomargin{
+  margin:0px;
+}
+.buttonColor-u{
+  background-color:#48c9b0;
+}
+#wrapper {
+  padding-left: 220px;
+  transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+  margin-left: -250px;
+  left: 250px;
+  width: 220px;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.4s ease 0s;
+}
+
+#wrapper.active {
+  padding-left: 0;
+}
+
+#wrapper.active #sidebar-wrapper {
+  left: 0;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  position: relative;
+  transition: all 0.4s ease 0s;
+}
+
+.sidebar-nav-u {
+  position: absolute;
+  top: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-nav-u li {
+  line-height: 50px;
+}
+
+.sidebar-nav-u li a {
+  color: white;
+  display: block;
+  text-decoration: none;
+}
+
+.sidebar-nav-u li a span:before {
+  position: absolute;
+  left: 0;
+  color: #41484c;
+  width: 20px;
+  line-height: 18px;
+}
+
+.sidebar-nav-u li a:hover,
+.sidebar-nav-u li.active {
+  color: #fff;
+  background: #22345f;
+  text-decoration: none;
+}
+.sidebar-nav-  li a:active,
+.sidebar-nav-j li a:focus {
+  text-decoration: none;
+}
+
+#menu-toggle {
+    text-decoration: none;
+    float: left;
+    color: #fff;
+    padding-right: 15px;
+}
+@media only screen and (min-device-width : 320px) and (max-device-width : 1000px){
+    
+  #sidebar-wrapper {
+    margin-left: -250px;
+    left: 250px;
+    width: 60px;
+    position: fixed;
+    height: 100%;
+    overflow-y: auto;
+    z-index: 1000;
+    transition: all 0.4s ease 0s;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.50);
+  }
+  
+}
+.signature-color-button{
+  background-color: #48c9b0;
+}
+.rounded-button-u{
+  border-radius: 70px;
+}
+.main-menu {
+  background:#365397;
+  border-right:2px solid #e5e5e5;
+  color:white;
+  position:absolute;
+  top:0%;
+  bottom:0;
+  height:100%;
+  left:0;
+  width:220px;
+  overflow:hidden;
+  -webkit-transition:width .05s linear;
+  transition:width .05s linear;
+  -webkit-transform:translateZ(0) scale(1,1);
+  z-index:1000;
+  font-weight:bold;
+}
+
+.main-menu>ul {
+  margin:7px 0;
+}
+
+.main-menu li {
+  position:relative;
+  display:block;
+  width:220px;
+}
+.li-custom {
+  height:80px;
+}
+
+.main-menu li>a {
+  position:relative;
+  margin: auto;
+  display:table;
+  border-collapse:collapse;
+  border-spacing:0;
+  color:white;
+  font-family: arial;
+  font-size: 17px;
+  text-decoration:none;
+  -webkit-transform:translateZ(0) scale(1,1);
+  -webkit-transition:all .1s linear;
+  transition:all .1s linear;
+}
+
+.main-menu .nav-icon {
+  position:relative;
+  display:table-cell;
+  width:60px;
+  height:36px;
+  text-align:center;
+  vertical-align:middle;
+  font-size:18px;
+}
+
+.main-menu .nav-text {
+  position:relative;
+  display:table-cell;
+  vertical-align:middle;
+  width:190px;
+  font-family: Helvetica;
+}
+
+
+.no-touch .scrollable.hover {
+  overflow-y:hidden;
+}
+
+.no-touch .scrollable.hover:hover {
+  overflow-y:auto;
+  overflow:visible;
+}
+
+a:hover,a:focus {
+  text-decoration:none;
+}
+
+nav {
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+}
+
+nav ul,nav li {
+  outline:0;
+  margin:0;
+  padding:0;
+}
+
+.main-menu li:hover>.a-custom-form,nav.main-menu li.active>.a-custom-form,.dropdown-menu>li>.a-custom-form:hover,
+.dropdown-menu>li>.a-custom-form:focus,.dropdown-menu>.active>.a-custom-form,.dropdown-menu>.active>.a-custom-form:hover,
+.dropdown-menu>.active>.a-custom-form:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover .a-custom-form,
+.dashboard-page nav.dashboard-menu ul li.active .a-custom-form {
+  color:#fff;
+  background-color:#043e70;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 1000px){
+  
+  .main-menu:hover,nav.main-menu.expanded,li:hover {
+      width:250px;
+      overflow:visible;
+  }
+  
+  .main-menu{
+      width: 60px;
+  }
+  .main-menu li {
+      width:250px;
+  }
+  .a-custom{
+      height: 50px;
+  }
+  .btn-custom-formnav {
+      display: none;
+  }
+}
+.center-button-u{
+  position: absolute;
+  top: 300px;
+  left:40%;
+}
+.row-center-content-u{
+  padding-left: 11%;
+  padding-right:15%;
+}
+.resize-button-u{
+  width: 230px;
+  height: 150px;
+}
+.alignment-u-table{
+  padding-top:66px !important;
+}
+.alignment-u-table-custom{
+  padding:30px 0px !important;
+}
+.top-message-u{
+  color:black;
+  font-weight: bold;
+}
+.fa-u {
+  position: relative;
+  display: table-cell;
+  width: 60px;
+  height: 36px;
+  text-align: center;
+  vertical-align: middle;
+  font-size:20px;
+}
+
+
+.quiz-edit-template{
+  margin: 0 auto;
+  width:60%;
+}
+.save-button-u{
+  margin-top:20px;
+  margin-bottom:10px;
+  width: 200px; 
+  height:55px;
+  padding:15px;
+  font-family: inherit;
+  font-size: 18px;
+  border-radius: 50px;
+}
+.continue-button-u,.update-outcome-button-u{
+  margin-top:20px;
+  margin-bottom:30px;
+  width: 200px; 
+  height:55px;
+  padding:15px;
+  font-family: inherit;
+  font-size: 18px;
+  border-radius: 50px;
+}
+

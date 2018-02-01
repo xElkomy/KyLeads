@@ -1,100 +1,84 @@
 
-.f-d-th{
-    padding:0px;
-}
-.f-d-td{
-    margin: 0px auto;
-}
-.form-group-u{
-    width:800px;
-    margin:0px auto;
-}  
-.n-f{
-    width: 200px;
-    height: 200px;
-    background-color:rgb(179, 179, 179);
-    margin:15px auto ;
-    border-radius: 72.5px;
-    box-shadow: 0 3px 3px rgba(0,0,0,0.05), 0 3px 3px rgba(0,0,0,0.05);
-}
-.n-f:hover {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
-.f-c-c{
-    border-radius: 10px;
-    text-align: center;
-    height: 50px;
-    box-shadow: 0 14px 28px rgba(0,0,0,0.05), 0 05px 05px rgba(0,0,0,0.02);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-.f-c-c:hover {
-    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
-.f-c-c[type="text"]{
-    font-size: 24px;
-    background-color:rgb(194, 194, 194);
-}
-.f-c-c::placeholder {
-    color: black;;
-  }
-
-.c-d-f-d{
-    margin: 60px auto;
-}
-.fa-s{
-    padding-right:10px;
-}
-/*fade for tabs*/
-.tabcontent {
-    -webkit-animation: fadeEffect 1s;
-    animation: fadeEffect 1s; /* Fading effect takes 1 second */
-}
-
-@-webkit-keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-@keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-/*end for tabs*/
-
-.vertical-alignment-helper {
-    display:table;
-    height: 100%;
-    width: 100%;
-}
-.vertical-align-center {
-    /* To center vertically */
-    display: table-cell;
-    vertical-align: middle;
-}
-.modal-content {
-    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
-    width:inherit;
-    height:inherit;
-    /* To center horizontally */
-    margin: 0 auto;
-}
-
-.btn-u-q{
-    width:200px;
-    padding:25px;
-    margin:30px;
-    font-size: 20px;
-    border-radius: 52.5px;
-    background-color:#49CEA4;
-}
-.btn-u-f{
-    margin:30px;
-    font-size: 20px;
-    width:200px;;
-    border-radius: 52.5px;
-    background-color:#49CEA4;
-}
-.btn-r-u{
-    font-size: 18px;
-    border-radius: 52.5px;
-  }
+.fa-2x {
+    font-size: 2em;
+    }
+    
+    
+    .a-custom-form{
+        height: 77px;
+    }
+    
+    .btn-custom-formnav {
+        border-radius: 30px;
+        padding:20px;
+        margin: 10px auto;
+        font-weight:bold;  
+        font-size: 17px; 
+    }
+    .col-md-11-forms,.col-md-1-forms{
+        padding:0px;
+    }
+    .row-form-input-textbox{
+        margin-top: 1%;
+    }
+    .col-md-button-forms{
+        margin-top:55px;
+        padding:0px;
+    }
+    .btn-add-form{
+        font-size: 25px;
+        height: 55px;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    input[id="text-form"] {
+        font-size:15px;
+        background-color:rgb(250, 255, 189);
+    }
+    .font-btn-add-form{
+        font-size: 20px;
+      }
+    .row-display-boxes-form{
+          text-align: center;
+    }
+    .input-lg-form{
+        height: 55px;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        border:2px solid #86b5d4;
+    }
+    .n-f {
+        width: 200px;
+        height: 200px;
+        background-color: rgb(179, 179, 179);
+        border-radius: 72.5px;
+        position: relative;
+        margin: 0 auto;
+        box-shadow: 0 3px 3px rgba(0,0,0,0.05), 0 3px 3px rgba(0,0,0,0.05);
+    }
+    .col-md-3-form{
+        width: 250px;
+        margin-top: 20px;
+    }
+    .row-templates-form{
+        margin-left: 10%;
+        margin-right: 12%;
+    }
+    .row-templates-form-bottom{
+        margin-bottom: 20px;
+    }
+    
+    .fa-forms-custom{
+        margin-left:10px;
+    }
+    .build-optin-form-button{
+        width:300px;
+        height:100px;
+        border-radius: 50px;
+        background-color:#48c9b0;
+    }
+    .build-optin-form-text{
+        font-size:25px;
+        color:white;
+        padding:0px;
+    }

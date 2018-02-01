@@ -216,7 +216,7 @@ class Quiz extends MY_Controller {
 		$table = "questions";
 		$new_question_id = $this->MQuiz->save_question($title,$description,$quizid,$table);	
 			
-		redirect('quiz/update_answers/'.$new_question_id, 'refresh');
+		redirect('quiz/quizquestions', 'refresh');
 	}
 
 	public function newquestion_temp(){
@@ -351,34 +351,18 @@ class Quiz extends MY_Controller {
 		}
 	}
 
-	public function savequizresult(){
-
+	public function updatequizdetials(){
+		$datareceived = $_POST['results'];
+		$data = json_decode($datareceived);
+		if(strcmp($data->base,'outcome')==0){
+			$table = "outcomes";
+		}else if(strcmp($data->base,'question')==0){
+			$table = "questions";
+		}
+		
+		$this->MQuiz->updatequizinfo($data->id,$data->title,$data->description,$table);
 	}
 
-	// public function view_quizzes(){
-	// 	$quizzes = $this->MQuiz->view_quizzes();
-		
-	// 	$this->load->view('layout',$quizzes);
-		
-	// }
-
-	// public function view_quiz($id = ''){
-	// 	$quiztable = "quizzes";
-	// 	$questiontable = "questions";
-	// 	$this->data['quiz'] = $this->MQuiz->get_quiz_info($id,$quiztable);
-	// 	if($this->data['quiz'] === null){
-	// 		$this->data['questions'] = null;
-	// 	}
-	// 	else{
-	// 		$this->data['questions'] = $this->MQuiz->view_questions($id,$questiontable);
-	// 	}
-		
-	// 	$this->data['title'] = 'KyLeads Quizzes';
-    //     $this->data['content'] = 'quizmenu/viewquiz';
-    //     $this->data['page'] = 'site';
-        
-    //     $this->load->view('layout', $this->data);
-	// }
 
 	public function delete_project($id = ''){
 		if($this->isMyProject($id)){
@@ -712,6 +696,19 @@ class Quiz extends MY_Controller {
         $this->load->view('layout', $this->data);
 	}
 
+	public function proj_analytics($id = ''){
+		if($id!=='' && $this->isMyProject($id)){
+			$this->data['title'] = 'KyLeads Quizzes';
+        $this->data['content'] = 'quizproject/analytics';
+        $this->data['page'] = 'site';
+        $this->load->view('layout', $this->data);
+		}else{
+			redirect('quiz','refresh');
+		}
+
+	}
+
+	// -------------PRIVATE FUNCTIONS---------------- 
 	private function isAdmin(){
 
 		if($this->session->userdata('user_type') === "Admin"){
@@ -759,10 +756,11 @@ class Quiz extends MY_Controller {
 		}	
 	}
 
-	// -------------------------test token here---------------------------
-	public function generate($id=''){
+
+	// // -------------------------test token here---------------------------
+	// public function generate($id=''){
 		
-		echo $this->MToken->generatetoken($id);
-		// echo $this->MToken->generateAdmintoken($id);
-	}
+	// 	echo $this->MToken->generatetoken($id);
+	// 	// echo $this->MToken->generateAdmintoken($id);
+	// }
 }	

@@ -58,89 +58,108 @@
                     <div id="previewquestion" style="display:none">
                     <div id="hideform">
                         <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-                            <!-- Wrapper for carousel items -->
-                            <div class="carousel-inner">
-                        <?php
-                            $firstQuestion=0;
-                            
-                            foreach($quiz[0]->questions  as $idx => $question){
-                                if($firstQuestion === $idx){
-                            ?>
-                                    <div class="item active">
-                                    <p>Question <?php echo $idx+1;?> of <?php echo count($quiz[0]->questions);?></p>
-                                    <h6> <?php echo $question->title?></h6>
+                                    <!-- Wrapper for carousel items -->
+                                    <div class="carousel-inner">
+                                <?php
+                                    $firstQuestion=0;
                                     
-                                        <div class="form-check f-c-c-t-p">
-                                            <?php
-                                                foreach ($question->choices as $idx1 => $choice) 
-                                                { 
-                                            ?>
-                                                        <div class="margin-l-t-p">
-                                                            <label class="form-check-label f-c-l-t-p">
-                                                                <input type="radio" onclick="addResult(<?= $idx1?>,<?= $idx?>)"
-                                                                class="form-check-input f-c-i-t-p" name="choice"/><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a></label>    
-                                                        </div> 
-                                            
-                                                    <br>
+                                    foreach($quiz[0]->questions  as $idx => $question){
+                                        if($firstQuestion === $idx){
+                                    ?>
+                                            <div class="item active">
+                                            <p>Question <?php echo $idx+1;?> of <?php echo count($quiz[0]->questions);?></p>
+                                            <h6 class="bold-u a-b-u"> <?php echo $question->title?></h6>
+                                            <hr>
+                                            <table class="table">
+                                                <tbody>
+                                                    
                                                     <?php
-                                                }
-                                            ?> 
-                                        </div>
-                                        <!-- <button type="button" name="next" class="btn btn-success btn-t-p" style="float:right"> Continue <i class="fa fa-arrow-right" aria-hidden="true">  </i></button>     -->
-                            </div> 
-                            <?php  
-                                }else{
-                            ?>
-                                    <div class="item">
-                                    <p>Question <?php echo $idx+1;?> of <?php echo count($quiz[0]->questions);?></p>
-                                    <h6> <?php echo $question->title?></h6>
-                                    
-                                        <div class="form-check f-c-c-t-p">
-                                        <form>
-                                            <?php
-                                    
-                                                foreach ($question->choices as $idx1 => $choice) 
-                                                {
-                                            ?>
-                                                        <div class="margin-l-t-p">
-                                                            <label class="form-check-label f-c-l-t-p">
+                                                        foreach ($question->choices  as $idx1 => $choice) 
+                                                        {    
+                                                    ?>
+                                                           <tr class="nopadding">
+                                                                <td class="nopadding">
+                                                                    <label class="listofradios-reviewquiz center-u">
+                                                                        <input onclick="addResult(<?= $idx1?>,<?= $idx?>)"
+                                                                        type="radio" id="radio-preview" class="go-to-left radio-aligment-quiz-preview" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="bold-u a-w-u quiz-preview-choices"><?php echo $choice->value;?></h7></a>   
+                                                                    </label>    
+                                                                </td>
+                                                            </tr>
+                                                            
+                                                            <?php
+                                                        }
+                                                    ?> 
+                                                  
+                                                </tbody>
+                                            </table>
+                                                <!-- <button type="button" name="next" class="btn btn-success btn-t-p" style="float:right"> Continue <i class="fa fa-arrow-right" aria-hidden="true">  </i></button>     -->
+                                    </div> 
+                                    <?php  
+                                        }else{
+                                    ?>
+                                            <div class="item">
+                                            <p>Question <?php echo $idx+1;?> of <?php echo count($quiz[0]->questions);?></p>
+                                            <h6 class="bold-u a-b-u"> <?php echo $question->title?></h6>
+                                            <hr>
+                                                <div class="form-check">
+                                                <form>
+                                                    <table class="table">
+                                                        <tbody>
+                                                    
                                                                 <?php
-                                                                    if($idx+1 >= count($quiz[0]->questions)){
-                                                                        ?>
-                                                                        <input onclick="addResult(<?= $idx1?>,<?= $idx?>)" type="radio" 
-                                                                        class="form-check-input f-c-i-t-p" name="last" ><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
-                                                                        <?php
-                                                                    }else{
-                                                                        ?>
-                                                                        <input onclick="addResult(<?= $idx1?>,<?= $idx?>)" type="radio" 
-                                                                        class="form-check-input f-c-i-t-p" name="choice"><a><h7 class="t-b-u" style="font-size:17px;"><?php echo $choice->value;?></h7></a>
-                                                                    <?php
-                                                                    }
+                                                                    foreach ($question->choices as $idx1 => $choice) 
+                                                                    {    
                                                                 ?>
-                                                            </label>    
-                                                        </div>
-                                                    <br>
-                                            <?php
+                                                                    <tr class="nopadding">
+                                                                            <td class="nopadding">
+                                                                            <?php
+                                                                            if($idx+1 >= count($quiz[0]->questions)){
+                                                                                ?>
+                                                                                <label class="listofradios-reviewquiz center-u">
+                                                                                    <input onclick="addResult(<?= $idx1?>,<?= $idx?>)"
+                                                                                    type="radio" id="radio-preview" class="go-to-left radio-aligment-quiz-preview" name="last" value="<?php echo $choice->id;?>"><a><h7 class="bold-u a-w-u quiz-preview-choices"><?php echo $choice->value;?></h7></a>   
+                                                                                </label>
+                                                                                <?php
+                                                                            }else{
+                                                                                ?>
+                                                                                    <label class="listofradios-reviewquiz center-u">
+                                                                                    <input onclick="addResult(<?= $idx1?>,<?= $idx?>)"
+                                                                                    type="radio" id="radio-preview" class="go-to-left radio-aligment-quiz-preview" name="choice" value="<?php echo $choice->id;?>"><a><h7 class="bold-u a-w-u quiz-preview-choices"><?php echo $choice->value;?></h7></a>   
+                                                                                </label>
+                                                                            <?php
+                                                                            }
+                                                                            ?>    
+                                                                            </td>
+                                                                        </tr>
+                                                                       
+                                                                <?php
+                                                                    }
+                                                                ?> 
+                                                  
+                                                            </tbody>
+                                                        </table>
+                                                    </form>
+                                                </div>
+                                                    <button type="button" name="back" class="btn btn-success go-to-left bold-u a-w-u quiz-preview-previous-button buttonColor-u"><i class="fa fa-arrow-left" aria-hidden="true"></i> Previous</button>               
+                                                </div> 
+                                                    <?php 
+                                                    }       
                                                 }
-                                            ?>
-                                            </form>
-                                        </div>
-                                            <button type="button" name="back" class="btn next btn-success btn-t-p" style="float:left"><i class="fa fa-arrow-left" aria-hidden="true"> Previous </i></button>               
-                                        </div> 
-                                            <?php 
-                                            }       
-                                        }
-                                    ?>                                                                          
+                                            ?>                                                                          
+                                            </div>
+        
                                     </div>
                                 </div>
-                            <div>
-                                
-                        </div>
                     </div> 
                 </div>  
             </div>
         </div>
 
+        <?php if (ENVIRONMENT == 'production') : ?>
+    <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>
+    <?php elseif (ENVIRONMENT == 'development') : ?>
+    <script src="<?php echo $this->config->item('webpack_dev_url'); ?>build/sites.bundle.js"></script>
+    <?php endif; ?>
     <script>
 
     function start(cityName) {

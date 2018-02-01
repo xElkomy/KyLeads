@@ -21,17 +21,52 @@
 								<ul class="nav nav-pills">
 									<li class="active j-c-t-u"><a data-toggle="pill" href="#home">Split Test <br>Report</a></li>
 									<li class="j-c-t-u"><a data-toggle="pill" href="#menu1">Advanced<br>Report</a></li>
+									<div class="g-r-u a-b-u">Date Range: <input id ="startdate" value="2018-01-01"></input> - <input id ="enddate" value="2018-01-31"></input></div>
 								</ul>
-								
 								<div class="tab-content tab-content-a">
 
 									<div id="home" class="tab-pane fade in active">
-										<p>Display Line Graph No Split Testing</p>
+									<div class="row">
+										</div>
+										<div class="row row-centered a-b-u">
+											<div class="col-md-2 col-c-u ">
+													<h6>Total Views</h6>
+													<p id="viewStats1">0%</p>
+													<p><h6 id ="viewCount1">0</p>				
+												</div>
+
+												<div class="col-md-2 col-c-u">
+													<h6>Total Contacts</h6>
+													<p></p>
+													<p><h6 id ="conCount1">0</p>
+												</div>
+												
+												<div class="col-md-2 col-c-u">
+													<h6>Conversion rate</h6>
+													<p id="conStats1">0%</p>
+													<p><h6 ></p>	
+												</div>	
+												
+												<div class="col-md-2 col-c-u">
+													<h6>Total Offer Clicks</h6>
+													<p id="offerStats1">0%</p>
+													<p><h6 id ="offerCount1">0</p>	
+												</div>	
+												
+												<div class="col-md-2 col-c-u">
+													<h6>Total Shares</h6>
+													<p id="shareStats1">0%</p>
+													<p><h6 id ="shareCount1">0</p>	
+												</div>
+											</div>
+										<div id="chartContainer" style="height: 400px; max-width: 920px; margin: 0px auto;"></div>
+										<script type="text/javascript" src="./assets/js/linegraph/singledata.js"></script>
+										<script type="text/javascript" src="./assets/js/linegraph/line.js"></script>
 									</div>
 									<div id="menu1" class="tab-pane fade">
 
 										<div class="row">
-											<div class="g-r-u">Date Rage: mm/dd/yy - mm/dd/yy</div>
+											
 										</div>
 
 										<div class="row row-centered">
@@ -151,10 +186,19 @@
 
     <!-- End of Content-->
 	<script type="text/javascript" >
+		var id = "<?php echo $id?>";
+		var from = $('#startdate').val();
+		var to = $('#enddate').val();
+		$(document).ready(function()
+		{
+			
+		
+		});
+		
 		var outcomes = new Array();
 		var questions = new Array();
-		var urlData = "<?php echo base_url();?>api/quizreport?id=<?php echo $id?>&outcomeid=";
-		var urlDataQuestion = "<?php echo base_url();?>api/quizreport?id=<?php echo $id?>&questionid=";
+		var baseUrl = "<?php echo base_url();?>";
+		
 		<?php foreach($cquiz->outcomes as $key => $val){ ?>
 			outcomes.push('<?php echo $val->auth_token; ?>');
 		<?php } ?>
