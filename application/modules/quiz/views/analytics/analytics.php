@@ -59,9 +59,9 @@
 													<p><h6 id ="shareCount1">0</p>	
 												</div>
 											</div>
-										<div id="chartContainer" style="height: 400px; max-width: 920px; margin: 0px auto;"></div>
-										<script type="text/javascript" src="./assets/js/linegraph/singledata.js"></script>
-										<script type="text/javascript" src="./assets/js/linegraph/line.js"></script>
+											
+											<canvas class="quizprojectanalytics" id="LineChart"></canvas>
+											
 									</div>
 									<div id="menu1" class="tab-pane fade">
 
@@ -183,34 +183,42 @@
           	</div>
       	</div>
   	</div>
-
+	
     <!-- End of Content-->
 	<script type="text/javascript" >
 		var id = "<?php echo $id?>";
-		var from = $('#startdate').val();
-		var to = $('#enddate').val();
-		$(document).ready(function()
-		{
-			
-		
-		});
-		
+		var from = document.getElementById('startdate').value;
+		var to = document.getElementById('enddate').value;
 		var outcomes = new Array();
 		var questions = new Array();
 		var baseUrl = "<?php echo base_url();?>";
-		
 		<?php foreach($cquiz->outcomes as $key => $val){ ?>
 			outcomes.push('<?php echo $val->auth_token; ?>');
 		<?php } ?>
 		<?php foreach($cquiz->questions as $key => $val){ ?>
 			questions.push('<?php echo $val->auth_token; ?>');
-    	<?php } ?>		
+    	<?php } ?>
+		
 	</script>
+	
 	<script type="text/javascript" src="./assets/js/analytics.js"></script>
 	<script type="text/javascript" src="./assets/js/doughnut/jquery-2.1.4.min.js"></script>
-	<script type="text/javascript" src="./assets/js/doughnut/Chart.js"></script>
+	<script type="text/javascript" src="./assets/js/doughnut/Chart.js">
+	</script>
 	<script type="text/javascript" src="./assets/js/report/outcomes.js"></script>
 	<script type="text/javascript" src="./assets/js/report/questions.js"></script>
+
+	<script type="text/javascript" src="./assets/js/linegraph/linechart.lib.js"></script>
+	<script type="text/javascript" src="./assets/js/linegraph/linechart.js"></script>
+	<script type="text/javascript" >
+		
+		$(document).ready(function()
+		{
+			var proj_id = "<?=$this->session->userdata('quizproj_id')?>";
+			executedefault();
+			executeSingleReport(proj_id);
+		});		
+	</script>
     <!-- Load JS here for greater good =============================-->
     
 

@@ -165,7 +165,7 @@ class Quiz_model extends CI_Model {
     }
 
     public function get_quiz_info($id,$table){
-        $data = array('id'=>$id,'user_id'=>$this->session->userdata('user_id'));
+        $data = array('auth_token'=>$id,'user_token'=>$this->session->userdata('user_id'));
         $query = $this->db->get_where($table,$data);
 
         return $query->first_row();

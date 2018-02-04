@@ -698,10 +698,11 @@ class Quiz extends MY_Controller {
 
 	public function proj_analytics($id = ''){
 		if($id!=='' && $this->isMyProject($id)){
+			$this->data['id'] = $id;
 			$this->data['title'] = 'KyLeads Quizzes';
-        $this->data['content'] = 'quizproject/analytics';
-        $this->data['page'] = 'site';
-        $this->load->view('layout', $this->data);
+			$this->data['content'] = 'quizproject/analytics';
+			$this->data['page'] = 'site';
+			$this->load->view('layout', $this->data);
 		}else{
 			redirect('quiz','refresh');
 		}

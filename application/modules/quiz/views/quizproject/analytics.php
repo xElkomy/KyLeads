@@ -11,7 +11,6 @@
               	<div class="container ">
                     <div class="row row-c-u-a">
                     	<div id="new-optin" class="tabcontent">
-						<?php $cquiz = $quiz[0];?>
 								<h4>Analytics/<i>View metrics for your Project</i> </h4>
 								<ul class="nav nav-pills">
 									<li class="active j-c-t-u"><a data-toggle="pill">Split Test <br>Report</a></li>
@@ -22,9 +21,10 @@
 									<div id="home" class="tab-pane fade in active">
 									<div class="row">
 
-										<div id="chartContainer" style="height: 400px; max-width: 920px; margin: 0px auto;"></div>
-										<script type="text/javascript" src="./assets/js/linegraph/multipledata.js"></script>
-										<script type="text/javascript" src="./assets/js/linegraph/line.js"></script>
+										<!-- <div id="chartContainer" style="height: 400px; max-width: 920px; margin: 0px auto;"></div> -->
+										<canvas class="quizprojectanalytics" id="LineChart"></canvas>
+										<script type="text/javascript" src="./assets/js/linegraph/linechart.lib.js"></script>
+										<script type="text/javascript" src="./assets/js/linegraph/linechart.js"></script>
 									</div>
 								</div>
 							</div>
@@ -35,10 +35,23 @@
       	</div>
   	</div>
 
-   
+	<script type="text/javascript" >
+			var baseUrl = "<?php echo base_url();?>";
+			var id = "<?=$id?>";
+			var from = document.getElementById('startdate').value;
+			var to = document.getElementById('enddate').value;
+			
+			window.onload = function () {
+				executedefault();
+				executeMultipleReport();
+			}
+	</script>
     <!-- Load JS here for greater good =============================-->
-    
-
+	<?php if (ENVIRONMENT == 'production') : ?>
+    <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>
+    <?php elseif (ENVIRONMENT == 'development') : ?>
+    <script src="<?php echo $this->config->item('webpack_dev_url'); ?>build/sites.bundle.js"></script>
+    <?php endif; ?>
     <!--[if lt IE 10]>
     <script>
     $(function(){
