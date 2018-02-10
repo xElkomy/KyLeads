@@ -1,4 +1,9 @@
-
+<script>
+    var Questiondata = <?php echo json_encode($question);?>;
+    var Outcomesdata = <?php echo json_encode($outcomes);?>;
+    var Choicesdata = <?php echo json_encode($choices);?>;
+   
+</script>
   <div id="">
       <div class="">
           <div class="container ">
@@ -41,14 +46,14 @@
                                                 <td class="col-md-10 center-u">
                                                 <div class="dropdown">
                                                     <?php 
-                                                        if($choice->outcome_id != NULL){
+                                                        if($choice->outcome_token != NULL){
                                                             $buttosize = "2x";
                                                         }else{
                                                             $buttosize = "1x";
                                                         }
                                                     ?>
 
-                                                    <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($choices);?>, <?php echo $choice->id;?> )" class="fa fa-2x fa-tasks fa-<?php echo $buttosize;?> a-b-u dropbtn" aria-hidden="true"></a>
+                                                    <a onclick="myFunction(<?php echo $key+1;?>,<?php echo count($choices);?>, <?php echo $choice->token;?> )" class="fa fa-2x fa-tasks fa-<?php echo $buttosize;?> a-b-u dropbtn" aria-hidden="true"></a>
                                                         <div id="myDropdown<?php echo $key+1;?>" class="dropdown-content-outcomes">
                                                         
                                                         <div class="go-to-left bold-u a-b-u">Logic Branching: <i class="fa fa-question-circle" aria-hidden="true"></i></div><br>
@@ -57,7 +62,7 @@
                                                        <?php
                                                             // var_dump($outcomes[0]->title);
                                                             if(count($outcomes)>0){
-                                                                foreach ($outcomes as $outcome) {
+                                                                foreach ($outcomes as $key1 => $outcome) {
                                                                     // var_dump($outcome->title);
                                                                     if($choice->outcome_token == $outcome->auth_token) 
                                                                         $color = "btn btn-primary ";
@@ -65,9 +70,8 @@
                                                                         $color = "btn btn-default";
                                                                     ?>
                                                                         
-         
-                                                                        <a style="width:100%; margin:2px"class="<?php echo $color;?> quiz-outcome-result" href="<?php echo base_url('quiz/link_outcome/'.$question->id.'/'. $choice->id).'/'.$outcome->id; ?>"><?php echo $outcome->title;?></a>
-                                                                     
+                                                                        <a style="width:100%; margin:2px"class="<?php echo $color;?> quiz-outcome-result" href="<?php echo base_url('quiz/link_outcome/'.$question->auth_token.'/'. $choice->auth_token).'/'.$outcome->auth_token; ?>"><?php echo $outcome->title;?></a>
+                                                                        <!-- <a style="width:100%; margin:2px"class="<?php echo $color;?> quiz-outcome-result" onclick="link(<?=$key?>,<?=$key1?>)"><?php echo $outcome->title;?></a> -->
                                                                     <?php
                                                                 }
                                                             }else{
@@ -78,9 +82,9 @@
                                                     </div>
 
                                                 </div>
-                                                </td>
-                                                <td class="center-u">
-                                                <a href="<?php echo base_url('quiz/delete_choice/'. $choice->id); ?>" type ="submit" class="btn btn-danger btn-r-u custom-quiz-quizanswer-button-delete "><i class="fa fa-trash" aria-hidden="true"> </i></a>
+</td>
+                                                                                                <td class="center-u">
+                                                <a href="<?php echo base_url('quiz/delete_choice/'.$question->auth_token.'/'. $choice->auth_token); ?>" type ="submit" class="btn btn-danger btn-r-u custom-quiz-quizanswer-button-delete "><i class="fa fa-trash" aria-hidden="true"> </i></a>
                                                 </td>
                                             </tr>
                                             <?php
@@ -96,6 +100,14 @@
                 </div>
           </div>
         </div>
+    <?php if (ENVIRONMENT == 'production') : ?>
+    <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>
+    <?php elseif (ENVIRONMENT == 'development') : ?>
+    <script src="<?php echo $this->config->item('webpack_dev_url'); ?>build/sites.bundle.js"></script>
+    <?php endif; ?>
+    <script type="text/javascript" src="./assets/js/quiz/answers.js">
+    
+    </script>
     <script>
                             /* When the user clicks on the button, 
                             toggle between hiding and showing the dropdown content */
@@ -109,7 +121,7 @@
                                     }       
                                 }  
                             }
-
+                            
                             // Close the dropdown if the user clicks outside of it
                             window.onclick = function(event) {
                             if (!event.target.matches('.dropbtn')) {

@@ -436,12 +436,12 @@ class Quiz extends MY_Controller {
 		}
 	}
 
-	public function delete_choice($id = ''){
+	public function delete_choice($questionid = '',$id = ''){
 		$choicetable = "choices";
 		$choice = $this->MQuiz->get_choice_info($id,$choicetable);
 		
 		$this->MQuiz->delete_choice($id,$choicetable);
-		redirect('quiz/update_answers/'. $choice->question_token, 'refresh');
+		redirect('quiz/update_answers/'. $questionid, 'refresh');
 	}
 
 	public function delete_choice_template($id = ''){
@@ -563,12 +563,14 @@ class Quiz extends MY_Controller {
 		redirect('quiz/quiz_configure', 'refresh');
 	}
 
-	public function link_outcome($questionid='',$choiceID='',$outcomeID=''){
+	public function link_outcome($question ='',$choice='',$outcome=''){
+		// $datareceived = $_POST['results'];
+		// $data = json_decode($datareceived);
 		$table = "choices";
 		$description = $this->input->post('quizdescrip');
-		$this->MQuiz->update_choice_outcome($choiceID,$outcomeID,$table);	
+		$this->MQuiz->update_choice_outcome($choice,$outcome,$table);	
 
-		redirect('quiz/update_answers/'.$questionid, 'refresh');
+		redirect('quiz/update_answers/'. $question, 'refresh');
 	}
 
 	public function link_template_outcome($questionid='',$choiceID='',$outcomeID=''){

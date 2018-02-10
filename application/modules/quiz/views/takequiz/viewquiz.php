@@ -1,7 +1,6 @@
 <script type="text/javascript">
     var Quiz = <?php echo json_encode($quiz[0])?>;
 </script>
-<body class="body-t-p">
 <nav class="nav-t-p">
     <img src="../images/kyleads/kyleads-logo-template-preview.jpg" alt="" width="250px" height="90px">  
 </nav>  
@@ -309,6 +308,5 @@ $(function(){
 })
 </script>
 <![endif]-->
-</body>
 
 </html> 

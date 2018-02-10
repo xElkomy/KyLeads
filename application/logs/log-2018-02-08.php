@@ -1,0 +1,97 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+
+ERROR - 2018-02-08 13:40:16 --> Severity: Notice --> Undefined variable: packages C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-02-08 13:40:16 --> Severity: Warning --> Invalid argument supplied for foreach() C:\xampp\htdocs\application\modules\shared\views\modal_account.php 102
+ERROR - 2018-02-08 14:12:35 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:12:35 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:12:35 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:12:35 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:12:35 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:12:35 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:12:35 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:12:35 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:12:35 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:12:35 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:12:35 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:12:35 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:12:35 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:00 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:14:00 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:00 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:00 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:00 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:00 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:00 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:00 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:00 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:00 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:00 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:00 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:00 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:36 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:14:36 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:36 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:36 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:36 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:36 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:36 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:36 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:36 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:36 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:36 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:36 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:36 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:40 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:14:40 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:40 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:40 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:40 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:40 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:40 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:40 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:40 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:40 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:40 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:40 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:14:40 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:16:59 --> Severity: error --> Exception: syntax error, unexpected 'echo' (T_ECHO) C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:17:09 --> Severity: error --> Exception: syntax error, unexpected 'echo' (T_ECHO) C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:17:11 --> Severity: error --> Exception: syntax error, unexpected 'echo' (T_ECHO) C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:17:13 --> Severity: error --> Exception: syntax error, unexpected 'echo' (T_ECHO) C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:17:49 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:17:49 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:49 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:49 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:49 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:49 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:49 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:49 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:49 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:49 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:49 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:49 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:49 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:51 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:17:51 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:51 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:51 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:51 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:51 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:51 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:51 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:51 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:51 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:51 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:51 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:17:51 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 74
+ERROR - 2018-02-08 14:18:40 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:20:20 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:21:04 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:21:43 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:22:48 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:25:37 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:26:22 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:26:46 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:28:48 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:28:53 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2
+ERROR - 2018-02-08 14:28:57 --> Severity: 4096 --> Object of class stdClass could not be converted to string C:\xampp\htdocs\application\modules\quiz\views\quizmenu\quizanswer.php 2

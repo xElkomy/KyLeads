@@ -252,7 +252,7 @@
   background-color:rgb(235, 243, 239);
 }
 .btn-r-u{
-  border-radius: 50px;
+  border-radius: 50px !important;
 }
 .bold-u{
   font-weight: bold;

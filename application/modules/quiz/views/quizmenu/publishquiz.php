@@ -1,3 +1,11 @@
+<script>
+    var baseUrl = "<?php echo base_url()?>";
+</script>
+ <?php if (ENVIRONMENT == 'production') : ?>
+    <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>    
+    <?php elseif (ENVIRONMENT == 'development') : ?>
+    <script src="<?php echo $this->config->item('webpack_dev_url'); ?>build/sites.bundle.js"></script>
+    <?php endif; ?>
 <body class="body-custom">
 
     <?php $this->load->view("shared/nav.php"); ?>
@@ -100,14 +108,18 @@
                                     <div>
                                         Embedded link here :
                                         <?php
-                                            $link = ' <div id="quiz"> '.
-                                                    ' <iframe width="1000" height="600" src="'.base_url().'takequiz/quiz/'.$cquiz->auth_token.'" frameborder="0" allowfullscreen></iframe>'.
-                                                    ' </div>';       
+                                            $link = '<div class="kyquiz" quiz-id="'.$cquiz->auth_token.'">'.
+                                                    '<script src="'.base_url().'assets/js/plugins/quiz/embedquiz.js"></script>'.
+                                                    '</div>';       
                                         ?>
                                         <textarea style = "width: 500px; height: 100px;"  class ="form-control" type="text"><?php echo $link;?></textarea>
                                     </div>
                                 <?php }?>
                                 </div>
+                                
+                                <!-- <div class="kyquiz" quiz-id="fd3f4dfcd40dd8da7916a5192672ce"><script src="<?php echo base_url()?>assets/js/plugins/quiz/embedquiz.js"></script></div> -->
+
+                                <div class="lqquiz" quiz-id="B0Gn2u"><script src="https://quiz.leadquizzes.com/js/plugins/embedquiz.js"></script></div>
                             </div>
                         </div>
                     </div>
@@ -117,6 +129,7 @@
   </div>
     <!-- End of Content-->
     <!-- modals -->
+
     <script>
     $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
@@ -138,4 +151,4 @@
     <![endif]-->
 </body>
 </html>
-    s
+    
