@@ -4,7 +4,7 @@
     <div id="sidebar-wrapper">
       <nav id="spy">
           <ul class="nav sidebar-nav-u nav-u">
-                <li class="active">
+                <li>
                     <a href="quiz/quiz_configure">
                          <i class="fa fa-wrench" aria-hidden="true"></i>
                           <span class="nav-text">
@@ -66,14 +66,6 @@
                          <i class="fa fa-users"  aria-hidden="true"></i>
                           <span class="nav-text">
                           &nbsp&nbsp&nbsp&nbsp Contacts
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a  href="quiz/integrations">
-                         <i class="fa fa-code-fork"  aria-hidden="true"></i>
-                          <span class="nav-text">
-                          &nbsp&nbsp&nbsp&nbsp Integrations
                         </span>
                     </a>
                 </li>

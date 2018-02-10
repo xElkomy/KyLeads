@@ -30,7 +30,7 @@
                             <tbody>
                                     <?php foreach ($quizzes as $key => $quiz){  ?>
                                             <tr class="center-u bg-tr-quiz-dashboard">
-                                                <td class="nomargin quizdashboard"><button type="button" class="btn btn-primary rounded-button-u resize-button-u signature-color-button">Icon/Image</button></td>
+                                                <td class="nomargin quizdashboard"><button type="button " class="btn btn-primary btn-r-u rounded-button-u resize-button-u signature-color-button">Icon/Image</button></td>
                                                 <td>
                                                     <div class="row bold-u a-b-u center-u custom-quiz-title-alignment">TITLE:<br><?php echo $quiz->title;?>?</div> 
                                                     <div class="row row-dashboard-total-cons">

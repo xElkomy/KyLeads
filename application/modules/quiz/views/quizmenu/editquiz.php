@@ -27,8 +27,8 @@
                                    
                                     <label class="bold-u">Title :<input  id="quiztitle" name="quiztitle" class="form-control" style = "width: 790px;"  value="<?php echo $quizinfo->title;?>" required></input> 
                                     <label class="bold-u">Description :<input id="quizdescrip" name="quizdescrip" class="form-control" style = "width: 790px;" value="<?php echo $quizinfo->description;?>" row="2" required ></input> 
-                                    <button type ="submit" class="btn btn-primary save-button-u go-to-left"><i class="fa fa-check-square bold-u" aria-hidden="true"></i> Save Changes</button>
-                                    <a href="<?php echo base_url('quiz/outcome'); ?>" class="btn go-to-right btn-primary continue-button-u" role="button"><i class="fa fa-chevron-right" aria-hidden="true"></i>Continue</a>
+                                    <button type ="submit" class="btn btn-primary save-button-u go-to-left btn-r-u"><i class="fa fa-check-square bold-u" aria-hidden="true"></i> Save Changes</button>
+                                    <a href="<?php echo base_url('quiz/outcome'); ?>" class="btn go-to-right btn-primary continue-button-u btn-r-u" role="button"><i class="fa fa-chevron-right" aria-hidden="true"></i>Continue</a>
                                        
                                 </form>  
 

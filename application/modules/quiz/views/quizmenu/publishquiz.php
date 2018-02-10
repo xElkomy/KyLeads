@@ -119,7 +119,7 @@
                                 
                                 <!-- <div class="kyquiz" quiz-id="fd3f4dfcd40dd8da7916a5192672ce"><script src="<?php echo base_url()?>assets/js/plugins/quiz/embedquiz.js"></script></div> -->
 
-                                <div class="lqquiz" quiz-id="B0Gn2u"><script src="https://quiz.leadquizzes.com/js/plugins/embedquiz.js"></script></div>
+                                <!-- <div class="lqquiz" quiz-id="B0Gn2u"><script src="https://quiz.leadquizzes.com/js/plugins/embedquiz.js"></script></div> -->
                             </div>
                         </div>
                     </div>

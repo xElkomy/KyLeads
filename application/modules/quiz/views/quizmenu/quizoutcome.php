@@ -80,7 +80,7 @@
                                         }
                                         ?>
                                     </table>
-                                    <a href="<?php echo base_url('quiz/quizquestions'); ?>" class="btn go-to-right btn-primary continue-button-u" role="button"><i class="fa fa-chevron-right" aria-hidden="true"></i> Continue</a>
+                                    <a href="<?php echo base_url('quiz/quizquestions'); ?>" class="btn go-to-right btn-primary continue-button-u btn-r-u" role="button"><i class="fa fa-chevron-right" aria-hidden="true"></i> Continue</a>
                                     </div> 
                                     
                                     <div class="col-md-6 col-md-6-quiz-outcome" id="showform">
@@ -91,11 +91,11 @@
                                   
                                         <form>
                                             <small class="go-to-left" id="outcomeNumber"></small><br>
-                                            <label class="go-to-left">Outcome title:</label>
+                                            <label class="go-to-left"> Outcome title : <br> </label>
                                             <input id="outcomeTitle" name="outcometitle" placeholder="Update Outcome here.." class="form-control" style = "width: 530px; margin-right:20px;" required></input>
-                                            <label class="go-to-left">Outcome description:</label>
+                                            <label class="go-to-left">Outcome description :</label>
                                             <textarea  id="outcomeDescrip" name="outcomedescription" placeholder="Update Description here.." class="form-control" style = "width: 530px; margin-right:20px;margin-top:10px;" rows="10" cols="50" required></textarea>
-                                            <button id="btnSubmit" type ="submit" class="btn bold-u a-w-u btn-lg btn-primary margin-top-20 go-to-right"><i class="fa fa-pencil" aria-hidden="true"></i> Update Outcome</button>
+                                            <button id="btnSubmit" type ="submit" class="btn bold-u a-w-u btn-lg btn-primary margin-top-20 go-to-right btn-r-u"><i class="fa fa-pencil" aria-hidden="true"></i> Update Outcome</button>
                                         </form>
                                     </div>
                                     

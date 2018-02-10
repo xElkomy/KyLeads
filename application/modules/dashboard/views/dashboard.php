@@ -1,43 +1,40 @@
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<body>
+<body class="body-custom">
 
     <?php $this->load->view("shared/nav.php"); ?>
     
     
     <!-- New Content -->
 
-    <div class="container-fluid">
+    <div class="container container-dashboard">
 
-        <div class="row" id="content">
-          <div id="new-optin" class="tabcontent">
+        <div class="row">
             <div class="col-md-4" >
-                  <ul class="list-group " id="list-group">
-                    <li class="list-group-item b-t-r-l-u" id="list-group-item"><i class="fa fa-signal"> Top Converting</i></li>
-                    <li class="list-group-item" id="list-group-item"><i class="fa fa-external-link"> Landing page</i></li>  
-                    <li class="list-group-item" id="list-group-item"><i class="fa fa-user" aria-hidden="true"></i> Name</li>
-                    <li class="list-group-item" id="list-group-item"><i class="fa fa-line-chart" aria-hidden="true"> Conversion rate</i></li>
-                    <li class="list-group-item b-b-r-l-u" id="list-group-item"><i class="fa fa-users" aria-hidden="true"> Total Contacts</i></li>
-                  </ul>
-                  </div>
-            <div class="col-md-4">
-                  <ul class="list-group" id="list-group">
-                    <li class="list-group-item b-t-r-l-u" id="list-group-item"><i class="fa fa-signal"> Top Converting</i></li>
-                    <li class="list-group-item" id="list-group-item"><i class="fa fa-question-circle" aria-hidden="true"> Quiz</i></li>
-                    <li class="list-group-item" id="list-group-item"><i class="fa fa-user" aria-hidden="true"></i> Name</li>
-                    <li class="list-group-item" id="list-group-item"><i class="fa fa-line-chart" aria-hidden="true"> Conversion rate</i></li>
-                    <li class="list-group-item b-b-r-l-u" id="list-group-item"><i class="fa fa-users" aria-hidden="true"> Total Contacts</i></li>
-                  </ul>
+                <ul class="list-group list-group-dashboard">
+                    <li href="#"class="list-group-item list-group-item-dashboard list-group-item-rounded-t-r-l"><i class="fa-margin-left fa fa-signal"></i>Top Converting</li>
+                    <li class="list-group-item list-group-item-dashboard-light"><a href="<?php echo base_url('sites'); ?>" class="dashboard-link"><i class="fa-margin-left fa fa-external-link"></i> Landing page</a></li>  
+                    <li class="list-group-item list-group-item-dashboard-light"><a href="<?php echo base_url('sites'); ?>" class="dashboard-link"><i class="fa-margin-left fa fa-user" aria-hidden="true"></i> Name</a></li>
+                    <li class="list-group-item list-group-item-dashboard-light"><a href="<?php echo base_url('sites'); ?>" class="dashboard-link"><i class="fa-margin-left fa fa-line-chart" aria-hidden="true"></i> Conversion rate</a></li>
+                    <li class="list-group-item list-group-item-dashboard-light list-group-item-rounded-b-r-l"><a href="<?php echo base_url('sites'); ?>" class="dashboard-link"><i class="fa-margin-left fa fa-users" aria-hidden="true"></i> Total Contacts</a></li>
+                </ul>
             </div>
             <div class="col-md-4">
-                  <ul class="list-group" id="list-group"> 
-                    <li class="list-group-item b-t-r-l-u" id="list-group-item"><i class="fa fa-signal"> Top Converting</i></li>
-                    <li class="list-group-item" id="list-group-item"><i class="fa fa-list-ul"> Form</i></li>
-                    <li class="list-group-item" id="list-group-item"><i class="fa fa-user" aria-hidden="true"> Name</i></li>
-                    <li class="list-group-item" id="list-group-item"><i class="fa fa-line-chart" aria-hidden="true"> Conversion rate</i></li>
-                    <li class="list-group-item b-b-r-l-u" id="list-group-item"><i class="fa fa-users" aria-hidden="true"> Total Contacts</i></li>
-                  </ul>
+                <ul class="list-group list-group-dashboard">
+                    <li class="list-group-item list-group-item-dashboard list-group-item-rounded-t-r-l"><i class="fa-margin-left fa fa-signal"></i> Top Converting</li>
+                    <li class="list-group-item list-group-item-dashboard-light"><a href="<?php echo base_url('quiz'); ?>" class="dashboard-link"><i class="fa-margin-left fa fa-question-circle" aria-hidden="true"></i> Quiz</a></li>
+                    <li class="list-group-item list-group-item-dashboard-light"><a href="<?php echo base_url('quiz'); ?>" class="dashboard-link"><i class="fa-margin-left fa fa-user" aria-hidden="true"></i> Name</a></li>
+                    <li class="list-group-item list-group-item-dashboard-light"><a href="<?php echo base_url('quiz'); ?>" class="dashboard-link"><i class="fa-margin-left fa fa-line-chart" aria-hidden="true"> </i> Conversion rate</a></li>
+                    <li class="list-group-item list-group-item-dashboard-light list-group-item-rounded-b-r-l"><a href="<?php echo base_url('quiz'); ?>" class="dashboard-link"><i class="fa-margin-left fa fa-users" aria-hidden="true"></i> Total Contacts</a></li>
+                </ul>
             </div>
-          </div>
+            <div class="col-md-4">
+                <ul class="list-group list-group-dashboard"> 
+                    <li class="list-group-item list-group-item-dashboard list-group-item-rounded-t-r-l"><i class="fa-margin-left fa fa-signal" aria-hidden></i> Top Converting</li>
+                    <li class="list-group-item list-group-item-dashboard-light"><a href="<?php echo base_url('forms'); ?>" class="dashboard-link"><i class="fa-margin-left fa fa-list-ul" aria-hidden></i> Form</a></li>
+                    <li class="list-group-item list-group-item-dashboard-light"><a href="<?php echo base_url('forms'); ?>" class="dashboard-link"><i class="fa-margin-left fa fa-user" aria-hidden="true"></i> Name</a></li>
+                    <li class="list-group-item list-group-item-dashboard-light"><a href="<?php echo base_url('forms'); ?>" class="dashboard-link"><i class="fa-margin-left fa fa-line-chart" aria-hidden="true"></i> Conversion rate</a></li>
+                    <li class="list-group-item list-group-item-dashboard-light list-group-item-rounded-b-r-l"><a href="<?php echo base_url('forms/contacts'); ?>" class="dashboard-link"><i class="fa-margin-left fa fa-users" aria-hidden="true"></i> Total Contacts</a></li>
+                </ul>
+            </div>
         </div>
         <div class="row" align="center" id="footer">
             <div class="col-md-12">
@@ -55,10 +52,8 @@
             <div class="col-md-12">
             <h7>Conversion rate (average across all forms and pages)</h7><br>
             <h7>Total Leads</h7>
-            </div>
         </div>
-    </div>
-    
+</div>
     <!-- End of Content-->
 
     <!-- modals -->
@@ -70,8 +65,6 @@
     <?php $this->load->view("shared/modal_deletesite.php"); ?>
 
     <!-- /modals -->
-
-
     <!-- Load JS here for greater good =============================-->
     <?php if (ENVIRONMENT == 'production') : ?>
     <script src="<?php echo base_url('build/sites.bundle.js'); ?>"></script>

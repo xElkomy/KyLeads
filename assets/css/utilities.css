@@ -206,10 +206,6 @@
 .btn-m-s-u{
   margin:5px;
 }
-.table-borderless {
-  background-color:rgb(235, 243, 239);
-
-}
 .table-borderless .f-d-td, .table-borderless .f-d-th {
   border: none; 
   border-radius: 100px !important; 

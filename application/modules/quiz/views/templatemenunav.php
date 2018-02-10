@@ -10,8 +10,8 @@
     <div id="sidebar-wrapper">
       <nav id="spy">
           <ul class="nav sidebar-nav-u nav-u">
-                <li ><i type="hidden" class="fa fa" aria-hidden="true"></i></li>
-                <li class="active"><a href="quiz/configure_template"><i class="fa fa-tachometer" aria-hidden="true">Configure</i></a></li>
+                <li><i type="hidden" class="fa fa" aria-hidden="true"></i></li>
+                <li><a href="quiz/configure_template"><i class="fa fa-tachometer" aria-hidden="true">Configure</i></a></li>
                 <li><a href="quiz/templateoutcome"><i class="fa fa-question-circle" aria-hidden="true">Outcomes</i></a></li>
                 <li><a href="quiz/templatequestions"><i class="fa fa-question-circle" aria-hidden="true">Questions</i></a></li>
                 <li><a href="quiz/templatequestions"><i class="fa fa-question-circle" aria-hidden="true">Review</i></a></li>

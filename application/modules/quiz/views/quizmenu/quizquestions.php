@@ -87,7 +87,7 @@
                                         ?>
                                         </table>
 
-                                        <a href="<?php echo base_url('quiz/quizreview'); ?>" class="btn go-to-right btn-primary continue-button-u" role="button"><i class="fa fa-chevron-right" aria-hidden="true"></i> Continue</a>
+                                        <a href="<?php echo base_url('quiz/quizreview'); ?>" class="btn go-to-right btn-primary continue-button-u btn-r-u" role="button"><i class="fa fa-chevron-right" aria-hidden="true"></i> Continue</a>
                                         </div> 
                                     
                                     <div class="col-md-6 col-md-6-quiz-outcome" id="showform">
@@ -112,9 +112,9 @@
                                                     Loading your answers....
                                                         </div> 
                                                 </div>
-                                                <div class="row">
-                                                <button id="btnSubmit" type ="submit" class="btn bold-u a-w-u btn-lg btn-primary margin-top-20 go-to-right"><i class="fa fa-pencil" aria-hidden="true"></i> Update Question</button>
-                                                </div>
+                             
+                                                <button id="btnSubmit" type ="submit" style = "position:relative; top:1;" class="btn bold-u a-w-u btn-lg btn-primary margin-bottom-20 go-to-right btn-r-u"><i class="fa fa-pencil" aria-hidden="true"></i> Update Question</button>
+                                        
                                             </form> 
                                              
                                         </div>

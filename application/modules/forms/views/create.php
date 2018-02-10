@@ -72,6 +72,15 @@
     <!-- modals -->
 
 
+    <!-- modals -->
+
+    <?php $this->load->view("shared/modal_sitesettings.php"); ?>
+
+    <?php $this->load->view("shared/modal_account.php"); ?>
+
+    <?php $this->load->view("shared/modal_deletesite.php"); ?>
+
+    <!-- /modals -->
     <!-- /modals -->
 
 

@@ -17,9 +17,9 @@
             </nav>
       </div>
       <!-- Page content -->
-      <div id="page-content-wrapper">
-          <div class="page-content">
-              <div class="container ">
+    <div id="page-content-wrapper">
+        <div class="page-content">
+            <div class="container ">
                     <div class="row row-c-u-f">
                         <?php $this->load->view("quiz/analytics"); ?>     
                     </div>
